@@ -215,8 +215,9 @@
                 <li class="col-lg-6 col-xl-3 icon mt-5">
                     <!-- product image -->
                     <div class="product-box">
-                        <div class="product-image rounded">
-                            <img class="slide" src="img\Armchair-Royal-mau-do-204117-600x400.jpg" alt="">
+                        <div class="product-image">
+                            <img class="product-image-related" src="img\Armchair-Royal-mau-do-204117-600x400.jpg"
+                                alt="">
                         </div>
                         <!-- product footer -->
                         <div class="text-center mt-4">
@@ -224,6 +225,7 @@
                             <div class="fs-6">10,000,000</div>
                         </div>
                     </div>
+                    <!-- product-nav -->
                     <ul class="icon-nav">
                         <li class="icon-nav-product">
                             <span class="material-symbols-outlined">
@@ -254,8 +256,9 @@
                 <li class="col-lg-6 col-xl-3 icon mt-5">
                     <!-- product image -->
                     <div class="product-box">
-                        <div class="product-image rounded">
-                            <img class="slide" src="img\Armchair-Royal-mau-do-204117-2-601x400.jpg" alt="">
+                        <div class="product-image">
+                            <img class="product-image-related" src="img\Armchair-Royal-mau-do-204117-2-601x400.jpg"
+                                alt="">
                         </div>
                         <!-- product footer -->
                         <div class="text-center mt-4">
@@ -263,6 +266,7 @@
                             <div class="fs-6">10,000,000</div>
                         </div>
                     </div>
+                    <!-- product-nav -->
                     <ul class="icon-nav">
                         <li class="icon-nav-product">
                             <span class="material-symbols-outlined">
@@ -293,8 +297,9 @@
                 <li class="col-lg-6 col-xl-3 icon mt-5">
                     <!-- product image -->
                     <div class="product-box">
-                        <div class="product-image rounded">
-                            <img class="slide" src="img\Armchair-Royal-mau-do-204117-3-768x495.jpg" alt="">
+                        <div class="product-image">
+                            <img class="product-image-related" src="img\Armchair-Royal-mau-do-204117-1-768x511.jpg"
+                                alt="">
                         </div>
                         <!-- product footer -->
                         <div class="text-center mt-4">
@@ -302,6 +307,7 @@
                             <div class="fs-6">10,000,000</div>
                         </div>
                     </div>
+                    <!-- product-nav -->
                     <ul class="icon-nav">
                         <li class="icon-nav-product">
                             <span class="material-symbols-outlined">
@@ -332,8 +338,9 @@
                 <li class="col-lg-6 col-xl-3 icon mt-5">
                     <!-- product image -->
                     <div class="product-box">
-                        <div class="product-image rounded">
-                            <img class="slide" src="img\Armchair-Royal-mau-do-204117-1-768x511.jpg" alt="">
+                        <div class="product-image">
+                            <img class="product-image-related" src="img\Armchair-Royal-mau-do-204117-3-768x495.jpg"
+                                alt="">
                         </div>
                         <!-- product footer -->
                         <div class="text-center mt-4">
@@ -341,6 +348,7 @@
                             <div class="fs-6">10,000,000</div>
                         </div>
                     </div>
+                    <!-- product-nav -->
                     <ul class="icon-nav">
                         <li class="icon-nav-product">
                             <span class="material-symbols-outlined">
@@ -372,9 +380,10 @@
         </div>
     </section>
     <style>
-        .margin-120{
+        .margin-120 {
             margin: 120px 0;
         }
+
         /* icon */
         .material-symbols-outlined {
             color: black;
@@ -397,9 +406,22 @@
         }
 
         /* Related */
+        .product-image-related {
+            width: 100%;
+            margin-top: 12px;
+            border-radius: 6px;
+        }
+
+        .product-box {
+            margin-bottom: 12px;
+        }
+
         .icon {
             position: relative;
+        }
 
+        .icon:hover {
+            border: 1px solid rgb(170, 163, 163);
         }
 
         .icon:hover .icon-nav {
