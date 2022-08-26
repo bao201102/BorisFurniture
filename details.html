@@ -430,6 +430,9 @@
 
         .icon:hover .icon-nav {
             display: flex;
+            top: 25px;
+            transition: top  linear 0.3s;
+
         }
 
         .icon-nav {
@@ -438,10 +441,11 @@
             justify-content: center;
             position: absolute;
             flex-direction: column;
-            top: 25px;
+            top: 4px;
             right: 25px;
             display: none;
-            animation: fadeIn 0.4s cubic-bezier(0.65, 0.01, 0.63, 1.71);
+            /* animation: fadeIn 0.4s cubic-bezier(0.65, 0.01, 0.63, 1.71); */
+            transition: top linear 0.3s;
         }
 
         .icon-nav-product {
@@ -516,6 +520,7 @@
             border-bottom-left-radius: 3px;
             border-bottom-right-radius: 3px;
             width: 100%;
+            transition: bottom linear .2s;
         }
         /* Product description */ 
         .product-desrc{
@@ -540,12 +545,10 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                top: 15px;
             }
 
             to {
                 opacity: 1;
-                top: 25px;
             }
         }
 
