@@ -20,7 +20,9 @@ p {
 .box {
     position: relative;
 }
-
+.card:hover{
+    cursor: pointer;
+}
 .box:hover .box-nav {
     opacity: 1;
     top: 25px;
@@ -84,7 +86,7 @@ p {
     width: 0;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent transparent black;
+    border-color: transparent transparent transparent #232323;
     position: absolute;
     bottom: 9px;
     left: 148px;
