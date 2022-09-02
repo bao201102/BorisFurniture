@@ -74,7 +74,7 @@
                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                     aria-label="Slide 3"></button>
             </div>
-            <div class="carousel-inner">
+            <div class="carousel-inner p-0">
                 <div class="carousel-item active">
                     <img src="./img/living-white-room.jpg" class="d-block img-fluid" alt="...">
                 </div>
@@ -692,13 +692,10 @@
     window.onscroll = function () { myScrollFunction() };
 
     function myScrollFunction() {
-        if (window.scrollY > 600) {
+        if (window.scrollY > 1) {
             document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm";
         }
-        else if (window.innerWidth < 1850 && window.scrollY > 400) {
-            document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm";
-        }
-        else if (window.innerWidth > 900) {
+        else if (window.scrollY < 20) {
             document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-transparent";
         }
     }
@@ -706,10 +703,10 @@
     window.onresize = function () { myResizeFunction() };
 
     function myResizeFunction() {
-        if (window.innerWidth < 900) {
+        if (window.innerWidth < 992) {
             document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm";
         }
-        else {
+        else if (window.innerWidth > 992 && window.scrollY < 20){
             document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-transparent";
         }
 
