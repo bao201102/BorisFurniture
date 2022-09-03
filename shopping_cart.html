@@ -16,6 +16,110 @@
 
 <body>
     <div class="container-fluid p-0">
+        <!-- Header -->
+        <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm">
+            <div class="container-fluid">
+                <a class="navbar-brand ms-5 fs-3" href="#">Hamlin</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbar-collapse-item" aria-controls="navbar-collapse-item" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse fs-10" id="navbar-collapse-item">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="./index.html">Home
+                                <span class="visually-hidden">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                    </ul>
+                    <div class="nav-item">
+                        <ul class="navbar-nav gap-2 flex-row">
+                            <li>
+                                <a class="nav-link" href="./search.html" data-bs-toggle="offcanvas"
+                                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+                                    <span class="material-symbols-outlined">
+                                        search
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="cart-icon">
+                                <a class="nav-link" href="#">
+                                    <span class="material-symbols-outlined">
+                                        shopping_cart
+                                        <!-- shopping cart -->
+                                        <div class="header-cart-list shadow-lg">
+                                            <ul class="cart-product-list mb-2">
+                                                <li class="cart-product-item d-flex mb-2">
+                                                    <img src="./img/Classic-Lamp.jpg" alt="" style="width: 20%;">
+
+                                                    <div class="cart-product-description">
+                                                        <div class="cart-product-main-des mb-2 fs-4">
+                                                            Classic Lamp
+                                                        </div>
+                                                        <div class="cart-product-sub-des"
+                                                            style="color: rgb(155, 150, 150);">
+                                                            <span class="cart-product-quantity">1</span>
+                                                            <span>x</span>
+                                                            <span>450,000
+                                                                <span class="pSymbol">$</span>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+
+                                                    <span class="material-symbols-outlined cart-delete">
+                                                        close
+                                                    </span>
+                                                </li>
+
+                                            </ul>
+                                            <div
+                                                class="cart-subtotal d-flex fs-4 justify-content-center align-items-center border-top border-bottom py-3 fs-5">
+                                                <label class="mx-1">Subtotal:</label>
+                                                <div class="fs-5 fw-semibold">1,000,000<span class="pSymbol">$</span>
+                                                </div>
+                                            </div>
+                                            <div class="cart-button d-flex flex-column justify-content-center mt-3">
+                                                <button class="btn btn-primary">View Cart</button>
+                                                <button class="btn btn-outline-primary mt-2">Checkout</button>
+                                            </div>
+                                        </div>
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Search offcanvas section -->
+        <div class="offcanvas offcanvas-top container" style="height: 500px;" tabindex="-1" id="offcanvasTop"
+            aria-labelledby="offcanvasTopLabel">
+            <button type="button" class="btn-close mt-3 ms-auto fs-5" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
+            <div class="container" style="padding: 100px;">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasTopLabel">What are you looking for?</h5>
+                </div>
+                <div class="offcanvas-body">
+                    <form class="d-flex">
+                        <input class="form-control me-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!-- title -->
         <section class="shopcart-title">
             <div class="container">
@@ -88,7 +192,7 @@
                     </div>
 
                     <div class="mt-4 mb-4 mb-xl-0 d-flex justify-content-center">
-                        <div class="btn-group gap-3 w" role="group">
+                        <div class="btn-group gap-3" role="group">
                             <button type="button" class="btn btn-outline-primary">Empty cart</button>
                             <button type="button" class="btn btn-outline-primary">Update cart</button>
                         </div>
@@ -117,7 +221,7 @@
                                                     checked>
                                                 <label class="form-check-label" for="free">Free shipping</label>
                                             </div>
-                                            <div class="form-check">
+                                            <div class="form-check my-2">
                                                 <input class="form-check-input" type="radio" name="shipping" id="flat">
                                                 <label class="form-check-label" for="flat">Flat: $12.00</label>
                                             </div>
@@ -137,25 +241,145 @@
                                 </tr>
                             </tbody>
                         </table>
-                        <div class="d-flex flex-column justify-content-center mt-1">
+                        <div class="d-flex flex-column justify-content-center mt-2 mt-xl-5">
                             <button class="btn btn-primary ">proceed to checkout</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Client logo section -->
+        <section class="border-top border-2" style="padding: 100px 0;">
+            <div class="container">
+                <div class="row">
+                    <!-- start client logo item -->
+                    <div class="col text-center">
+                        <a href="#" class=""><img alt="" src="./img/client-logo-37.png"></a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" class=""><img alt="" src="./img/client-logo-38.png"></a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" class=""><img alt="" src="./img/client-logo-39.png"></a>
+                    </div>
+
+                    <div class="col text-center">
+                        <a href="#" class=""><img alt="" src="./img/client-logo-40.png"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer section -->
+        <footer class="" style="padding-top: 80px; background-color: #232323;">
+            <div class="container" style="padding: 40px;">
+                <div class="row">
+                    <!-- start footer col -->
+                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
+                        <p class="text-light dropdown-toggle" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#col-toggler1" aria-controls="col-toggler1" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            Company
+                        </p>
+                        <br>
+                        <div class="row gap-3 collapse show" id="col-toggler1">
+                            <a href="" class="d-block text-muted">
+                                About company
+                            </a>
+                            <a href="" class="d-block text-muted">
+                                Company services
+                            </a>
+                            <a href="" class="d-block text-muted">
+                                Job opportunities
+                            </a>
+                            <a href="" class="d-block text-muted">
+                                Contact us
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end footer col -->
+                    <!-- start footer col -->
+                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
+                        <p class="text-light dropdown-toggle" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#col-toggler2" aria-controls="col-toggler2" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            Customer
+                        </p>
+                        <br>
+                        <div class="row gap-3 collapse show" id="col-toggler2">
+                            <a href="" class="d-block text-muted">
+                                Client support
+                            </a>
+                            <a href="" class="d-block text-muted">
+                                Pricing packages
+                            </a>
+                            <a href="" class="d-block text-muted">
+                                Company history
+                            </a>
+                            <a href="" class="d-block text-muted">
+                                Our process
+                            </a>
+                        </div>
+                    </div>
+                    <!-- end footer col -->
+                    <!-- start footer col -->
+                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
+                        <p class="text-light">
+                            Get in touch
+                        </p>
+                        <br>
+                        <div class="row gap-3">
+                            <span href="" class="d-block text-muted">
+                                27 Eden walk eden centre, Orchard view, Paris, France
+                            </span>
+                            <span href="" class="d-block text-muted">
+                                +1 234 567 8910
+                            </span>
+                            <span href="" class="d-block text-muted">
+                                info@yourdomain.com
+                            </span>
+                        </div>
+                    </div>
+                    <!-- end footer col -->
+                    <!-- start footer col -->
+                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
+                        <p class="text-light">
+                            Follow us on instagram
+                        </p>
+                        <br>
+                    </div>
+                    <!-- end footer col -->
+                </div>
+
+                <div class="container border-top">
+                    <div class="row mt-5 text-center align-items-center">
+                        <div class="col-12 col-lg-12 col-xxl-3" style="margin-bottom: 50px;">
+                            <a class="text-light fw-semibold" style="font-size: 30px;" href="#">Hamlin</a>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xxl-6" style="margin-bottom: 50px;">
+                            <p class="text-muted fs-5">
+                                © 2022 Hamlin is Proudly Powered by Us
+                            </p>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xxl-3" style="margin-bottom: 50px;">
+                            <img src="./img/footer-payment-icon.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
 
 <style>
     /* title */
     .shopcart-title {
         background-color: #f7f7f7;
-        padding: 25px 0;
+        padding: 20px 0;
+        margin-top: 80px;
     }
 
     .shopcart-title-nav {
@@ -182,7 +406,7 @@
 
     .product-summary {
         background-color: #f7f7f7;
-        padding: 50px;
+        padding: 60px 50px;
         color: black;
     }
 
@@ -197,8 +421,15 @@
         }
     } */
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+    </script>
+
+<script src="./js/general-effect.js"></script>
+
 <script>
-    window.addEventListener("resize",resizeTableCart)
+    window.addEventListener("resize", resizeTableCart)
     function resizeTableCart() {
         if (window.innerWidth < 1200) {
             document.getElementById("cart-table").style.paddingRight = 12;
@@ -208,7 +439,7 @@
         }
     }
 
-    window.addEventListener("resize",resizeShopCart)
+    window.addEventListener("resize", resizeShopCart)
     function resizeShopCart() {
         if (window.innerWidth < 1400) {
             document.getElementById("cart-totals").style.paddingLeft = 20;
@@ -217,7 +448,10 @@
             document.getElementById("cart-totals").style.paddingBottom = 30;
         }
         else {
-            document.getElementById("cart-totals").style.padding = 50;
+            document.getElementById("cart-totals").style.paddingLeft = 50;
+            document.getElementById("cart-totals").style.paddingRight = 50;
+            document.getElementById("cart-totals").style.paddingTop = 60;
+            document.getElementById("cart-totals").style.paddingBottom = 60;
         }
     }
 </script>
