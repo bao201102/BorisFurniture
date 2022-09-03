@@ -45,9 +45,9 @@
         <section class="container" style="padding: 130px 0;">
             <div class="row">
                 <!-- table -->
-                <div class="col-12 col-xl-8 table-responsive-lg mb-sm-3 mb-lg-0 cart-table">
-                    <div class="row">
-                        <table class="col-12 table align-middle">
+                <div id="cart-table" class="col-12 col-xl-8 cart-table">
+                    <div class="table-responsive-md">
+                        <table class="table align-middle">
                             <thead>
                                 <tr>
                                     <th scope="col" colspan="2">product</th>
@@ -57,26 +57,26 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr class="product-row">
+                                <tr>
                                     <td scope="row"><img src="./img/Classic-Lamp.jpg" alt="" class="product-thumbnail">
                                     </td>
                                     <td><a href="./details.html" class="text-decoration-none">Classic-Lamp</a></td>
                                     <td>37,000<span>₫</span></td>
                                     <td class="product-quantity">
-                                        <input class="form-control" type="number" value="1">
+                                        <input class="form-control border border-1" type="number" value="1">
                                     </td>
                                     <td>37,000<span>₫</span></td>
                                     <td><span class="material-symbols-outlined cart-delete">
                                             close
                                         </span></td>
                                 </tr>
-                                <tr class="product-row">
+                                <tr>
                                     <td scope="row"><img src="./img/Classic-Lamp.jpg" alt="" class="product-thumbnail">
                                     </td>
                                     <td><a href="./details.html" class="text-decoration-none">Classic-Lamp</a></td>
                                     <td>37,000<span>₫</span></td>
                                     <td class="product-quantity">
-                                        <input class="form-control" type="number" value="1">
+                                        <input class="form-control border border-1" type="number" value="1">
                                     </td>
                                     <td>37,000<span>₫</span></td>
                                     <td><span class="material-symbols-outlined cart-delete">
@@ -85,38 +85,61 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
 
-                        <div class="col-12">
-                            
+                    <div class="mt-4 mb-4 mb-xl-0 d-flex justify-content-center">
+                        <div class="btn-group gap-3 w" role="group">
+                            <button type="button" class="btn btn-outline-primary">Empty cart</button>
+                            <button type="button" class="btn btn-outline-primary">Update cart</button>
                         </div>
                     </div>
                 </div>
 
                 <!-- summary -->
                 <div class="col-12 col-xl-4">
-                    <div class="product-summary">
+                    <div id="cart-totals" class="product-summary">
                         <div class="summarry-title">
-                            Summary
+                            Cart totals
                         </div>
-                        <div>
-                            <ul style="list-style: none;">
-                                <li class="d-flex mb-2">
-                                    <div class="me-auto">Subtotal</div>
-                                    <div>37,000<span>₫</span></div>
-                                </li>
-                                <li class="d-flex mb-2">
-                                    <div class="me-auto">Subtotal</div>
-                                    <div>37,000<span>₫</span></div>
-                                </li>
-                                <li class="d-flex mb-2">
-                                    <div class="me-auto">Subtotal</div>
-                                    <div>37,000<span>₫</span></div>
-                                </li>
-                            </ul>
+
+                        <table class="table align-middle">
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Subtotal</th>
+                                    <td class="text-end text-xl-start">$405.00</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Shipping</th>
+                                    <td>
+                                        <div class="float-end float-xl-start">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="shipping" id="free"
+                                                    checked>
+                                                <label class="form-check-label" for="free">Free shipping</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="shipping" id="flat">
+                                                <label class="form-check-label" for="flat">Flat: $12.00</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="shipping" id="local">
+                                                <label class="form-check-label" for="local">Local pickup</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">Total</th>
+                                    <td class="text-end  text-xl-start">
+                                        <p class="fw-semibold fs-3 text-black pb-3">$405.00</p>
+                                        <span class="fs-6">(Includes $19.29 tax)</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="d-flex flex-column justify-content-center mt-1">
+                            <button class="btn btn-primary ">proceed to checkout</button>
                         </div>
-                        <div></div>
-                        <div></div>
-                        <div></div>
                     </div>
                 </div>
             </div>
@@ -136,16 +159,16 @@
     }
 
     .shopcart-title-nav {
-        --bs-breadcrumb-divider: '>';
+        --bs-breadcrumb-divider: '\2022';
+    }
+
+    .breadcrumb-item::before {
+        font-size: 18px;
     }
 
     /* cart */
     .cart-table {
         padding: 0 70px 0 12px;
-    }
-
-    .product-row {
-        align-items: center;
     }
 
     .product-thumbnail {
@@ -157,29 +180,47 @@
         padding-right: 12px;
     }
 
-    .cart-delete {
-        padding: 5px 6px;
-        margin-right: 12px;
-        color: #b8b2b1;
-    }
-
-    .cart-delete:hover {
-        color: #232323;
-        background-color: #f8f4f2;
-        border-radius: 100%;
-        cursor: pointer;
-    }
-
     .product-summary {
         background-color: #f7f7f7;
         padding: 50px;
+        color: black;
     }
 
     .summarry-title {
         font-size: 23px;
-        color: black;
         margin-bottom: 30px;
     }
+
+    /* @media (max-width: 1400) {
+        .product-summary {
+            padding: 30px 20px;
+        }
+    } */
 </style>
+<script>
+    window.addEventListener("resize",resizeTableCart)
+    function resizeTableCart() {
+        if (window.innerWidth < 1200) {
+            document.getElementById("cart-table").style.paddingRight = 12;
+        }
+        else {
+            document.getElementById("cart-table").style.paddingRight = 70;
+        }
+    }
+
+    window.addEventListener("resize",resizeShopCart)
+    function resizeShopCart() {
+        if (window.innerWidth < 1400) {
+            document.getElementById("cart-totals").style.paddingLeft = 20;
+            document.getElementById("cart-totals").style.paddingRight = 20;
+            document.getElementById("cart-totals").style.paddingTop = 30;
+            document.getElementById("cart-totals").style.paddingBottom = 30;
+        }
+        else {
+            document.getElementById("cart-totals").style.padding = 50;
+        }
+    }
+</script>
+
 
 </html>

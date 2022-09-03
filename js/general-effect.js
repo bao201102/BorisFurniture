@@ -21,8 +21,8 @@ function myResizeFunction() {
         document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-transparent";
     }
 }
-window.onresize = function () { resizeDetail() };
 
+window.addEventListener("resize", resizeDetail);
 function resizeDetail() {
     //details
     if (window.innerWidth < 992) {
@@ -35,8 +35,8 @@ function resizeDetail() {
         document.getElementById("inf-pro").style.paddingLeft = 100;
     }
 }
-window.onresize = function () { resizeFooter() };
 
+window.addEventListener("resize", resizeFooter);
 function resizeFooter() {
     if (window.innerWidth < 992) {
         document.getElementById("col-toggler1").className = "row gap-3 collapse";
