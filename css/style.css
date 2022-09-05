@@ -60,7 +60,7 @@ p {
     font-size: 25px;
 }
 
-.box-nav-title {
+/* .box-nav-title {
     min-width: 150px;
     height: auto;
     background-color: #232323;
@@ -90,7 +90,7 @@ p {
     position: absolute;
     bottom: 9px;
     left: 148px;
-}
+} */
 
 /* add to cart */
 .add-to-cart {
