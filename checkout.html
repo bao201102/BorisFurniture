@@ -102,15 +102,21 @@
         </nav>
         <br style="clear: both;">
         <!--Header section-->
-        <div class="checkout-header" style="background-color: #F0F2F2; margin-top: 100px;">
-            <p style="padding: 20px 0 20px 300px; font-size: 18px; color: black; float: left;">
-                Checkout
-            </p>
-            <ol class="breadcrumb" style="font-size: 18px; padding: 20px 0 20px 1000px; position: relative;">
-                <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="./search.html">Search</a></li>
-                <li class="breadcrumb-item active">Checkout</li>
-            </ol>
+        <div class="box-checkout" id="checkout-header">
+            <div class="row">
+                <div class="col-6" style="position: relative">
+                    <p id="checkout-label">
+                        Checkout
+                    </p>
+                </div>
+                <div class="col-6" style="position: relative">
+                    <ol class="breadcrumb" id="checkout-breadcrumb">
+                        <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="./search.html">Search</a></li>
+                        <li class="breadcrumb-item active">Checkout</li>
+                    </ol>
+                </div>
+            </div>
         </div>
         <!--Checkout body section-->
         <div class="container" style="margin-top: 200px;">
@@ -630,9 +636,13 @@
     </div>
 </body>
 <style>
+    html
+    {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 18px;
+    }
     #label {
         padding-top: 20px;
-        font-family: 'Times New Roman', Times, serif;
     }
 
     #order-details {
@@ -644,6 +654,25 @@
 
     #textbox {
         margin-top: 20px;
+    }
+    #checkout-header
+    {
+        background-color: #F0F2F2;
+        margin-top: 100px;
+    }
+    #checkout-breadcrumb
+    {
+        text-align: center;
+        padding: 25px;
+        box-sizing: border-box;
+    }
+    #checkout-label
+    {
+        text-align: center;
+        font-size: 18px; 
+        color: black;
+        padding: 25px;
+        box-sizing: border-box;
     }
 </style>
 
