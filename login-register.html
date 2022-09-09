@@ -15,7 +15,7 @@
     <title>Hamlin Furniture</title>
 </head>
 
-<body>
+<body style="background-color: whitesmoke;">
     <div class="container-fluid p-0">
         <!-- Navbar section -->
         <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm">
@@ -97,6 +97,13 @@
                                     </div>
                                 </div>
                             </li>
+                            <li>
+                                <a class="nav-link">
+                                    <span class="material-symbols-outlined">
+                                        account_circle
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -123,7 +130,7 @@
 
         <!-- Signin section -->
         <form>
-            <fieldset class="border mx-auto" style="padding: 45px; margin-top: 200px; width: 550px;">
+            <fieldset class="border mx-auto bg-white" style="padding: 45px; margin-top: 200px; width: 550px;">
                 <div class="" id="login-box">
                     <legend class="mb-5 fw-bold">Login</legend>
                     <div class="form-group">
@@ -163,8 +170,13 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary w-100 mb-4">Sign up</button>
-                    <p class="fs-6 text-center">By clicking the "Sign up" button, you are creating an acconut, and agree
-                        to our Terms of Service and Privacy Policy</p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
+                        <label class="form-check-label fs-6 " for="privacyCheck">
+                            By checking this and clicking "Sign Up" button, you are creating an acconut, and agree
+                            to our Terms of Service and Privacy Policy
+                        </label>
+                    </div>
                 </div>
             </fieldset>
         </form>
