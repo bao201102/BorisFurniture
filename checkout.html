@@ -111,12 +111,12 @@
         <!--Header section-->
         <div class="box-checkout" id="checkout-header">
             <div class="row">
-                <div class="col-6" style="position: relative">
-                    <p id="checkout-label">
+                <div class="col-6">
+                    <p class="checkout-label">
                         Checkout
                     </p>
                 </div>
-                <div class="col-6" style="position: relative">
+                <div class="col-6">
                     <ol class="breadcrumb" id="checkout-breadcrumb">
                         <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
                         <li class="breadcrumb-item"><a href="./search.html">Search</a></li>
@@ -662,19 +662,22 @@
     #textbox {
         margin-top: 20px;
     }
-    #checkout-header
+    .box-checkout
     {
         background-color: #e6ebeb;
         margin-top: 100px;
         height: auto;
     }
-    #checkout-breadcrumb
+    .details
     {
-        position: absolute;
-        top: 20px;
-        left: 400px;
+        padding: 50px 0 0 50px; 
+        font-weight: bold
     }
-    #checkout-label
+    .row .col-6
+    {
+        position: relative;
+    }
+    .row .col-6 .checkout-label
     {
         text-align: center;
         font-size: 18px; 
@@ -682,10 +685,13 @@
         padding: 25px;
         box-sizing: border-box;
     }
-    .details
+    .row .col-6 .breadcrumb
     {
-        padding: 50px 0 0 50px; 
-        font-weight: bold
+        padding-top: 5px;
+        position: absolute; 
+        right: 0%; 
+        top: 20px;
+        left: 400px;
     }
 </style>
 
