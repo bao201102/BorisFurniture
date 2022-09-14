@@ -15,11 +15,11 @@
     <title>Hamlin Furniture</title>
 </head>
 
-<body style="background-color: whitesmoke;">
+<body>
     <div class="container-fluid p-0">
         <!-- Sidebar -->
-        <div class="bg-dark fixed-top text-white" style="min-height: 100vh; width: 330px;">
-            <div class="dropdown" style="margin-top: 70px; margin-bottom: 100px;">
+        <div class="fixed-top" style="min-height: 100vh; width: 380px; background-color: rgb(236, 235, 235);">
+            <div class="dropdown" style="margin-top: 70px; margin-bottom: 70px;">
                 <div class="d-flex text-center justify-content-center" type="button" data-bs-toggle="collapse"
                     data-bs-target="#ac-toggler" aria-controls="ac-toggler" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -33,37 +33,37 @@
                     </p>
                 </div>
                 <div class="text-center collapse row gap-3" id="ac-toggler" style="margin-top: 20px;">
-                    <a class="d-block text-white">
+                    <a class="d-block">
                         Setting
                     </a>
-                    <a class="d-block text-white">
+                    <a class="d-block">
                         Log out
                     </a>
                 </div>
             </div>
             <div>
-                <ul class="row gap-4">
-                    <a>
-                        <span class="material-symbols-outlined align-middle me-2">
+                <ul class="p-0 m-0">
+                    <a class="d-block active" style="padding: 18px">
+                        <span class="material-symbols-outlined align-middle ms-2 me-2">
                             grid_view
                         </span>
-                        <span class="align-middle">
+                        <span class="align-middle sidebar-text">
                             Product Mangagement
                         </span>
                     </a>
-                    <a>
-                        <span class="material-symbols-outlined align-middle me-2">
+                    <a class="d-block" style="padding: 18px">
+                        <span class="material-symbols-outlined align-middle ms-2 me-2">
                             query_stats
                         </span>
-                        <span class="align-middle">
+                        <span class="align-middle sidebar-text">
                             Sales Mangagement
                         </span>
                     </a>
-                    <a>
-                        <span class="material-symbols-outlined align-middle me-2">
+                    <a class="d-block" style="padding: 18px">
+                        <span class="material-symbols-outlined align-middle ms-2 me-2">
                             person
                         </span>
-                        <span class="align-middle">
+                        <span class="align-middle sidebar-text">
                             Customer Mangagement
                         </span>
                     </a>
@@ -71,8 +71,113 @@
             </div>
         </div>
         <!-- Main content -->
-        <div class="bg-white" style="min-height: 100vh; max-width: 82.5%; margin-left: 335px;">
-           
+        <div style="min-height: 100vh; margin-left: 380px; right: 0; bottom: 0; left: 0;">
+            <!-- Title -->
+            <section class="container-fluid shadow-sm">
+                <div class="row p-4">
+                    <!-- title -->
+                    <div
+                        class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-start pb-4 pb-lg-0">
+                        <span class="fw-semibold fs-3">Product Management</span>
+                    </div>
+                    <div
+                        class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
+                        <!-- select category -->
+                        <div class="me-2 me-xl-3">
+                            <select class="form-select" aria-label="Default select example">
+                                <option selected value="1">All</option>
+                                <option value="2">Chair</option>
+                                <option value="3">Table</option>
+                            </select>
+                        </div>
+                        <!-- button add new product -->
+                        <div>
+                            <button type="button" class="btn btn-info d-flex align-items-center fs-5">
+                                <span class="material-symbols-outlined">
+                                    add
+                                </span>
+                                Add new
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Search -->
+            <section class="my-4">
+                <div class="container">
+                    <div class="input-group">
+                        <span class="input-group-text material-symbols-outlined">search</span>
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                    </div>
+                </div>
+            </section>
+
+            <!-- product -->
+            <section class="py-4">
+                <div class="container">
+                    <table class="table table-hover align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col" colspan="2">id</th>
+                                <th scope="col">product</th>
+                                <th scope="col" colspan="2">category</th>
+                            </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            <tr>
+                                <th scope="row">1</th>
+                                <td><img src="./img/Classic-Lamp.jpg" alt="" class="product-thumbnail"></td>
+                                <td>Classic-Lamp</td>
+                                <td>Lamp</td>
+                                <td class="text-center utility">
+                                    <span class="material-symbols-outlined edit me-3">edit</span>
+                                    <span class="material-symbols-outlined delete">delete</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">2</th>
+                                <td><img src="./img/Classic-Lamp.jpg" alt="" class="product-thumbnail"></td>
+                                <td>Classic-Lamp</td>
+                                <td>Lamp</td>
+                                <td class="text-center utility">
+                                    <span class="material-symbols-outlined edit me-3">edit</span>
+                                    <span class="material-symbols-outlined delete">delete</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- page number -->
+            <section class="py-4">
+                <div class="container d-flex justify-content-center">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
         </div>
     </div>
 </body>
@@ -85,6 +190,50 @@
         object-fit: cover;
         object-position: center;
         cursor: pointer;
+    }
+
+    .sidebar-text {
+        transition: 300ms ease;
+    }
+
+    .sidebar-text:hover {
+        padding-left: 15px;
+    }
+
+    .active {
+        background-color: white;
+    }
+
+    .active .sidebar-text {
+        padding-left: 15px;
+    }
+
+    .product-thumbnail {
+        width: 65px;
+    }
+
+    .table th,
+    .table td {
+        padding: 8px;
+    }
+
+    .utility .material-symbols-outlined {
+        color: #bbbaba;
+        cursor: pointer;
+        font-size: 26px;
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 20
+    }
+
+    .edit:hover {
+        color: #0ca1f7;
+    }
+
+    .delete:hover {
+        color: red;
     }
 </style>
 

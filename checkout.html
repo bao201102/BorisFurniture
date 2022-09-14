@@ -450,29 +450,68 @@
                     </div>
                 </div>
                 <div class="col-6" id="order-details">
-                    <p style="padding: 50px 0 0 30px; font-weight: bold;">Your order</p>
-                    <div class="row">
-                        <div class="details col-6">
-                            <p>Product</p>
-
+                    <div class="order-box">
+                        <p style="padding: 50px 0 0 30px; font-weight: bold;">Your order</p>
+                        <br>
+                        <div class="order-list" style="position: relative;">
+                            <p
+                                style="position: absolute; width: 50%; bottom: 0; left: 0; float: right; padding-left: 30px;">
+                                Product</p>
+                            <p style="position: absolute; width: 50%; bottom: 0; right: 0; float: right;">Total</p>
+                            <hr>
                         </div>
-                        <div class="details col-6">
-                            <p>Total</p>
+                        <div class="product">
+                            <p class="product-name">Cotton Black Jacket</p>
+                            <p class="product-size">Size:</p>
+                            <p class="product-price">$400.00</p>
+                            <hr>
+                        </div>
+                        <div class="product">
+                            <p class="product-name">Cotton Black Jacket</p>
+                            <p class="product-size">Size:</p>
+                            <p class="product-price">$400.00</p>
+                            <hr>
+                        </div>
+                        <div class="product">
+                            <p class="product-name">Cotton Black Jacket</p>
+                            <p class="product-size">Size:</p>
+                            <p class="product-price">$400.00</p>
+                            <hr>
+                        </div>
+                        <div class="product">
+                            <p class="product-subtotal">Subtotal</p>
+                            <p class="product-subtotal-price">$1000.00</p>
+                            <hr>
+                        </div>
+                        <div class="product" style="height: 120px;">
+                            <p class="product-shipping">Shipping</p>
+                            <div class="product-shipping-fee">
+                                <input class="form-order-input" type="radio" value="option2" name="optionsRadios" id="flexCheckDefault">
+                                <label class="form-order-label" for="flexCheckDefault">
+                                    Free shipping
+                                </label>
+                            </div>
+                            <div class="product-shipping-fee" style="top: 40;">
+                                <input class="form-order-input" type="radio" value="option2" name="optionsRadios" id="flexCheckDefault">
+                                <label class="form-order-label" for="flexCheckDefault">
+                                    Flat: $12.00
+                                </label>
+                            </div>
+                            <div class="product-shipping-fee" style="top: 80;">
+                                <input class="form-order-input" type="radio" value="option2" name="optionsRadios" id="flexCheckDefault">
+                                <label class="form-order-label" for="flexCheckDefault">
+                                    Local pickup
+                                </label>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="product">
+                            <p class="product-total">Total</p>
+                            <p class="product-total-price">1100.00$</p>
+                            <p class="product-total-price-note">(Included tax already)</p>
+                            <br clear="both">
                         </div>
                     </div>
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
-                    <br style="clear: both;">
                     <div class="container"
                         style="background-color: white; padding: 30px 20px 30px 20px; margin: 20px 0 20px 0">
                         <div class="form-check">
@@ -643,11 +682,6 @@
     </div>
 </body>
 <style>
-    html
-    {
-        font-family: 'Times New Roman', Times, serif;
-        font-size: 18px;
-    }
     #label {
         padding-top: 20px;
     }
@@ -662,34 +696,34 @@
     #textbox {
         margin-top: 20px;
     }
-    .box-checkout
-    {
+
+    .box-checkout {
         background-color: #e6ebeb;
         margin-top: 100px;
         height: auto;
     }
-    .details
-    {
-        padding: 50px 0 0 50px; 
+
+    .details {
+        padding: 50px 0 0 50px;
         font-weight: bold
     }
-    .row .col-6
-    {
+
+    .row .col-6 {
         position: relative;
     }
-    .row .col-6 .checkout-label
-    {
+
+    .row .col-6 .checkout-label {
         text-align: center;
-        font-size: 18px; 
+        font-size: 18px;
         color: black;
         padding: 25px;
         box-sizing: border-box;
     }
-    .row .col-6 .breadcrumb
-    {
+
+    .row .col-6 .breadcrumb {
         padding-top: 5px;
-        position: absolute; 
-        right: 0%; 
+        position: absolute;
+        right: 0%;
         top: 20px;
         left: 400px;
     }
