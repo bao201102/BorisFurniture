@@ -192,48 +192,53 @@
                         close
                     </span>
                 </div>
-
                 <br style="clear: both;">
                 <div class="row pt-2 pt-md-4 px-3 px-md-4">
                     <div class="col-6">
-                        <!-- name product -->
-                        <div class="mb-3">
-                            <label for="name_product" class="form-label">Product name</label>
-                            <input type="text" class="form-control" id="name_product" placeholder="Name of product">
+                        <div class="px-3">
+                            <!-- name product -->
+                            <div class="mb-3">
+                                <label for="name_product" class="form-label">Product name</label>
+                                <input type="text" class="form-control" id="name_product" placeholder="Name of product">
+                            </div>
+                            <!-- Category -->
+                            <div class="mb-3">
+                                <label class="form-label">Category</label>
+                                <select class="form-select" aria-label="Default select example">
+                                    <option selected>Open select menu</option>
+                                    <option value="chair">Chair</option>
+                                    <option value="table">Table</option>
+                                </select>
+                            </div>
+                            <!-- Description -->
+                            <div>
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" rows="3"
+                                    style="resize: none;"></textarea>
+                            </div>
                         </div>
-                        <!-- Category -->
-                        <div class="mb-3">
-                            <label class="form-label">Category</label>
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Open select menu</option>
-                                <option value="chair">Chair</option>
-                                <option value="table">Table</option>
-                            </select>
-                        </div>
-                        <!-- Description -->
-                        <div>
-                            <label for="description" class="form-label">Description</label>
-                            <textarea class="form-control" id="description" rows="3" style="resize: none;"></textarea>
-                        </div>
+
                     </div>
 
                     <div class="col-6 d-flex flex-column">
-                        <!--  product  images-->
-                        <div class="mb-3">
-                            <label for="file-upload" class="form-label">Product images</label>
-                            <input type="file" id="file-upload" class="form-control" multiple>
+                        <div class="px-3">
+                            <!--  product  images-->
+                            <div class="mb-3">
+                                <label for="file-upload" class="form-label">Product images</label>
+                                <input type="file" id="file-upload" class="form-control" multiple>
+                            </div>
+                            <!-- Quantity -->
+                            <div class="mb-3">
+                                <label for="quantity_product" class="form-label">Quantity</label>
+                                <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+                            </div>
+
+
+
                         </div>
-                        <!-- Quantity -->
-                        <div class="mb-3">
-                            <label for="quantity_product" class="form-label">Quantity</label>
-                            <input type="number" class="form-control" id="quantity_product" value="1" min="1">
-                        </div>
-
-
-                            <button type="button" class="mt-auto align-self-center btn btn-primary">Add product</button>
-
-
+                        <button type="button" class="mt-auto align-self-center btn btn-primary">Add product</button>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -245,7 +250,7 @@
                     close
                 </span>
                 <br style="clear: both;">
-                
+
             </div>
         </div>
     </div>
@@ -316,7 +321,7 @@
     }
 
     .modal-inner {
-        width: 1000px;
+        width: 1050px;
         height: 500px;
         background-color: white;
         animation: pullDown linear 0.2s;
