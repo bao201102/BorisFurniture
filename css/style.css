@@ -25,7 +25,8 @@ p {
 .box {
     position: relative;
 }
-.card:hover .add-to-cart{
+
+.card:hover .add-to-cart {
     cursor: pointer;
     bottom: 101px;
     transition: bottom linear 0.2s;
@@ -119,6 +120,7 @@ p {
     border-radius: 100%;
     cursor: pointer;
 }
+
 /* Moadal quick view */
 .modal-inner .modal-close {
     float: right;
@@ -207,29 +209,30 @@ p {
     width: 80px;
     padding-right: 12px;
 }
-.order-box, .product-subtotal, 
+
+.order-box,
+.product-subtotal,
 .product-subtotal-price,
 .product-total,
 .product-total-price,
-.product-shipping
-{
+.product-shipping {
     font-weight: bold;
     color: black;
 }
-.order-box .product
-{
+
+.order-box .product {
     position: relative;
     font-size: large;
     padding-left: 30px;
     font-weight: 100;
     color: #999696;
 }
+
 .order-box .product .product-name,
 .order-box .product .product-size,
 .order-box .product .product-subtotal,
 .order-box .product .product-total,
-.order-box .product .product-shipping
-{
+.order-box .product .product-shipping {
     width: calc(50% - 30px);
 }
 
@@ -237,9 +240,36 @@ p {
 .order-box .product .product-subtotal-price,
 .order-box .product .product-total-price,
 .order-box .product .product-shipping-fee
-{
+ {
     position: absolute;
     right: 0;
     top: 0;
     width: 50%;
+}
+
+.order-box .product .product-total-price-note
+{
+    position: absolute;
+    right: 0;
+    top: 30;
+    font-size: medium;
+    width: 50%;
+}
+
+.product-total-price
+{
+    font-size: x-large !important;
+}
+
+.order-box .product .form-check-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.form-order-label
+{
+    position: absolute;
+    left: 25;
+    bottom: -8;
 }
