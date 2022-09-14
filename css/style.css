@@ -207,3 +207,39 @@ p {
     width: 80px;
     padding-right: 12px;
 }
+.order-box, .product-subtotal, 
+.product-subtotal-price,
+.product-total,
+.product-total-price,
+.product-shipping
+{
+    font-weight: bold;
+    color: black;
+}
+.order-box .product
+{
+    position: relative;
+    font-size: large;
+    padding-left: 30px;
+    font-weight: 100;
+    color: #999696;
+}
+.order-box .product .product-name,
+.order-box .product .product-size,
+.order-box .product .product-subtotal,
+.order-box .product .product-total,
+.order-box .product .product-shipping
+{
+    width: calc(50% - 30px);
+}
+
+.order-box .product .product-price,
+.order-box .product .product-subtotal-price,
+.order-box .product .product-total-price,
+.order-box .product .product-shipping-fee
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+}
