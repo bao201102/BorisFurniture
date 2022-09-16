@@ -279,9 +279,9 @@ p {
     padding-left: 15px;
 }
 
-.active {
+/* .active {
     background-color: #454d55;
-}
+} */
 
 .active .sidebar-text {
     padding-left: 15px;
@@ -290,6 +290,21 @@ p {
 #sidebar,
 #main-content {
     transition: 500ms ease;
+}
+
+/* title */
+.shopcart-title {
+    background-color: #f7f7f7;
+    padding: 20px 0;
+    margin-top: 80px;
+}
+
+.shopcart-title-nav {
+    --bs-breadcrumb-divider: '\2022';
+}
+
+.breadcrumb-item::before {
+    font-size: 15px;
 }
 
 @keyframes fadeIn {
