@@ -1,4 +1,3 @@
-
 function addProduct() {
     hideSidebar();
     var modals = document.querySelector(".modal-layout.add_product");
@@ -48,4 +47,12 @@ fileUpload.addEventListener("change", (event) => {
         console.log(files[i].name);
     }
 })
+
+function closeSubSidebar() {
+    var close_sub = document.getElementById("sub_sidebar");
+    close_sub.onclick = function () {
+        close_sub.style.display = "none";
+        hideSidebar();
+    }
+}
 

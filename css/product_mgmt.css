@@ -12,10 +12,10 @@
     cursor: pointer;
     font-size: 26px;
     font-variation-settings:
-        'FILL' 0,
-        'wght' 400,
-        'GRAD' 0,
-        'opsz' 20
+        'FILL'0,
+        'wght'400,
+        'GRAD'0,
+        'opsz'20
 }
 
 tr:hover .edit {
@@ -45,7 +45,7 @@ tr:hover .delete {
     right: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 99;
+    z-index: 2000;
     display: none;
     align-items: center;
     justify-content: center;
@@ -60,4 +60,15 @@ tr:hover .delete {
     margin: 0 40px;
     overflow-y: auto;
     overflow-x: hidden;
+}
+
+#sub_sidebar {
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
 }
