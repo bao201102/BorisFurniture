@@ -279,9 +279,9 @@ p {
     padding-left: 15px;
 }
 
-/* .active {
+#sidebar .active {
     background-color: #454d55;
-} */
+}
 
 .active .sidebar-text {
     padding-left: 15px;
