@@ -283,6 +283,7 @@
 
     function onloadChangeSideBar() {
         if (window.innerWidth < 1050) {
+            sidebarMenuBtn.classList.remove("invisible");
             hideSidebar();
         }
         else {
@@ -295,6 +296,7 @@
 
     function resizeChangeSidebar() {
         if (window.innerWidth < 1050) {
+            sidebarMenuBtn.classList.remove("invisible");
             hideSidebar();
         }
         else if (window.innerWidth > 1020) {
@@ -308,7 +310,6 @@
             hideSidebar();
         }
         else if (window.innerWidth < 1050 && sidebar.classList.contains("is-hide")) {
-            sidebarMenuBtn.classList.remove("invisible");
             sidebar.style.left = "0px";
             sidebar.classList.remove("is-hide");
         }
