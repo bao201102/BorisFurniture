@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/bootstrap.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/product_mgmt.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -265,169 +266,10 @@
     </div>
 </body>
 
-<style>
-    .product-thumbnail {
-        width: 65px;
-    }
-
-    .table th,
-    .table td {
-        padding: 8px;
-    }
-
-    .utility .material-symbols-outlined {
-        color: #bbbaba;
-        cursor: pointer;
-        font-size: 26px;
-        font-variation-settings:
-            'FILL' 0,
-            'wght' 400,
-            'GRAD' 0,
-            'opsz' 20
-    }
-
-    tr:hover .edit {
-        color: #0ca1f7;
-    }
-
-    tr:hover .delete {
-        color: red;
-    }
-
-    /* Moadal */
-    .modal-inner .modal-close {
-        cursor: pointer;
-        padding: 10px;
-        color: #e0e0e0;
-        font-size: 40px;
-    }
-
-    .modal-close:hover {
-        color: black;
-    }
-
-    .modal-layout {
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: 99;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        animation: fadeIn linear 0.2s;
-    }
-
-    .modal-inner {
-        width: 1050px;
-        height: 500px;
-        background-color: white;
-        animation: pullDown linear 0.2s;
-        margin: 0 40px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-        }
-
-        to {
-            opacity: 1;
-        }
-    }
-
-    @keyframes pullDown {
-        from {
-            transform: translateY(-40px);
-        }
-
-        to {
-            transform: translateY(0);
-
-        }
-    }
-</style>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
 <script src="./js/sidebar-effect.js"></script>
-<script>
-    function hideSidebar() {
-        sidebar.style.left = "-340px";
-        mainContent.style.marginLeft = "0px";
-        sidebar.classList.add("is-hide");
-    }
-
-    function unhideSidebar() {
-        sidebar.style.left = "0px";
-        mainContent.style.marginLeft = "340px";
-        sidebar.classList.remove("is-hide");
-    }
-
-    function addProduct() {
-        hideSidebar();
-        var modals = document.querySelector(".modal-layout.add_product");
-        modals.classList.add("d-flex");
-        var close = document.querySelector(".modal-close");
-        close.onclick = function () {
-            modals.classList.remove("d-flex");
-        }
-        modals.onclick = function () {
-            modals.classList.remove("d-flex");
-            unhideSidebar();
-        }
-
-        var inner = document.getElementsByClassName("modal-inner")[0];
-        inner.onclick = function (e) {
-            e.stopPropagation();
-            unhideSidebar();
-        }
-    }
-
-    function editProduct() {
-        hideSidebar();
-        var modals = document.querySelector(".modal-layout.edit_product");
-        modals.classList.add("d-flex");
-        var close = document.querySelector(".modal-close");
-        close.onclick = function () {
-            modals.classList.remove("d-flex");
-        }
-        modals.onclick = function () {
-            modals.classList.remove("d-flex");
-            unhideSidebar();
-        }
-
-        var inner = document.getElementsByClassName("modal-inner")[0];
-        inner.onclick = function (e) {
-            e.stopPropagation();
-            unhideSidebar();
-        }
-    }
-
-    // const fileUpload = document.querySelector("#file-upload");
-
-    // fileUpload.addEventListener("change", (event) => {
-    //     const { files } = event.target;
-
-    //     console.log("files", files)
-    // })
-
-    // const reader = new FileReader();
-
-    // reader.addEventListener("progress", (event) => {
-    //     const { loaded, total } = event;
-
-    //     if (loaded && total) {
-    //         const percent = Math.round(loaded / total) * 100;
-
-    //         document.querySelector("progress").value = percent
-    //     }
-    // })
-</script>
+<script src="./js/product_mgmt.js"></script>
 
 </html>

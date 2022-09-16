@@ -64,3 +64,14 @@ sidebarMenuBtn.onclick = function () {
     }
 }
 
+function hideSidebar() {
+    sidebar.style.left = "-340px";
+    mainContent.style.marginLeft = "0px";
+    sidebar.classList.add("is-hide");
+}
+
+function unhideSidebar() {
+    sidebar.style.left = "0px";
+    mainContent.style.marginLeft = "340px";
+    sidebar.classList.remove("is-hide");
+}

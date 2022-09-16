@@ -15,10 +15,10 @@ p {
 
 .material-symbols-outlined {
     font-variation-settings:
-        'FILL' 0,
-        'wght' 300,
-        'GRAD' 0,
-        'opsz' 20
+        'FILL'0,
+        'wght'300,
+        'GRAD'0,
+        'opsz'20
 }
 
 /* animation product */
@@ -158,26 +158,6 @@ p {
     overflow-x: hidden;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes pullDown {
-    from {
-        transform: translateY(-40px);
-    }
-
-    to {
-        transform: translateY(0);
-
-    }
-}
 
 /* carousel & quick view*/
 .info-product-des {
@@ -239,16 +219,14 @@ p {
 .order-box .product .product-price,
 .order-box .product .product-subtotal-price,
 .order-box .product .product-total-price,
-.order-box .product .product-shipping-fee
- {
+.order-box .product .product-shipping-fee {
     position: absolute;
     right: 0;
     top: 0;
     width: 50%;
 }
 
-.order-box .product .product-total-price-note
-{
+.order-box .product .product-total-price-note {
     position: absolute;
     right: 0;
     top: 30;
@@ -256,8 +234,7 @@ p {
     width: 50%;
 }
 
-.product-total-price
-{
+.product-total-price {
     font-size: x-large !important;
 }
 
@@ -267,8 +244,7 @@ p {
     right: 0;
 }
 
-.form-order-label
-{
+.form-order-label {
     position: absolute;
     left: 25;
     bottom: -8;
@@ -314,4 +290,25 @@ p {
 #sidebar,
 #main-content {
     transition: 500ms ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pullDown {
+    from {
+        transform: translateY(-40px);
+    }
+
+    to {
+        transform: translateY(0);
+
+    }
 }
