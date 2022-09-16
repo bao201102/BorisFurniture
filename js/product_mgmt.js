@@ -1,8 +1,10 @@
 function addProduct() {
     hideSidebar();
-    var modals = document.querySelector(".modal-layout.add_product");
+    let modals = document.querySelector(".modal-layout.add_product");
+    let close = document.getElementsByClassName("modal-close")[0];
+    let btnClose = document.getElementsByClassName("btn_close")[0];
+
     modals.classList.add("d-flex");
-    var close = document.querySelector(".modal-close");
     close.onclick = function () {
         modals.classList.remove("d-flex");
         unhideSidebar();
@@ -11,8 +13,12 @@ function addProduct() {
         modals.classList.remove("d-flex");
         unhideSidebar();
     }
+    btnClose.onclick = function () {
+        modals.classList.remove("d-flex");
+        unhideSidebar();
+    }
 
-    var inner = document.getElementsByClassName("modal-inner")[0];
+    let inner = document.getElementById("add_product");
     inner.onclick = function (e) {
         e.stopPropagation();
     }
@@ -20,9 +26,11 @@ function addProduct() {
 
 function editProduct() {
     hideSidebar();
-    var modals = document.querySelector(".modal-layout.edit_product");
+    let modals = document.querySelector(".modal-layout.edit_product");
+    let close = document.getElementsByClassName("modal-close")[1];
+    let btnClose = document.getElementsByClassName("btn_close")[1];
+
     modals.classList.add("d-flex");
-    var close = document.querySelector(".modal-close");
     close.onclick = function () {
         modals.classList.remove("d-flex");
         unhideSidebar();
@@ -31,8 +39,11 @@ function editProduct() {
         modals.classList.remove("d-flex");
         unhideSidebar();
     }
-
-    var inner = document.getElementsByClassName("modal-inner")[0];
+    btnClose.onclick = function () {
+        modals.classList.remove("d-flex");
+        unhideSidebar();
+    }
+    let inner = document.getElementById("edit_product");
     inner.onclick = function (e) {
         e.stopPropagation();
     }

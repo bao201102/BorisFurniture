@@ -35,6 +35,7 @@ function resizeChangeSidebar() {
     if (window.innerWidth < 1050) {
         sidebarMenuBtn.classList.remove("invisible");
         hideSidebar();
+        sub_sidebar.style.display = "none";
     }
     else {
         sidebarMenuBtn.classList.add("invisible");
