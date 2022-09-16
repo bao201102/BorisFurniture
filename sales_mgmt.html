@@ -189,46 +189,6 @@
 </body>
 
 <style>
-    .prevent-select {
-        -webkit-user-select: none;
-        /* Safari */
-        -ms-user-select: none;
-        /* IE 10 and IE 11 */
-        user-select: none;
-        /* Standard syntax */
-    }
-
-    .ac-icon {
-        border-radius: 100%;
-        height: 65px;
-        width: 65px;
-        object-fit: cover;
-        object-position: center;
-        cursor: pointer;
-    }
-
-    .sidebar-text {
-        font-size: 18px;
-        transition: 300ms ease;
-    }
-
-    .sidebar-text:hover {
-        padding-left: 15px;
-    }
-
-    .active {
-        background-color: #454d55;
-    }
-
-    .active .sidebar-text {
-        padding-left: 15px;
-    }
-
-    #sidebar,
-    #main-content {
-        transition: 500ms ease;
-    }
-
     .product-thumbnail {
         width: 65px;
     }
@@ -261,73 +221,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
     crossorigin="anonymous"></script>
-<script>
-    var sidebar = document.getElementById("sidebar");
-    var mainContent = document.getElementById("main-content");
-    var menuBtn = document.getElementById("menu-btn");
-    var sidebarMenuBtn = document.getElementById("sidebar-menu-btn");
-
-    function hideSidebar() {
-        sidebar.style.left = "-340px";
-        mainContent.style.marginLeft = "0px";
-        sidebar.classList.add("is-hide");
-    }
-
-    function unhideSidebar() {
-        sidebar.style.left = "0px";
-        mainContent.style.marginLeft = "340px";
-        sidebar.classList.remove("is-hide");
-    }
-
-    window.onload = function () { onloadChangeSideBar() };
-
-    function onloadChangeSideBar() {
-        if (window.innerWidth < 1050) {
-            sidebarMenuBtn.classList.remove("invisible");
-            hideSidebar();
-        }
-        else {
-            sidebarMenuBtn.classList.add("invisible");
-            unhideSidebar();
-        }
-    }
-
-    window.onresize = function () { resizeChangeSidebar() };
-
-    function resizeChangeSidebar() {
-        if (window.innerWidth < 1050) {
-            sidebarMenuBtn.classList.remove("invisible");
-            hideSidebar();
-        }
-        else if (window.innerWidth > 1020) {
-            sidebarMenuBtn.classList.add("invisible");
-            unhideSidebar();
-        }
-    }
-
-    menuBtn.onclick = function () {
-        if (!sidebar.classList.contains("is-hide")) {
-            hideSidebar();
-        }
-        else if (window.innerWidth < 1050 && sidebar.classList.contains("is-hide")) {
-            sidebar.style.left = "0px";
-            sidebar.classList.remove("is-hide");
-        }
-        else {
-            unhideSidebar();
-        }
-    }
-
-    sidebarMenuBtn.onclick = function () {
-        if (!sidebar.classList.contains("is-hide")) {
-            hideSidebar();
-        }
-        else if (window.innerWidth < 1050 && sidebar.classList.contains("is-hide")) {
-            sidebar.style.left = "0px";
-            sidebar.classList.remove("is-hide");
-        }
-    }
-
-</script>
+<script src="./js/sidebar-effect.js"></script>
 
 </html>

@@ -273,3 +273,45 @@ p {
     left: 25;
     bottom: -8;
 }
+
+/* dashboard sidebar */
+
+.prevent-select {
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
+}
+
+.ac-icon {
+    border-radius: 100%;
+    height: 65px;
+    width: 65px;
+    object-fit: cover;
+    object-position: center;
+    cursor: pointer;
+}
+
+.sidebar-text {
+    font-size: 18px;
+    transition: 300ms ease;
+}
+
+.sidebar-text:hover {
+    padding-left: 15px;
+}
+
+.active {
+    background-color: #454d55;
+}
+
+.active .sidebar-text {
+    padding-left: 15px;
+}
+
+#sidebar,
+#main-content {
+    transition: 500ms ease;
+}
