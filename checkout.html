@@ -148,33 +148,33 @@
 
         <!--Checkout body section-->
         <div class="container" style="margin-top: 200px;">
-            <h3 style="margin-bottom: 50px;">Billing Details</h3>
+            <h3 style="font-size: 18px;">Billing Details</h3>
             <div class="row">
-                <div class="col-6" id="customer-details">
+                <div class="col-6" id="customer-details" style="font-size: 15px;">
                     <div class="row">
-                        <div class="first-name-box col-6" id="label">
+                        <div class="first-name-box col-6 customer-info" id="label">
                             <label class="first-name">First Name</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
-                        <div class="last-name-box col-6" id="label">
+                        <div class="last-name-box col-6 customer-info" id="label">
                             <label class="last-name">Last Name</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="company-name-box col-12" id="label">
+                        <div class="company-name-box col-12 customer-info" id="label">
                             <label class="company-name">Company Name (optional)</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="country-name-box col-12" id="label">
+                        <div class="country-name-box col-12 customer-info" id="label">
                             <label class="country-name">Country</label>
                             <br style="clear: both;">
-                            <select name="contry" id="contry" class="small-input" style="width: 100%; height: 42px;">
+                            <select name="contry" id="contry" class="small-input" style="width: 100%; height: 45px;">
                                 <option>Select a country</option>
                                 <option value="Afganistan">Afghanistan</option>
                                 <option value="Albania">Albania</option>
@@ -426,84 +426,84 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="street-name-box col-12" id="label">
+                        <div class="street-name-box col-12 customer-info" id="label">
                             <label class="street-name">Street address</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="city-name-box col-12" id="label">
+                        <div class="city-name-box col-12 customer-info" id="label">
                             <label class="city-name">Town / City</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="state-name-box col-12" id="label">
+                        <div class="state-name-box col-12 customer-info" id="label">
                             <label class="state-name">State</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="phone-name-box col-12" id="label">
+                        <div class="phone-name-box col-12 customer-info" id="label">
                             <label class="phone-name">Phone</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="email-name-box col-12" id="label">
+                        <div class="email-name-box col-12 customer-info" id="label">
                             <label class="email-name">Email address</label>
                             <br style="clear: both;">
-                            <input type="text" style="width: 100%;" id="textbox" required>
+                            <input type="text" style="width: 100%; height: 45px;" id="textbox" required>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="other-name-box col-12" id="label">
+                        <div class="other-name-box col-12 customer-info" id="label">
                             <label class="other-name">Orther notes (optional)</label>
                             <br style="clear: both;">
                             <textarea class="medium-input"
                                 placeholder="Notes about your order, e.g. special notes for delivery."
-                                style="width: 100%; height: 100px;"></textarea>
+                                style="width: 100%; height: 117px;"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="col-6" id="order-details">
                     <div class="order-box">
-                        <p style="padding: 50px 0 0 30px; font-weight: bold;">Your order</p>
+                        <p class="product-heading" style="margin-bottom: 25px;">Your order</p>
                         <br>
-                        <div class="order-list" style="position: relative;">
-                            <p
-                                style="position: absolute; width: 50%; bottom: 0; left: 0; float: right; padding-left: 30px;">
-                                Product</p>
-                            <p style="position: absolute; width: 50%; bottom: 0; right: 0; float: right;">Total</p>
-                            <hr>
+                        <div class="order-box-col" style="float: left; width: 50%;">
+                            Product
                         </div>
+                        <div class="order-box-col">
+                            Total
+                        </div>
+                        <hr class="checkout-hr">
                         <div class="product">
                             <p class="product-name">Cotton Black Jacket</p>
                             <p class="product-size">Size:</p>
                             <p class="product-price">$400.00</p>
-                            <hr>
                         </div>
+                        <hr class="checkout-hr">
                         <div class="product">
                             <p class="product-name">Cotton Black Jacket</p>
                             <p class="product-size">Size:</p>
                             <p class="product-price">$400.00</p>
-                            <hr>
                         </div>
+                        <hr class="checkout-hr">
                         <div class="product">
                             <p class="product-name">Cotton Black Jacket</p>
                             <p class="product-size">Size:</p>
                             <p class="product-price">$400.00</p>
-                            <hr>
                         </div>
+                        <hr class="checkout-hr">
                         <div class="product">
                             <p class="product-subtotal">Subtotal</p>
                             <p class="product-subtotal-price">$1000.00</p>
-                            <hr>
                         </div>
+                        <hr class="checkout-hr">
                         <div class="product" style="height: 120px;">
                             <p class="product-shipping">Shipping</p>
                             <div class="product-shipping-fee">
@@ -528,16 +528,15 @@
                                 </label>
                             </div>
                         </div>
-                        <hr>
+                        <hr class="checkout-hr">
                         <div class="product">
                             <p class="product-total">Total</p>
                             <p class="product-total-price">1100.00$</p>
-                            <p class="product-total-price-note">(Included tax already)</p>
+                            <p class="product-total-price-note" style="font-size: 13px;">(Included tax already)</p>
                             <br clear="both">
                         </div>
                     </div>
-                    <div class="container"
-                        style="background-color: white; padding: 30px 20px 30px 20px; margin: 20px 0 20px 0">
+                    <div class="pay-type">
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1"
                                 value="option1">
@@ -545,8 +544,8 @@
                                 Direct bank transfer
                             </label>
                         </div>
-                        <div class="container" style="background-color: #F0F2F2; padding: 30px; margin: 20px 0 20px 0;">
-                            <p style="font-family:'Times New Roman', Times, serif;">Make your payment directly into our
+                        <div class="pay-type-note" style="font-size: 13px; background-color: #F0F2F2; padding: 30px; margin: 20px 0 20px 0;">
+                            <p>Make your payment directly into our
                                 bank account. Please use your Order ID as the payment reference. Your order will not be
                                 shipped until the funds have cleared in our account.</p>
                         </div>
@@ -574,10 +573,10 @@
                             </label>
                         </div>
                     </div>
-                    <p style="margin: 30px; font-family: 'Times New Roman', Times, serif;">Your personal data will be
+                    <p style="margin: 20px 0; padding: 30px; font-size: 13px;">Your personal data will be
                         used to process your order, support your experience throughout this website, and for other
                         purposes described in our privacy policy.</p>
-                    <button type="submit" class="btn btn-fancy btn-dark-gray btn-extra-large w-100 margin-15px-top;"
+                    <button type="submit" class="btn btn-fancy btn-dark-gray btn-extra-large w-100 margin-15px-top mb-32"
                         style="color: white; background-color: black;">Place order</button>
                 </div>
             </div>
@@ -711,10 +710,13 @@
     }
 
     #order-details {
-        height: 1300px;
+        display:inline-block;
+        position: relative;
+        height: fit-content;
         width: 500px;
-        background-color: #e6ebeb;
-        margin-left: 150px;
+        background-color: #f7f7f7;
+        margin: 0 0 0 150px;
+        padding: 45px;
     }
 
     #textbox {

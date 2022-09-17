@@ -2,6 +2,7 @@ body {
     font-family: 'Roboto';
     font-size: 20px;
     margin: 0;
+    padding: 0;
 }
 
 a {
@@ -11,6 +12,16 @@ a {
 
 p {
     margin: 0;
+}
+
+.mb-32
+{
+    margin-bottom: 32px;
+}
+
+.ml-64
+{
+    margin-left: 64px;
 }
 
 .material-symbols-outlined {
@@ -190,7 +201,41 @@ p {
     padding-right: 12px;
 }
 
-.order-box,
+.order-list
+{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+}
+
+.pay-type
+{
+    font-size: 15px;
+    background-color: white; 
+    padding: 40px; 
+    margin: 20px 0;
+    box-sizing: border-box;
+}
+
+.order-box
+{
+    color: #828282;
+}
+
+.order-box-col
+{
+    font-size: 15px;
+    font-weight: bold;
+    color: black;
+    padding: 20px 1px;
+}
+
+.checkout-hr
+{
+    margin: 0px;
+}
+
+.product-heading,
 .product-subtotal,
 .product-subtotal-price,
 .product-total,
@@ -203,9 +248,9 @@ p {
 .order-box .product {
     position: relative;
     font-size: large;
-    padding-left: 30px;
     font-weight: 100;
     color: #999696;
+    padding: 20px 1px;
 }
 
 .order-box .product .product-name,
@@ -214,22 +259,35 @@ p {
 .order-box .product .product-total,
 .order-box .product .product-shipping {
     width: calc(50% - 30px);
+    font-size: 15px;
 }
 
 .order-box .product .product-price,
 .order-box .product .product-subtotal-price,
-.order-box .product .product-total-price,
-.order-box .product .product-shipping-fee {
+.order-box .product .product-total-price
+{
     position: absolute;
     right: 0;
     top: 0;
+    font-size: 15px;
     width: 50%;
+    padding: 20px 1px;
+}
+.order-box .product .product-shipping-fee 
+{
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 15px;
+    height: fit-content;
+    width: 50%;
+    padding: 10px 1px;
 }
 
 .order-box .product .product-total-price-note {
     position: absolute;
     right: 0;
-    top: 30;
+    top: 60;
     font-size: medium;
     width: 50%;
 }
@@ -238,17 +296,18 @@ p {
     font-size: x-large !important;
 }
 
-.order-box .product .form-check-label {
-    position: absolute;
-    top: 0;
-    right: 0;
+.form-check-label {
+    height: 35px;
 }
 
-.form-order-label {
-    position: absolute;
-    left: 25;
-    bottom: -8;
+.customer-info
+{
+    height: 105px;
+    padding: 0 15px;
+    margin: 0 0 10;
 }
+
+
 
 /* dashboard sidebar */
 
