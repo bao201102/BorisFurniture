@@ -16,22 +16,7 @@ function unhideSidebar() {
     sidebar.classList.remove("is-hide");
 }
 
-window.onload = function () { onloadChangeSideBar() };
-
-function onloadChangeSideBar() {
-    if (window.innerWidth < 1050) {
-        sidebarMenuBtn.classList.remove("invisible");
-        hideSidebar();
-    }
-    else {
-        sidebarMenuBtn.classList.add("invisible");
-        unhideSidebar();
-    }
-}
-
-window.onresize = function () { resizeChangeSidebar() };
-
-function resizeChangeSidebar() {
+window.onload = function () {
     if (window.innerWidth < 1050) {
         sidebarMenuBtn.classList.remove("invisible");
         hideSidebar();
@@ -40,8 +25,22 @@ function resizeChangeSidebar() {
     else {
         sidebarMenuBtn.classList.add("invisible");
         unhideSidebar();
+        sub_sidebar.style.display = "none";
     }
-}
+};
+
+window.onresize = function () {
+    if (window.innerWidth < 1050) {
+        sidebarMenuBtn.classList.remove("invisible");
+        hideSidebar();
+        sub_sidebar.style.display = "none";
+    }
+    else {
+        sidebarMenuBtn.classList.add("invisible");
+        unhideSidebar();
+        sub_sidebar.style.display = "none";
+    }
+};
 
 menuBtn.onclick = function () {
     if (!sidebar.classList.contains("is-hide")) {

@@ -1,27 +1,37 @@
+function closeModal(modals, close, btnClose, str) {
+    modals.classList.add("d-flex");
+    close.onclick = function () {
+        modals.classList.remove("d-flex");
+        if (window.innerWidth > 1050) {
+            unhideSidebar();
+        }
+    }
+    modals.onclick = function () {
+        modals.classList.remove("d-flex");
+        if (window.innerWidth > 1050) {
+            unhideSidebar();
+        }
+    }
+    btnClose.onclick = function () {
+        modals.classList.remove("d-flex");
+        if (window.innerWidth > 1050) {
+            unhideSidebar();
+        }
+    }
+
+    let inner = document.getElementById(str);
+    inner.onclick = function (e) {
+        e.stopPropagation();
+    }
+}
+
 function addProduct() {
     hideSidebar();
     let modals = document.querySelector(".modal-layout.add_product");
     let close = document.getElementsByClassName("modal-close")[0];
     let btnClose = document.getElementsByClassName("btn_close")[0];
 
-    modals.classList.add("d-flex");
-    close.onclick = function () {
-        modals.classList.remove("d-flex");
-        unhideSidebar();
-    }
-    modals.onclick = function () {
-        modals.classList.remove("d-flex");
-        unhideSidebar();
-    }
-    btnClose.onclick = function () {
-        modals.classList.remove("d-flex");
-        unhideSidebar();
-    }
-
-    let inner = document.getElementById("add_product");
-    inner.onclick = function (e) {
-        e.stopPropagation();
-    }
+    closeModal(modals, close, btnClose, "add_product");
 }
 
 function editProduct() {
@@ -30,23 +40,7 @@ function editProduct() {
     let close = document.getElementsByClassName("modal-close")[1];
     let btnClose = document.getElementsByClassName("btn_close")[1];
 
-    modals.classList.add("d-flex");
-    close.onclick = function () {
-        modals.classList.remove("d-flex");
-        unhideSidebar();
-    }
-    modals.onclick = function () {
-        modals.classList.remove("d-flex");
-        unhideSidebar();
-    }
-    btnClose.onclick = function () {
-        modals.classList.remove("d-flex");
-        unhideSidebar();
-    }
-    let inner = document.getElementById("edit_product");
-    inner.onclick = function (e) {
-        e.stopPropagation();
-    }
+    closeModal(modals, close, btnClose, "edit_product");
 }
 
 const fileUpload = document.querySelector("#file-upload");
