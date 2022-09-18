@@ -147,10 +147,10 @@
         </section>
 
         <!--Checkout body section-->
-        <div class="container" style="margin-top: 200px;">
+        <div class="container" style="margin-top: 200px;" id="checkout-page">
             <h3 style="font-size: 18px;">Billing Details</h3>
-            <div class="row">
-                <div class="col-6" id="customer-details" style="font-size: 15px;">
+            <div class="row" style="position: flex;">
+                <div class="col-6 col-xxl-6 col-xl-5 col-sm-12" id="customer-details" style="font-size: 15px; height: fit-content;">
                     <div class="row">
                         <div class="first-name-box col-6 customer-info" id="label">
                             <label class="first-name">First Name</label>
@@ -470,7 +470,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-6" id="order-details">
+                <div class="col-6 col-xxl-6 col-xl-5" id="order-details">
                     <div class="order-box">
                         <p class="product-heading" style="margin-bottom: 25px;">Your order</p>
                         <br>
@@ -705,6 +705,10 @@
     </div>
 </body>
 <style>
+    html
+    {
+        min-width: 650px;
+    }
     #label {
         padding-top: 20px;
     }
@@ -715,7 +719,6 @@
         height: fit-content;
         width: 500px;
         background-color: #f7f7f7;
-        margin: 0 0 0 150px;
         padding: 45px;
     }
 
