@@ -287,35 +287,4 @@ p {
     }
 }
 
-@media (min-width: 1200px)
-{
-    #order-details
-    {
-        margin-left: 150px;
-    }
-}
 
-@media ((max-width: 1199px) and (min-width: 992px)) or (min-width: 576px)
-{
-    #customer-details, h3
-    {
-        padding: 0 100px;
-    }
-    #order-details
-    {
-        margin: 100px auto 0;
-    }
-    .order-box
-    {
-        text-align: center;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 575px)
-{
-    #order-details
-    {
-        margin: 100px 15px 0;
-    }
-}
