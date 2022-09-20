@@ -62,22 +62,22 @@
                     <div class="row">
                         <div class="mb-3 first-name-box col-6">
                             <label class="form-label">First Name</label>
-                            <input type="text" class="form-control" placeholder="First Name">
+                            <input type="text" class="form-control" placeholder="First Name" require>
                         </div>
                         <div class="mb-3 first-name-box col-6">
                             <label class="form-label">Last Name</label>
-                            <input type="text" class="form-control" placeholder="Last Name">
+                            <input type="text" class="form-control" placeholder="Last Name" require>
                         </div>
                     </div>
 
                     <div class="mb-3 company-name-box">
                         <label class="form-label">Company Name (optional)</label>
-                        <input type="text" class="form-control" placeholder="Company Name">
+                        <input type="text" class="form-control" placeholder="Company Name" require>
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label">Country</label>
-                        <select class="form-select">
+                        <select class="form-select" require>
                             <option>Select a country</option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -330,27 +330,27 @@
 
                     <div class="mb-3 street-name-box">
                         <label class="form-label">Street address</label>
-                        <input type="text" class="form-control" placeholder="Street addres">
+                        <input type="text" class="form-control" placeholder="Street addres" require>
                     </div>
 
                     <div class="mb-3 city-name-box">
                         <label class="form-label">Town/City</label>
-                        <input type="text" class="form-control" placeholder="Town/City">
+                        <input type="text" class="form-control" placeholder="Town/City" require>
                     </div>
 
                     <div class="mb-3 state-name-box">
                         <label class="form-label">State</label>
-                        <input type="text" class="form-control" placeholder="State">
+                        <input type="text" class="form-control" placeholder="State" require>
                     </div>
 
                     <div class="mb-3 phone-name-box">
                         <label class="form-label">Phone</label>
-                        <input type="text" class="form-control" placeholder="Phone">
+                        <input type="text" class="form-control" placeholder="Phone" require>
                     </div>
 
                     <div class="mb-3 email-name-box">
                         <label class="form-label">Email address</label>
-                        <input type="email" class="form-control" placeholder="xyz@gmail.com">
+                        <input type="email" class="form-control" placeholder="xyz@gmail.com" require>
                     </div>
 
                     <div class="mb-3 other-name-box">
@@ -479,7 +479,7 @@
 
     #order-details {
         background-color: #f7f7f7;
-        padding: 45px;
+        padding: 0 45px 45px;
     }
 </style>
 
