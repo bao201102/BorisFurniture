@@ -48,7 +48,7 @@
                         </div>
                         <!-- button add new product -->
                         <div>
-                            <button onclick="addProduct()" type="button"
+                            <button onclick="addEmployee()" type="button"
                                 class="btn btn-info d-flex align-items-center fs-5">
                                 <span class="material-symbols-outlined">
                                     add
@@ -88,7 +88,7 @@
                                 <td>Classic-Lamp</td>
                                 <td>Lamp</td>
                                 <td class="text-center utility">
-                                    <span onclick="editProduct()"
+                                    <span onclick="editEmployee()"
                                         class="material-symbols-outlined edit me-3">edit</span>
                                     <span class="material-symbols-outlined delete">delete</span>
                                 </td>
@@ -99,7 +99,7 @@
                                 <td>Classic-Lamp</td>
                                 <td>Lamp</td>
                                 <td class="text-center utility">
-                                    <span onclick="editProduct()"
+                                    <span onclick="editEmployee()"
                                         class="material-symbols-outlined edit me-3">edit</span>
                                     <span class="material-symbols-outlined delete">delete</span>
                                 </td>
@@ -140,8 +140,8 @@
         </div>
 
         <!-- Modal add new employee -->
-        <div class="modal-layout add_product">
-            <div id="add_product" class="modal-inner">
+        <div class="modal-layout add_employee">
+            <div id="add_employee" class="modal-inner">
                 <div class="d-flex align-items-end">
                     <span class="me-auto ps-4 fw-semibold fs-3">Add new employee</span>
                     <span class="material-symbols-outlined modal-close">
@@ -197,8 +197,8 @@
         </div>
 
         <!-- Modal edit product -->
-        <div class="modal-layout edit_product">
-            <div id="edit_product" class="modal-inner">
+        <div class="modal-layout edit_employee">
+            <div id="edit_employee" class="modal-inner">
                 <div class="d-flex align-items-end">
                     <span class="me-auto ps-4 fw-semibold fs-3">Edit Employee</span>
                     <span class="material-symbols-outlined modal-close">
@@ -260,5 +260,6 @@
     crossorigin="anonymous"></script>
 <script src="./js/sidebar-effect.js"></script>
 <script src="./js/product_mgmt.js"></script>
+<script src="./js/employee_mgmt.js"></script>
 
 </html>
