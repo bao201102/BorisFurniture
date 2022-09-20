@@ -34,7 +34,7 @@
                         <a> <span class="material-symbols-outlined align-middle me-3" id="menu-btn"
                                 style="font-size: 40px;"> menu
                             </span> </a>
-                        <span class="fw-semibold fs-3">Customer Management</span>
+                        <span class="fw-semibold fs-3">Employee Management</span>
                     </div>
                     <div
                         class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
@@ -42,8 +42,8 @@
                         <div class="me-2 me-xl-3">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected value="all">All</option>
-                                <option value="chair">Chair</option>
-                                <option value="table">Table</option>
+                                <option value="chair">User</option>
+                                <option value="table">Admin</option>
                             </select>
                         </div>
                         <!-- button add new product -->
@@ -77,8 +77,8 @@
                         <thead>
                             <tr>
                                 <th scope="col" colspan="2">id</th>
-                                <th scope="col">product</th>
-                                <th scope="col" colspan="2">category</th>
+                                <th scope="col">Name</th>
+                                <th scope="col" colspan="2">Position</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
@@ -139,11 +139,11 @@
             </section>
         </div>
 
-        <!-- Modal add new product -->
+        <!-- Modal add new employee -->
         <div class="modal-layout add_product">
             <div id="add_product" class="modal-inner">
                 <div class="d-flex align-items-end">
-                    <span class="me-auto ps-4 fw-semibold fs-3">Add new product</span>
+                    <span class="me-auto ps-4 fw-semibold fs-3">Add new employee</span>
                     <span class="material-symbols-outlined modal-close">
                         close
                     </span>
@@ -152,25 +152,19 @@
                 <div class="row pt-2 pt-md-4 px-3 px-md-4">
                     <div class="col-6">
                         <div class="px-3">
-                            <!-- name product -->
+                            <!-- Employee name -->
                             <div class="mb-3">
-                                <label for="name_product" class="form-label">Product name</label>
-                                <input type="text" class="form-control" id="name_product" placeholder="Name of product">
+                                <label for="employee_name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="employee_name" placeholder="Name">
                             </div>
-                            <!-- Category -->
+                            <!-- Position -->
                             <div class="mb-3">
-                                <label class="form-label">Category</label>
+                                <label class="form-label">Position</label>
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected>Open select menu</option>
-                                    <option value="chair">Chair</option>
-                                    <option value="table">Table</option>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
                                 </select>
-                            </div>
-                            <!-- Description -->
-                            <div>
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" rows="3"
-                                    style="resize: none;"></textarea>
                             </div>
                         </div>
 
@@ -178,22 +172,22 @@
 
                     <div class="col-6 d-flex flex-column">
                         <div class="px-3">
-                            <!--  product  images-->
+                            <!--  Avatar-->
                             <div class="mb-3">
-                                <label for="file-upload" class="form-label">Product images</label>
+                                <label for="file-upload" class="form-label">Avatar</label>
                                 <input type="file" id="file-upload" class="form-control" multiple>
                             </div>
-                            <!-- Quantity -->
+                            <!-- Age -->
                             <div class="mb-3">
-                                <label for="quantity_product" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+                                <label for="employee_age" class="form-label">Age</label>
+                                <input type="text" class="form-control" id="employee_age" placeholder="Age">
                             </div>
 
 
 
                         </div>
                         <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
-                            <button type="button" class="btn btn-primary">Add product</button>
+                            <button type="button" class="btn btn-primary">Add</button>
                             <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
                         </div>
                     </div>
@@ -206,7 +200,7 @@
         <div class="modal-layout edit_product">
             <div id="edit_product" class="modal-inner">
                 <div class="d-flex align-items-end">
-                    <span class="me-auto ps-4 fw-semibold fs-3">Edit product</span>
+                    <span class="me-auto ps-4 fw-semibold fs-3">Edit Employee</span>
                     <span class="material-symbols-outlined modal-close">
                         close
                     </span>
@@ -217,23 +211,17 @@
                         <div class="px-3">
                             <!-- name product -->
                             <div class="mb-3">
-                                <label for="name_product" class="form-label">Product name</label>
-                                <input type="text" class="form-control" id="name_product" placeholder="Name of product">
+                                <label for="employee-name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="employee-name" placeholder="Name of employee">
                             </div>
-                            <!-- Category -->
+                            <!-- Position -->
                             <div class="mb-3">
-                                <label class="form-label">Category</label>
+                                <label class="form-label">Position</label>
                                 <select class="form-select" aria-label="Default select example">
                                     <option selected>Open select menu</option>
-                                    <option value="chair">Chair</option>
-                                    <option value="table">Table</option>
+                                    <option value="user">User</option>
+                                    <option value="admin">Admin</option>
                                 </select>
-                            </div>
-                            <!-- Description -->
-                            <div>
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" rows="3"
-                                    style="resize: none;"></textarea>
                             </div>
                         </div>
 
@@ -241,22 +229,22 @@
 
                     <div class="col-6 d-flex flex-column">
                         <div class="px-3">
-                            <!--  product  images-->
+                            <!--  Avatar-->
                             <div class="mb-3">
-                                <label for="file-upload" class="form-label">Product images</label>
+                                <label for="file-upload" class="form-label">Avatar</label>
                                 <input type="file" id="file-upload" class="form-control" multiple>
                             </div>
-                            <!-- Quantity -->
+                            <!-- Age -->
                             <div class="mb-3">
-                                <label for="quantity_product" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+                                <label for="employee-agew" class="form-label">Age</label>
+                                <input type="text" class="form-control" id="employee-age" placeholder="Age">
                             </div>
 
 
 
                         </div>
                         <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
-                            <button type="button" class="btn btn-primary">Save product</button>
+                            <button type="button" class="btn btn-primary">Save</button>
                             <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
                         </div>
                     </div>
