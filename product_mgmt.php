@@ -19,65 +19,9 @@
 <body>
     <div class="container-fluid p-0">
         <!-- Sidebar -->
-        <div>
-            <div class="fixed-top prevent-select bg-dark" id="sidebar" style="min-height: 100vh; width: 340px;">
-                <a> <span class="material-symbols-outlined align-middle ms-4 mt-4 text-white invisible"
-                        id="sidebar-menu-btn" style="font-size: 40px;"> menu
-                    </span> </a>
-                <div class="dropdown" style="margin-top: 40px; margin-bottom: 70px;">
-                    <div class="d-flex text-center justify-content-center" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#ac-toggler" aria-controls="ac-toggler" aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <img class="ac-icon" style="margin-right: 10px;" src="./img/cat.jpg" alt="">
-                        <p>
-                            <span class="dropdown-toggle text-white">Nguyễn Ngọc Bảo</span>
-                            <br>
-                            <span class="text-muted" style="font-size: 18px; margin-right: 10px;">
-                                Sales Manager
-                            </span>
-                        </p>
-                    </div>
-                    <div class="text-center collapse" id="ac-toggler" style="margin-top: 20px;">
-                        <a class="d-block pb-3 text-white" style="font-size: 18px;">
-                            Setting
-                        </a>
-                        <a class="d-block text-white" style="font-size: 18px;">
-                            Log out
-                        </a>
-                    </div>
-                </div>
-                <div>
-                    <ul class="p-0 m-0">
-                        <a class="d-block text-white" style="padding: 18px" href="./product_mgmt.html">
-                            <span class="material-symbols-outlined align-middle ms-2 me-2">
-                                grid_view
-                            </span>
-                            <span class="align-middle sidebar-text">
-                                Product Management
-                            </span>
-                        </a>
-                        <a class="d-block text-white active" style="padding: 18px" href="./customer_mgmt.html">
-                            <span class="material-symbols-outlined align-middle ms-2 me-2">
-                                person
-                            </span>
-                            <span class="align-middle sidebar-text">
-                                Employee Management
-                            </span>
-                        </a>
-                        <a class="d-block text-white" style="padding: 18px">
-                            <span class="material-symbols-outlined align-middle ms-2 me-2">
-                                group
-                            </span>
-                            <span class="align-middle sidebar-text">
-                                Customer Management
-                            </span>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-
-            <div onclick="closeSubSidebar()" id="sub_sidebar"></div>
-        </div>
+        <?php
+            include_once "./views/sidebar.php"
+        ?>
 
         <!-- Main content -->
         <div id="main-content" style="min-height: 100vh; margin-left: 340px; right: 0; bottom: 0; left: 0;">
@@ -90,7 +34,7 @@
                         <a> <span class="material-symbols-outlined align-middle me-3" id="menu-btn"
                                 style="font-size: 40px;"> menu
                             </span> </a>
-                        <span class="fw-semibold fs-3">Customer Management</span>
+                        <span class="fw-semibold fs-3">Product Management</span>
                     </div>
                     <div
                         class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
@@ -213,14 +157,21 @@
                                 <label for="name_product" class="form-label">Product name</label>
                                 <input type="text" class="form-control" id="name_product" placeholder="Name of product">
                             </div>
-                            <!-- Category -->
-                            <div class="mb-3">
-                                <label class="form-label">Category</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open select menu</option>
-                                    <option value="chair">Chair</option>
-                                    <option value="table">Table</option>
-                                </select>
+                            <div class="row mb-3">
+                                <!-- Category -->
+                                <div class="col">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Select</option>
+                                        <option value="chair">Chair</option>
+                                        <option value="table">Table</option>
+                                    </select>
+                                </div>
+                                <!-- Quantity -->
+                                <div class="col">
+                                    <label for="quantity_product" class="form-label">Quantity</label>
+                                    <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+                                </div>
                             </div>
                             <!-- Description -->
                             <div>
@@ -239,14 +190,13 @@
                                 <label for="file-upload" class="form-label">Product images</label>
                                 <input type="file" id="file-upload" class="form-control" multiple>
                             </div>
-                            <!-- Quantity -->
-                            <div class="mb-3">
-                                <label for="quantity_product" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+
+                            <!-- Price product -->
+                            <label class="form-label">Price</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                             </div>
-
-
-
                         </div>
                         <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
                             <button type="button" class="btn btn-primary">Add product</button>
@@ -276,14 +226,21 @@
                                 <label for="name_product" class="form-label">Product name</label>
                                 <input type="text" class="form-control" id="name_product" placeholder="Name of product">
                             </div>
-                            <!-- Category -->
-                            <div class="mb-3">
-                                <label class="form-label">Category</label>
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected>Open select menu</option>
-                                    <option value="chair">Chair</option>
-                                    <option value="table">Table</option>
-                                </select>
+                            <div class="row mb-3">
+                                <!-- Category -->
+                                <div class="col">
+                                    <label class="form-label">Category</label>
+                                    <select class="form-select" aria-label="Default select example">
+                                        <option selected>Select</option>
+                                        <option value="chair">Chair</option>
+                                        <option value="table">Table</option>
+                                    </select>
+                                </div>
+                                <!-- Quantity -->
+                                <div class="col">
+                                    <label for="quantity_product" class="form-label">Quantity</label>
+                                    <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+                                </div>
                             </div>
                             <!-- Description -->
                             <div>
@@ -302,21 +259,19 @@
                                 <label for="file-upload" class="form-label">Product images</label>
                                 <input type="file" id="file-upload" class="form-control" multiple>
                             </div>
-                            <!-- Quantity -->
-                            <div class="mb-3">
-                                <label for="quantity_product" class="form-label">Quantity</label>
-                                <input type="number" class="form-control" id="quantity_product" value="1" min="1">
+
+                            <!-- Price product -->
+                            <label class="form-label">Price</label>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text">$</span>
+                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
                             </div>
-
-
-
                         </div>
                         <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
-                            <button type="button" class="btn btn-primary">Save product</button>
+                            <button type="button" class="btn btn-primary">Add product</button>
                             <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

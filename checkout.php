@@ -9,111 +9,20 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <title>Hamlin Furniture</title>
 </head>
 
 <body>
     <div class="container-fluid p-0">
         <!-- Header -->
-        <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm">
-            <div class="container-fluid">
-                <a class="navbar-brand ms-5 fs-3" href="./index.html">Hamlin</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbar-collapse-item" aria-controls="navbar-collapse-item" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse fs-10" id="navbar-collapse-item">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="./index.html">Home
-                                <span class="visually-hidden">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About</a>
-                        </li>
-                    </ul>
-                    <div class="nav-item">
-                        <ul class="navbar-nav gap-2 flex-row">
-                            <li>
-                                <a class="nav-link" href="./search.html" data-bs-toggle="offcanvas"
-                                    data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
-                                    <span class="material-symbols-outlined">
-                                        search
-                                    </span>
-                                </a>
-                            </li>
-                            <li class="cart-icon">
-                                <a id="btn-shop-cart" class="nav-link" href="./shopping_cart.html">
-                                    <span class="material-symbols-outlined">
-                                        shopping_cart
-                                    </span>
-                                </a>
-
-                                <!-- shopping cart -->
-                                <div class="header-cart-list shadow-lg">
-                                    <ul class="cart-product-list mb-2">
-                                        <li class="cart-product-item d-flex mb-2">
-                                            <img src="./img/Classic-Lamp.jpg" alt="" style="width: 20%;">
-
-                                            <div class="cart-product-description">
-                                                <div class="cart-product-main-des mb-2 fs-4">
-                                                    Classic Lamp
-                                                </div>
-                                                <div class="cart-product-sub-des" style="color: rgb(155, 150, 150);">
-                                                    <span class="cart-product-quantity">1</span>
-                                                    <span>x</span>
-                                                    <span>450,000
-                                                        <span class="pSymbol">$</span>
-                                                    </span>
-                                                </div>
-                                            </div>
-
-                                            <span class="material-symbols-outlined cart-delete">
-                                                close
-                                            </span>
-                                        </li>
-
-                                    </ul>
-                                    <div
-                                        class="cart-subtotal d-flex fs-4 justify-content-center align-items-center border-top border-bottom py-3 fs-5">
-                                        <label class="mx-1">Subtotal:</label>
-                                        <div class="fs-5 fw-semibold">1,000,000<span class="pSymbol">$</span>
-                                        </div>
-                                    </div>
-                                    <div class="cart-button d-flex flex-column justify-content-center mt-3">
-                                        <button class="btn btn-primary">View Cart</button>
-                                        <button class="btn btn-outline-primary mt-2">Checkout</button>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <a class="nav-link">
-                                    <span class="material-symbols-outlined">
-                                        account_circle
-                                    </span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </nav>
+        <?php
+            include_once "./views/navbar.php";
+        ?>
 
         <!-- Search offcanvas section -->
-        <div class="offcanvas offcanvas-top container" style="height: 500px;" tabindex="-1" id="offcanvasTop"
-            aria-labelledby="offcanvasTopLabel">
-            <button type="button" class="btn-close mt-3 ms-auto fs-5" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+        <div class="offcanvas offcanvas-top container" style="height: 500px;" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <button type="button" class="btn-close mt-3 ms-auto fs-5" data-bs-dismiss="offcanvas" aria-label="Close"></button>
             <div class="container" style="padding: 100px;">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasTopLabel">What are you looking for?</h5>
@@ -135,8 +44,7 @@
                         <p class="text-center text-lg-start text-black fs-5">Checkout</p>
                     </div>
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
-                        <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter"
-                            style="font-size: 14px;">
+                        <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Shop</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Checkout</li>
@@ -447,8 +355,7 @@
 
                     <div class="mb-3 other-name-box">
                         <label class="form-label">Orther notes (optional)</label>
-                        <textarea class="form-control" rows="8" style="resize: none;"
-                            placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
+                        <textarea class="form-control" rows="8" style="resize: none;" placeholder="Notes about your order, e.g. special notes for delivery."></textarea>
                     </div>
 
                 </div>
@@ -489,8 +396,7 @@
                                     <td class="pe-0">
                                         <div class="float-end float-xl-start">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="shipping" id="free"
-                                                    checked>
+                                                <input class="form-check-input" type="radio" name="shipping" id="free" checked>
                                                 <label class="form-check-label" for="free">Free shipping</label>
                                             </div>
                                             <div class="form-check my-2">
@@ -515,40 +421,34 @@
                         </table>
                         <div class="pay-type">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1"
-                                    value="option1">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios1" value="option1">
                                 <label class="form-check-label" for="optionsRadios1">
                                     Direct bank transfer
                                 </label>
                             </div>
-                            <div class="pay-type-note mb-3"
-                                style="font-size: 13px; background-color: #F0F2F2; padding: 15px;">
+                            <div class="pay-type-note mb-3" style="font-size: 13px; background-color: #F0F2F2; padding: 15px;">
                                 <p>Make your payment directly into our
                                     bank account. Please use your Order ID as the payment reference. Your order will not
                                     be
                                     shipped until the funds have cleared in our account.</p>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2"
-                                    value="option2">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                 <label class="form-check-label" for="optionsRadios2">
                                     Check payment
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" checked name="optionsRadios"
-                                    id="optionsRadios3" value="option3">
+                                <input class="form-check-input" type="radio" checked name="optionsRadios" id="optionsRadios3" value="option3">
                                 <label class="form-check-label" for="optionsRadios3">
                                     Cash on delivery
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios4"
-                                    value="option4">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
                                 <label class="form-check-label" for="optionsRadios4">
                                     PayPal
-                                    <img src="https://lithohtml.themezaa.com/images/paypal-logo.jpg" alt=""
-                                        class="w-120px margin-10px-left" style="width: 100px;" data-no-retina="">
+                                    <img src="https://lithohtml.themezaa.com/images/paypal-logo.jpg" alt="" class="w-120px margin-10px-left" style="width: 100px;" data-no-retina="">
                                 </label>
                             </div>
                         </div>
@@ -563,128 +463,10 @@
             </div>
         </div>
 
-        <!-- Client logo section -->
-        <section class="border-top border-2" style="padding: 100px 0; margin-top: 200px;">
-            <div class="container">
-                <div class="row">
-                    <!-- start client logo item -->
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-37.png"></a>
-                    </div>
-
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-38.png"></a>
-                    </div>
-
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-39.png"></a>
-                    </div>
-
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-40.png"></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer section -->
-        <footer class="" style="padding-top: 80px; background-color: #232323;">
-            <div class="container" style="padding: 40px;">
-                <div class="row">
-                    <!-- start footer col -->
-                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
-                        <p class="text-light dropdown-toggle" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#col-toggler1" aria-controls="col-toggler1" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            Company
-                        </p>
-                        <br>
-                        <div class="row gap-3 collapse show" id="col-toggler1">
-                            <a href="" class="d-block text-muted">
-                                About company
-                            </a>
-                            <a href="" class="d-block text-muted">
-                                Company services
-                            </a>
-                            <a href="" class="d-block text-muted">
-                                Job opportunities
-                            </a>
-                            <a href="" class="d-block text-muted">
-                                Contact us
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end footer col -->
-                    <!-- start footer col -->
-                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
-                        <p class="text-light dropdown-toggle" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#col-toggler2" aria-controls="col-toggler2" aria-expanded="false"
-                            aria-label="Toggle navigation">
-                            Customer
-                        </p>
-                        <br>
-                        <div class="row gap-3 collapse show" id="col-toggler2">
-                            <a href="" class="d-block text-muted">
-                                Client support
-                            </a>
-                            <a href="" class="d-block text-muted">
-                                Pricing packages
-                            </a>
-                            <a href="" class="d-block text-muted">
-                                Company history
-                            </a>
-                            <a href="" class="d-block text-muted">
-                                Our process
-                            </a>
-                        </div>
-                    </div>
-                    <!-- end footer col -->
-                    <!-- start footer col -->
-                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
-                        <p class="text-light">
-                            Get in touch
-                        </p>
-                        <br>
-                        <div class="row gap-3">
-                            <span href="" class="d-block text-muted">
-                                27 Eden walk eden centre, Orchard view, Paris, France
-                            </span>
-                            <span href="" class="d-block text-muted">
-                                +1 234 567 8910
-                            </span>
-                            <span href="" class="d-block text-muted">
-                                info@yourdomain.com
-                            </span>
-                        </div>
-                    </div>
-                    <!-- end footer col -->
-                    <!-- start footer col -->
-                    <div class="col-12 col-lg-6 col-xl-3 px-5" style="font-size: 18px; margin-bottom: 40px;">
-                        <p class="text-light">
-                            Follow us on instagram
-                        </p>
-                        <br>
-                    </div>
-                    <!-- end footer col -->
-                </div>
-
-                <div class="container border-top">
-                    <div class="row mt-5 text-center align-items-center">
-                        <div class="col-12 col-lg-12 col-xxl-3" style="margin-bottom: 50px;">
-                            <a class="text-light fw-semibold" style="font-size: 30px;" href="#">Hamlin</a>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xxl-6" style="margin-bottom: 50px;">
-                            <p class="text-muted fs-5">
-                                © 2022 Hamlin is Proudly Powered by Us
-                            </p>
-                        </div>
-                        <div class="col-12 col-lg-6 col-xxl-3" style="margin-bottom: 50px;">
-                            <img src="./img/footer-payment-icon.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <!-- Footer and client logo section -->
+        <?php
+            include_once "./views/footer.php";
+        ?>
     </div>
 </body>
 
@@ -701,9 +483,7 @@
     }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="./js/general-effect.js"></script>
 
 </html>
