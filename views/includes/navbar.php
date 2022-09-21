@@ -1,3 +1,7 @@
+<?php
+    include_once "../modules/config.php";
+?>
+
 <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand ms-5 fs-3" href="./index.html">Hamlin</a>
@@ -7,7 +11,7 @@
         <div class="collapse navbar-collapse fs-10" id="navbar-collapse-item">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="./index.php">Home
+                    <a class="nav-link active" href="<?= URLROOT ?>/index.php">Home
                         <span class="visually-hidden">(current)</span>
                     </a>
                 </li>
@@ -31,7 +35,7 @@
                         </a>
                     </li>
                     <li class="cart-icon">
-                        <a id="btn-shop-cart" class="nav-link" href="./shopping_cart.php">
+                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/views/shopping_cart.php">
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>
@@ -74,7 +78,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="nav-link">
+                        <a class="nav-link" href="<?= URLROOT ?>/views/login_register.php">
                             <span class="material-symbols-outlined">
                                 account_circle
                             </span>
