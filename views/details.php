@@ -18,7 +18,7 @@
     <div class="container-fluid p-0">
         <!-- Header -->
         <?php
-            include_once "./views/navbar.php"; 
+            include_once "./views/includes/navbar.php"; 
         ?>
 
         <!-- Search offcanvas section -->
@@ -215,7 +215,7 @@
 
         <!-- Footer and client logo section -->
         <?php
-            include_once "./views/footer.php";
+            include_once "./views/includes/footer.php";
         ?>
         
         <!-- Modal -->

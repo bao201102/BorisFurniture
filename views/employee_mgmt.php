@@ -20,7 +20,7 @@
     <div class="container-fluid p-0">
         <!-- Sidebar -->
         <?php
-            include_once "./views/sidebar.php"
+            include_once "./views/includes/sidebar.php"
         ?>
 
         <!-- Main content -->

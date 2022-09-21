@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.css">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
+    <link rel="stylesheet" href="../css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
@@ -17,7 +17,7 @@
     <div class="container-fluid p-0">
         <!-- Header -->
         <?php
-            include_once "./views/navbar.php";
+            include_once "./includes/navbar.php";
         ?>
 
         <!-- Search offcanvas section -->
@@ -465,7 +465,7 @@
 
         <!-- Footer and client logo section -->
         <?php
-            include_once "./views/footer.php";
+            include_once "./includes/footer.php";
         ?>
     </div>
 </body>
@@ -484,6 +484,6 @@
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-<script src="./js/general-effect.js"></script>
+<script src="../js/general-effect.js"></script>
 
 </html>
