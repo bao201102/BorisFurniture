@@ -5,13 +5,13 @@ define("USER", "root");
 define("PASSWORD", "");
 
 //Lấy hosing hiện tại
-if (isset($_SERVER['HTTPS'])) {
+if (!empty($_SERVER['HTTPS'])) {
     $path = "https://";
 } else {
     $path = "http://";
 }
 
-if (isset($_SERVER['PHP_SELF'])) {
+if (strlen(dirname($_SERVER['PHP_SELF'])) > 1) {
     $selfpath = dirname($_SERVER['PHP_SELF']);
 }
 else {
