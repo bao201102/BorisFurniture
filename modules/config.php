@@ -5,12 +5,19 @@ define("USER", "root");
 define("PASSWORD", "");
 
 //Lấy hosing hiện tại
-if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') {
+if (isset($_SERVER['HTTPS'])) {
     $path = "https://";
 } else {
     $path = "http://";
 }
-$path .= $_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']);
+
+if (isset($_SERVER['PHP_SELF'])) {
+    $selfpath = dirname($_SERVER['PHP_SELF']);
+}
+else {
+    $selfpath = '';
+}
+$path .= $_SERVER['HTTP_HOST'].$selfpath;
 
 define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', $path);
