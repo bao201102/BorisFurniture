@@ -4,19 +4,19 @@
         <div class="row">
             <!-- start client logo item -->
             <div class="col text-center">
-                <a href="#" class=""><img alt="" src="./img/client-logo-37.png"></a>
+                <a href="#" class=""><img alt="" src="<?= IMAGE ?>/client-logo-37.png"></a>
             </div>
 
             <div class="col text-center">
-                <a href="#" class=""><img alt="" src="./img/client-logo-38.png"></a>
+                <a href="#" class=""><img alt="" src="<?= IMAGE ?>/client-logo-38.png"></a>
             </div>
 
             <div class="col text-center">
-                <a href="#" class=""><img alt="" src="./img/client-logo-39.png"></a>
+                <a href="#" class=""><img alt="" src="<?= IMAGE ?>/client-logo-39.png"></a>
             </div>
 
             <div class="col text-center">
-                <a href="#" class=""><img alt="" src="./img/client-logo-40.png"></a>
+                <a href="#" class=""><img alt="" src="<?= IMAGE ?>/client-logo-40.png"></a>
             </div>
         </div>
     </div>
@@ -110,7 +110,7 @@
                     </p>
                 </div>
                 <div class="col-12 col-lg-6 col-xxl-3" style="margin-bottom: 50px;">
-                    <img src="./img/footer-payment-icon.png" alt="">
+                    <img src="<?= IMAGE ?>/footer-payment-icon.png" alt="">
                 </div>
             </div>
         </div>

@@ -1,10 +1,6 @@
-<?php
-    include_once "../modules/config.php";
-?>
-
 <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand ms-5 fs-3" href="./index.html">Hamlin</a>
+        <a class="navbar-brand ms-5 fs-3" href="#">Hamlin</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-item" aria-controls="navbar-collapse-item" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -16,10 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./search.php">Shop all</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
+                    <a class="nav-link" href="<?= URLROOT ?>/Home/search">Shop all</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
@@ -35,7 +28,7 @@
                         </a>
                     </li>
                     <li class="cart-icon">
-                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/views/shopping_cart.php">
+                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/Home/shopping_cart">
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>
@@ -78,7 +71,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?= URLROOT ?>/views/login_register.php">
+                        <a class="nav-link" href="<?= URLROOT ?>/Home/login_register">
                             <span class="material-symbols-outlined">
                                 account_circle
                             </span>

@@ -1,24 +1,14 @@
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <title>Hamlin Furniture</title>
-</head>
+<?php
+    require_once APPROOT . '/views/includes/head.php';
+?>
 
 <body>
     <div class="container-fluid m-0 p-0">
         <!-- Header -->
         <?php
-            include_once "./includes/navbar.php"; 
+            require_once APPROOT . '/views/includes/navbar.php';
         ?>
 
         <!-- Search offcanvas section -->
@@ -110,7 +100,7 @@
                 <div class="col box">
                     <div class=""></div>
                     <div class="card border-0 shadow-sm mb-5 mx-auto" style="width: 21rem;">
-                        <img src="./img/Classic-Lamp.jpg" class="card-img-top img-fluid" alt="...">
+                        <img src="<?= IMAGE ?>/Classic-Lamp.jpg" class="card-img-top img-fluid" alt="...">
                         <div class="card-body" style="z-index: 2; background-color: white;">
                             <div class="mt-3 fw-bold fs-5">Classic Lamp</div>
                             <div class="mt-1 fs-5">$470.00</div>
@@ -149,33 +139,9 @@
         </div>
         <br style="clear: both;">
 
-        <!-- Client logo section -->
-        <section class="border-top border-2" style="padding: 100px 0; margin-top: 200px;">
-            <div class="container">
-                <div class="row">
-                    <!-- start client logo item -->
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-37.png"></a>
-                    </div>
-
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-38.png"></a>
-                    </div>
-
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-39.png"></a>
-                    </div>
-
-                    <div class="col text-center">
-                        <a href="#" class=""><img alt="" src="./img/client-logo-40.png"></a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Footer and client logo section -->
         <?php
-            include_once "./footer.php";
+            require_once APPROOT . '/views/includes/footer.php';
         ?>
 
         <!-- Modal quick view-->
@@ -194,16 +160,16 @@
                             <div id="carouselControls" class="carousel slide" data-bs-ride="carousel">
                                 <div class="carousel-inner shadow-sm">
                                     <div class="carousel-item active">
-                                        <img src="./img/AMALFI-LOUNGE-CHAIR-1.jpg" class="img-fluid" alt="...">
+                                        <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-1.jpg" class="img-fluid" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./img/AMALFI-LOUNGE-CHAIR-2.jpg" class="img-fluid" alt="...">
+                                        <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-2.jpg" class="img-fluid" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./img/AMALFI-LOUNGE-CHAIR-3.jpg" class="img-fluid" alt="...">
+                                        <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-3.jpg" class="img-fluid" alt="...">
                                     </div>
                                     <div class="carousel-item">
-                                        <img src="./img/AMALFI-LOUNGE-CHAIR-4.jpg" class="img-fluid" alt="...">
+                                        <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-4.jpg" class="img-fluid" alt="...">
                                     </div>
                                 </div>
                                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselControls"
@@ -295,6 +261,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
     </script>
-<script src="./js/general-effect.js"></script>
+<script src="<?= JSFILE ?>/general-effect.js"></script>
 
 </html>
