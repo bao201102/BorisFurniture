@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-transparent" id="nav-id">
     <div class="container-fluid">
-        <a class="navbar-brand ms-5 fs-3" href="#">Hamlin</a>
+        <a class="navbar-brand ms-5 fs-3" href="<?= URLROOT ?>/index.php">Hamlin</a>
         <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-collapse-item" aria-controls="navbar-collapse-item" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
