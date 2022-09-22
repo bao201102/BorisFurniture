@@ -5,19 +5,28 @@ define("USER", "root");
 define("PASSWORD", "");
 
 //Lấy hosing hiện tại
-if (!empty($_SERVER['HTTPS'])) {
-    $path = "https://";
-} else {
-    $path = "http://";
+
+if (isset($_SERVER['SERVER_PORT'])) {
+    if ('443' == $_SERVER['SERVER_PORT']) {
+        $path = "https://";
+    } 
+    elseif (isset($_SERVER['SERVER_PORT'])) {
+        $path = "http://";
+    }
 }
+
+// if (!empty($_SERVER['HTTPS'])) {
+//     $path = "https://";
+// } else {
+//     $path = "http://";
+// }
 
 if (strlen(dirname($_SERVER['PHP_SELF'])) > 1) {
     $selfpath = dirname($_SERVER['PHP_SELF']);
-}
-else {
+} else {
     $selfpath = '';
 }
-$path .= $_SERVER['HTTP_HOST'].$selfpath;
+$path .= $_SERVER['HTTP_HOST'] . $selfpath;
 
 echo $path;
 
