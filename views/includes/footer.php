@@ -1,5 +1,5 @@
 <!-- Client logo section -->
-<section class="border-top border-2" style="padding: 100px 0; margin-top: 200px;">
+<section class="border-top border-2" style="padding: 100px 0; margin-top: 50px;">
     <div class="container">
         <div class="row">
             <!-- start client logo item -->

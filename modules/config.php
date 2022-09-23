@@ -26,8 +26,6 @@ if (strlen(dirname($_SERVER['PHP_SELF'])) > 1) {
 }
 $path .= $_SERVER['HTTP_HOST'] . $selfpath;
 
-echo $path;
-
 define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', $path);
 define('IMAGE', URLROOT . '/public/img');
