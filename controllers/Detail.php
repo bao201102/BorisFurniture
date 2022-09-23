@@ -3,7 +3,7 @@ class Detail extends Controller
 {
     public function __construct()
     {
-        
+        $this->ProductModel = $this->model('ProductModel');
     }
 
     public function index()
@@ -11,8 +11,9 @@ class Detail extends Controller
         $this->view('index', []);
     }
 
-    public function product()
+    public function allProduct()
     {
+        $this->ProductModel->getProductList();
         $this->view('details');
     }
 

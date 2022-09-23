@@ -51,11 +51,7 @@ class ProductModel{
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanTraVeDL($link,"select * from tbl_product");
-        $data = array();
-        while ($row = mysqli_fetch_object($result)) {
-            $prod = new ProductModel($row->prod_id,$row->prod_name,$row->prod_quantity,$row->prod_price,$row->category_id,$row->prod_description,$row->prod_image_id,$row->status);
-            array_push($data,$prod);
-        }
+        $data = $result;
         giaiPhongBoNho($link,$result);
         return $data;
     }
@@ -63,7 +59,12 @@ class ProductModel{
     public function getProduct($id)
     {   
         $allProduct = $this->getProductList();
-
+        foreach($allProduct as $prod){
+            if ($prod->getId()===$id) {
+                return $prod;
+            }
+        }
+        return null;
     }
 
 }

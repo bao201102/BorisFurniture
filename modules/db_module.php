@@ -13,20 +13,45 @@ function taoKetNoi(&$link)
 function chayTruyVanTraVeDL($link, $q)
 {
     $result = mysqli_query($link, $q);
-    return $result;
+
+    $data = null;
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+
+        try {
+            mysqli_free_result($result);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+        return $data;
+    } 
 }
 
 function chayTruyVanKhongTraVeDL($link, $q)
 {
     $result = mysqli_query($link, $q);
-    return $result;
+    
+    if ($result) {
+        try {
+            mysqli_free_result($result);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function giaiPhongBoNho($link, $result)
 {
     try {
         mysqli_close($link);
-        mysqli_free_result($result);
+
     } catch (TypeError $e) {
+        
     }
 }
