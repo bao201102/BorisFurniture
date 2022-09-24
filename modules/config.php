@@ -6,15 +6,24 @@ define("PASSWORD", "");
 
 //Lấy hosing hiện tại
 
-if (isset($_SERVER['HTTPS']) &&
-    ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
-    isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
-    $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
-  $path = 'https://';
+// if (isset($_SERVER['HTTPS']) &&
+//     ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+//     isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+//     $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+//   $path = 'https://';
+// }
+// else {
+//   $path = 'http://';
+// }
+
+$isSecure = false;
+if (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == 'on') {
+    $isSecure = true;
 }
-else {
-  $path = 'http://';
+elseif (!empty($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https' || !empty($_SERVER['HTTP_X_FORWARDED_SSL']) && $_SERVER['HTTP_X_FORWARDED_SSL'] == 'on') {
+    $isSecure = true;
 }
+$path = $isSecure ? 'https://' : 'http://';
 
 // if (!empty($_SERVER['HTTPS'])) {
 //     $path = "https://";
