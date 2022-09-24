@@ -102,7 +102,7 @@
         <div class="container border-top">
             <div class="row mt-5 text-center align-items-center">
                 <div class="col-12 col-lg-12 col-xxl-3" style="margin-bottom: 50px;">
-                    <a class="text-light fw-semibold" style="font-size: 30px;" href="#">Hamlin</a>
+                    <a class="text-light fw-semibold" style="font-size: 30px;" href="<?= URLROOT ?>/Home/index">Hamlin</a>
                 </div>
                 <div class="col-12 col-lg-6 col-xxl-6" style="margin-bottom: 50px;">
                     <p class="text-muted fs-5">

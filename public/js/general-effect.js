@@ -1,5 +1,6 @@
 //Reponsive product information
 window.addEventListener("resize", resizeDetail);
+window.addEventListener("load", resizeDetail);
 
 function resizeDetail() {
     if (window.innerWidth < 992) {
@@ -15,6 +16,7 @@ function resizeDetail() {
 
 //Footer collapse effect
 window.addEventListener("resize", resizeFooter);
+window.addEventListener("load", resizeFooter);
 
 function resizeFooter() {
     if (window.innerWidth < 992) {

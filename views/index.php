@@ -41,13 +41,13 @@
             </div>
             <div class="carousel-inner p-0">
                 <div class="carousel-item active">
-                    <img src="<?= IMAGE ?>/living-white-room.jpg" class="d-block img-fluid" alt="...">
+                    <img src="<?= IMAGE ?>/living-white-room.jpg" style="height: 100vh;" class="d-block img-fluid" alt="...">
                 </div>
                 <div class="carousel-item ">
-                    <img src="<?= IMAGE ?>/scandinavian-living-room.jpg" class="d-block img-fluid" alt="...">
+                    <img src="<?= IMAGE ?>/scandinavian-living-room.jpg" style="height: 100vh;" class="d-block img-fluid" alt="...">
                 </div>
                 <div class="carousel-item">
-                    <img src="<?= IMAGE ?>/living-room-blank-white.jpg" class="d-block img-fluid" alt="...">
+                    <img src="<?= IMAGE ?>/living-room-blank-white.jpg" style="height: 100vh;" class="d-block img-fluid" alt="...">
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
