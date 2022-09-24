@@ -6,11 +6,14 @@ define("PASSWORD", "");
 
 //Lấy hosing hiện tại
 
-if ('443' == $_SERVER['SERVER_PORT']) {
-    $path = "https://";
-} 
-elseif (isset($_SERVER['SERVER_PORT'])) {
-    $path = "http://";
+if (isset($_SERVER['HTTPS']) &&
+    ($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
+    isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+    $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+  $path = 'https://';
+}
+else {
+  $path = 'http://';
 }
 
 // if (!empty($_SERVER['HTTPS'])) {
