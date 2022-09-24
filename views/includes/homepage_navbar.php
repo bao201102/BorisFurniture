@@ -1,3 +1,4 @@
+<!-- Navbar section -->
 <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-transparent" id="nav-id">
     <div class="container-fluid">
         <a class="navbar-brand ms-5 fs-3" href="<?= URLROOT ?>/Home/index">Hamlin</a>
@@ -82,3 +83,8 @@
         </div>
     </div>
 </nav>
+
+<!-- Search offcanvas section -->
+<?php
+    require_once APPROOT . '/views/includes/searchbox.php';
+?>

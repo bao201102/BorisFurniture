@@ -6,28 +6,10 @@
 
 <body>
     <div class="container-fluid m-0 p-0">
-        <!-- Navbar section -->
+        <!-- Header section -->
         <?php
             require_once APPROOT . '/views/includes/homepage_navbar.php';
         ?>
-
-        <!-- Search offcanvas section -->
-        <div class="offcanvas offcanvas-top container" style="height: 500px;" tabindex="-1" id="offcanvasTop"
-            aria-labelledby="offcanvasTopLabel">
-            <button type="button" class="btn-close mt-3 ms-auto fs-5" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
-            <div class="container" style="padding: 100px;">
-                <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasTopLabel">What are you looking for?</h5>
-                </div>
-                <div class="offcanvas-body">
-                    <form class="d-flex">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search">
-                        <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
         <!-- Landing banner section -->
         <div id="carouselExampleIndicators" class="carousel slide carousel-dark" data-bs-ride="true">
@@ -80,7 +62,11 @@
                     <?php require_once APPROOT . '/views/includes/products.php'; ?>
                     
                     <div class="col-12 text-center mt-5">
-                        <button type="button" class="btn btn-outline-primary">More Collections</button>
+                    <a href="<?= URLROOT ?>/Home/search">
+                        <button type="button" class="btn btn-outline-primary">
+                            More Collections
+                        </button>
+                    </a>
                     </div>
                 </div>
             </div>
@@ -105,7 +91,9 @@
                                     <h1 class="mt-3" style="font-size: calc(1em + 1vw);"><span class="fw-light"> Wooden
                                         </span><br>
                                         armchair</h1>
-                                    <button type="button" class="btn btn-secondary shadow-lg mt-4">DISCOVER NOW</button>
+                                    <a href="<?= URLROOT ?>/Home/search">
+                                        <button type="button" class="btn btn-secondary shadow-lg mt-4">DISCOVER NOW</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -126,7 +114,9 @@
                                     <h1 class="mt-3" style="font-size: calc(1em + 1vw);"><span class="fw-light"> Modern
                                         </span><br>
                                         sofa</h1>
-                                    <button type="button" class="btn btn-secondary shadow-lg mt-4">DISCOVER NOW</button>
+                                    <a href="<?= URLROOT ?>/Home/search">
+                                        <button type="button" class="btn btn-secondary shadow-lg mt-4">DISCOVER NOW</button>
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -197,7 +187,7 @@
                                 <span class="me-2">SKU:</span>
                                 <span class="fw-semibold">xxxxxxx</span>
                             </div>
-                            <div class="info-product-des m-0">
+                            <div class="info-product-des m-0 mt-2">
                                 <span class="me-2">In Showroom:</span>
                                 <span class="fw-semibold">2</span>
                             </div>
@@ -206,7 +196,7 @@
                         <div class="info-product-quantity gap-4 d-flex flex-row align-middle">
                             <p class="align-self-center fs-5">Quantity:</p>
                             <div class="d-inline-block product-quantity border border-dark border-2">
-                                <input class="form-control" type="number" value="1" min="0">
+                                <input class="form-control" type="number" style="max-height: 30px; max-width: 90px;" value="1" min="0">
                             </div>
                         </div>
 

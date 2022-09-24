@@ -58,13 +58,12 @@ class ProductModel{
 
     public function getProduct($id)
     {   
-        $allProduct = $this->getProductList();
-        foreach($allProduct as $prod){
-            if ($prod->getId()===$id) {
-                return $prod;
-            }
-        }
-        return null;
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link,"select * from tbl_product where prod_id = '$id'");
+        $data = $result;
+        giaiPhongBoNho($link,$result);
+        return $data;
     }
 
 }

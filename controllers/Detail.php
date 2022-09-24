@@ -11,10 +11,10 @@ class Detail extends Controller
         $this->view('index', []);
     }
 
-    public function allProduct()
+    public function product($prod_id)
     {
-        $this->ProductModel->getProductList();
-        $this->view('details');
+        $prod = $this->ProductModel->getProduct($prod_id);
+        $this->view('details', ['prod' => $prod]);
     }
 
 }

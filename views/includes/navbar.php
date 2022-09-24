@@ -82,3 +82,7 @@
         </div>
     </div>
 </nav>
+
+<?php
+    require_once APPROOT . '/views/includes/searchbox.php';
+?>
