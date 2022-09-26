@@ -1,3 +1,7 @@
+* {
+    transition: .2s linear;
+}
+
 body {
     font-family: 'Roboto';
     font-size: 20px;
@@ -14,13 +18,11 @@ p {
     margin: 0;
 }
 
-.mb-32
-{
+.mb-32 {
     margin-bottom: 32px;
 }
 
-.ml-64
-{
+.ml-64 {
     margin-left: 64px;
 }
 
@@ -277,5 +279,3 @@ p {
 
     }
 }
-
-
