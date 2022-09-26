@@ -24,13 +24,24 @@ class Home extends Controller
         $this->view('search', ['prod' => $prod]);
     }
 
-    public function shopping_cart()
+    public function cart()
     {
-        $this->view('shopping_cart');
+        $this->view('cart', []);
     }
 
     public function login_register()
     {
         $this->view('login_register');
+    }
+
+    public function checkout()
+    {
+        $this->view('checkout', []);
+    }
+
+    public function details($prod_id)
+    {
+        $prod = $this->ProductModel->getProduct($prod_id);
+        $this->view('details', ['prod' => $prod]);
     }
 }

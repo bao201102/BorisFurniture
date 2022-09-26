@@ -28,7 +28,7 @@
                         </a>
                     </li>
                     <li class="cart-icon">
-                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/Home/shopping_cart">
+                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/Home/cart">
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>

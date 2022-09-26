@@ -1,4 +1,3 @@
-<!-- Navbar section -->
 <nav class="navbar navbar-expand-lg fixed-top py-3 border-0 bg-transparent" id="nav-id">
     <div class="container-fluid">
         <a class="navbar-brand ms-5 fs-3" href="<?= URLROOT ?>/Home/index">Hamlin</a>
@@ -29,7 +28,7 @@
                         </a>
                     </li>
                     <li class="cart-icon">
-                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/Home/shopping_cart">
+                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/Home/cart">
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>

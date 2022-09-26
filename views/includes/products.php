@@ -5,7 +5,7 @@ if (!empty($data['prod'])) :
         <!-- product box -->
         <div class="col box">
             <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 34vh;">
-                <a href="<?= URLROOT ?>/Detail/product/<?= $prod_id ?>">
+                <a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>">
                     <img src="<?= IMAGE ?>/Classic-Lamp.jpg" class="card-img-top img-fluid" alt="...">
                 </a>
 

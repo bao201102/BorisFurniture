@@ -128,7 +128,7 @@
                         </table>
 
                         <div class="d-flex flex-column justify-content-center mt-2 mt-xl-5">
-                            <a href="<?= URLROOT ?>/Checkout/show">
+                            <a href="<?= URLROOT ?>/Home/checkout">
                                 <button class="btn btn-primary ">
                                     Proceed to checkout
                                 </button>
