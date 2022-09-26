@@ -5,7 +5,7 @@ require_once APPROOT . '/views/includes/head.php';
 ?>
 
 <body>
-    <div class="container-fluid m-0 p-0">
+    <div class="container-fluid p-0">
         <!-- Header -->
         <?php
         require_once APPROOT . '/views/includes/navbar.php';
@@ -30,95 +30,104 @@ require_once APPROOT . '/views/includes/head.php';
         </section>
 
         <!--Products panel-->
-        <div class="row" style="margin-top: 130px;">
-            <div class="col-xxl-5 col" id="searchmenubar" style="margin-bottom: 100px; padding-left: 50px;">
-                <p style="font-weight: bold; color: black;">Theo giá cả</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio1" value="option2">
-                    <label class="form-check-label" for="optionRadio1">
-                        Dưới 1 triệu
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio2" value="option2">
-                    <label class="form-check-label" for="optionRadio2">
-                        Dưới 5 triệu
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio3" value="option2">
-                    <label class="form-check-label" for="optionRadio3">
-                        Dưới 10 triệu
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio4" value="option2">
-                    <label class="form-check-label" for="optionRadio4">
-                        Dưới 20 triệu
-                    </label>
-                </div>
-                <p style="margin-top: 80px; font-weight: bold; color: black;">Theo sản phẩm</p>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheck1">
-                    <label class="form-check-label" for="flexCheck1">
-                        Bàn
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheck2">
-                    <label class="form-check-label" for="flexCheck2">
-                        Ghế
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheck3">
-                    <label class="form-check-label" for="flexCheck3">
-                        Dụng cụ làm bếp
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheck4">
-                    <label class="form-check-label" for="flexCheck4">
-                        Thiết bị điện
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheck5">
-                    <label class="form-check-label" for="flexCheck5">
-                        Khác
-                    </label>
-                </div>
-            </div>
-            <div class="col-xxl-7 col row text-center">
-                <!-- product box -->
-                <?php require_once APPROOT . '/views/includes/products.php'; ?>
+        <section>
+            <div class="container">
+                <div class="row g-0" style="margin-top: 130px;">
+                    <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
+                        <div class="col-6 col-lg-12 ">
+                            <p class="fw-bold text-black">Theo giá cả</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio1" value="option2">
+                                <label class="form-check-label" for="optionRadio1">
+                                    Dưới 1 triệu
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio2" value="option2">
+                                <label class="form-check-label" for="optionRadio2">
+                                    Dưới 5 triệu
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio3" value="option2">
+                                <label class="form-check-label" for="optionRadio3">
+                                    Dưới 10 triệu
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio4" value="option2">
+                                <label class="form-check-label" for="optionRadio4">
+                                    Dưới 20 triệu
+                                </label>
+                            </div>
+                        </div>
 
-                <ul class="pagination pagination-lg justify-content-center">
-                    <li class="page-item disabled">
-                        <a class="page-link" href="#">«</a>
-                    </li>
-                    <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="./checkout.html">2</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">5</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="#">»</a>
-                    </li>
-                </ul>
+                        <div class="col-6 col-lg-12">
+                            <p class="pt-0 pt-lg-5 fw-bold text-black">Theo sản phẩm</p>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheck1">
+                                <label class="form-check-label" for="flexCheck1">
+                                    Bàn
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheck2">
+                                <label class="form-check-label" for="flexCheck2">
+                                    Ghế
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheck3">
+                                <label class="form-check-label" for="flexCheck3">
+                                    Dụng cụ làm bếp
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheck4">
+                                <label class="form-check-label" for="flexCheck4">
+                                    Thiết bị điện
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheck5">
+                                <label class="form-check-label" for="flexCheck5">
+                                    Khác
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-8 row text-center">
+                        <!-- product box -->
+                        <?php require_once APPROOT . '/views/includes/products.php'; ?>
+
+                        <!-- pagination -->
+                        <ul class="pagination pagination-lg justify-content-center">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#">«</a>
+                            </li>
+                            <li class="page-item active">
+                                <a class="page-link" href="#">1</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="./checkout.html">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">3</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">4</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">5</a>
+                            </li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">»</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div>
-        <br style="clear: both;">
+        </section>
 
         <!-- Footer and client logo section -->
         <?php
@@ -209,31 +218,8 @@ require_once APPROOT . '/views/includes/head.php';
 </body>
 
 <style>
-    .card-img1 {
-        -webkit-transition: all 0.5s ease;
-        -moz-transition: all 0.5s ease;
-        -o-transition: all 0.5s ease;
-        -ms-transition: all 0.5s ease;
-        transition: all 0.5s ease;
-    }
-
-    #searchmenubar {
-        width: 300px;
-        height: 500px;
-        float: left;
-        margin: 0 0 50px 30px;
-    }
-
     .form-check {
         padding-top: 10px;
-    }
-
-    #box-result {
-        background-color: grey;
-        font-size: 30px;
-        padding: 10px 0 10px 10px;
-        margin-top: 120px;
-        color: white
     }
 </style>
 
