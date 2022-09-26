@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th9 21, 2022 lúc 11:49 AM
+-- Thời gian đã tạo: Th9 26, 2022 lúc 05:31 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 8.1.6
 
@@ -146,7 +146,8 @@ CREATE TABLE `tbl_product` (
 --
 
 INSERT INTO `tbl_product` (`prod_id`, `prod_name`, `prod_quantity`, `prod_price`, `category_id`, `prod_description`, `prod_image_id`, `status`) VALUES
-(1, 'Amalfi Lounge Chair', 10, 519, 1, 'Adjustable outdoor lounge chair. \r\nStainless steel frame in Slate finish. \r\nWhite outdoor seat and back cushion. \r\nOther finish options available. ', 'img01', b'0');
+(1, 'Amalfi Lounge Chair', 10, 519, 1, 'Adjustable outdoor lounge chair. \r\nStainless steel frame in Slate finish. \r\nWhite outdoor seat and back cushion. \r\nOther finish options available. ', 'img01', b'0'),
+(2, 'Amalfi Lounge Chair 2', 10, 520, 1, 'Adjustable outdoor lounge chair. \r\nStainless steel frame in Slate finish. \r\nWhite outdoor seat and back cushion. \r\nOther finish options available. ', 'img01', b'1');
 
 -- --------------------------------------------------------
 
@@ -281,7 +282,7 @@ ALTER TABLE `tbl_order`
 -- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `prod_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prod_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_user`
