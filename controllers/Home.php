@@ -4,6 +4,7 @@ class Home extends Controller
     public function __construct()
     {
         $this->ProductModel = $this->model('ProductModel');
+        $this->CategoryModel = $this->model('CategoryModel');
     }
 
     public function index()
@@ -42,6 +43,7 @@ class Home extends Controller
     public function details($prod_id)
     {
         $prod = $this->ProductModel->getProduct($prod_id);
+        // $category = $this->CategoryModel->getCategory($prod[0]->getIdCategory());
         $this->view('details', ['prod' => $prod]);
     }
 }

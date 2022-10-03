@@ -30,9 +30,8 @@ require_once APPROOT . '/views/includes/head.php';
         </section>
 
         <?php
-        if (!empty($data['prod'])) :
+        if (!empty($data['prod']) ) :
             foreach ($data['prod'] as $prod) : extract($prod); ?>
-
                 <!-- Carousel -->
                 <section class="margin-120">
                     <div class="container my-5">
@@ -45,16 +44,16 @@ require_once APPROOT . '/views/includes/head.php';
                                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-inner shadow-sm">
                                             <div class="carousel-item active">
-                                                <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-1.jpg" class="d-block w-100" alt="...">
+                                                <img src="<?= IMAGE ?>/img01-1.jpg" class="d-block w-100" alt="...">
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-2.jpg" class="d-block w-100" alt="...">
+                                                <img src="<?= IMAGE ?>/img01-2.jpg" class="d-block w-100" alt="...">
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-3.jpg" class="d-block w-100" alt="...">
+                                                <img src="<?= IMAGE ?>/img01-3.jpg" class="d-block w-100" alt="...">
                                             </div>
                                             <div class="carousel-item">
-                                                <img src="<?= IMAGE ?>/AMALFI-LOUNGE-CHAIR-4.jpg" class="d-block w-100" alt="...">
+                                                <img src="<?= IMAGE ?>/img01-4.jpg" class="d-block w-100" alt="...">
                                             </div>
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
@@ -74,7 +73,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3><?= $prod_name ?></h3>
                                     <div class="fs-5">
-                                        <p class="me-auto">187,000,000</p>
+                                        <p class="me-auto">$<?= $prod_price ?>.00</p>
                                     </div>
                                 </div>
 
@@ -93,14 +92,14 @@ require_once APPROOT . '/views/includes/head.php';
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">In Showroom:</span>
-                                        <span class="fw-semibold">2</span>
+                                        <span class="fw-semibold"><?= $prod_quantity ?></span>
                                     </div>
                                 </div>
 
                                 <div class="info-product-quantity gap-5 d-flex flex-row align-middle">
                                     <p class="align-self-center">Quantity:</p>
                                     <div class="d-inline-block product-quantity border border-dark border-2">
-                                        <input class="form-control" type="number" value="1" min="0">
+                                        <input class="form-control" type="number" value="1" min="0" max=<?= $prod_quantity ?>>
                                     </div>
                                 </div>
 
@@ -111,7 +110,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                                 <div class="info-product-tags d-flex fs-5">
                                     <span class="me-2">Tags:</span>
-                                    <p>chair</p>
+                                    <p><?= $category_name?></p>
                                 </div>
                             </div>
                         </div>
@@ -152,7 +151,8 @@ require_once APPROOT . '/views/includes/head.php';
                     </div>
                 </section>
 
-        <?php endforeach; endif; ?>
+        <?php endforeach;
+        endif; ?>
 
         <!-- Related product -->
         <section class="margin-120 border border-1 border-bottom-0">
