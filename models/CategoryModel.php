@@ -1,8 +1,8 @@
 <?php
 class CategoryModel
 {
-    var $prod_id;
-    var $prod_name;
+    var $category_id;
+    var $category_name;
 
     public function getId()
     {
@@ -33,7 +33,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_category where category_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "select category_name from tbl_category where category_id = '$id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

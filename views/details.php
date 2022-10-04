@@ -30,8 +30,9 @@ require_once APPROOT . '/views/includes/head.php';
         </section>
 
         <?php
-        if (!empty($data['prod']) ) :
+        if (!empty($data['prod'])) :
             foreach ($data['prod'] as $prod) : extract($prod); ?>
+            
                 <!-- Carousel -->
                 <section class="margin-120">
                     <div class="container my-5">
@@ -107,11 +108,17 @@ require_once APPROOT . '/views/includes/head.php';
                                     <button type="button" class="btn btn-primary">Buy now</button>
                                     <button type="button" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
+                                <?php
+                                if (!empty($data['cate'])) :
+                                    foreach ($data['cate'] as $cate) : extract($cate); ?>
 
-                                <div class="info-product-tags d-flex fs-5">
-                                    <span class="me-2">Tags:</span>
-                                    <p><?= $category_name?></p>
-                                </div>
+                                        <div class="info-product-tags d-flex fs-5">
+                                            <span class="me-2">Tags:</span>
+                                            <p><?= $category_name ?></p>
+                                        </div>
+
+                                <?php endforeach;
+                                endif; ?>
                             </div>
                         </div>
                     </div>

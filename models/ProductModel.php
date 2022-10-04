@@ -69,8 +69,18 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_product PD JOIN tbl_category CT where prod_id = '$id' and PD.category_id = CT.category_id ");
+        $result = chayTruyVanTraVeDL($link, "select * from tbl_product where prod_id = '$id'");
         $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function getCategoryId($id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "select category_id from tbl_product where prod_id = '$id'");
+        $data = $result[0]['category_id'];
         giaiPhongBoNho($link, $result);
         return $data;
     }
