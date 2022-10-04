@@ -22,18 +22,18 @@ require_once APPROOT . '/views/includes/head.php';
                             <label class="mb-4 align-middle" style="font-size: 18px;" for="emailInput">Email
                                 address</label>
                             <span class="float-end align-middle" style="font-size: 15px;">Need an account? <a class="fw-bold" id="signup-btn">Sign up</a></span>
-                            <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="name@example.com" required>
+                            <input type="email" class="form-control" name="emailInput" placeholder="name@example.com" required>
                         </div>
                         <div class="mb-5">
                             <label class="mb-4" style="font-size: 18px;" for="passwordInput">Password</label>
-                            <input type="password" class="form-control" id="passwordInput" name="passwordInput" placeholder="Password" required>
+                            <input type="password" class="form-control" name="passwordInput" placeholder="Password" required>
                         </div>
                     </div>
                     <button name="submit" type="submit" class="btn btn-primary w-100 mb-4">Login</button>
                     <a class="fs-5 fw-bold" href="">Forgot your password?</a>
                 </form>
 
-                <div class="d-none" id="signup-box">
+                <form class="d-none" id="signup-box">
                     <legend class="mb-5 fw-bold">Sign up</legend>
                     <div class="form-group">
                         <div class="mb-5">
@@ -73,7 +73,7 @@ require_once APPROOT . '/views/includes/head.php';
                             to our Terms of Service and Privacy Policy
                         </label>
                     </div>
-                </div>
+                </form>
             </fieldset>
         </div>
 
