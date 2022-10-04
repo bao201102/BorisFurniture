@@ -71,7 +71,7 @@
                         </div>
                     </li>
                     <li>
-                        <a class="nav-link" href="<?= URLROOT ?>/Home/login_register">
+                        <a class="nav-link" href="<?= URLROOT ?>/LoginRegister/index">
                             <span class="material-symbols-outlined">
                                 account_circle
                             </span>

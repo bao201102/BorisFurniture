@@ -30,11 +30,6 @@ class Home extends Controller
         $this->view('cart', []);
     }
 
-    public function login_register()
-    {
-        $this->view('login_register');
-    }
-
     public function checkout()
     {
         $this->view('checkout', []);
