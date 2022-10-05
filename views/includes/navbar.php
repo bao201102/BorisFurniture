@@ -70,13 +70,34 @@
                             </div>
                         </div>
                     </li>
-                    <li>
-                        <a class="nav-link" href="<?= URLROOT ?>/User/index">
-                            <span class="material-symbols-outlined">
-                                account_circle
-                            </span>
-                        </a>
-                    </li>
+
+                    <!-- login -->
+                    <?php if (!empty($_SESSION['user_id'])) : ?>
+
+                        <li class="dropdown">
+                            <a class="nav-link" data-bs-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-center pt-2" data-popper-placement="bottom-start" style="height: 95px; width: 150px;">
+                                <a class="dropdown-item" type="button" href="<?= URLROOT ?>/User/profile">Profile</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" type="button" href="<?= URLROOT ?>/User/logout">Log out</a>
+                            </div>
+                        </li>
+
+                    <?php else : ?>
+
+                        <li>
+                            <a class="nav-link" href="<?= URLROOT ?>/User/index">
+                                <span class="material-symbols-outlined">
+                                    account_circle
+                                </span>
+                            </a>
+                        </li>
+
+                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -84,5 +105,5 @@
 </nav>
 
 <?php
-    require_once APPROOT . '/views/includes/searchbox.php';
+require_once APPROOT . '/views/includes/searchbox.php';
 ?>

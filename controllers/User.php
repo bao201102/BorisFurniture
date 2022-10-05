@@ -22,6 +22,12 @@ class User extends Controller
         $this->view('profile', ['cus' => $cus]);
     }
 
+    public function logout()
+    {
+        session_destroy();
+        header('location:' . URLROOT . '/Home/index');
+    }
+
     public function login()
     {
         if (!empty($_SESSION['user_id'])) {

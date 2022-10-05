@@ -70,7 +70,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <div id="inf-pro" class="col-12 col-lg-5 info-product">
+                            <form id="inf-pro" action="" method="POST" class="col-12 col-lg-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3><?= $prod_name ?></h3>
                                     <div class="fs-5">
@@ -81,7 +81,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="mt-2 mt-lg-3 mt-xl-4">
                                     <div class="info-product-des">
                                         <span class="me-2">SKU:</span>
-                                        <span class="fw-semibold">N/A</span>
+                                        <fieldset class="fw-semibold" name="prod_id"><?= $prod_id ?></fieldset>
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">Availability:</span>
@@ -106,7 +106,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
                                     <button type="button" class="btn btn-primary">Buy now</button>
-                                    <button type="button" class="btn btn-outline-primary">Add to cart</button>
+                                    <button type="submit" name="submit" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
                                 <?php
                                 if (!empty($data['cate'])) :
@@ -119,7 +119,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                                 <?php endforeach;
                                 endif; ?>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </section>
