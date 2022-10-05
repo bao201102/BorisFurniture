@@ -5,6 +5,7 @@ class Home extends Controller
     {
         $this->ProductModel = $this->model('ProductModel');
         $this->CategoryModel = $this->model('CategoryModel');
+        $this->ImageModel = $this->model('ImageModel');
     }
 
     public function index()
@@ -39,6 +40,7 @@ class Home extends Controller
     {
         $prod = $this->ProductModel->getProduct($prod_id);
         $category = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($prod_id));
-        $this->view('details', ['prod' => $prod, 'cate' => $category]);
+        $image = $this->ImageModel->getImage($this->ProductModel->getImageId($prod_id));
+        $this->view('details', ['prod' => $prod, 'cate' => $category, 'img' => $image]);
     }
 }

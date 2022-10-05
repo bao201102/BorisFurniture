@@ -32,7 +32,7 @@ require_once APPROOT . '/views/includes/head.php';
         <?php
         if (!empty($data['prod'])) :
             foreach ($data['prod'] as $prod) : extract($prod); ?>
-            
+
                 <!-- Carousel -->
                 <section class="margin-120">
                     <div class="container my-5">
@@ -44,18 +44,14 @@ require_once APPROOT . '/views/includes/head.php';
                                     <!-- slide picture -->
                                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-inner shadow-sm">
-                                            <div class="carousel-item active">
-                                                <img src="<?= IMAGE ?>/img01-1.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="<?= IMAGE ?>/img01-2.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="<?= IMAGE ?>/img01-3.jpg" class="d-block w-100" alt="...">
-                                            </div>
-                                            <div class="carousel-item">
-                                                <img src="<?= IMAGE ?>/img01-4.jpg" class="d-block w-100" alt="...">
-                                            </div>
+                                            <?php
+                                            if (!empty($data['img'])) :
+                                                foreach ($data['img'] as $image) : extract($image); ?>
+                                                    <div class="carousel-item">
+                                                        <img src="<?= IMAGE ?><?= $img_link?>" class="d-block w-100" alt="...">
+                                                    </div>
+                                            <?php endforeach;
+                                            endif; ?>
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                             <span class="material-symbols-outlined">arrow_back_ios_new</span>
@@ -139,15 +135,13 @@ require_once APPROOT . '/views/includes/head.php';
 
                     <div class="container tab-content fw-lighter" style="text-align: justify;">
                         <div class="tab-pane fade active show" id="description" role="tabpanel">
-                            <p><?= $prod_description?></p>
+                            <p><?= $prod_description ?></p>
                         </div>
                         <div class="tab-pane fade" id="transport" role="tabpanel">
-                            <h3>GIAO HÀNG TẬN NƠI</h3>
-                            <p>Cung cấp dịch vụ giao hàng tận nơi, lắp ráp và sắp xếp vị trí theo đúng ý muốn của quý
-                                khách:</p>
-                            <p>- MIỄN PHÍ giao hàng trong các Quận nội thành Tp.Hồ Chí Minh, áp dụng cho các đơn hàng trị
-                                giá trên 10 triệu.</p>
-                            <p>- Đối với khu vực các tỉnh lân cận: Tính phí hợp lý theo dựa trên quãng đường vận chuyển.</p>
+                            <h3>DELIVERY</h3>
+                            <p>Provide door-to-door delivery, assembly and placement services according to your wishes:</p>
+                            <p>- FREE delivery within the inner districts of Ho Chi Minh City, applicable for orders worth over 10 million.</p>
+                            <p>- For the area of neighboring provinces: Charge a reasonable fee based on the transportation distance.</p>
                         </div>
                     </div>
                 </section>

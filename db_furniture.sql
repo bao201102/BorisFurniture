@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 05, 2022 at 10:25 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Máy chủ: 127.0.0.1
+-- Thời gian đã tạo: Th10 05, 2022 lúc 04:37 PM
+-- Phiên bản máy phục vụ: 10.4.24-MariaDB
+-- Phiên bản PHP: 8.1.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `db_furniture`
+-- Cơ sở dữ liệu: `db_furniture`
 --
 CREATE DATABASE IF NOT EXISTS `db_furniture` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 USE `db_furniture`;
@@ -26,7 +26,7 @@ USE `db_furniture`;
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_category`
+-- Cấu trúc bảng cho bảng `tbl_category`
 --
 
 CREATE TABLE `tbl_category` (
@@ -35,7 +35,7 @@ CREATE TABLE `tbl_category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_category`
+-- Đang đổ dữ liệu cho bảng `tbl_category`
 --
 
 INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `tbl_category` (`category_id`, `category_name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_customer`
+-- Cấu trúc bảng cho bảng `tbl_customer`
 --
 
 CREATE TABLE `tbl_customer` (
@@ -58,7 +58,7 @@ CREATE TABLE `tbl_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_customer`
+-- Đang đổ dữ liệu cho bảng `tbl_customer`
 --
 
 INSERT INTO `tbl_customer` (`cus_id`, `user_id`, `firstname`, `lastname`, `birthday`, `phone`, `status`) VALUES
@@ -67,7 +67,7 @@ INSERT INTO `tbl_customer` (`cus_id`, `user_id`, `firstname`, `lastname`, `birth
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_employee`
+-- Cấu trúc bảng cho bảng `tbl_employee`
 --
 
 CREATE TABLE `tbl_employee` (
@@ -83,7 +83,7 @@ CREATE TABLE `tbl_employee` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_image`
+-- Cấu trúc bảng cho bảng `tbl_image`
 --
 
 CREATE TABLE `tbl_image` (
@@ -93,16 +93,19 @@ CREATE TABLE `tbl_image` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_image`
+-- Đang đổ dữ liệu cho bảng `tbl_image`
 --
 
 INSERT INTO `tbl_image` (`img_id`, `prod_image_id`, `img_link`) VALUES
-(1, 'img01', 'https://cdn11.bigcommerce.com/s-ntuushs0ci/images/stencil/500x659/products/15137/67259/DSC04693__21769.1658860193.jpg?c=2');
+(1, 'img01', 'img01-1.jpg'),
+(2, 'img01', 'img01-2.jpg'),
+(3, 'img01', 'img01-3.jpg'),
+(4, 'img01', 'img01-4.jpg');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_order`
+-- Cấu trúc bảng cho bảng `tbl_order`
 --
 
 CREATE TABLE `tbl_order` (
@@ -121,7 +124,7 @@ CREATE TABLE `tbl_order` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_order_detail`
+-- Cấu trúc bảng cho bảng `tbl_order_detail`
 --
 
 CREATE TABLE `tbl_order_detail` (
@@ -134,7 +137,7 @@ CREATE TABLE `tbl_order_detail` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_product`
+-- Cấu trúc bảng cho bảng `tbl_product`
 --
 
 CREATE TABLE `tbl_product` (
@@ -149,16 +152,17 @@ CREATE TABLE `tbl_product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_product`
+-- Đang đổ dữ liệu cho bảng `tbl_product`
 --
 
 INSERT INTO `tbl_product` (`prod_id`, `prod_name`, `prod_quantity`, `prod_price`, `category_id`, `prod_description`, `prod_image_id`, `status`) VALUES
-(1, 'Amalfi Lounge Chair', 10, 519, 1, 'Adjustable outdoor lounge chair. \r\nStainless steel frame in Slate finish. \r\nWhite outdoor seat and back cushion. \r\nOther finish options available. ', 'img01', b'0');
+(1, 'Amalfi Lounge Chair', 10, 519, 1, 'Adjustable outdoor lounge chair. \r\nStainless steel frame in Slate finish. \r\nWhite outdoor seat and back cushion. \r\nOther finish options available. ', 'img01', b'1'),
+(2, 'Amalfi Lounge Chair 2', 15, 423, 1, 'Adjustable outdoor lounge chair. \r\nStainless steel frame in Slate finish. \r\nWhite outdoor seat and back cushion. \r\nOther finish options available. ', 'img01', b'1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
+-- Cấu trúc bảng cho bảng `tbl_user`
 --
 
 CREATE TABLE `tbl_user` (
@@ -171,7 +175,7 @@ CREATE TABLE `tbl_user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tbl_user`
+-- Đang đổ dữ liệu cho bảng `tbl_user`
 --
 
 INSERT INTO `tbl_user` (`user_id`, `email`, `user_password`, `created_date`, `user_type`, `status`) VALUES
@@ -180,7 +184,7 @@ INSERT INTO `tbl_user` (`user_id`, `email`, `user_password`, `created_date`, `us
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user_type`
+-- Cấu trúc bảng cho bảng `tbl_user_type`
 --
 
 CREATE TABLE `tbl_user_type` (
@@ -189,109 +193,109 @@ CREATE TABLE `tbl_user_type` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Indexes for dumped tables
+-- Chỉ mục cho các bảng đã đổ
 --
 
 --
--- Indexes for table `tbl_category`
+-- Chỉ mục cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`category_id`);
 
 --
--- Indexes for table `tbl_customer`
+-- Chỉ mục cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
   ADD PRIMARY KEY (`cus_id`),
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `tbl_employee`
+-- Chỉ mục cho bảng `tbl_employee`
 --
 ALTER TABLE `tbl_employee`
   ADD PRIMARY KEY (`emp_id`),
   ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
--- Indexes for table `tbl_image`
+-- Chỉ mục cho bảng `tbl_image`
 --
 ALTER TABLE `tbl_image`
   ADD PRIMARY KEY (`img_id`,`prod_image_id`);
 
 --
--- Indexes for table `tbl_order`
+-- Chỉ mục cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
   ADD PRIMARY KEY (`order_id`);
 
 --
--- Indexes for table `tbl_order_detail`
+-- Chỉ mục cho bảng `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
   ADD PRIMARY KEY (`order_id`,`prod_id`);
 
 --
--- Indexes for table `tbl_product`
+-- Chỉ mục cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
   ADD PRIMARY KEY (`prod_id`),
   ADD UNIQUE KEY `prod_name` (`prod_name`);
 
 --
--- Indexes for table `tbl_user`
+-- Chỉ mục cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`user_id`),
   ADD UNIQUE KEY `email` (`email`);
 
 --
--- Indexes for table `tbl_user_type`
+-- Chỉ mục cho bảng `tbl_user_type`
 --
 ALTER TABLE `tbl_user_type`
   ADD PRIMARY KEY (`user_type`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT cho các bảng đã đổ
 --
 
 --
--- AUTO_INCREMENT for table `tbl_category`
+-- AUTO_INCREMENT cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
   MODIFY `category_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_customer`
+-- AUTO_INCREMENT cho bảng `tbl_customer`
 --
 ALTER TABLE `tbl_customer`
   MODIFY `cus_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `tbl_employee`
+-- AUTO_INCREMENT cho bảng `tbl_employee`
 --
 ALTER TABLE `tbl_employee`
   MODIFY `emp_id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_image`
+-- AUTO_INCREMENT cho bảng `tbl_image`
 --
 ALTER TABLE `tbl_image`
-  MODIFY `img_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `img_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `tbl_order`
+-- AUTO_INCREMENT cho bảng `tbl_order`
 --
 ALTER TABLE `tbl_order`
   MODIFY `order_id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `tbl_product`
+-- AUTO_INCREMENT cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `prod_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `prod_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `tbl_user`
+-- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
   MODIFY `user_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;

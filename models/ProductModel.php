@@ -84,4 +84,14 @@ class ProductModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
+    public function getImageId($id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "select prod_image_id from tbl_product where prod_id = '$id'");
+        $data = $result[0]['prod_image_id'];
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
 }
