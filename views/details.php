@@ -139,13 +139,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                     <div class="container tab-content fw-lighter" style="text-align: justify;">
                         <div class="tab-pane fade active show" id="description" role="tabpanel">
-                            <p>Bàn ăn mở rộng Orbital được nhập khẩu từ thương hiệu nổi tiếng Calligaris của Ý, với thiết kế
-                                thông
-                                minh tiết kiệm không gian, bàn có thể xoay tròn mở rộng hoặc khép gọn khi cần thiết chỉ bằng 1
-                                động
-                                tác đơn giản. Sang trọng, tinh tế nhưng vẫn đáp ứng được đầy đủ tiện ích công năng, Orbital là
-                                một
-                                lựa chọn hoàn hảo cho không gian phòng ăn sang trọng</p>
+                            <p><?= $prod_description?></p>
                         </div>
                         <div class="tab-pane fade" id="transport" role="tabpanel">
                             <h3>GIAO HÀNG TẬN NƠI</h3>
