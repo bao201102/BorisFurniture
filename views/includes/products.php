@@ -6,15 +6,15 @@ if (!empty($data['prod'])) :
         <div class="col box">
             <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 34vh;">
                 <a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>">
-                    <img src="<?= IMAGE ?>/img01-1.jpg" class="card-img-top img-fluid" alt="...">
+                    <!-- <img src="<?= IMAGE ?>/img01-1.jpg" class="card-img-top img-fluid" alt="..."> -->
 
-                    <!-- <?php if (!empty($data['img'])) :
+                    <?php if (!empty($data['img'])) :
                                 foreach ($data['img'] as $image) : extract($image); ?>
 
                             <img src="<?= IMAGE ?>/<?= $img_link ?>" class="card-img-top img-fluid" alt="...">
 
                     <?php endforeach;
-                            endif; ?> -->
+                            endif; ?>
 
                 </a>
 
