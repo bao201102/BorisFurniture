@@ -78,7 +78,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart" method="POST" class="col-12 col-lg-5 info-product">
+                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST" class="col-12 col-lg-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3><fieldset name="prod_name"><?= $prod_name ?></fieldset></h3>
                                     <div class="fs-5">
