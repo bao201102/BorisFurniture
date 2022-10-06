@@ -82,7 +82,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3><?= $prod_name ?></h3>
                                     <div class="fs-5">
-                                        <p class="me-auto">$<?= $prod_price ?>.00</p>
+                                        <p class="me-auto">$<?= number_format($prod_price, 2, '.', ',') ?></p>
                                     </div>
                                 </div>
 
@@ -93,11 +93,23 @@ require_once APPROOT . '/views/includes/head.php';
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">Availability:</span>
-                                        <span class="fw-semibold">Ready for pickup or shipping</span>
+
+                                        <?php if ($prod_quantity == 0) : ?>
+                                            <span class="fw-semibold">Not available now</span>
+                                        <?php else : ?>
+                                            <span class="fw-semibold">Ready for pickup or shipping</span>
+                                        <?php endif ?>
+
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">Stock Status:</span>
-                                        <span class="fw-semibold">In Stock</span>
+
+                                        <?php if ($prod_quantity == 0) : ?>
+                                            <span class="fw-semibold">Out Stock</span>
+                                        <?php else : ?>
+                                            <span class="fw-semibold">In Stock</span>
+                                        <?php endif ?>
+                                        
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">In Showroom:</span>
@@ -113,8 +125,8 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
 
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button type="button" class="btn btn-primary">Buy now</button>
-                                    <button type="submit" name="submit" class="btn btn-outline-primary">Add to cart</button>
+                                    <a type="button" class="btn btn-primary" href="<?= URLROOT ?>/Home/checkout">Buy now</a>
+                                    <a type="submit" name="submit" class="btn btn-outline-primary">Add to cart</a>
                                 </div>
                                 <?php
                                 if (!empty($data['cate'])) :

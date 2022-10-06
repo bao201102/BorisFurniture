@@ -178,7 +178,7 @@
 
     #order-details {
         background-color: #f7f7f7;
-        padding: 0 45px 45px;
+        padding: 45px 45px;
     }
 </style>
 
