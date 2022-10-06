@@ -15,4 +15,18 @@ class CustomerModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
+    public function addCustomer($user_id, $firstname, $lastname, $birthday, $phone)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_customer (user_id,firstname,lastname,birthday,phone,status) VALUES ('$user_id','$firstname','$lastname', '$birthday', '$phone', '1')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

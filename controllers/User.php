@@ -7,12 +7,12 @@ class User extends Controller
         $this->CustomerModel = $this->model('CustomerModel');
     }
 
-    public function index()
+    public function index($msg = [])
     {
         if (!empty($_SESSION['user_id'])) {
             header('location:' . URLROOT . '/User/profile');
         } else {
-            $this->view('login_register');
+            $this->view('login_register', ['msg' => $msg]);
         }
     }
 
@@ -30,15 +30,43 @@ class User extends Controller
 
     public function login()
     {
-        if (!empty($_SESSION['user_id'])) {
+        if (!empty($_SESSION['signin'])) {
             header('location:' . URLROOT . '/User/profile');
         } else {
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['signin'])) {
                 $user = $this->UserModel->getUser($_POST['emailInput'], md5($_POST['passwordInput']));
                 if (!empty($user)) {
                     $_SESSION['user_id'] = $user[0]['user_id'];
                     $_SESSION['user_type'] = $user[0]['user_type'];
                     header('location:' . URLROOT . '/Home/index');
+                }
+            }
+        }
+    }
+
+    public function register()
+    {
+        if (isset($_POST['signup'])) {
+            //Check if email exist
+            $user = $this->UserModel->getUserList();
+            foreach ($user as $value) {
+                if ($value['email'] == $_POST['emailInput']) {
+                    header('location:' . URLROOT . '/User/index/emailexist');
+                    break;
+                }
+            }
+
+            //Check if password is correct
+            if ($_POST['passwordInput1'] != $_POST['passwordInput2']) {
+                header('location:' . URLROOT . '/User/index/wrongpass');
+            }
+
+            $userResult = $this->UserModel->addUser($_POST['emailInput'], md5($_POST['passwordInput1']));
+            if ($userResult) {
+                $user_id = $this->UserModel->getUserId($_POST['emailInput']);
+                $customerResult = $this->CustomerModel->addCustomer($user_id, $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['firstNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                if ($customerResult) {
+                    header('location:' . URLROOT . '/User/index/success');
                 }
             }
         }

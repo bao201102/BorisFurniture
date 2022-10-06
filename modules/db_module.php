@@ -35,11 +35,6 @@ function chayTruyVanKhongTraVeDL($link, $q)
     $result = mysqli_query($link, $q);
     
     if ($result) {
-        try {
-            mysqli_free_result($result);
-        } catch (\Throwable $th) {
-            echo $th;
-        }
         return true;
     } else {
         return false;

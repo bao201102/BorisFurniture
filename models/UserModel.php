@@ -54,6 +54,16 @@ class UserModel
         return $data;
     }
 
+    public function getUserId($email)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "select user_id from tbl_user where email = '$email' and status = '1'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
     public function getUser($email, $password)
     {
         $link = null;
@@ -62,5 +72,20 @@ class UserModel
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
+    }
+
+    public function addUser($email, $password)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $date = date('Y-m-d');
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_user (email, user_password, created_date, user_type, status) VALUES ('$email','$password','$date', '1', '1')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

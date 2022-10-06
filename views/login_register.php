@@ -15,6 +15,44 @@ require_once APPROOT . '/views/includes/head.php';
         <!-- Signin section -->
         <div>
             <fieldset class="border mx-auto bg-white" style="padding: 45px; margin-top: 100px; min-width: 300px;  max-width: 550px;">
+                <!-- Message section -->
+                <?php if (isset($data['msg'])) : ?>
+
+                    <?php switch ($data['msg']):
+                        case 'success': ?>
+
+                            <div class="alert alert-dismissible alert-success mb-5" style="font-size: 14px;">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                Bạn đã tạo tài khoản thành công!
+                            </div>
+
+                            <?php break; ?>
+
+                        <?php
+
+                        case 'emailexist': ?>
+
+                            <div class="alert alert-dismissible alert-danger mb-5" style="font-size: 14px;">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                Email đã tồn tại vui lòng đăng ký email khác!
+                            </div>
+
+                            <?php break; ?>
+
+                        <?php
+
+                        case 'wrongpass': ?>
+
+                            <div class="alert alert-dismissible alert-danger mb-5" style="font-size: 14px;">
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                                Password không trùng khớp vui lòng đăng ký lại!
+                            </div>
+
+                            <?php break; ?>
+
+                    <?php endswitch; ?>
+                <?php endif; ?>
+
                 <form class="" id="login-box" action="<?= URLROOT ?>/User/login" method="POST">
                     <legend class="mb-5 fw-bold">Login</legend>
                     <div class="form-group" style="font-size: 16px;">
@@ -28,47 +66,47 @@ require_once APPROOT . '/views/includes/head.php';
                             <input type="password" class="form-control" name="passwordInput" placeholder="Password" required>
                         </div>
                     </div>
-                    <button name="submit" type="submit" class="btn btn-primary w-100 mb-4">Login</button>
-                    <a class="fs-5 fw-bold" href="">Forgot your password?</a>
+                    <button name="signin" type="submit" class="btn btn-primary w-100 mb-4">Login</button>
+                    <a class="fs-5 fw-bold">Forgot your password?</a>
                 </form>
 
-                <form class="d-none" id="signup-box">
+                <form class="d-none" id="signup-box" action="<?= URLROOT ?>/User/register" method="POST">
                     <legend class="mb-5 fw-bold">Sign up</legend>
                     <div class="form-group" style="font-size: 16px;">
                         <div class="mb-5">
                             <label class="form-label">Email
                                 address</label>
                             <span class="float-end align-middle" style="font-size: 15px;">Already have an account? <a class="fw-bold" id="login-btn">Log in</a></span>
-                            <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required>
+                            <input type="email" class="form-control" name="emailInput" placeholder="name@example.com" required>
                         </div>
                         <div class="mb-5">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" id="passwordInput1" placeholder="Password" required>
+                            <input type="password" class="form-control" name="passwordInput1" placeholder="Password" required>
                         </div>
                         <div class="mb-5">
                             <label class="form-label">Confirm Password</label>
-                            <input type="password" class="form-control" id="passwordInput2" placeholder="Password" required>
+                            <input type="password" class="form-control" name="passwordInput2" placeholder="Password" required>
                         </div>
                         <div class="row mb-5">
                             <div class="col">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="firstNameInput" placeholder="First Name" required>
+                                <input type="text" class="form-control" name="firstNameInput" placeholder="First Name" required>
                             </div>
                             <div class="col">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="lastNameInput" placeholder="Last Name" required>
+                                <input type="text" class="form-control" name="lastNameInput" placeholder="Last Name" required>
                             </div>
                         </div>
                         <div class="mb-5">
                             <label class="form-label">Birthday</label>
-                            <input type="date" class="form-control" id="birthdayInput" required>
+                            <input type="date" class="form-control" name="birthdayInput" required>
                         </div>
                         <div class="mb-5">
                             <label class="form-label">Phone Number</label>
-                            <input type="number" class="form-control" id="phoneInput" placeholder="Phone Number" required>
+                            <input type="number" class="form-control" name="phoneInput" placeholder="Phone Number" required>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary w-100 mb-4">Sign up</button>
+                    <button name="signup" type="hidden" class="btn btn-primary w-100 mb-4">Sign up</button>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
                         <label class="form-check-label fs-6">
