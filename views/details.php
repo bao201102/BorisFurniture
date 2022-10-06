@@ -51,7 +51,7 @@ require_once APPROOT . '/views/includes/head.php';
                                                     <?php if ($image['img_link'][6] == '1') : ?>
 
                                                         <div class="carousel-item active">
-                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block w-100" alt="...">
+                                                            <fieldset><img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block w-100" alt="..."></fieldset>
                                                         </div>
 
                                                     <?php else : ?>
@@ -78,11 +78,11 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <form id="inf-pro" action="" method="POST" class="col-12 col-lg-5 info-product">
+                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart" method="POST" class="col-12 col-lg-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
-                                    <h3><?= $prod_name ?></h3>
+                                    <h3><fieldset name="prod_name"><?= $prod_name ?></fieldset></h3>
                                     <div class="fs-5">
-                                        <p class="me-auto">$<?= $prod_price ?>.00</p>
+                                        <p class="me-auto"><fieldset name="prod_price">$<?= number_format($prod_price, 2, '.', ',') ?></fieldset></p>
                                     </div>
                                 </div>
 
@@ -93,11 +93,23 @@ require_once APPROOT . '/views/includes/head.php';
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">Availability:</span>
-                                        <span class="fw-semibold">Ready for pickup or shipping</span>
+
+                                        <?php if ($prod_quantity == 0) : ?>
+                                            <span class="fw-semibold">Not available now</span>
+                                        <?php else : ?>
+                                            <span class="fw-semibold">Ready for pickup or shipping</span>
+                                        <?php endif ?>
+
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">Stock Status:</span>
-                                        <span class="fw-semibold">In Stock</span>
+
+                                        <?php if ($prod_quantity == 0) : ?>
+                                            <span class="fw-semibold">Out Stock</span>
+                                        <?php else : ?>
+                                            <span class="fw-semibold">In Stock</span>
+                                        <?php endif ?>
+                                        
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">In Showroom:</span>
@@ -108,13 +120,13 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="info-product-quantity gap-5 d-flex flex-row align-middle">
                                     <p class="align-self-center">Quantity:</p>
                                     <div class="d-inline-block product-quantity border border-dark border-2">
-                                        <input class="form-control" type="number" value="1" min="0" max=<?= $prod_quantity ?>>
+                                        <input class="form-control" name="prod_quantity" type="number" value="1" min="0" max=<?= $prod_quantity ?>>
                                     </div>
                                 </div>
 
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button type="button" class="btn btn-primary">Buy now</button>
-                                    <button type="submit" name="submit" class="btn btn-outline-primary">Add to cart</button>
+                                    <button type="button" class="btn btn-primary" href="<?= URLROOT ?>/Home/checkout">Buy now</button>                                   
+                                    <button type="submit" name="addToCart" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
                                 <?php
                                 if (!empty($data['cate'])) :

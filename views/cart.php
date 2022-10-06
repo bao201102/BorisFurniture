@@ -1,7 +1,7 @@
 <html lang="en">
 
 <?php
-    require_once APPROOT . '/views/includes/head.php';
+require_once APPROOT . '/views/includes/head.php';
 ?>
 <link rel="stylesheet" href="<?= CSSFILE ?>/shopping_cart.css">
 
@@ -9,7 +9,7 @@
     <div class="container-fluid p-0">
         <!-- Header -->
         <?php
-            require_once APPROOT . '/views/includes/navbar.php';
+        require_once APPROOT . '/views/includes/navbar.php';
         ?>
 
         <!-- title -->
@@ -20,8 +20,7 @@
                         <p class="text-center text-lg-start text-black fs-5">Shopping cart</p>
                     </div>
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
-                        <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter"
-                            style="font-size: 14px;">
+                        <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item"><a href="#">Shop</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Shopping cart</li>
@@ -47,32 +46,27 @@
                                 </tr>
                             </thead>
                             <tbody class="table-group-divider">
-                                <tr>
-                                    <td scope="row"><img src="<?= IMAGE ?>/Classic-Lamp.jpg" alt="" class="product-thumbnail">
-                                    </td>
-                                    <td><a href="./details.html">Classic-Lamp</a></td>
-                                    <td>37,000<span>₫</span></td>
-                                    <td class="product-quantity">
-                                        <input class="form-control border border-1" type="number" value="1" min="0">
-                                    </td>
-                                    <td>37,000<span>₫</span></td>
-                                    <td><span class="material-symbols-outlined cart-delete">
-                                            close
-                                        </span></td>
-                                </tr>
-                                <tr>
-                                    <td scope="row"><img src="<?= IMAGE ?>/Classic-Lamp.jpg" alt="" class="product-thumbnail">
-                                    </td>
-                                    <td><a href="./details.html">Classic-Lamp</a></td>
-                                    <td>37,000<span>₫</span></td>
-                                    <td class="product-quantity">
-                                        <input class="form-control border border-1" type="number" value="1" min="0">
-                                    </td>
-                                    <td>37,000<span>₫</span></td>
-                                    <td><span class="material-symbols-outlined cart-delete">
-                                            close
-                                        </span></td>
-                                </tr>
+                                <?php if (isset($_SESSION['cart'])) :
+                                    foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
+
+                                        <tr>
+                                            <td scope="row"><img src="<?= $prod_img ?>" alt="" class="product-thumbnail">
+                                            </td>
+                                            <td><a href=""><?= $prod_name ?></a></td>
+                                            <td>$<?= $prod_price ?>.00</td>
+                                            <td class="product-quantity">
+                                                <input class="form-control border border-1" type="number" value="<?= $prod_quantity ?>" min="0">
+                                            </td>
+                                            <td>$<?= $prod_price * $prod_quantity ?>.00</td>
+                                            <td>
+                                                <span class="material-symbols-outlined cart-delete">
+                                                    close
+                                                </span>
+                                            </td>
+                                        </tr>
+
+                                <?php endforeach;
+                                endif; ?>
                             </tbody>
                         </table>
                     </div>
@@ -102,8 +96,7 @@
                                     <td class="pe-0">
                                         <div class="float-end float-xl-start">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="shipping" id="free"
-                                                    checked>
+                                                <input class="form-check-input" type="radio" name="shipping" id="free" checked>
                                                 <label class="form-check-label" for="free">Free shipping</label>
                                             </div>
                                             <div class="form-check my-2">
@@ -128,10 +121,8 @@
                         </table>
 
                         <div class="d-flex flex-column justify-content-center mt-2 mt-xl-5">
-                            <a href="<?= URLROOT ?>/Home/checkout">
-                                <button class="btn btn-primary ">
-                                    Proceed to checkout
-                                </button>
+                            <a href="<?= URLROOT ?>/Home/checkout" class="btn btn-primary">
+                                Proceed to checkout
                             </a>
                         </div>
                     </div>
@@ -141,14 +132,13 @@
 
         <!-- Footer and client logo section -->
         <?php
-            require_once APPROOT . '/views/includes/footer.php';
+        require_once APPROOT . '/views/includes/footer.php';
         ?>
     </div>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-    </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+</script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/shopping_cart.js"></script>
 

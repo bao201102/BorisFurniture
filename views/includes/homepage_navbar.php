@@ -35,7 +35,7 @@
                         </a>
 
                         <!-- shopping cart -->
-                        <div class="header-cart-list shadow-lg">
+                        <form class="header-cart-list shadow-lg">
                             <ul class="cart-product-list mb-2">
                                 <li class="cart-product-item d-flex mb-2">
                                     <img src="./img/Classic-Lamp.jpg" alt="" style="width: 20%;">
@@ -65,10 +65,10 @@
                                 </div>
                             </div>
                             <div class="cart-button d-flex flex-column justify-content-center mt-3">
-                                <a class="btn btn-primary" href="<?= URLROOT ?>/Home/cart" type="button">View Cart</a>
-                                <a class="btn btn-outline-primary mt-2" href="<?= URLROOT ?>/Home/checkout">Checkout</a>
+                                <a class="btn btn-primary" href="<?= URLROOT ?>/Home/cart" type="submit">View Cart</a>
+                                <a class="btn btn-outline-primary mt-2" href="<?= URLROOT ?>/Home/checkout" type="submit">Checkout</a>
                             </div>
-                        </div>
+                        </form>
                     </li>
 
                     <?php if (!empty($_SESSION['user_id'])) : ?>
