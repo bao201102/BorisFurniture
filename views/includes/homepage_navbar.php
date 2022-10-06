@@ -65,8 +65,8 @@
                                 </div>
                             </div>
                             <div class="cart-button d-flex flex-column justify-content-center mt-3">
-                                <button class="btn btn-primary">View Cart</button>
-                                <button class="btn btn-outline-primary mt-2">Checkout</button>
+                                <a class="btn btn-primary" href="<?= URLROOT ?>/Home/cart" type="button">View Cart</a>
+                                <a class="btn btn-outline-primary mt-2" href="<?= URLROOT ?>/Home/checkout">Checkout</a>
                             </div>
                         </div>
                     </li>
