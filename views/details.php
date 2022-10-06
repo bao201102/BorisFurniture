@@ -47,9 +47,21 @@ require_once APPROOT . '/views/includes/head.php';
                                             <?php
                                             if (!empty($data['img'])) :
                                                 foreach ($data['img'] as $image) : extract($image); ?>
-                                                    <div class="carousel-item">
-                                                        <img src="<?= IMAGE ?><?= $img_link?>" class="d-block w-100" alt="...">
-                                                    </div>
+
+                                                    <?php if ($image['img_link'][6] == '1') : ?>
+
+                                                        <div class="carousel-item active">
+                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block w-100" alt="...">
+                                                        </div>
+
+                                                    <?php else : ?>
+
+                                                        <div class="carousel-item">
+                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block w-100" alt="...">
+                                                        </div>
+
+                                                    <?php endif; ?>
+
                                             <?php endforeach;
                                             endif; ?>
                                         </div>
