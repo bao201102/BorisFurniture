@@ -1,21 +1,13 @@
 <?php
 if (!empty($data['prod'])) :
+    $id = 0;
     foreach ($data['prod'] as $prod) : extract($prod); ?>
 
         <!-- product box -->
         <div class="col box">
             <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 34vh;">
                 <a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>">
-                    <img src="<?= IMAGE ?>/img01-1.jpg" class="card-img-top img-fluid" alt="...">
-
-                    <!-- <?php if (!empty($data['img'])) :
-                                foreach ($data['img'] as $image) : extract($image); ?>
-
-                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="card-img-top img-fluid" alt="...">
-
-                    <?php endforeach;
-                            endif; ?> -->
-
+                    <img src="<?= IMAGE ?>/<?= $data['image'][$prod_id - 1]['img_link'] ?>" class="card-img-top img-fluid" alt="...">
                 </a>
 
                 <div class="card-body" style="z-index: 2; background-color: white;">
@@ -29,5 +21,6 @@ if (!empty($data['prod'])) :
                 </button>
             </div>
         </div>
-<?php endforeach;
+
+<?php $id += 1; endforeach;
 endif; ?>

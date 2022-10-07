@@ -34,7 +34,7 @@
                             </span>
                         </a>
 
-                        include_once APPROOT . '/views/includes/header_cart.php'
+                        <?php include_once APPROOT . '/views/includes/header_cart.php' ?>
                     </li>
 
                     <!-- login -->
