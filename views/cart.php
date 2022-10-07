@@ -6,6 +6,7 @@ require_once APPROOT . '/views/includes/head.php';
 <link rel="stylesheet" href="<?= CSSFILE ?>/shopping_cart.css">
 
 <body>
+
     <div class="container-fluid p-0">
         <!-- Header -->
         <?php
@@ -29,7 +30,7 @@ require_once APPROOT . '/views/includes/head.php';
                 </div>
             </div>
         </section>
-        <?php if (isset($_SESSION['cart']) && sizeof($_SESSION['cart'])>0) : ?>
+        <?php if (isset($_SESSION['cart']) && sizeof($_SESSION['cart']) > 0) : ?>
             <!-- Cart -->
             <section class="container" style="padding: 130px 0;">
                 <div class="row">
@@ -56,7 +57,7 @@ require_once APPROOT . '/views/includes/head.php';
                                             <td class="product-quantity">
                                                 <input class="form-control border border-1" type="number" value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
                                             </td>
-                                            <td>$<?= $prod_price * $prod_quantity_cart ?>.00</td>
+                                            <td>$<?= $subtotal ?>.00</td>
                                             <td>
                                                 <form action="<?= URLROOT ?>/Cart/deleteProduct/<?= $prod_id ?>" method="POST">
                                                     <button style="border: none; background: white;">
@@ -92,10 +93,12 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
                             <table class="table align-middle" style="font-size: 15px;">
                                 <tbody>
-                                    <tr>
-                                        <td scope="row" class="text-black fw-semibold ps-0">Subtotal</td>
-                                        <td class="text-end text-xl-start pe-0">$405.00</td>
-                                    </tr>
+                                    <?php if (isset($_SESSION['total'])) : ?>
+                                        <tr>
+                                            <td scope="row" class="text-black fw-semibold ps-0">Subtotal</td>
+                                            <td class="text-end text-xl-start pe-0">$<?= $_SESSION['total'] ?>.00</td>
+                                        </tr>
+                                    <?php endif; ?>
                                     <tr>
                                         <td scope="row" class="text-black fw-semibold ps-0 ">Shipping</td>
                                         <td class="pe-0">
@@ -135,7 +138,7 @@ require_once APPROOT . '/views/includes/head.php';
                 </div>
             </section>
         <?php else : ?>
-            
+
             <div class="text-center pt-5">
                 <p class="fs-3">You have no products in your cart</p>
             </div>
@@ -152,5 +155,13 @@ require_once APPROOT . '/views/includes/head.php';
 </script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/shopping_cart.js"></script>
+
+<?php if (isset($data['msg'])) : ?>
+
+    <script>
+        alert("hghg");
+    </script>
+
+<?php endif; ?>
 
 </html>
