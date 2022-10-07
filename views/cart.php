@@ -29,7 +29,7 @@ require_once APPROOT . '/views/includes/head.php';
                 </div>
             </div>
         </section>
-        <?php if (isset($_SESSION['cart'])) : ?>
+        <?php if (isset($_SESSION['cart']) && sizeof($_SESSION['cart'])>0) : ?>
             <!-- Cart -->
             <section class="container" style="padding: 130px 0;">
                 <div class="row">
@@ -54,9 +54,9 @@ require_once APPROOT . '/views/includes/head.php';
                                             <td><a href=""><?= $prod_name ?></a></td>
                                             <td>$<?= $prod_price ?>.00</td>
                                             <td class="product-quantity">
-                                                <input class="form-control border border-1" type="number" value="<?= $prod_quantity ?>" min="0">
+                                                <input class="form-control border border-1" type="number" value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
                                             </td>
-                                            <td>$<?= $prod_price * $prod_quantity ?>.00</td>
+                                            <td>$<?= $prod_price * $prod_quantity_cart ?>.00</td>
                                             <td>
                                                 <form action="<?= URLROOT ?>/Cart/deleteProduct/<?= $prod_id ?>" method="POST">
                                                     <button style="border: none; background: white;">

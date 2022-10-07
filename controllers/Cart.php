@@ -17,14 +17,20 @@ class Cart extends Controller
         $image = $this->ImageModel->getImage($this->ProductModel->getImageId($prod_id));
 
         if (isset($_POST['addToCart'])) {
-            $product = array("prod_id" => $prod[0]['prod_id'], "prod_name" => $prod[0]['prod_name'], "prod_img" => $image[0]['img_link'], "prod_price" => $prod[0]['prod_price'], "prod_quantity" => $_POST['prod_quantity']);
+            $product = array("prod_id" => $prod[0]['prod_id'], "prod_name" => $prod[0]['prod_name'], "prod_img" => $image[0]['img_link'], "prod_price" => $prod[0]['prod_price'], "prod_quantity_max" => $prod[0]['prod_quantity'], "prod_quantity_cart" => $_POST['prod_quantity']);
 
             if (isset($_SESSION['cart'])) {
                 $cart = $_SESSION['cart'];
                 if (!array_key_exists($product["prod_id"], $cart)) {
                     $cart[$product["prod_id"]] = $product; //key lay theo id san pham
                 } else {
-                    $cart[$product["prod_id"]]['prod_quantity'] += $product['prod_quantity'];
+                   $temp= $cart[$product["prod_id"]]['prod_quantity_cart'] + $product['prod_quantity_cart'];
+                    if ($temp > $product['prod_quantity_max']) {
+                        $cart[$product["prod_id"]]['prod_quantity_cart'] = $product['prod_quantity_max'];
+                    }
+                    else{
+                        $cart[$product["prod_id"]]['prod_quantity_cart']=$temp;
+                    }
                 }
                 $_SESSION['cart'] = $cart;
             } else {

@@ -36,7 +36,7 @@
 
                         <!-- shopping cart -->
                         <div class="header-cart-list shadow-lg">
-                            <?php if (isset($_SESSION['cart'])) : ?>
+                            <?php if (isset($_SESSION['cart']) && sizeof($_SESSION['cart'])>0) : ?>
                                 <ul class="cart-product-list mb-2">
                                     <?php foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
 
@@ -48,7 +48,7 @@
                                                     <?= $prod_name ?>
                                                 </div>
                                                 <div class="cart-product-sub-des" style="color: rgb(155, 150, 150);">
-                                                    <span class="cart-product-quantity"><?= $prod_quantity ?></span>
+                                                    <span class="cart-product-quantity"><?= $prod_quantity_cart ?></span>
                                                     <span>x</span>
                                                     <span>$<?= $prod_price ?>.00</span>
                                                 </div>
