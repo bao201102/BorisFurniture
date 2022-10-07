@@ -24,7 +24,7 @@ class Cart extends Controller
                 if (!array_key_exists($product["prod_id"], $cart)) {
                     $cart[$product["prod_id"]] = $product; //key lay theo id san pham
                 } else {
-                    $this->increaseQuantity($product["prod_id"], $product["prod_quantity"]);
+                    $cart[$product["prod_id"]]['prod_quantity'] += $product['prod_quantity'];
                 }
                 $_SESSION['cart'] = $cart;
             } else {
@@ -50,17 +50,6 @@ class Cart extends Controller
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
             $cart[$key]['prod_quantity'] = $prod_quantity;
-            $_SESSION['cart'] = $cart;
-        }
-    }
-
-    function increaseQuantity($key, $prod_quantity)
-    {
-        if (isset($_SESSION['cart'])) {
-            $sum = 0;
-            $cart = $_SESSION['cart'];
-            foreach ($cart[$key]['prod_quantity'] as $v)
-                $sum += $v + $prod_quantity;
             $_SESSION['cart'] = $cart;
         }
     }
