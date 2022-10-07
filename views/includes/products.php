@@ -1,6 +1,5 @@
 <?php
 if (!empty($data['prod'])) :
-    $id = 0;
     foreach ($data['prod'] as $prod) : extract($prod); ?>
 
         <!-- product box -->
@@ -16,11 +15,11 @@ if (!empty($data['prod'])) :
                 </div>
 
                 <!-- quick view  -->
-                <button onclick="quickView()" type="button" class="add-to-cart">
-                    <p>QUICK VIEW</p>
+                <button type="button" class="add-to-cart">
+                    <p>ADD TO CART</p>
                 </button>
             </div>
         </div>
 
-<?php $id += 1; endforeach;
+<?php endforeach;
 endif; ?>

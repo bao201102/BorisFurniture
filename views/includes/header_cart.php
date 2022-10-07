@@ -7,7 +7,7 @@
                     <img src="<?= IMAGE ?>/<?= $prod_img ?>" alt="" style="width: 20%;">
 
                     <div class="cart-product-description">
-                        <div class="cart-product-main-des mb-2 fs-4">
+                        <div class="cart-product-main-des mb-2 fs-5">
                             <?= $prod_name ?>
                         </div>
                         <div class="cart-product-sub-des" style="color: rgb(155, 150, 150);">
@@ -32,7 +32,7 @@
         <?php if (isset($_SESSION['total'])) : ?>
             <div class="cart-subtotal d-flex fs-4 justify-content-center align-items-center border-top border-bottom py-3 fs-5">
                 <label class="mx-1">Subtotal:</label>
-                <div class="fs-5 fw-semibold">$<?= $_SESSION['total'] ?>.00</span>
+                <div class="fs-5 fw-semibold">$<?= number_format($_SESSION['total'], 2, '.', ',') ?></span>
                 </div>
             </div>
         <?php endif; ?>

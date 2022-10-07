@@ -26,6 +26,7 @@ class Cart extends Controller
 
             if (isset($_SESSION['cart'])) {
                 $cart = $_SESSION['cart'];
+
                 if (!array_key_exists($product["prod_id"], $cart)) {
                     $cart[$product["prod_id"]] = $product; //key lay theo id san pham
                 } else {
@@ -56,17 +57,24 @@ class Cart extends Controller
             $cart = $_SESSION['cart'];
             unset($cart[$key]);
             $_SESSION['cart'] = $cart;
+            $this->createSubtotal();
             header('location:' . URLROOT . '/Home/cart');
         }
     }
 
-    function updateProduct($key, $prod_quantity)
+    function updateProduct()
     {
-        if (isset($_SESSION['cart'])) {
-            $cart = $_SESSION['cart'];
-            $cart[$key]['prod_quantity'] = $prod_quantity;
-            $_SESSION['cart'] = $cart;
-        }
+        echo $_POST['prod_quantity_up'];
+        // if (isset($_SESSION['cart'])) {
+        //     $cart = $_SESSION['cart'];
+        //     for ($i = 1; $i <= sizeof($cart); $i++) {
+        //         $cart[$i]['prod_quantity_cart'] =  $_POST['prod_quantity_up'];
+        //         $cart[$i]['subtotal'] = $cart[$i]['prod_quantity_cart'] * $cart[$i]['prod_price'];
+        //     }
+        //     $_SESSION['cart'] = $cart;
+        //     $this->createSubtotal();
+        //     header('location:' . URLROOT . '/Home/cart');
+        // }
     }
 
     function checkoutCart($key)

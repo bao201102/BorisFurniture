@@ -55,9 +55,9 @@ require_once APPROOT . '/views/includes/head.php';
                                             <td><a href=""><?= $prod_name ?></a></td>
                                             <td>$<?= $prod_price ?>.00</td>
                                             <td class="product-quantity">
-                                                <input class="form-control border border-1" type="number" value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
+                                                <input class="form-control border border-1" type="number"  value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
                                             </td>
-                                            <td>$<?= $subtotal ?>.00</td>
+                                            <td>$<?= number_format($subtotal, 2, '.', ',') ?></td>
                                             <td>
                                                 <form action="<?= URLROOT ?>/Cart/deleteProduct/<?= $prod_id ?>" method="POST">
                                                     <button style="border: none; background: white;">
@@ -78,8 +78,9 @@ require_once APPROOT . '/views/includes/head.php';
                                 <form action="<?= URLROOT ?>/Cart/emptyCart">
                                     <button type="submit" class="btn btn-outline-primary">Empty cart</button>
                                 </form>
-                                <form action="">
-                                    <button type="button" class="btn btn-outline-primary">Update cart</button>
+                                <form action="<?= URLROOT ?>/Cart/updateProduct" method="POST">
+                                    <button type="submit" class="btn btn-outline-primary">Update cart</button>
+                                    <input type="hidden" value="<?= $prod_quantity_cart ?>" name="prod_quantity_up">
                                 </form>
                             </div>
                         </div>
@@ -96,7 +97,7 @@ require_once APPROOT . '/views/includes/head.php';
                                     <?php if (isset($_SESSION['total'])) : ?>
                                         <tr>
                                             <td scope="row" class="text-black fw-semibold ps-0">Subtotal</td>
-                                            <td class="text-end text-xl-start pe-0">$<?= $_SESSION['total'] ?>.00</td>
+                                            <td class="text-end text-xl-start pe-0">$<?= number_format($_SESSION['total'], 2, '.', ',') ?></td>
                                         </tr>
                                     <?php endif; ?>
                                     <tr>
@@ -118,13 +119,17 @@ require_once APPROOT . '/views/includes/head.php';
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td scope="row" class="text-black fw-semibold  ps-0">Total</td>
-                                        <td class="text-end  text-xl-start  pe-0">
-                                            <p class="fw-semibold fs-3 text-black pb-3">$405.00</p>
-                                            <span class="fs-6">(Includes $19.29 tax)</span>
-                                        </td>
-                                    </tr>
+
+                                    <?php if (isset($_SESSION['total'])) : ?>
+                                        <tr>
+                                            <td scope="row" class="text-black fw-semibold  ps-0">Total</td>
+                                            <td class="text-end  text-xl-start  pe-0">
+                                                <p class="fw-semibold fs-3 text-black pb-3">$<?= number_format($_SESSION['total']* 1.1, 2, '.', ',') ?></p>
+                                                <span class="fs-6">(Includes $ <?= number_format($_SESSION['total']* 0.1, 2, '.', ',') ?> tax)</span>
+                                            </td>
+                                        </tr>
+                                    <?php endif; ?>
+
                                 </tbody>
                             </table>
 

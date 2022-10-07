@@ -17,7 +17,7 @@ class Home extends Controller
             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
             array_push($image, $img);
         }
-        
+
         //goi va show du lieu ra view
         $this->view('index', ['prod' => $prod, 'image' => $image]);
     }
@@ -26,9 +26,14 @@ class Home extends Controller
     {
         // goi method getproductlist
         $prod = $this->ProductModel->getProductList();
+        $image = array();
+        foreach ($prod as $value) {
+            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+            array_push($image, $img);
+        }
 
         //goi va show du lieu ra view
-        $this->view('search', ['prod' => $prod]);
+        $this->view('search', ['prod' => $prod, 'image' => $image]);
     }
 
     public function cart()
