@@ -125,7 +125,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
 
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button type="button" class="btn btn-primary" href="<?= URLROOT ?>/Home/checkout">Buy now</button>                                   
+                                    <button type="submit" name="buyNow" class="btn btn-primary">Buy now</button>                                   
                                     <button type="submit" name="addToCart" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
                                 <?php

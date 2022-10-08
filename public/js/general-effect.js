@@ -30,22 +30,22 @@ function resizeFooter() {
 }
 
 //modal quick view
-function quickView() {
-    var modals = document.getElementsByClassName("modal-layout")[0];
-    modals.classList.add("d-flex");
-    var close = document.querySelector(".modal-close");
-    close.onclick = function () {
-        modals.classList.remove("d-flex");
-    }
-    modals.onclick = function () {
-        modals.classList.remove("d-flex");
-    }
+// function quickView() {
+//     var modals = document.getElementsByClassName("modal-layout")[0];
+//     modals.classList.add("d-flex");
+//     var close = document.querySelector(".modal-close");
+//     close.onclick = function () {
+//         modals.classList.remove("d-flex");
+//     }
+//     modals.onclick = function () {
+//         modals.classList.remove("d-flex");
+//     }
 
-    var inner = document.getElementsByClassName("modal-inner")[0];
-    inner.onclick = function (e) {
-        e.stopPropagation();
-    }
-}
+//     var inner = document.getElementsByClassName("modal-inner")[0];
+//     inner.onclick = function (e) {
+//         e.stopPropagation();
+//     }
+// }
 
 //header cart in nav responsive
 window.addEventListener("resize", function () {

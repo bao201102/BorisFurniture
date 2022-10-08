@@ -34,58 +34,53 @@ require_once APPROOT . '/views/includes/head.php';
             <!-- Cart -->
             <section class="container" style="padding: 130px 0;">
                 <div class="row">
-                    <!-- table -->
                     <div id="cart-table" class="col-12 col-xl-8 cart-table">
-                        <div class="table-responsive-md">
-                            <table class="table align-middle">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" colspan="2">product</th>
-                                        <th scope="col">price</th>
-                                        <th scope="col">quantity</th>
-                                        <th scope="col">subtotal</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="table-group-divider">
-                                    <?php foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
-
+                        <!-- table -->
+                        <form action="<?= URLROOT ?>/Cart/actionCart" method="POST">
+                            <div class="table-responsive-md">
+                                <table class="table align-middle">
+                                    <thead>
                                         <tr>
-                                            <td scope="row"><img src="<?= IMAGE ?>/<?= $prod_img ?>" alt="" class="product-thumbnail">
-                                            </td>
-                                            <td><a href=""><?= $prod_name ?></a></td>
-                                            <td>$<?= $prod_price ?>.00</td>
-                                            <td class="product-quantity">
-                                                <input class="form-control border border-1" type="number"  value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
-                                            </td>
-                                            <td>$<?= number_format($subtotal, 2, '.', ',') ?></td>
-                                            <td>
-                                                <form action="<?= URLROOT ?>/Cart/deleteProduct/<?= $prod_id ?>" method="POST">
-                                                    <button style="border: none; background: white;">
-                                                        <span class="material-symbols-outlined cart-delete">
-                                                            close
-                                                        </span>
-                                                    </button>
-                                                </form>
-                                            </td>
+                                            <th scope="col" colspan="2">product</th>
+                                            <th scope="col">price</th>
+                                            <th scope="col">quantity</th>
+                                            <th scope="col">subtotal</th>
                                         </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        <?php foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
 
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="mt-4 mb-4 mb-xl-0 d-flex justify-content-center">
-                            <div class="btn-group gap-3" role="group">
-                                <form action="<?= URLROOT ?>/Cart/emptyCart">
-                                    <button type="submit" class="btn btn-outline-primary">Empty cart</button>
-                                </form>
-                                <form action="<?= URLROOT ?>/Cart/updateProduct" method="POST">
-                                    <button type="submit" class="btn btn-outline-primary">Update cart</button>
-                                    <input type="hidden" value="<?= $prod_quantity_cart ?>" name="prod_quantity_up">
-                                </form>
+                                            <tr>
+                                                <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
+                                                <td scope="row"><img src="<?= IMAGE ?>/<?= $prod_img ?>" alt="" class="product-thumbnail">
+                                                </td>
+                                                <td style="padding: 24px 0"><a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>"><?= $prod_name ?></a></td>
+                                                <td>$<?= $prod_price ?>.00</td>
+                                                <td class="product-quantity">
+                                                    <input class="form-control border border-1" type="number" name="prod_quantity_up[]" value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
+                                                </td>
+                                                <td>$<?= number_format($subtotal, 2, '.', ',') ?></td>
+                                                <td>
+                                                        <button type="submit" name="action" value="Delete" style="border: none; background: white;">
+                                                            <span class="material-symbols-outlined cart-delete">
+                                                                close
+                                                            </span>
+                                                        </button>
+                                                </td>
+                                            </tr>
+
+                                        <?php endforeach; ?>
+                                    </tbody>
+                                </table>
                             </div>
-                        </div>
+                            <div class="mt-4 mb-4 mb-xl-0 d-flex justify-content-center">
+                                <div class="btn-group gap-3" role="group">
+                                        <button type="submit" name="action" value="Empty cart" class="btn btn-outline-primary">Empty cart</button>
+                                        <button type="submit" name="action" value="Update cart" class="btn btn-outline-primary">Update cart</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
-
                     <!-- summary -->
                     <div id="cart-totals" class="col-12 col-xl-4" style="width: auto;">
                         <div class="product-summary">
@@ -160,13 +155,11 @@ require_once APPROOT . '/views/includes/head.php';
 </script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/shopping_cart.js"></script>
-
-<?php if (isset($data['msg'])) : ?>
-
-    <script>
-        alert("hghg");
-    </script>
-
-<?php endif; ?>
+ <script>
+        var num = document.getElementbyId('prod_quantity_up');
+        function getValue() {
+            return num.value;
+        }
+</script>
 
 </html>

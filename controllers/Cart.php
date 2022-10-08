@@ -51,6 +51,31 @@ class Cart extends Controller
         }
     }
 
+    public function actionCart()
+    {
+    if (isset($_POST['action'])) {
+        switch ($_POST['action']) {
+            case 'Delete':
+                $this->deleteProduct($_POST['prod_id']);
+                header('location:' . URLROOT . '/Home/cart');
+                break;
+            
+            case 'Empty cart':
+                $this->emptyCart();
+                header('location:' . URLROOT . '/Home/cart');
+                break;
+
+            case 'Update cart':
+                $this->updateProduct($_POST['prod_quantity_up']);
+                header('location:' . URLROOT . '/Home/cart');
+                break;
+
+            default:
+                break;
+        }
+    }    
+    }
+
     function deleteProduct($key)
     {
         if (isset($_SESSION['cart'])) {
@@ -58,23 +83,20 @@ class Cart extends Controller
             unset($cart[$key]);
             $_SESSION['cart'] = $cart;
             $this->createSubtotal();
-            header('location:' . URLROOT . '/Home/cart');
         }
     }
 
-    function updateProduct()
+    function updateProduct($quan)
     {
-        echo $_POST['prod_quantity_up'];
-        // if (isset($_SESSION['cart'])) {
-        //     $cart = $_SESSION['cart'];
-        //     for ($i = 1; $i <= sizeof($cart); $i++) {
-        //         $cart[$i]['prod_quantity_cart'] =  $_POST['prod_quantity_up'];
-        //         $cart[$i]['subtotal'] = $cart[$i]['prod_quantity_cart'] * $cart[$i]['prod_price'];
-        //     }
-        //     $_SESSION['cart'] = $cart;
-        //     $this->createSubtotal();
-        //     header('location:' . URLROOT . '/Home/cart');
-        // }
+        if (isset($_SESSION['cart'])) {
+            $cart = $_SESSION['cart'];
+            for ($i = 0; $i < sizeof($cart); $i++) {
+                $cart[$i+1]['prod_quantity_cart'] =  $quan[$i];
+                $cart[$i+1]['subtotal'] = $cart[$i+1]['prod_quantity_cart'] * $cart[$i+1]['prod_price'];
+            }
+            $_SESSION['cart'] = $cart;
+            $this->createSubtotal();
+        }
     }
 
     function checkoutCart($key)
@@ -90,7 +112,6 @@ class Cart extends Controller
     {
         if (isset($_SESSION['cart'])) {
             unset($_SESSION['cart']);
-            header('location:' . URLROOT . '/Home/cart');
         }
     }
 

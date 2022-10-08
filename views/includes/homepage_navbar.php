@@ -32,6 +32,7 @@
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>
+                            <span class="badge rounded-pill bg-dark">0</span>
                         </a>
 
                         <?php include_once APPROOT . '/views/includes/header_cart.php' ?>
