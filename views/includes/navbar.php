@@ -32,6 +32,10 @@
                             <span class="material-symbols-outlined">
                                 shopping_cart
                             </span>
+                            <?php if (isset($_SESSION['cart'])) : ?>
+
+                                <span class="badge rounded-pill bg-dark"><?= sizeof($_SESSION['cart']) ?></span>
+                            <?php endif; ?>
                         </a>
 
                         <?php include_once APPROOT . '/views/includes/header_cart.php' ?>

@@ -83,6 +83,7 @@ class Cart extends Controller
             unset($cart[$key]);
             $_SESSION['cart'] = $cart;
             $this->createSubtotal();
+            header('location:' . URLROOT . '/Home/cart');
         }
     }
 
