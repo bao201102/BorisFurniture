@@ -80,9 +80,13 @@ require_once APPROOT . '/views/includes/head.php';
                             <!-- Thong tin spham -->
                             <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST" class="col-12 col-lg-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
-                                    <h3><fieldset name="prod_name"><?= $prod_name ?></fieldset></h3>
+                                    <h3>
+                                        <fieldset name="prod_name"><?= $prod_name ?></fieldset>
+                                    </h3>
                                     <div class="fs-5">
-                                        <p class="me-auto"><fieldset name="prod_price">$<?= number_format($prod_price, 2, '.', ',') ?></fieldset></p>
+                                        <p class="me-auto">
+                                        <fieldset name="prod_price">$<?= number_format($prod_price, 2, '.', ',') ?></fieldset>
+                                        </p>
                                     </div>
                                 </div>
 
@@ -109,7 +113,7 @@ require_once APPROOT . '/views/includes/head.php';
                                         <?php else : ?>
                                             <span class="fw-semibold">In Stock</span>
                                         <?php endif ?>
-                                        
+
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">In Showroom:</span>
@@ -125,7 +129,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
 
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button type="submit" name="buyNow" class="btn btn-primary">Buy now</button>                                   
+                                    <button type="submit" name="buyNow" class="btn btn-primary">Buy now</button>
                                     <button type="submit" name="addToCart" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
                                 <?php
@@ -191,11 +195,6 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="mt-3 fw-bold fs-5">Classic Lamp</div>
                                 <div class="mt-1 fs-5">$470.00</div>
                             </div>
-
-                            <!-- quick view  -->
-                            <button onclick="quickView()" type="button" class="add-to-cart">
-                                <p>QUICK VIEW</p>
-                            </button>
                         </div>
                     </div>
                     <div class="col-12 text-center mt-5">
@@ -209,9 +208,6 @@ require_once APPROOT . '/views/includes/head.php';
         <?php
         require_once APPROOT . '/views/includes/footer.php';
         ?>
-
-        <!-- Quickview -->
-        <?php require_once APPROOT . '/views/includes/quickview.php'; ?>
     </div>
 </body>
 
