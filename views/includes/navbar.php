@@ -33,7 +33,6 @@
                                 shopping_cart
                             </span>
                             <?php if (isset($_SESSION['cart'])) : ?>
-
                                 <span class="badge rounded-pill bg-dark"><?= sizeof($_SESSION['cart']) ?></span>
                             <?php endif; ?>
                         </a>
