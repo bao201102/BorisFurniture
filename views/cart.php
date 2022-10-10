@@ -142,6 +142,9 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="text-center pt-5">
                 <p class="fs-3">You have no products in your cart</p>
             </div>
+            <form action="<?= URLROOT ?>/Home/search" method="POST" class="mt-5 text-center">
+                <button class="fs-4 btn btn-primary">RETURN TO SHOP</button>
+        </form>
 
         <?php endif; ?>
         <!-- Footer and client logo section -->
