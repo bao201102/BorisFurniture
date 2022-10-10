@@ -11,6 +11,8 @@ function scrollChangeColor() {
 
 window.onresize = function () { resizeChangeColor() };
 
+window.onload = function () { resizeChangeColor() };
+
 function resizeChangeColor() {
     if (window.innerWidth < 992) {
         document.getElementById("nav-id").className = "navbar navbar-expand-lg fixed-top py-3 border-0 bg-white shadow-sm";

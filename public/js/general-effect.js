@@ -1,6 +1,6 @@
 //Reponsive product information
 window.addEventListener("resize", resizeDetail);
-window.addEventListener("load", resizeDetail);
+resizeDetail();
 
 function resizeDetail() {
     if (window.innerWidth < 992) {
@@ -16,7 +16,7 @@ function resizeDetail() {
 
 //Footer collapse effect
 window.addEventListener("resize", resizeFooter);
-window.addEventListener("load", resizeFooter);
+resizeFooter();
 
 function resizeFooter() {
     if (window.innerWidth < 992) {
@@ -48,12 +48,30 @@ function resizeFooter() {
 // }
 
 //header cart in nav responsive
-window.addEventListener("resize", function () {
+window.addEventListener("resize", resizeHeaderCart);
+resizeHeaderCart();
+
+function resizeHeaderCart() {
     var hiden = document.getElementsByClassName("header-cart-list")[0];
     if (window.innerWidth <= 992) {
         hiden.style.display = "none";
     }
     else {
-        hiden.style.display = "block"
+        hiden.style.display = "block";
     }
-})
+}
+
+window.addEventListener("resize", resizeAddToCart);
+resizeAddToCart();
+
+function resizeAddToCart() {
+    var hiden = document.getElementsByClassName("add-to-cart");
+    for (let index = 0; index < hiden.length; index++) {
+        if (window.innerWidth <= 992) {
+            hiden[index].classList.add("d-none");  
+        }
+        else {
+            hiden[index].classList.remove("d-none");
+        }
+    }
+}

@@ -155,11 +155,5 @@ require_once APPROOT . '/views/includes/head.php';
 </script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/shopping_cart.js"></script>
- <script>
-        var num = document.getElementbyId('prod_quantity_up');
-        function getValue() {
-            return num.value;
-        }
-</script>
 
 </html>
