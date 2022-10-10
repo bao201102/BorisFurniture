@@ -75,3 +75,25 @@ function resizeAddToCart() {
         }
     }
 }
+
+function handleAjax(e, sufUrl, className, name) {
+    e.preventDefault();
+    document.getElementsByClassName("modal-layout-menu")[0].classList.remove("menu")
+    document.getElementsByClassName("modal-layout-filter")[0].classList.remove("filter")
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+      if (this.readyState == 4 && this.status == 200) {
+        document.getElementsByClassName("sPage__content-product-main")[0].innerHTML = this.responseText
+      }
+    }
+
+
+    if (name) {
+      xmlhttp.open("GET", "productView.php" + "?" + name + "=" + document.getElementsByClassName(className)[0].value, true);
+      document.getElementsByClassName(className)[0].value = "";
+      xmlhttp.send();
+    } else {
+      xmlhttp.open("GET", "productView.php" + sufUrl, true);
+      xmlhttp.send();
+    }
+  }
