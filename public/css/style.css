@@ -100,7 +100,7 @@ p {
     width: 0;
     border-width: 10px;
     border-style: solid;
-    border-color: transparent transparent#e9e9e9 transparent;
+    border-color: transparent transparent#fff transparent;
     position: absolute;
     top: -20px;
     right: 10px;
