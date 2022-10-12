@@ -37,25 +37,25 @@ require_once APPROOT . '/views/includes/head.php';
                         <div class="col-6 col-lg-12 ">
                             <p class="fw-bold text-black">Theo giá cả</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio1" value="option2">
+                                <input class="form-check-input" type="radio" name="under_1mil_product" id="optionRadio1" value="1000000">
                                 <label class="form-check-label" for="optionRadio1">
                                     Dưới 1 triệu
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio2" value="option2">
+                                <input class="form-check-input" type="radio" name="under_5mil_product" id="optionRadio2" value="5000000">
                                 <label class="form-check-label" for="optionRadio2">
                                     Dưới 5 triệu
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio3" value="option2">
+                                <input class="form-check-input" type="radio" name="under_10mil_product" id="optionRadio3" value="10000000">
                                 <label class="form-check-label" for="optionRadio3">
                                     Dưới 10 triệu
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="optionsRadios" id="optionRadio4" value="option2">
+                                <input class="form-check-input" type="radio" name="under_20mil_product" id="optionRadio4" value="20000000">
                                 <label class="form-check-label" for="optionRadio4">
                                     Dưới 20 triệu
                                 </label>
@@ -65,31 +65,31 @@ require_once APPROOT . '/views/includes/head.php';
                         <div class="col-6 col-lg-12">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Theo sản phẩm</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheck1">
+                                <input class="form-check-input" type="checkbox" value="table" id="flexCheck1">
                                 <label class="form-check-label" for="flexCheck1">
                                     Bàn
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheck2">
+                                <input class="form-check-input" type="checkbox" value="chair" id="flexCheck2">
                                 <label class="form-check-label" for="flexCheck2">
                                     Ghế
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheck3">
+                                <input class="form-check-input" type="checkbox" value="cooking_tool" id="flexCheck3">
                                 <label class="form-check-label" for="flexCheck3">
                                     Dụng cụ làm bếp
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheck4">
+                                <input class="form-check-input" type="checkbox" value="electric_device" id="flexCheck4">
                                 <label class="form-check-label" for="flexCheck4">
                                     Thiết bị điện
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheck5">
+                                <input class="form-check-input" type="checkbox" value="other" id="flexCheck5">
                                 <label class="form-check-label" for="flexCheck5">
                                     Khác
                                 </label>
@@ -99,6 +99,9 @@ require_once APPROOT . '/views/includes/head.php';
                     <div class="col-12 col-lg-8 row text-center">
                         <!-- product box -->
                         <?php require_once APPROOT . '/views/includes/products.php'; ?>
+                        <?php
+                             
+                        ?>
 
                         <!-- pagination -->
                         <ul class="pagination pagination-lg justify-content-center">
