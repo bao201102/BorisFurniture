@@ -35,4 +35,14 @@ class ImageModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
+    public function addImage($id, $link)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_image (prod_image_id, img_link) VALUES ($id, $link)");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
 }

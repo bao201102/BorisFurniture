@@ -4,7 +4,7 @@
             </span> </a>
         <div class="dropdown" style="margin-top: 40px; margin-bottom: 70px;">
             <div class="d-flex text-center justify-content-center" type="button" data-bs-toggle="collapse" data-bs-target="#ac-toggler" aria-controls="ac-toggler" aria-expanded="false" aria-label="Toggle navigation">
-                <img class="ac-icon" style="margin-right: 10px;" src="./img/cat.jpg" alt="">
+                <img class="ac-icon" style="margin-right: 10px;" src="<?= IMAGE ?>/cat.jpg" alt="">
                 <p>
                     <span class="dropdown-toggle text-white">Nguyễn Ngọc Bảo</span>
                     <br>
@@ -24,7 +24,7 @@
         </div>
         <div>
             <ul class="p-0 m-0">
-                <a class="d-block text-white" href="./product_mgmt.php" style="padding: 18px">
+                <a class="d-block text-white" href="<?= URLROOT ?>/Admin/product_mgmt" style="padding: 18px">
                     <span class="material-symbols-outlined align-middle ms-2 me-2">
                         grid_view
                     </span>
