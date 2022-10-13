@@ -5,7 +5,7 @@
             <h5 class="offcanvas-title" id="offcanvasTopLabel">What are you looking for?</h5>
         </div>
         <div class="offcanvas-body">
-            <form class="d-flex">
+            <form class="d-flex" action="<?= URLROOT ?>/Home/search" method="POST">
                 <input class="form-control me-sm-2" type="text" placeholder="Search">
                 <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
             </form>
