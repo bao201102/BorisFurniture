@@ -114,4 +114,14 @@ class ProductModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
+    public function getProductByPrice($price)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_price < '$price'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
 }

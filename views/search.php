@@ -34,74 +34,71 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container">
                 <div class="row g-0" style="margin-top: 130px;">
                     <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
-                        <div class="col-6 col-lg-12 ">
-                            <p class="fw-bold text-black">Theo giá cả</p>
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST">
+                            <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_1mil_product" id="optionRadio1" value="1000000">
+                                <input class="form-check-input" type="radio" name="under_500" id="optionRadio1" value="500">
                                 <label class="form-check-label" for="optionRadio1">
-                                    Dưới 1 triệu
+                                    Under $500
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_5mil_product" id="optionRadio2" value="5000000">
+                                <input class="form-check-input" type="radio" name="under_1000" id="optionRadio2" value="1000">
                                 <label class="form-check-label" for="optionRadio2">
-                                    Dưới 5 triệu
+                                    Under $1000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_10mil_product" id="optionRadio3" value="10000000">
+                                <input class="form-check-input" type="radio" name="under_2000" id="optionRadio3" value="2000">
                                 <label class="form-check-label" for="optionRadio3">
-                                    Dưới 10 triệu
+                                    Under $2000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_20mil_product" id="optionRadio4" value="20000000">
+                                <input class="form-check-input" type="radio" name="no_limit" id="optionRadio4" value="10000">
                                 <label class="form-check-label" for="optionRadio4">
-                                    Dưới 20 triệu
+                                    No limit
                                 </label>
                             </div>
-                        </div>
+                        </form>
 
-                        <div class="col-6 col-lg-12">
-                            <p class="pt-0 pt-lg-5 fw-bold text-black">Theo sản phẩm</p>
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST">
+                            <p class="pt-0 pt-lg-5 fw-bold text-black">Search by product</p>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="table" id="flexCheck1">
                                 <label class="form-check-label" for="flexCheck1">
-                                    Bàn
+                                    Table
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="chair" id="flexCheck2">
                                 <label class="form-check-label" for="flexCheck2">
-                                    Ghế
+                                    Chair
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="cooking_tool" id="flexCheck3">
                                 <label class="form-check-label" for="flexCheck3">
-                                    Dụng cụ làm bếp
+                                    Cooking Tool
                                 </label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="electric_device" id="flexCheck4">
                                 <label class="form-check-label" for="flexCheck4">
-                                    Thiết bị điện
+                                    Electric Device
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="other" id="flexCheck5">
+                                <input class="form-check-input" type="checkbox" value="others" id="flexCheck5">
                                 <label class="form-check-label" for="flexCheck5">
-                                    Khác
+                                    Others
                                 </label>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="col-12 col-lg-8 row text-center">
                         <!-- product box -->
                         <?php require_once APPROOT . '/views/includes/products.php'; ?>
-                        <?php
-                             
-                        ?>
 
                         <!-- pagination -->
                         <ul class="pagination pagination-lg justify-content-center">
@@ -112,7 +109,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <a class="page-link" href="#">1</a>
                             </li>
                             <li class="page-item">
-                                <a class="page-link" href="./checkout.html">2</a>
+                                <a class="page-link" href="#">2</a>
                             </li>
                             <li class="page-item">
                                 <a class="page-link" href="#">3</a>
