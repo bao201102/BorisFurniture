@@ -118,7 +118,7 @@ require_once APPROOT . '/views/includes/head.php';
         </div>
 
         <!-- Modal add new product -->
-        <form action="<?= URLROOT ?>/Admin/addProduct" method="POST" class="modal-layout add_product">
+        <form action="<?= URLROOT ?>/Admin/addProduct" method="POST" class="modal-layout add_product" enctype="multipart/form-data">
             <div id="add_product" class="modal-inner">
                 <div class="d-flex align-items-end">
                     <span class="me-auto ps-4 fw-semibold fs-3">Add new product</span>

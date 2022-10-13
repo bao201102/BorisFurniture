@@ -43,4 +43,19 @@ class Admin extends Controller
             $category_id = $_POST['category'];
         }
     }
+
+    public function uploadPicture()
+    {
+        $target_dir = "../public/img/";
+
+        if (isset($_POST['submit'])) {
+            $countfiles = count($_FILES['fileToUpload']['name']);
+            for ($i = 0; $i < $countfiles; $i++) {
+                $filename = $_FILES['fileToUpload']['name'][$i];
+                // $sql = "INSERT INTO fileup(id,name) VALUES ('$filename','$filename')";
+                // $db->query($sql);
+                move_uploaded_file($_FILES['fileToUpload']['tmp_name'][$i], $target_dir . $filename);
+            }
+        }
+    }
 }
