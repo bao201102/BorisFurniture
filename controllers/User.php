@@ -18,8 +18,15 @@ class User extends Controller
 
     public function profile()
     {
-        $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
-        $this->view('profile', ['cus' => $cus]);
+        if (!empty($_SESSION['user_id'])) {
+            if ($_SESSION['user_type'] == 0) {
+                header('location:' . URLROOT . '/Admin/product_mgmt');
+            }
+            else if ($_SESSION['user_type'] == 1) {
+                $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
+                $this->view('profile', ['cus' => $cus]);
+            }
+        }
     }
 
     public function logout()
@@ -38,7 +45,13 @@ class User extends Controller
                 if (!empty($user)) {
                     $_SESSION['user_id'] = $user[0]['user_id'];
                     $_SESSION['user_type'] = $user[0]['user_type'];
-                    header('location:' . URLROOT . '/Home/index');
+
+                    if ($_SESSION['user_type'] == 0) {
+                        header('location:' . URLROOT . '/Admin/product_mgmt');
+                    }
+                    else if ($_SESSION['user_type'] == 1) {
+                        header('location:' . URLROOT . '/User/index');
+                    }
                 }
             }
         }
