@@ -69,18 +69,20 @@ require_once APPROOT . '/views/includes/head.php';
                         </thead>
                         <tbody class="table-group-divider">
                             <?php if (!empty($data['prod'])) :
+                                $i = 0;
                                 foreach ($data['prod'] as $prod) : extract($prod); ?>
                                     <tr>
                                         <th scope="row"><?= $prod_id ?></th>
-                                        <td><img src="<?= IMAGE ?>/<?= $data['image'][$prod_id - 1]['img_link'] ?>" alt="" class="product-thumbnail"></td>
+                                        <td><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" alt="" class="product-thumbnail"></td>
                                         <td><?= $prod_name ?></td>
-                                        <td><?= $data['category'][$prod_id - 1][0]['category_name'] ?></td>
+                                        <td><?= $data['category'][$i][0]['category_name'] ?></td>
                                         <td class="text-center utility">
                                             <span onclick="editProduct()" class="material-symbols-outlined edit me-3">edit</span>
                                             <span class="material-symbols-outlined delete">delete</span>
                                         </td>
                                     </tr>
-                            <?php endforeach;
+                            <?php $i++;
+                                endforeach;
                             endif; ?>
                         </tbody>
                     </table>
@@ -141,9 +143,9 @@ require_once APPROOT . '/views/includes/head.php';
                                     <label class="form-label">Category</label>
                                     <select class="form-select" name="category" aria-label="Default select example">
                                         <option selected>Select</option>
-                                        <?php foreach($data['category_list'] as $cate) : extract($cate);?>
-                                        <option value="<?= $category_id ?>"><?= $category_name ?></option>
-                                        <?php endforeach; ?>    
+                                        <?php foreach ($data['category_list'] as $cate) : extract($cate); ?>
+                                            <option value="<?= $category_id ?>"><?= $category_name ?></option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                                 <!-- Quantity -->
