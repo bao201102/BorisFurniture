@@ -75,6 +75,16 @@ class ProductModel
         return $data;
     }
 
+    public function getProductId()
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "select prod_id from tbl_product where prod_image_id is NULL");
+        $data = $result[0]['prod_id'];
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
     public function getCategoryId($id)
     {
         $link = null;
@@ -105,14 +115,35 @@ class ProductModel
         return $data;
     }
 
-    public function addProduct($id, $name, $quantity, $price, $cate_id, $description, $img_id, $status)
+    public function addProduct($name, $quantity, $price, $cate_id, $description)
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_product VALUES ($id, $name, $quantity, $price, $cate_id, $description, $img_id, $status)");
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_product (prod_name, prod_quantity, prod_price, category_id, prod_description, status) 
+                                                    VALUES ('$name', '$quantity', '$price', '$cate_id', '$description', '1')");
         $data = $result;
         giaiPhongBoNho($link, $result);
-        return $data;
+        if ($data) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function addImageIdProduct($id, $prod_image_id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET prod_image_id = '$prod_image_id' WHERE prod_id = '$id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public function getProductByPrice($price)

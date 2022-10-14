@@ -37,25 +37,25 @@ require_once APPROOT . '/views/includes/head.php';
                         <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST">
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_500" id="optionRadio1" value="500">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="500">
                                 <label class="form-check-label" for="optionRadio1">
                                     Under $500
                                 </label>
-                            </div>
+                            </div> 
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_1000" id="optionRadio2" value="1000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="1000">
                                 <label class="form-check-label" for="optionRadio2">
                                     Under $1000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="under_2000" id="optionRadio3" value="2000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="2000">
                                 <label class="form-check-label" for="optionRadio3">
                                     Under $2000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="no_limit" id="optionRadio4" value="10000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="10000">
                                 <label class="form-check-label" for="optionRadio4">
                                     No limit
                                 </label>

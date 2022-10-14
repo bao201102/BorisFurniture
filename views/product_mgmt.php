@@ -141,8 +141,9 @@ require_once APPROOT . '/views/includes/head.php';
                                     <label class="form-label">Category</label>
                                     <select class="form-select" name="category" aria-label="Default select example">
                                         <option selected>Select</option>
-                                        <option value="chair">Chair</option>
-                                        <option value="table">Table</option>
+                                        <?php foreach($data['category_list'] as $cate) : extract($cate);?>
+                                        <option value="<?= $category_id ?>"><?= $category_name ?></option>
+                                        <?php endforeach; ?>    
                                     </select>
                                 </div>
                                 <!-- Quantity -->
@@ -165,7 +166,7 @@ require_once APPROOT . '/views/includes/head.php';
                             <!--  product  images-->
                             <div class="mb-3">
                                 <label for="file-upload" class="form-label">Product images</label>
-                                <input type="file" id="file-upload" name="image[]" class="form-control" multiple>
+                                <input type="file" id="fileToUpload" name="fileToUpload[]" class="form-control" multiple>
                             </div>
 
                             <!-- Price product -->
