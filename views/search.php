@@ -34,14 +34,25 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container">
                 <div class="row g-0" style="margin-top: 130px;">
                     <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST">
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST" id="search">
+                            <div class="offcanvas-body">
+                                <form class="d-flex" action="<?= URLROOT ?>/Home/search" method="POST">
+                                    <input class="form-control" type="text" placeholder="Search our product here">
+                                </form>
+                            </div>
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="500">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="10000">
+                                <label class="form-check-label" for="optionRadio4">
+                                    No limit
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="500" onclick="searching()">
                                 <label class="form-check-label" for="optionRadio1">
                                     Under $500
                                 </label>
-                            </div> 
+                            </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="1000">
                                 <label class="form-check-label" for="optionRadio2">
@@ -54,15 +65,6 @@ require_once APPROOT . '/views/includes/head.php';
                                     Under $2000
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="10000">
-                                <label class="form-check-label" for="optionRadio4">
-                                    No limit
-                                </label>
-                            </div>
-                        </form>
-
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by product</p>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="table" id="flexCheck1">
@@ -145,5 +147,12 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
 </script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
+
+<script>
+    function searching() {
+        let sub = document.getElementById("search");
+        sub.submit();
+    }
+</script>
 
 </html>
