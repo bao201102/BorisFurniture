@@ -4,6 +4,7 @@ class Search extends Controller
     public function __construct()
     {
         $this->ProductModel = $this->model('ProductModel');
+        $this->ImageModel = $this->model('ImageModel'); 
     }
 
     public function searchByPrice()
@@ -44,11 +45,23 @@ class Search extends Controller
         }*/
 
         $prod = $this->ProductModel->getProductByPrice();
-                    $image = array();
-                    foreach ($prod as $value) {
-                        $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                        array_push($image, $img);
-                    }
+        $image = array();
+        foreach ($prod as $value) {
+            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+            array_push($image, $img);
+        }
+
+        $this->view('search', ['prod' => $prod, 'image' => $image]);
+    }
+
+    public function searchByCategory()
+    {
+        $prod = $this->ProductModel->getProductByCategory();
+        $image = array();
+        foreach ($prod as $value) {
+            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+            array_push($image, $img);
+        }
 
         $this->view('search', ['prod' => $prod, 'image' => $image]);
     }

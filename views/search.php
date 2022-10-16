@@ -34,7 +34,7 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container">
                 <div class="row g-0" style="margin-top: 130px;">
                     <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST" id="search">
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST" id="search-form">
                             <div class="offcanvas-body">
                                 <form class="d-flex" action="<?= URLROOT ?>/Home/search" method="POST">
                                     <input class="form-control" type="text" placeholder="Search our product here">
@@ -42,7 +42,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="10000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="10000" onclick="searching()">
                                 <label class="form-check-label" for="optionRadio4">
                                     No limit
                                 </label>
@@ -67,31 +67,31 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by product</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="table" id="flexCheck1">
+                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck1" name="category">
                                 <label class="form-check-label" for="flexCheck1">
                                     Table
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="chair" id="flexCheck2">
+                                <input class="form-check-input" type="checkbox" value="Chair" id="flexCheck2" name="category" onclick="searching()">
                                 <label class="form-check-label" for="flexCheck2">
                                     Chair
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="cooking_tool" id="flexCheck3">
+                                <input class="form-check-input" type="checkbox" value="Cooking_tool" id="flexCheck3" name="category">
                                 <label class="form-check-label" for="flexCheck3">
                                     Cooking Tool
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="electric_device" id="flexCheck4">
+                                <input class="form-check-input" type="checkbox" value="Electric_device" id="flexCheck4" name="category">
                                 <label class="form-check-label" for="flexCheck4">
                                     Electric Device
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="others" id="flexCheck5">
+                                <input class="form-check-input" type="checkbox" value="Others" id="flexCheck5">
                                 <label class="form-check-label" for="flexCheck5">
                                     Others
                                 </label>
@@ -150,7 +150,7 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script>
     function searching() {
-        let sub = document.getElementById("search");
+        let sub = document.getElementById("search-form");
         sub.submit();
     }
 </script>
