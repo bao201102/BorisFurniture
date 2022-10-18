@@ -29,18 +29,34 @@ require_once APPROOT . '/views/includes/head.php';
                         <div class="me-2 me-xl-3">
                             <select class="form-select" aria-label="Default select example">
                                 <option selected value="all">All</option>
-                                <option value="chair">Chair</option>
-                                <option value="table">Table</option>
+                                <?php foreach ($data['category_list'] as $cate) : extract($cate); ?>
+                                    <option value="<?= $category_id ?>"><?= $category_name ?></option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
-                        <!-- button add new product -->
-                        <div>
-                            <button onclick="addProduct()" type="button" class="btn btn-info d-flex align-items-center fs-5">
+
+                        <!-- button add new -->
+                        <div class="dropdown-center">
+                            <button class="btn btn-info d-flex align-items-center fs-5" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                                 <span class="material-symbols-outlined">
                                     add
                                 </span>
                                 Add new
                             </button>
+                            <div class="dropdown-menu dropdown-menu-dark text-center">
+                                <a onclick="addProduct()" class="dropdown-item">Product</a>
+                                <div class=" dropdown-center dropstart">
+                                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Category</a>
+                                    <form class="dropdown-menu p-3" style="width:200px;" action="<?= URLROOT ?>/Admin/addCategory" method="POST">
+                                        <div class="mb-3">
+                                            <label for="name_product" class="form-label">Category name</label>
+                                            <input type="text" class="form-control p-2" name="category" placeholder="Enter category ...">
+                                        </div>
+                                        <button type="submit" name="addCategory" class="w-100 btn btn-primary p-2">Add Category</button>
+                                    </form>
+                                </div>
+                                <!-- <div class="dropdown-divider"></div> -->
+                            </div>
                         </div>
                     </div>
                 </div>

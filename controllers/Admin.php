@@ -10,7 +10,7 @@ class Admin extends Controller
         $this->CustomerModel = $this->model('CustomerModel');
     }
 
-    public function product_mgmt()
+    public function product()
     {
         // goi method getproductlist
         $prod = $this->ProductModel->getProductList();
@@ -41,22 +41,34 @@ class Admin extends Controller
             // echo $prod_quantity;
             // echo $description ;
             // echo $category_id ;
-        
+
 
             $prodResult = $this->ProductModel->addProduct($prod_name, $prod_quantity, $prod_price, $category_id, $description);
             if ($prodResult) {
                 $prod_id = $this->ProductModel->getProductId();
-                if ($prod_id<10) {
+                if ($prod_id < 10) {
                     $prod_img_id = "img0" . $prod_id;
-                }
-                else{
+                } else {
                     $prod_img_id = "img" . $prod_id;
                 }
                 $this->ProductModel->addImageIdProduct($prod_id, $prod_img_id);
                 $this->uploadPicture($prod_img_id);
                 echo "ss";
+            } else {
+                echo "fa";
             }
-            else{
+        }
+    }
+
+    public function addCategory()
+    {
+        if (isset($_POST['addCategory'])) {
+            $name = $_POST['category'];
+
+            $cateResult = $this->CategoryModel->addCategory($name);
+            if ($cateResult) {
+                echo "$name";
+            } else {
                 echo "fa";
             }
         }
@@ -70,8 +82,8 @@ class Admin extends Controller
             for ($i = 0; $i < $countfiles; $i++) {
                 $filename = $_FILES['fileToUpload']['name'][$i];
                 $s = explode(".", $filename);
-                $this->ImageModel->addImage($prod_img_id,$prod_img_id . "-" . ($i + 1) . "." . $s[1]);
-                move_uploaded_file($_FILES['fileToUpload']['tmp_name'][$i], APPROOT ."/public/img/". $prod_img_id . "-" . ($i + 1) . "." . $s[1]);
+                $this->ImageModel->addImage($prod_img_id, $prod_img_id . "-" . ($i + 1) . "." . $s[1]);
+                move_uploaded_file($_FILES['fileToUpload']['tmp_name'][$i], APPROOT . "/public/img/" . $prod_img_id . "-" . ($i + 1) . "." . $s[1]);
             }
         }
     }

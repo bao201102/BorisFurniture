@@ -38,4 +38,18 @@ class CategoryModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
+    public function addCategory($name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_category (category_name) VALUES ('$name')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
