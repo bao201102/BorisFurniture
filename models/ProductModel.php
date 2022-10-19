@@ -158,24 +158,21 @@ class ProductModel
         }
     }
 
-    public function getProductByPrice()
+    public function getProductByPrice($price)
     {
         $link = null;
         taoKetNoi($link);
-        $priceStr = $_POST['price'];
-        $price = (float)$priceStr;
         $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_price < '$price'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
     }
 
-    public function getProductByCategory()
+    public function getProductByCategory($category)
     {
         $link = null;
         taoKetNoi($link);
-        $category = $_POST['category'];
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND category_name = '$category'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE category_name = '$category'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

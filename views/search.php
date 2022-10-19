@@ -34,33 +34,31 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container">
                 <div class="row g-0" style="margin-top: 130px;">
                     <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Home/search" method="POST" id="search-form">
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByPrice" method="POST" id="search-form">
                             <div class="offcanvas-body">
-                                <form class="d-flex" action="<?= URLROOT ?>/Home/search" method="POST">
-                                    <input class="form-control" type="text" placeholder="Search our product here">
-                                </form>
+                                <input class="form-control" type="text" placeholder="Search our product here">
                             </div>
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="10000" onclick="searching()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio4">
                                     No limit
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="500" onclick="searching()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="500" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio1">
                                     Under $500
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="1000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="1000" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio2">
                                     Under $1000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="2000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="2000" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio3">
                                     Under $2000
                                 </label>
@@ -73,7 +71,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Chair" id="flexCheck2" name="category" onclick="searching()">
+                                <input class="form-check-input" type="checkbox" value="Chair" id="flexCheck2" name="category" onclick="submit()">
                                 <label class="form-check-label" for="flexCheck2">
                                     Chair
                                 </label>
@@ -149,9 +147,9 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 
 <script>
-    function searching() {
-        let sub = document.getElementById("search-form");
-        sub.submit();
+    function submit() {
+        let form = document.getElementById("form");
+        form.submit();
     }
 </script>
 
