@@ -27,6 +27,14 @@ class Admin extends Controller
         $this->view('product_mgmt', ['prod' => $prod, 'category' => $category_name, 'image' => $image, 'category_list' => $category_list]);
     }
 
+    public function category()
+    {
+        // goi method getproductlist
+        $category_list = $this->CategoryModel->getCategoryList();
+
+        $this->view('category_mgmt', ['category_list' => $category_list]);
+    }
+
     public function addProduct()
     {
         if (isset($_POST['addProduct'])) {
@@ -53,10 +61,16 @@ class Admin extends Controller
                 }
                 $this->ProductModel->addImageIdProduct($prod_id, $prod_img_id);
                 $this->uploadPicture($prod_img_id);
-                echo "ss";
-            } else {
-                echo "fa";
+                header('location:' . URLROOT . '/Admin/product');
             }
+        }
+    }
+
+    public function deleteProduct($id)
+    {
+        if (isset($_POST['deleteProduct'])) {
+            $this->ProductModel->deleteProduct($id);
+            header('location:' . URLROOT . '/Admin/product');
         }
     }
 
@@ -65,12 +79,16 @@ class Admin extends Controller
         if (isset($_POST['addCategory'])) {
             $name = $_POST['category'];
 
-            $cateResult = $this->CategoryModel->addCategory($name);
-            if ($cateResult) {
-                echo "$name";
-            } else {
-                echo "fa";
-            }
+            $this->CategoryModel->addCategory($name);
+            header('location:' . URLROOT . '/Admin/category');
+        }
+    }
+
+    public function deleteCategory($id)
+    {
+        if (isset($_POST['deleteCategory'])) {
+            $this->CategoryModel->deleteCategory($id);
+            header('location:' . URLROOT . '/Admin/category');
         }
     }
 

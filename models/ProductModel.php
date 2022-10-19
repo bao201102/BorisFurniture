@@ -105,15 +105,15 @@ class ProductModel
         return $data;
     }
 
-    public function countProduct()
-    {
-        $link = null;
-        taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(prod_id) FROM tbl_product");
-        $data = $result;
-        giaiPhongBoNho($link, $result);
-        return $data;
-    }
+    // public function countProduct()
+    // {
+    //     $link = null;
+    //     taoKetNoi($link);
+    //     $result = chayTruyVanTraVeDL($link, "SELECT COUNT(prod_id) FROM tbl_product");
+    //     $data = $result;
+    //     giaiPhongBoNho($link, $result);
+    //     return $data;
+    // }
 
     public function addProduct($name, $quantity, $price, $cate_id, $description)
     {
@@ -125,8 +125,21 @@ class ProductModel
         giaiPhongBoNho($link, $result);
         if ($data) {
             return true;
+        } else {
+            return false;
         }
-        else{
+    }
+
+    public function deleteProduct($id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET status = b'0' WHERE prod_id = '$id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
             return false;
         }
     }
@@ -140,8 +153,7 @@ class ProductModel
         giaiPhongBoNho($link, $result);
         if ($data) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

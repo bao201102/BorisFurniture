@@ -36,27 +36,13 @@ require_once APPROOT . '/views/includes/head.php';
                         </div>
 
                         <!-- button add new -->
-                        <div class="dropdown-center">
-                            <button class="btn btn-info d-flex align-items-center fs-5" data-bs-toggle="dropdown" data-bs-auto-close="outside">
+                        <div>
+                            <button onclick="addProduct()" type="button" class="btn btn-info d-flex align-items-center fs-5">
                                 <span class="material-symbols-outlined">
                                     add
                                 </span>
                                 Add new
                             </button>
-                            <div class="dropdown-menu dropdown-menu-dark text-center">
-                                <a onclick="addProduct()" class="dropdown-item">Product</a>
-                                <div class=" dropdown-center dropstart">
-                                    <a class="dropdown-item dropdown-toggle" data-bs-toggle="dropdown" data-bs-auto-close="outside">Category</a>
-                                    <form class="dropdown-menu p-3" style="width:200px;" action="<?= URLROOT ?>/Admin/addCategory" method="POST">
-                                        <div class="mb-3">
-                                            <label for="name_product" class="form-label">Category name</label>
-                                            <input type="text" class="form-control p-2" name="category" placeholder="Enter category ...">
-                                        </div>
-                                        <button type="submit" name="addCategory" class="w-100 btn btn-primary p-2">Add Category</button>
-                                    </form>
-                                </div>
-                                <!-- <div class="dropdown-divider"></div> -->
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -92,10 +78,12 @@ require_once APPROOT . '/views/includes/head.php';
                                         <td><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" alt="" class="product-thumbnail"></td>
                                         <td><?= $prod_name ?></td>
                                         <td><?= $data['category'][$i][0]['category_name'] ?></td>
-                                        <td class="text-center utility">
-                                            <span onclick="editProduct()" class="material-symbols-outlined edit me-3">edit</span>
-                                            <span class="material-symbols-outlined delete">delete</span>
-                                        </td>
+                                        <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
+                                            <td class="text-center utility">
+                                                <span onclick="editProduct()" class="material-symbols-outlined edit me-3">edit</span>
+                                                <button name="deleteProduct" type="submit" class="material-symbols-outlined delete">delete</button>
+                                            </td>
+                                        </form>
                                     </tr>
                             <?php $i++;
                                 endforeach;

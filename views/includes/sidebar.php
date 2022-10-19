@@ -32,6 +32,14 @@
                         Product Mangagement
                     </span>
                 </a>
+                <a class="d-block text-white" href="<?= URLROOT ?>/Admin/category" style="padding: 18px">
+                    <span class="material-symbols-outlined align-middle ms-2 me-2">
+                        category
+                    </span>
+                    <span class="align-middle sidebar-text">
+                        Category Mangagement
+                    </span>
+                </a>
                 <a class="d-block text-white" href="./employee_mgmt.php" style="padding: 18px">
                     <span class="material-symbols-outlined align-middle ms-2 me-2">
                         person

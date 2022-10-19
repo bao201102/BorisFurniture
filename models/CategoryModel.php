@@ -23,7 +23,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_category");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE status = '1'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -43,7 +43,21 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_category (category_name) VALUES ('$name')");
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_category (category_name, status) VALUES ('$name','1')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function deleteCategory($category_id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_category SET status = b'0' WHERE category_id = '$category_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {
