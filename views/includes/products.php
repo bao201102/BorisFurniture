@@ -1,13 +1,14 @@
 <?php
 if (!empty($data['prod'])) :
-    foreach ($data['prod'] as $prod) : extract($prod); ?>
+    foreach ($data['prod'] as $prod) : extract($prod);
+        $i = 0; ?>
         <!-- product box -->
         <div class="col box">
             <form action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST">
                 <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 34vh;">
                     <input type="hidden" name="prod_quantity" value="1">
                     <a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>">
-                        <img src="<?= IMAGE ?>/<?= $data['image'][$prod_id - 1]['img_link'] ?>" class="card-img-top img-fluid" alt="...">
+                        <img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" class="card-img-top img-fluid" alt="...">
                     </a>
 
                     <div class="card-body" style="z-index: 2; background-color: white;">
@@ -22,5 +23,6 @@ if (!empty($data['prod'])) :
                 </div>
             </form>
         </div>
-<?php endforeach;
+<?php $i++;
+    endforeach;
 endif; ?>

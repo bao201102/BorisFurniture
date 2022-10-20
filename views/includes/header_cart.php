@@ -16,7 +16,7 @@
                             <span>$<?= $prod_price ?>.00</span>
                         </div>
                     </div>
-                    <div>
+                    <!-- <div>
                         <form action="<?= URLROOT ?>/Cart/deleteProduct/<?= $prod_id ?>" method="POST">
                             <button style="border: none; background: white;">
                                 <span class="material-symbols-outlined cart-delete">
@@ -24,7 +24,7 @@
                                 </span>
                             </button>
                         </form>
-                    </div>
+                    </div> -->
                 </li>
 
             <?php endforeach; ?>

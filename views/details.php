@@ -51,13 +51,13 @@ require_once APPROOT . '/views/includes/head.php';
                                                     <?php if ($image['img_link'][6] == '1') : ?>
 
                                                         <div class="carousel-item active">
-                                                            <fieldset><img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block w-100" alt="..."></fieldset>
+                                                            <fieldset><img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block" style="max-height:600px" alt="..."></fieldset>
                                                         </div>
 
                                                     <?php else : ?>
 
                                                         <div class="carousel-item">
-                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block w-100" alt="...">
+                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block" style="max-height:600px" alt="...">
                                                         </div>
 
                                                     <?php endif; ?>
