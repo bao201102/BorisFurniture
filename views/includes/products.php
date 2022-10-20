@@ -1,7 +1,7 @@
 <?php
 if (!empty($data['prod'])) :
-    foreach ($data['prod'] as $prod) : extract($prod);
-        $i = 0; ?>
+    $i = 0;
+    foreach ($data['prod'] as $prod) : extract($prod); ?>
         <!-- product box -->
         <div class="col box">
             <form action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST">
