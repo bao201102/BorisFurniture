@@ -81,7 +81,7 @@ require_once APPROOT . '/views/includes/head.php';
                                         <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
                                             <td class="text-center utility">
                                                 <span onclick="editProduct()" class="material-symbols-outlined edit me-3">edit</span>
-                                                <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0">delete</button>
+                                                <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
                                             </td>
                                         </form>
                                     </tr>

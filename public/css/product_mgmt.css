@@ -9,14 +9,9 @@
 
 .utility .material-symbols-outlined {
   color: #bbbaba;
-  background-color: white;
   cursor: pointer;
   font-size: 26px;
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 20;
-}
-
-tr:hover .utility {
-  background-color: #55595c;
 }
 
 tr:hover .edit {
@@ -25,6 +20,7 @@ tr:hover .edit {
 
 tr:hover .delete {
   color: red;
+  background-color: transparent !important;
 }
 
 /* Moadal */
