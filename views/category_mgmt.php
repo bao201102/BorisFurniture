@@ -75,7 +75,7 @@ require_once APPROOT . '/views/includes/head.php';
                                         <th scope="row"><?= $category_id ?></th>
                                         <td><?= $category_name ?></td>
 
-                                        <?php if ($data['count_prod'][$i][0]['count'] > 0) : ?>
+                                        <?php if (!empty($data['count_prod'][$i][0]['count'])) : ?>
                                             <td><?= $data['count_prod'][$i][0]['count'] ?></td>
                                         <?php else : ?>
                                             <td>0</td>
