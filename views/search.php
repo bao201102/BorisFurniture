@@ -63,11 +63,13 @@ require_once APPROOT . '/views/includes/head.php';
                                     Under $2000
                                 </label>
                             </div>
-                            <p class="pt-0 pt-lg-5 fw-bold text-black">Search by product</p>
+                        </form>
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByCategory" method="POST" id="search-form">
+                            <p class="pt-0 pt-lg-5 fw-bold text-black">Search by category</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck1" name="category">
+                                <input class="form-check-input" type="checkbox" value="Lamp" id="flexCheck1" name="category">
                                 <label class="form-check-label" for="flexCheck1">
-                                    Table
+                                    Lamp
                                 </label>
                             </div>
                             <div class="form-check">
@@ -77,15 +79,15 @@ require_once APPROOT . '/views/includes/head.php';
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Cooking_tool" id="flexCheck3" name="category">
+                                <input class="form-check-input" type="checkbox" value="Accessories" id="flexCheck3" name="category">
                                 <label class="form-check-label" for="flexCheck3">
-                                    Cooking Tool
+                                    Accessories
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Electric_device" id="flexCheck4" name="category">
+                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck4" name="category">
                                 <label class="form-check-label" for="flexCheck4">
-                                    Electric Device
+                                    Table
                                 </label>
                             </div>
                             <div class="form-check">

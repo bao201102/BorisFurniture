@@ -172,7 +172,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE category_name = '$category'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE category_name LIKE '%$category%'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

@@ -75,8 +75,8 @@ class Search extends Controller
 
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
-                case "Cooking_tool": {
-                        $prod = $this->ProductModel->getProductByCategory("Cooking_tool");
+                case "Accessories": {
+                        $prod = $this->ProductModel->getProductByCategory("Accessories");
                         $image = array();
                         foreach ($prod as $value) {
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
@@ -85,8 +85,8 @@ class Search extends Controller
 
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
-                case "Electric_device": {
-                        $prod = $this->ProductModel->getProductByCategory("Electric_device");
+                case "Lamp": {
+                        $prod = $this->ProductModel->getProductByCategory("Lamp");
                         $image = array();
                         foreach ($prod as $value) {
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
