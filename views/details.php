@@ -38,12 +38,12 @@ require_once APPROOT . '/views/includes/head.php';
                     <div class="container my-5">
                         <div class="row">
                             <!-- Anh san pham -->
-                            <div class="col-12 col-lg-7">
+                            <div class="col-12 col-md-7">
                                 <!--carousel picture -->
                                 <div class="carou-product">
                                     <!-- slide picture -->
                                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-                                        <div class="carousel-inner shadow-sm">
+                                        <div class="carousel-inner">
                                             <?php
                                             if (!empty($data['img'])) :
                                                 foreach ($data['img'] as $image) : extract($image); ?>
@@ -51,13 +51,13 @@ require_once APPROOT . '/views/includes/head.php';
                                                     <?php if ($image['img_link'][6] == '1') : ?>
 
                                                         <div class="carousel-item active">
-                                                            <fieldset><img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block" style="max-height:600px" alt="..."></fieldset>
+                                                            <fieldset><img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="..."></fieldset>
                                                         </div>
 
                                                     <?php else : ?>
 
                                                         <div class="carousel-item">
-                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block" style="max-height:600px" alt="...">
+                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="...">
                                                         </div>
 
                                                     <?php endif; ?>
@@ -66,11 +66,11 @@ require_once APPROOT . '/views/includes/head.php';
                                             endif; ?>
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                                            <span class="material-symbols-outlined">arrow_back_ios_new</span>
+                                            <span class="material-symbols-outlined text-dark">arrow_back_ios_new</span>
                                             <span class="visually-hidden ">Previous</span>
                                         </button>
                                         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                                            <span class="material-symbols-outlined">arrow_forward_ios</span>
+                                            <span class="material-symbols-outlined text-dark">arrow_forward_ios</span>
                                             <span class="visually-hidden">Next</span>
                                         </button>
                                     </div>
@@ -78,7 +78,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST" class="col-12 col-lg-5 info-product">
+                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST" class="col-12 col-md-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3>
                                         <fieldset name="prod_name"><?= $prod_name ?></fieldset>
@@ -219,5 +219,6 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
+<script src="<?= JSFILE ?>/details.js"></script>
 
 </html>

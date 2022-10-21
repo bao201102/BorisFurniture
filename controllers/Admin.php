@@ -29,10 +29,15 @@ class Admin extends Controller
 
     public function category()
     {
-        // goi method getproductlist
         $category_list = $this->CategoryModel->getCategoryList();
-
-        $this->view('category_mgmt', ['category_list' => $category_list]);
+        $count_prod = array();
+        foreach ($category_list as $value) {
+            $id = $value['category_id'];
+            $count = $this->CategoryModel->countProdPerCate($id);
+            array_push($count_prod, $count);
+        }
+        // echo var_dump($count_prod[0][0]['COUNT(category_id)']);
+        $this->view('category_mgmt', ['category_list' => $category_list, 'count_prod' => $count_prod]);
     }
 
     public function addProduct()

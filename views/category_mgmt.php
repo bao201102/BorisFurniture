@@ -74,11 +74,17 @@ require_once APPROOT . '/views/includes/head.php';
                                     <tr>
                                         <th scope="row"><?= $category_id ?></th>
                                         <td><?= $category_name ?></td>
-                                        <td>11111</td>
+
+                                        <?php if ($data['count_prod'][$i][0]['count'] > 0) : ?>
+                                            <td><?= $data['count_prod'][$i][0]['count'] ?></td>
+                                        <?php else : ?>
+                                            <td>0</td>
+                                        <?php endif; ?>
+
                                         <form action="<?= URLROOT ?>/Admin/deleteCategory/<?= $category_id ?>" method="POST">
                                             <td class="text-center utility">
                                                 <span class="material-symbols-outlined edit me-3">edit</span>
-                                                <button name="deleteCategory" type="submit" class="material-symbols-outlined delete">delete</button>
+                                                <button name="deleteCategory" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
                                             </td>
                                         </form>
                                     </tr>

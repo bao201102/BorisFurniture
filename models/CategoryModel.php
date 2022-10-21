@@ -66,4 +66,24 @@ class CategoryModel
             return false;
         }
     }
+
+    // public function getCategoryId()
+    // {
+    //     $link = null;
+    //     taoKetNoi($link);
+    //     $result = chayTruyVanTraVeDL($link, "select category_id from tbl_category where ");
+    //     $data = $result[0]['prod_id'];
+    //     giaiPhongBoNho($link, $result);
+    //     return $data;
+    // }
+
+    public function countProdPerCate($category_id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(category_id) AS 'count' FROM tbl_product where category_id = '$category_id' GROUP BY category_id");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
 }
