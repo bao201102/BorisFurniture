@@ -146,7 +146,6 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="col">
                                     <label class="form-label">Category</label>
                                     <select class="form-select" name="category" aria-label="Default select example" required>
-                                        <option selected>Select</option>
                                         <?php foreach ($data['category_list'] as $cate) : extract($cate); ?>
                                             <option value="<?= $category_id ?>"><?= $category_name ?></option>
                                         <?php endforeach; ?>
