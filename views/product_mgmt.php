@@ -139,13 +139,13 @@ require_once APPROOT . '/views/includes/head.php';
                             <!-- name product -->
                             <div class="mb-3">
                                 <label for="name_product" class="form-label">Product name</label>
-                                <input type="text" class="form-control" name="prod_name" id="name_product" placeholder="Enter name of product">
+                                <input type="text" class="form-control" name="prod_name" id="name_product" placeholder="Enter name of product" required>
                             </div>
                             <div class="row mb-3">
                                 <!-- Category -->
                                 <div class="col">
                                     <label class="form-label">Category</label>
-                                    <select class="form-select" name="category" aria-label="Default select example">
+                                    <select class="form-select" name="category" aria-label="Default select example" required>
                                         <option selected>Select</option>
                                         <?php foreach ($data['category_list'] as $cate) : extract($cate); ?>
                                             <option value="<?= $category_id ?>"><?= $category_name ?></option>
@@ -161,7 +161,7 @@ require_once APPROOT . '/views/includes/head.php';
                             <!-- Description -->
                             <div>
                                 <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" name="description" rows="3" style="resize: none;"></textarea>
+                                <textarea class="form-control" id="description" name="description" rows="3" style="resize: none;" required></textarea>
                             </div>
                         </div>
 
@@ -172,14 +172,14 @@ require_once APPROOT . '/views/includes/head.php';
                             <!--  product  images-->
                             <div class="mb-3">
                                 <label for="file-upload" class="form-label">Product images</label>
-                                <input type="file" id="fileToUpload" name="fileToUpload[]" class="form-control" multiple>
+                                <input type="file" id="fileToUpload" name="fileToUpload[]" class="form-control" multiple required>
                             </div>
 
                             <!-- Price product -->
                             <label class="form-label">Price</label>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">$</span>
-                                <input type="number" name="prod_price" class="form-control" min="1" aria-label="Amount (to the nearest dollar)">
+                                <input type="number" name="prod_price" class="form-control" min="1" aria-label="Amount (to the nearest dollar)" required>
                             </div>
                         </div>
                         <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
