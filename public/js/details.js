@@ -20,7 +20,7 @@ function resizeImage() {
   var img = document.getElementsByClassName("img_carousel");
   for (let index = 0; index < img.length; index++) {
     if (window.innerWidth < 768) {
-      img[index].style.maxHeight = 430;
+      img[index].style.maxHeight = 360;
     } else if (window.innerWidth < 992) {
       img[index].style.maxHeight = 505;
     } else {
