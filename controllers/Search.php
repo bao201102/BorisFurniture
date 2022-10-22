@@ -20,7 +20,7 @@ class Search extends Controller
                 $this->view('search', ['prod' => $prod, 'image' => $image]);
             } else {
                 $s = explode("-", $_POST['price']);
-                $prod = $this->ProductModel->getProductByPrice($s[0],$s[1]);
+                $prod = $this->ProductModel->getProductByPrice($s[0], $s[1]);
                 $image = array();
                 foreach ($prod as $value) {
                     $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
@@ -35,7 +35,7 @@ class Search extends Controller
     {
         if (isset($_POST['category'])) {
             switch ($_POST['category']) {
-                case "1": {
+                case "Lamp": {
                         $prod = $this->ProductModel->getProductByCategory("1");
                         $image = array();
                         foreach ($prod as $value) {
@@ -56,7 +56,7 @@ class Search extends Controller
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
                 case "Accessories": {
-                        $prod = $this->ProductModel->getProductByCategory("Accessories");
+                        $prod = $this->ProductModel->getProductByCategory("3");
                         $image = array();
                         foreach ($prod as $value) {
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
@@ -65,8 +65,8 @@ class Search extends Controller
 
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
-                case "Lamp": {
-                        $prod = $this->ProductModel->getProductByCategory("Lamp");
+                case "Table": {
+                        $prod = $this->ProductModel->getProductByCategory("4");
                         $image = array();
                         foreach ($prod as $value) {
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
@@ -76,6 +76,20 @@ class Search extends Controller
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
             }
+        }
+    }
+
+    public function searchByName()
+    {
+        if (isset($_POST['name'])) {
+            $prod = $this->ProductModel->getProductByName($_POST['name']);
+            $image = array();
+            foreach ($prod as $value) {
+                $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+                array_push($image, $img);
+            }
+
+            $this->view('search', ['prod' => $prod, 'image' => $image]);
         }
     }
 }

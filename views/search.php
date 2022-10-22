@@ -33,11 +33,13 @@ require_once APPROOT . '/views/includes/head.php';
         <section>
             <div class="container">
                 <div class="row g-0" style="margin-top: 130px;">
+                    <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByName" name="enter" method="POST" id="search-form">
+                        <div class="offcanvas-body">
+                            <input class="form-control" type="text" placeholder="Search our product here" name="name">
+                        </div>
+                    </form>
                     <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
                         <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByPrice" method="POST" id="search-form">
-                            <div class="offcanvas-body">
-                                <input class="form-control" type="text" placeholder="Search our product here">
-                            </div>
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all" onclick="submit()">
@@ -67,7 +69,7 @@ require_once APPROOT . '/views/includes/head.php';
                         <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByCategory" method="POST" id="search-form">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by category</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Lamp" id="flexCheck1" name="category">
+                                <input class="form-check-input" type="checkbox" value="Lamp" id="flexCheck1" name="category" onclick="submit()">
                                 <label class="form-check-label" for="flexCheck1">
                                     Lamp
                                 </label>
@@ -79,21 +81,15 @@ require_once APPROOT . '/views/includes/head.php';
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Accessories" id="flexCheck3" name="category">
+                                <input class="form-check-input" type="checkbox" value="Accessories" id="flexCheck3" name="category" onclick="submit()">
                                 <label class="form-check-label" for="flexCheck3">
                                     Accessories
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck4" name="category">
+                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck4" name="category" onclick="submit()">
                                 <label class="form-check-label" for="flexCheck4">
                                     Table
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Others" id="flexCheck5">
-                                <label class="form-check-label" for="flexCheck5">
-                                    Others
                                 </label>
                             </div>
                         </form>
@@ -149,9 +145,13 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 
 <script>
-    function submit() {
-        let form = document.getElementById("form");
-        form.submit();
+    document.onkeydown=function(evt){
+        var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
+        if(keyCode == 13)
+        {
+            //your function call here
+            document.enter.submit();
+        }
     }
 </script>
 
