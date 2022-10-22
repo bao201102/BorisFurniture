@@ -74,13 +74,7 @@ require_once APPROOT . '/views/includes/head.php';
                                     <tr>
                                         <th scope="row"><?= $category_id ?></th>
                                         <td><?= $category_name ?></td>
-
-                                        <?php if (!empty($data['count_prod'][$i][0]['count'])) : ?>
                                             <td><?= $data['count_prod'][$i][0]['count'] ?></td>
-                                        <?php else : ?>
-                                            <td>0</td>
-                                        <?php endif; ?>
-
                                         <form action="<?= URLROOT ?>/Admin/deleteCategory/<?= $category_id ?>" method="POST">
                                             <td class="text-center utility">
                                                 <span class="material-symbols-outlined edit me-3">edit</span>

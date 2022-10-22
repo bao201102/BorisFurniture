@@ -55,8 +55,8 @@ class Search extends Controller
     {
         if (isset($_POST['category'])) {
             switch ($_POST['category']) {
-                case "Table": {
-                        $prod = $this->ProductModel->getProductByCategory("Table");
+                case "1": {
+                        $prod = $this->ProductModel->getProductByCategory("1");
                         $image = array();
                         foreach ($prod as $value) {
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
@@ -66,7 +66,7 @@ class Search extends Controller
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
                 case "Chair": {
-                        $prod = $this->ProductModel->getProductByCategory("Chair");
+                        $prod = $this->ProductModel->getProductByCategory("2");
                         $image = array();
                         foreach ($prod as $value) {
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];

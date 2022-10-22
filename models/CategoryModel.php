@@ -81,7 +81,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(category_id) AS 'count' FROM tbl_product where category_id = '$category_id' GROUP BY category_id");
+        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(category_id) AS 'count' FROM tbl_product where category_id = '$category_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
