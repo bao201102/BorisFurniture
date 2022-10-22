@@ -40,27 +40,27 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio4">
-                                    No limit
+                                    All
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="500" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="0-500" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio1">
-                                    Under $500
+                                    0 - $500
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="1000" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="501-1000" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio2">
-                                    Under $1000
+                                    $500 - $1000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="2000" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-2000" onclick="submit()">
                                 <label class="form-check-label" for="optionRadio3">
-                                    Under $2000
+                                    $1000 - $2000
                                 </label>
                             </div>
                         </form>

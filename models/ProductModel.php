@@ -158,11 +158,11 @@ class ProductModel
         }
     }
 
-    public function getProductByPrice($price)
+    public function getProductByPrice($price1, $price2)
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_price < '$price'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_price BETWEEN '$price1' AND '$price2'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

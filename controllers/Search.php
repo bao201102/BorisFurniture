@@ -10,43 +10,23 @@ class Search extends Controller
     public function searchByPrice()
     {
         if (isset($_POST['price'])) {
-            switch ($_POST['price']) {
-                case "500": {
-                        $prod = $this->ProductModel->getProductByPrice(500);
-                        $image = array();
-                        foreach ($prod as $value) {
-                            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                            array_push($image, $img);
-                        }
-                        $this->view('search', ['prod' => $prod, 'image' => $image]);
-                    }
-                case "1000": {
-                        $prod = $this->ProductModel->getProductByPrice(1000);
-                        $image = array();
-                        foreach ($prod as $value) {
-                            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                            array_push($image, $img);
-                        }
-                        $this->view('search', ['prod' => $prod, 'image' => $image]);
-                    }
-                case "2000": {
-                        $prod = $this->ProductModel->getProductByPrice(2000);
-                        $image = array();
-                        foreach ($prod as $value) {
-                            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                            array_push($image, $img);
-                        }
-                        $this->view('search', ['prod' => $prod, 'image' => $image]);
-                    }
-                default: {
-                        $prod = $this->ProductModel->getProductList();
-                        $image = array();
-                        foreach ($prod as $value) {
-                            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                            array_push($image, $img);
-                        }
-                        $this->view('search', ['prod' => $prod, 'image' => $image]);
-                    }
+            if ($_POST['price'] == "all") {
+                $prod = $this->ProductModel->getProductList();
+                $image = array();
+                foreach ($prod as $value) {
+                    $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+                    array_push($image, $img);
+                }
+                $this->view('search', ['prod' => $prod, 'image' => $image]);
+            } else {
+                $s = explode("-", $_POST['price']);
+                $prod = $this->ProductModel->getProductByPrice($s[0],$s[1]);
+                $image = array();
+                foreach ($prod as $value) {
+                    $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+                    array_push($image, $img);
+                }
+                $this->view('search', ['prod' => $prod, 'image' => $image]);
             }
         }
     }
@@ -62,7 +42,7 @@ class Search extends Controller
                             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
                             array_push($image, $img);
                         }
-                        
+
                         $this->view('search', ['prod' => $prod, 'image' => $image]);
                     }
                 case "Chair": {
