@@ -97,6 +97,30 @@ class Admin extends Controller
         }
     }
 
+    public function searchByCategory()
+    {
+        if (isset($_POST['category'])) {
+            if ($_POST['category'] == "all") {
+                header('location:' . URLROOT . '/Admin/product');
+            } else {
+                $prod = $this->ProductModel->getProductByCategory($_POST['category']);
+                $category_name = array();
+                $image = array();
+                $category_list = $this->CategoryModel->getCategoryList();
+                foreach ($prod as $value) {
+                    $cate = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($value['prod_id']));
+                    $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+                    array_push($image, $img);
+                    array_push($category_name, $cate);
+                }
+
+                $this->view('product_mgmt', ['prod' => $prod, 'category' => $category_name, 'image' => $image, 'category_list' => $category_list]);
+            }
+        }
+    }
+
+
+
     public function uploadPicture($prod_img_id)
     {
         if (isset($_POST['addProduct'])) {

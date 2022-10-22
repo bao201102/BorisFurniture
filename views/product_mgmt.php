@@ -26,14 +26,14 @@ require_once APPROOT . '/views/includes/head.php';
                     </div>
                     <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
                         <!-- select category -->
-                        <div class="me-2 me-xl-3">
-                            <select class="form-select" aria-label="Default select example">
+                        <form action="<?= URLROOT ?>/Admin/searchByCategory" method="POST" class="me-2 me-xl-3" id="formcate">
+                            <select class="form-select" name="category" aria-label="Default select example">
                                 <option selected value="all">All</option>
                                 <?php foreach ($data['category_list'] as $cate) : extract($cate); ?>
-                                    <option value="<?= $category_id ?>"><?= $category_name ?></option>
+                                    <option value="<?= $category_id ?>" onclick="submit()"><?= $category_name ?></option>
                                 <?php endforeach; ?>
                             </select>
-                        </div>
+                        </form>
 
                         <!-- button add new -->
                         <div>
@@ -262,5 +262,11 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/sidebar-effect.js"></script>
 <script src="<?= JSFILE ?>/product_mgmt.js"></script>
+<script>
+    function submit() {
+        let form = document.getElementById("formcate");
+        form.submit();
+    }
+</script>
 
 </html>
