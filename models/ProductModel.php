@@ -172,7 +172,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE category_id = '$category'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND category_id = '$category'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -182,7 +182,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE prod_name LIKE '%$name%'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
