@@ -178,11 +178,36 @@ class ProductModel
         return $data;
     }
 
-    public function getProductByName($name) 
+    public function getProductByName($name)
     {
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function countPage()
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "select count(*) from tbl_product");
+        $num_on_page = 10;
+        $total = ceil($result[0] / $num_on_page);
+        return $total;
+    }
+
+    public function pagination($page)
+    {
+        $link = null;
+        taoKetNoi($link);
+        // $page = isset($_POST['page']) ? $_POST['page'] : 1;
+        $page = is_numeric($page) ? $page : 1;
+        $num_on_page = 10;
+        $from = ($page - 1) * $num_on_page;
+        
+        $result = chayTruyVanTraVeDL($link, "select * from tbl_product limit " . $from . ", " . $num_on_page);
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
