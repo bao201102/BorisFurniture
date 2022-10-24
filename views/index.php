@@ -58,10 +58,10 @@ require_once APPROOT . '/views/includes/head.php';
                     if (!empty($data['prod'])) :
                         $i = 0;
                         foreach ($data['prod'] as $prod) : extract($prod);
-                            if ($i == 5) {
+                            if ($i == 4) {
                                 break;
                             } ?>
-                            <div class="col box">
+                            <div class="col-6 col-md-3 box">
                                 <form action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST">
                                     <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 34vh;">
                                         <input type="hidden" name="prod_quantity" value="1">
