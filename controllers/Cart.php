@@ -66,7 +66,7 @@ class Cart extends Controller
                     break;
 
                 case 'Update cart':
-                    $this->updateProduct($_POST['prod_quantity_up']);
+                    $this->updateProduct($_POST['prod_id'], $_POST['prod_quantity_up']);
                     header('location:' . URLROOT . '/Home/cart');
                     break;
 
@@ -87,13 +87,13 @@ class Cart extends Controller
         }
     }
 
-    function updateProduct($quan)
+    function updateProduct($id, $quan)
     {
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            for ($i = 0; $i < sizeof($cart); $i++) {
-                $cart[$i + 1]['prod_quantity_cart'] =  $quan[$i];
-                $cart[$i + 1]['subtotal'] = $cart[$i + 1]['prod_quantity_cart'] * $cart[$i + 1]['prod_price'];
+            for ($i = 0; $i < count($cart); $i++) {
+                $cart[$id[$i]]['prod_quantity_cart'] =  $quan[$i];
+                $cart[$id[$i]]['subtotal'] = $cart[$id[$i]]['prod_quantity_cart'] * $cart[$id[$i]]['prod_price'];
             }
             $_SESSION['cart'] = $cart;
             $this->createSubtotal();
