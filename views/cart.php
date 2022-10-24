@@ -51,7 +51,7 @@ require_once APPROOT . '/views/includes/head.php';
                                         <?php foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
 
                                             <tr>
-                                                <input type="hidden" name="prod_id" value="<?= $prod_id ?>">
+                                                <input type="hidden" name="prod_id[]" value="<?= $prod_id ?>">
                                                 <td scope="row"><img src="<?= IMAGE ?>/<?= $prod_img ?>" alt="" class="product-thumbnail">
                                                 </td>
                                                 <td style="padding: 24px 0"><a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>"><?= $prod_name ?></a></td>
