@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 20, 2022 at 12:06 PM
+-- Generation Time: Oct 25, 2022 at 04:55 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -43,7 +43,8 @@ INSERT INTO `tbl_category` (`category_id`, `category_name`, `status`) VALUES
 (1, 'Lamp', b'1'),
 (2, 'Chair', b'1'),
 (3, 'Accessories', b'1'),
-(4, 'Table', b'1');
+(4, 'Table', b'1'),
+(5, 'Sofa', b'1');
 
 -- --------------------------------------------------------
 
@@ -160,6 +161,7 @@ CREATE TABLE `tbl_order` (
 --
 
 CREATE TABLE `tbl_order_detail` (
+  `order_detail_id` int(2) NOT NULL,
   `order_id` int(2) NOT NULL,
   `prod_id` int(2) NOT NULL,
   `quantity` int(100) NOT NULL,
@@ -280,7 +282,7 @@ ALTER TABLE `tbl_order`
 -- Indexes for table `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
-  ADD PRIMARY KEY (`order_id`,`prod_id`);
+  ADD PRIMARY KEY (`order_detail_id`);
 
 --
 -- Indexes for table `tbl_product`
@@ -310,7 +312,7 @@ ALTER TABLE `tbl_user_type`
 -- AUTO_INCREMENT for table `tbl_category`
 --
 ALTER TABLE `tbl_category`
-  MODIFY `category_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `category_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tbl_customer`
@@ -335,6 +337,12 @@ ALTER TABLE `tbl_image`
 --
 ALTER TABLE `tbl_order`
   MODIFY `order_id` int(2) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tbl_order_detail`
+--
+ALTER TABLE `tbl_order_detail`
+  MODIFY `order_detail_id` int(2) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`
