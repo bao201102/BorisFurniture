@@ -3,6 +3,7 @@ class CategoryModel
 {
     var $category_id;
     var $category_name;
+    var $status;
 
     public function getId()
     {
@@ -13,10 +14,17 @@ class CategoryModel
         return $this->category_name;
     }
 
-    public function __contruct($category_id, $category_name)
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+
+    public function __contruct($category_id, $category_name, $status)
     {
         $this->category_id = $category_id;
         $this->category_name = $category_name;
+        $this->status = $status;
     }
 
     public function getCategoryList()

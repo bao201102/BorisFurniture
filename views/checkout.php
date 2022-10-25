@@ -1,19 +1,19 @@
 <html lang="en">
 
 <?php
-    require_once APPROOT . '/views/includes/head.php';
+require_once APPROOT . '/views/includes/head.php';
 ?>
 
 <body>
     <div class="container-fluid p-0">
         <!-- Header -->
         <?php
-            require_once APPROOT . '/views/includes/navbar.php';
+        require_once APPROOT . '/views/includes/navbar.php';
         ?>
-        
+
         <!-- title -->
         <?php
-            require_once APPROOT . '/views/includes/breadcrumb.php';
+        require_once APPROOT . '/views/includes/breadcrumb.php';
         ?>
 
         <!--Checkout body section-->
@@ -98,10 +98,6 @@
                                                 <input class="form-check-input" type="radio" name="shipping" id="free" checked>
                                                 <label class="form-check-label" for="free">Free shipping</label>
                                             </div>
-                                            <div class="form-check my-2">
-                                                <input class="form-check-input" type="radio" name="shipping" id="flat">
-                                                <label class="form-check-label" for="flat">Flat: $12.00</label>
-                                            </div>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" name="shipping" id="local">
                                                 <label class="form-check-label" for="local">Local pickup</label>
@@ -164,7 +160,7 @@
 
         <!-- Footer and client logo section -->
         <?php
-            require_once APPROOT . '/views/includes/footer.php';
+        require_once APPROOT . '/views/includes/footer.php';
         ?>
     </div>
 </body>

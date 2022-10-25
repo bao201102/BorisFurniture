@@ -89,7 +89,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select category_id from tbl_product where prod_id = $id");
+        $result = chayTruyVanTraVeDL($link, "select category_id from tbl_product where prod_id = '$id'");
         $data = $result[0]['category_id'];
         giaiPhongBoNho($link, $result);
         return $data;
@@ -206,7 +206,7 @@ class ProductModel
         $page = is_numeric($page) ? $page : 1;
         $num_on_page = 10;
         $from = ($page - 1) * $num_on_page;
-        
+
         $result = chayTruyVanTraVeDL($link, "select * from tbl_product limit " . $from . ", " . $num_on_page);
         $data = $result;
         giaiPhongBoNho($link, $result);

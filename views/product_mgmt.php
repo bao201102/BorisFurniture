@@ -60,36 +60,40 @@ require_once APPROOT . '/views/includes/head.php';
 
             <!-- product -->
             <section class="py-4">
-                <div class="container">
-                    <table class="table table-hover align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col" colspan="2">id</th>
-                                <th scope="col">product</th>
-                                <th scope="col" colspan="2">category</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider">
-                            <?php if (!empty($data['prod'])) :
-                                $i = 0;
-                                foreach ($data['prod'] as $prod) : extract($prod); ?>
-                                    <tr>
-                                        <th scope="row"><?= $prod_id ?></th>
-                                        <td><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" alt="" class="product-thumbnail"></td>
-                                        <td><?= $prod_name ?></td>
-                                        <td><?= $data['category'][$i][0]['category_name'] ?></td>
-                                        <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
-                                            <td class="text-center utility">
-                                                <span onclick="editProduct()" class="material-symbols-outlined edit me-3">edit</span>
-                                                <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
-                                            </td>
-                                        </form>
-                                    </tr>
-                            <?php $i++;
-                                endforeach;
-                            endif; ?>
-                        </tbody>
-                    </table>
+                <div class="container ">
+                    <div class="table-responsive">
+                        <table class=" table table-hover align-middle">
+                            <thead>
+                                <tr>
+                                    <th scope="col" colspan="2">id</th>
+                                    <th scope="col">product</th>
+                                    <th scope="col" colspan="2">category</th>
+                                </tr>
+                            </thead>
+                            <tbody class="table-group-divider">
+                                <?php if (!empty($data['prod'])) :
+                                    $i = 0;
+                                    foreach ($data['prod'] as $prod) : extract($prod); ?>
+                                        <tr>
+                                            <th scope="row"><?= $prod_id ?></th>
+                                            <td><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" alt="" class="product-thumbnail"></td>
+                                            <td><?= $prod_name ?></td>
+                                            <td><?= $data['category'][$i][0]['category_name'] ?></td>
+                                            <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
+                                                <td class="text-center utility">
+                                                    <div class="d-flex justify-content-center">
+                                                        <span onclick="editProduct()" class="material-symbols-outlined edit">edit</span>
+                                                        <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
+                                                    </div>
+                                                </td>
+                                            </form>
+                                        </tr>
+                                <?php $i++;
+                                    endforeach;
+                                endif; ?>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
@@ -133,8 +137,8 @@ require_once APPROOT . '/views/includes/head.php';
                     </span>
                 </div>
                 <br style="clear: both;">
-                <div class="row pt-2 pt-md-4 px-3 px-md-4">
-                    <div class="col-6">
+                <div class="row py-2 py-md-4 px-3 px-md-4">
+                    <div class=" col-12 col-lg-6">
                         <div class="px-3">
                             <!-- name product -->
                             <div class="mb-3">
@@ -158,7 +162,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
                             </div>
                             <!-- Description -->
-                            <div>
+                            <div class="mb-3 mb-lg-0">
                                 <label for="description" class="form-label">Description</label>
                                 <textarea class="form-control" id="description" name="description" rows="3" style="resize: none;" required></textarea>
                             </div>
@@ -166,7 +170,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                     </div>
 
-                    <div class="col-6 d-flex flex-column">
+                    <div class="col-12 col-lg-6 d-flex flex-column">
                         <div class="px-3">
                             <!--  product  images-->
                             <div class="mb-3">

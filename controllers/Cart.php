@@ -80,10 +80,12 @@ class Cart extends Controller
     {
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            unset($cart[$key]);
+            for ($i = 0; $i < count($cart); $i++) {
+                unset($cart[$key[$i]]);
+            }
             $_SESSION['cart'] = $cart;
             $this->createSubtotal();
-            header('location:' . URLROOT . '/Home/cart');
+            // header('location:' . URLROOT . '/Home/cart');
         }
     }
 

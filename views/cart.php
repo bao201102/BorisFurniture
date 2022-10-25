@@ -61,11 +61,11 @@ require_once APPROOT . '/views/includes/head.php';
                                                 </td>
                                                 <td>$<?= number_format($subtotal, 2, '.', ',') ?></td>
                                                 <td>
-                                                        <button type="submit" name="action" value="Delete" style="border: none; background: white;">
-                                                            <span class="material-symbols-outlined cart-delete">
-                                                                close
-                                                            </span>
-                                                        </button>
+                                                    <button type="submit" name="action" value="Delete" style="border: none; background: white;">
+                                                        <span class="material-symbols-outlined cart-delete">
+                                                            close
+                                                        </span>
+                                                    </button>
                                                 </td>
                                             </tr>
 
@@ -75,8 +75,8 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
                             <div class="mt-4 mb-4 mb-xl-0 d-flex justify-content-center">
                                 <div class="btn-group gap-3" role="group">
-                                        <button type="submit" name="action" value="Empty cart" class="btn btn-outline-primary">Empty cart</button>
-                                        <button type="submit" name="action" value="Update cart" class="btn btn-outline-primary">Update cart</button>
+                                    <button type="submit" name="action" value="Empty cart" class="btn btn-outline-primary">Empty cart</button>
+                                    <button type="submit" name="action" value="Update cart" class="btn btn-outline-primary">Update cart</button>
                                 </div>
                             </div>
                         </form>
@@ -103,10 +103,6 @@ require_once APPROOT . '/views/includes/head.php';
                                                     <input class="form-check-input" type="radio" name="shipping" id="free" checked>
                                                     <label class="form-check-label" for="free">Free shipping</label>
                                                 </div>
-                                                <div class="form-check my-2">
-                                                    <input class="form-check-input" type="radio" name="shipping" id="flat">
-                                                    <label class="form-check-label" for="flat">Flat: $12.00</label>
-                                                </div>
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="radio" name="shipping" id="local">
                                                     <label class="form-check-label" for="local">Local pickup</label>
@@ -119,8 +115,8 @@ require_once APPROOT . '/views/includes/head.php';
                                         <tr>
                                             <td scope="row" class="text-black fw-semibold  ps-0">Total</td>
                                             <td class="text-end  text-xl-start  pe-0">
-                                                <p class="fw-semibold fs-3 text-black pb-3">$<?= number_format($_SESSION['total']* 1.1, 2, '.', ',') ?></p>
-                                                <span class="fs-6">(Includes $ <?= number_format($_SESSION['total']* 0.1, 2, '.', ',') ?> tax)</span>
+                                                <p class="fw-semibold fs-3 text-black pb-3">$<?= number_format($_SESSION['total'] * 1.1, 2, '.', ',') ?></p>
+                                                <span class="fs-6">(Includes $ <?= number_format($_SESSION['total'] * 0.1, 2, '.', ',') ?> tax)</span>
                                             </td>
                                         </tr>
                                     <?php endif; ?>
@@ -144,7 +140,7 @@ require_once APPROOT . '/views/includes/head.php';
             </div>
             <form action="<?= URLROOT ?>/Home/search" method="POST" class="mt-5 text-center">
                 <button class="fs-4 btn btn-primary">RETURN TO SHOP</button>
-        </form>
+            </form>
 
         <?php endif; ?>
         <!-- Footer and client logo section -->

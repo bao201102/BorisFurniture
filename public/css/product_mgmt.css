@@ -16,6 +16,7 @@
 
 tr:hover .edit {
   color: #0ca1f7;
+  background-color: transparent !important;
 }
 
 tr:hover .delete {
