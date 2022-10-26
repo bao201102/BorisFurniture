@@ -25,7 +25,7 @@ require_once APPROOT . '/views/includes/head.php';
                         <span class="fw-semibold fs-3">Customer Management</span>
                     </div>
                     <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
-                        <!-- button add new -->
+                        <!-- button add new
                         <div class="dropdown">
                             <button class="btn btn-info d-flex align-items-center fs-5" data-bs-toggle="dropdown" data-bs-auto-close="outside">
                                 <span class="material-symbols-outlined">
@@ -41,7 +41,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <button type="submit" name="addCategory" class="w-100 btn btn-primary p-2">Add Category</button>
                             </form>
 
-                        </div>
+                        </div> -->
                     </div>
                 </div>
             </section>
@@ -63,19 +63,23 @@ require_once APPROOT . '/views/includes/head.php';
                         <thead>
                             <tr>
                                 <th scope="col">id</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Quantity</th>
+                                <th scope="col">first name</th>
+                                <th scope="col">last name</th>
+                                <th scope="col">date of birth</th>
+                                <th scope="col">phone</th>
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php if (!empty($data['category_list'])) :
+                            <?php if (!empty($data['cus_list'])) :
                                 $i = 0;
-                                foreach ($data['category_list'] as $category_list) : extract($category_list); ?>
+                                foreach ($data['cus_list'] as $cus_list) : extract($cus_list); ?>
                                     <tr>
-                                        <th scope="row"><?= $category_id ?></th>
-                                        <td><?= $category_name ?></td>
-                                        <td><?= $data['count_prod'][$i][0]['count'] ?></td>
-                                        <form action="<?= URLROOT ?>/Admin/deleteCategory/<?= $category_id ?>" method="POST">
+                                        <th scope="row"><?= $cus_id ?></th>
+                                        <td><?= $firstname ?></td>
+                                        <td><?= $lastname ?></td>
+                                        <td><?= $birthday ?></td>
+                                        <td><?= $phone ?></td>
+                                        <form action="<?= URLROOT ?>/Admin/deleteCustomer/<?= $cus_id ?>" method="POST">
                                             <td class="text-center utility">
                                                 <span class="material-symbols-outlined edit me-3">edit</span>
                                                 <button name="deleteCategory" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
