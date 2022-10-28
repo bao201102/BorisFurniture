@@ -5,6 +5,7 @@ class User extends Controller
     {
         $this->UserModel = $this->model('UserModel');
         $this->CustomerModel = $this->model('CustomerModel');
+        $this->EmployeeModel = $this->model('EmployeeModel');
     }
 
     public function index($msg = [])
@@ -47,7 +48,9 @@ class User extends Controller
                     $_SESSION['user_type'] = $user[0]['user_type'];
 
                     if ($_SESSION['user_type'] == 0) {
-                        header('location:' . URLROOT . '/Admin/product_mgmt');
+                        $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
+                        $_SESSION['user_name'] = $employee[0]['lastname'] . " " . $employee[0]['firstname'];
+                        header('location:' . URLROOT . '/Admin/index');
                     }
                     else if ($_SESSION['user_type'] == 1) {
                         header('location:' . URLROOT . '/User/index');
@@ -85,7 +88,7 @@ class User extends Controller
             } else if ($this->validatePassword()) {
                 header('location:' . URLROOT . '/User/index/wrongpass');
             } else {
-                $userResult = $this->UserModel->addUser($_POST['emailInput'], md5($_POST['passwordInput1']));
+                $userResult = $this->UserModel->addUser($_POST['emailInput'], md5($_POST['passwordInput1']), 1);
                 if ($userResult) {
                     $user_id = $this->UserModel->getUserId($_POST['emailInput'])[0]['user_id'];
                     $customerResult = $this->CustomerModel->addCustomer($user_id, $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);

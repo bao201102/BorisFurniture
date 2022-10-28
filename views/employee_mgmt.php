@@ -70,11 +70,11 @@ require_once APPROOT . '/views/includes/head.php';
                                             <td><?= $lastname ?> <?= $firstname ?></td>
                                             <td><?= $birthday ?></td>
                                             <td><?= $phone ?></td>
-                                            <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $emp_id ?>" method="POST">
+                                            <form action="<?= URLROOT ?>/Admin/deleteEmployee/<?= $emp_id ?>" method="POST">
                                                 <td class="text-center utility">
                                                     <div class="d-flex justify-content-center">
                                                         <span onclick="editProduct()" class="material-symbols-outlined edit">edit</span>
-                                                        <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
+                                                        <button name="deleteEmployee" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
                                                     </div>
                                                 </td>
                                             </form>

@@ -50,7 +50,7 @@ class CustomerModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_customer where status = 1");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_customer WHERE status = 1");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

@@ -50,7 +50,15 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end dropdown-menu-dark text-center pt-2" data-popper-placement="bottom-start" style="height: 95px; width: 150px;">
-                                <a class="dropdown-item" type="button" href="<?= URLROOT ?>/User/profile">Profile</a>
+                                <?php if ($_SESSION['user_type'] == 1) : ?>
+
+                                    <a class="dropdown-item" type="button" href="<?= URLROOT ?>/User/profile">Profile</a>
+
+                                <?php else : ?>
+
+                                    <a class="dropdown-item" type="button" href="<?= URLROOT ?>/User/profile">Administrator</a>
+
+                                <?php endif; ?>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" type="button" href="<?= URLROOT ?>/User/logout">Log out</a>
                             </div>

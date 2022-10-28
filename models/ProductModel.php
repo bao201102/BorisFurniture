@@ -8,7 +8,7 @@ class ProductModel
     var $category_id;
     var $prod_description;
     var $prod_image_id;
-    var $status;
+    var $STATUS;
 
     public function getId()
     {
@@ -38,12 +38,12 @@ class ProductModel
     {
         return $this->prod_image_id;
     }
-    public function getStatus()
+    public function getSTATUS()
     {
-        return $this->status;
+        return $this->STATUS;
     }
 
-    public function __contruct($prod_id, $prod_name, $prod_quantity, $prod_price, $category_id, $prod_description, $prod_image_id, $status)
+    public function __contruct($prod_id, $prod_name, $prod_quantity, $prod_price, $category_id, $prod_description, $prod_image_id, $STATUS)
     {
         $this->prod_id = $prod_id;
         $this->prod_name = $prod_name;
@@ -52,14 +52,14 @@ class ProductModel
         $this->category_id = $category_id;
         $this->prod_description = $prod_description;
         $this->prod_image_id = $prod_image_id;
-        $this->status = $status;
+        $this->STATUS = $STATUS;
     }
 
     public function getProductList()
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_product where status = 1");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -69,7 +69,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_product where prod_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE prod_id = '$id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -79,7 +79,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select prod_id from tbl_product where prod_image_id is NULL");
+        $result = chayTruyVanTraVeDL($link, "SELECT prod_id FROM tbl_product WHERE prod_image_id is NULL");
         $data = $result[0]['prod_id'];
         giaiPhongBoNho($link, $result);
         return $data;
@@ -89,7 +89,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select category_id from tbl_product where prod_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT category_id FROM tbl_product WHERE prod_id = '$id'");
         $data = $result[0]['category_id'];
         giaiPhongBoNho($link, $result);
         return $data;
@@ -99,7 +99,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select prod_image_id from tbl_product where prod_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT prod_image_id FROM tbl_product WHERE prod_id = '$id'");
         $data = $result[0]['prod_image_id'];
         giaiPhongBoNho($link, $result);
         return $data;
@@ -119,7 +119,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_product (prod_name, prod_quantity, prod_price, category_id, prod_description, status) 
+        $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_product (prod_name, prod_quantity, prod_price, category_id, prod_description, STATUS) 
                                                     VALUES ('$name', '$quantity', '$price', '$cate_id', '$description', '1')");
         $data = $result;
         giaiPhongBoNho($link, $result);
@@ -134,7 +134,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET status = b'0' WHERE prod_id = '$id'");
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET STATUS = b'0' WHERE prod_id = '$id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {
@@ -192,7 +192,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select count(*) from tbl_product");
+        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_product");
         $num_on_page = 10;
         $total = ceil($result[0] / $num_on_page);
         return $total;
@@ -205,9 +205,9 @@ class ProductModel
         // $page = isset($_POST['page']) ? $_POST['page'] : 1;
         $page = is_numeric($page) ? $page : 1;
         $num_on_page = 10;
-        $from = ($page - 1) * $num_on_page;
+        $FROM = ($page - 1) * $num_on_page;
 
-        $result = chayTruyVanTraVeDL($link, "select * from tbl_product limit " . $from . ", " . $num_on_page);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product LIMIT " . $FROM . ", " . $num_on_page);
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
