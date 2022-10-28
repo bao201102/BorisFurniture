@@ -19,7 +19,7 @@ require_once APPROOT . '/views/includes/head.php';
                 <!-- Profile section -->
                 <div class="container">
                     <fieldset class="mx-auto bg-white" style="padding: 45px; margin-top: 100px; min-width: 300px;  max-width: 550px;">
-                        <form class="" id="" action="" method="POST">
+                        <form class="" id="" action="<?= URLROOT ?>/User/editProfile" method="POST">
                             <legend class="mb-5 fw-bold">Profile</legend>
                             <div class="form-group" style="font-size: 16px;">
                                 <div class="mb-5 row">
@@ -35,14 +35,23 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
                                 <div class="mb-5">
                                     <label class="form-label">Birthday</label>
-                                    <input type="date" class="form-control" name="birthInput" value="<?= $birthday ?>" require>
+                                    <input type="date" class="form-control" name="birthdayInput" value="<?= $birthday ?>" require>
                                 </div>
-
                                 <div class="mb-5">
                                     <label class="form-label">Phone</label>
                                     <input type="text" class="form-control" name="phoneInput" placeholder="Phone" value="<?= $phone ?>" require>
                                 </div>
+                                <div>
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm Password" required>
+                                </div>
+                            </div>
+                            <button name="editProfile" type="submit" class="btn btn-primary w-100 mt-4 mb-4">Change profile</button>
+                        </form>
 
+                        <form class="" id="" action="<?= URLROOT ?>/User/editProfile" method="POST">
+                            <legend class="mb-5 fw-bold">Account</legend>
+                            <div class="form-group" style="font-size: 16px;">
                                 <div class="mb-5">
                                     <label class="form-label">Email address</label>
                                     <input type="email" class="form-control" name="emailInput" placeholder="example@gmail.com" value="<?= $email ?>" require>
@@ -57,7 +66,7 @@ require_once APPROOT . '/views/includes/head.php';
                                     <input type="password" class="form-control" name="passwordInput2" placeholder="Password" required>
                                 </div>
                             </div>
-                            <button name="submit" type="submit" class="btn btn-primary w-100 mt-4 mb-4">Change profile</button>
+                            <button name="editProfile" type="submit" class="btn btn-primary w-100 mt-4 mb-4">Change profile</button>
                         </form>
                     </fieldset>
                 </div>

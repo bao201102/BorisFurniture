@@ -22,8 +22,7 @@ class User extends Controller
         if (!empty($_SESSION['user_id'])) {
             if ($_SESSION['user_type'] == 0) {
                 header('location:' . URLROOT . '/Admin/product_mgmt');
-            }
-            else if ($_SESSION['user_type'] == 1) {
+            } else if ($_SESSION['user_type'] == 1) {
                 $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
                 $this->view('profile', ['cus' => $cus]);
             }
@@ -39,7 +38,7 @@ class User extends Controller
     public function login()
     {
         if (!empty($_SESSION['signin'])) {
-            header('location:' . URLROOT . '/User/profile');
+            header('location:' . URLROOT . '/Home/index');
         } else {
             if (isset($_POST['signin'])) {
                 $user = $this->UserModel->getUser($_POST['emailInput'], md5($_POST['passwordInput']));
@@ -51,8 +50,7 @@ class User extends Controller
                         $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
                         $_SESSION['user_name'] = $employee[0]['lastname'] . " " . $employee[0]['firstname'];
                         header('location:' . URLROOT . '/Admin/index');
-                    }
-                    else if ($_SESSION['user_type'] == 1) {
+                    } else if ($_SESSION['user_type'] == 1) {
                         header('location:' . URLROOT . '/User/index');
                     }
                 }
@@ -94,6 +92,22 @@ class User extends Controller
                     $customerResult = $this->CustomerModel->addCustomer($user_id, $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
                     if ($customerResult) {
                         header('location:' . URLROOT . '/User/index/success');
+                    }
+                }
+            }
+        }
+    }
+
+    public function editProfile()
+    {
+        if (isset($_POST['editProfile'])) {
+            if ($this->validatePassword()) {
+            } else {
+                $userResult = $this->UserModel->editUser($_SESSION['user_id'], $_POST['emailInput'], md5($_POST['passwordInput1']));
+                if ($userResult) {
+                    $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                    if ($customerResult) {
+                        header('location:' . URLROOT . '/Home/index');
                     }
                 }
             }

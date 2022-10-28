@@ -48,7 +48,7 @@ class UserModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_user");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_user WHERE status = '1'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -94,6 +94,20 @@ class UserModel
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_user SET status = b'0' WHERE emp_id = '$user_id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function editUser($user_id, $email, $password)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_user SET email = '$email', user_password = '$password' WHERE user_id = '$user_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {

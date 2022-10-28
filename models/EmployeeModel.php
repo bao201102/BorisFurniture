@@ -19,7 +19,7 @@ class EmployeeModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_employee WHERE user_id = '$user_id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_employee WHERE user_id = '$user_id' AND status = '1'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

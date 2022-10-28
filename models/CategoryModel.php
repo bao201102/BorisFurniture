@@ -41,7 +41,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT category_name FROM tbl_category WHERE category_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT category_name FROM tbl_category WHERE category_id = '$id' AND status = '1'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
