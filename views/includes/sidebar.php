@@ -40,7 +40,7 @@
                         Category Mangagement
                     </span>
                 </a>
-                <a class="d-block text-white" href="./employee_mgmt.php" style="padding: 18px">
+                <a class="d-block text-white" href="<?= URLROOT ?>/Admin/employee" style="padding: 18px">
                     <span class="material-symbols-outlined align-middle ms-2 me-2">
                         person
                     </span>
@@ -48,7 +48,7 @@
                         Employee Mangagement
                     </span>
                 </a>
-                <a class="d-block text-white" href="./customer_mgmt.php" style="padding: 18px">
+                <a class="d-block text-white" href="<?= URLROOT ?>/Admin/customer" style="padding: 18px">
                     <span class="material-symbols-outlined align-middle ms-2 me-2">
                         group
                     </span>

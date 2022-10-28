@@ -8,11 +8,11 @@ class Admin extends Controller
         $this->ImageModel = $this->model('ImageModel');
         $this->UserModel = $this->model('UserModel');
         $this->CustomerModel = $this->model('CustomerModel');
+        $this->EmployeeModel = $this->model('EmployeeModel');
     }
 
     public function product()
     {
-        // goi method getproductlist
         $prod = $this->ProductModel->getProductList();
         $category_name = array();
         $image = array();
@@ -119,8 +119,6 @@ class Admin extends Controller
         }
     }
 
-
-
     public function uploadPicture($prod_img_id)
     {
         if (isset($_POST['addProduct'])) {
@@ -131,6 +129,50 @@ class Admin extends Controller
                 $s = explode(".", $filename);
                 $this->ImageModel->addImage($prod_img_id, $prod_img_id . "-" . ($i + 1) . "." . $s[1]);
                 move_uploaded_file($_FILES['fileToUpload']['tmp_name'][$i], APPROOT . "/public/img/" . $prod_img_id . "-" . ($i + 1) . "." . $s[1]);
+            }
+        }
+    }
+
+    public function employee(){
+        $emp = $this->EmployeeModel->getEmpList();
+        $this->view("employee_mgmt", ['emp' => $emp]);
+    }
+
+    public function validateEmail()
+    {
+        //Check if email exist
+        $user = $this->UserModel->getUserList();
+        foreach ($user as $value) {
+            if ($value['email'] == $_POST['emailInput']) {
+                return true;
+            }
+        }
+    }
+
+    public function validatePassword()
+    {
+        //Check if password is correct
+        if ($_POST['passwordInput1'] != $_POST['passwordInput2']) {
+            return true;
+        }
+    }
+
+    public function addEmployee()
+    {
+        if (isset($_POST['addEmployee'])) {
+            if ($this->validateEmail()) {
+                
+            } else if ($this->validatePassword()) {
+                
+            } else {
+                $userResult = $this->UserModel->addUser($_POST['emailInput'], md5($_POST['passwordInput1']));
+                if ($userResult) {
+                    $user_id = $this->UserModel->getUserId($_POST['emailInput'])[0]['user_id'];
+                    $EmployeeResult = $this->EmployeeModel->addEmployee($user_id, $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                    if ($EmployeeResult) {
+                        header('location:' . URLROOT . '/Admin/employee');
+                    }
+                }
             }
         }
     }
