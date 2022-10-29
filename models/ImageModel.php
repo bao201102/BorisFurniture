@@ -30,7 +30,7 @@ class ImageModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select img_link from tbl_image where prod_image_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT img_link FROM tbl_image WHERE prod_image_id = '$id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -45,8 +45,7 @@ class ImageModel
         giaiPhongBoNho($link, $result);
         if ($data) {
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }

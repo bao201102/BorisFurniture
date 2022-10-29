@@ -41,7 +41,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "select category_name from tbl_category where category_id = '$id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT category_name FROM tbl_category WHERE category_id = '$id' AND status = '1'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -89,7 +89,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(category_id) AS 'count' FROM tbl_product where category_id = '$category_id'");
+        $result = chayTruyVanTraVeDL($link, "SELECT COUNT(category_id) AS 'count' FROM tbl_product WHERE category_id = '$category_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
