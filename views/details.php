@@ -45,25 +45,22 @@ require_once APPROOT . '/views/includes/head.php';
                                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                                         <div class="carousel-inner">
                                             <?php
-                                            if (!empty($data['img'])) :
-                                                foreach ($data['img'] as $image) : extract($image); ?>
+                                            $i = 0;
+                                            for ($i = 0; $i < count($data['image']); $i++) :
+                                                if ($i == 0) : ?>
 
-                                                    <?php if ($image['img_link'][6] == '1') : ?>
+                                                    <div class="carousel-item active">
+                                                        <fieldset><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="..."></fieldset>
+                                                    </div>
 
-                                                        <div class="carousel-item active">
-                                                            <fieldset><img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="..."></fieldset>
-                                                        </div>
+                                                <?php else : ?>
 
-                                                    <?php else : ?>
+                                                    <div class="carousel-item">
+                                                        <img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="...">
+                                                    </div>
 
-                                                        <div class="carousel-item">
-                                                            <img src="<?= IMAGE ?>/<?= $img_link ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="...">
-                                                        </div>
-
-                                                    <?php endif; ?>
-
-                                            <?php endforeach;
-                                            endif; ?>
+                                            <?php endif;
+                                            endfor; ?>
                                         </div>
                                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                                             <span class="material-symbols-outlined text-dark">arrow_back_ios_new</span>

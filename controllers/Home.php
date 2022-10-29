@@ -49,7 +49,7 @@ class Home extends Controller
     public function details($prod_id)
     {
         $prod = $this->ProductModel->getProduct($prod_id);
-        $category = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($prod_id));
+        $category = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($prod_id)); // prod[0]['category_id']
         $image = $this->ImageModel->getImage($this->ProductModel->getImageId($prod_id));
         $this->view('details', ['prod' => $prod, 'cate' => $category, 'img' => $image]);
     }
