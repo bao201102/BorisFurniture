@@ -116,4 +116,32 @@ class UserModel
             return false;
         }
     }
+
+    public function changeEmail($user_id, $email)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_user SET email = '$email' WHERE user_id = '$user_id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function changePassword($user_id,  $password)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_user SET user_password = '$password' WHERE user_id = '$user_id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

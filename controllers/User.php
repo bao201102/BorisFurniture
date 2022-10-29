@@ -45,6 +45,7 @@ class User extends Controller
                 if (!empty($user)) {
                     $_SESSION['user_id'] = $user[0]['user_id'];
                     $_SESSION['user_type'] = $user[0]['user_type'];
+                    $_SESSION['user_email'] = $user[0]['email'];
 
                     if ($_SESSION['user_type'] == 0) {
                         $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
@@ -101,15 +102,33 @@ class User extends Controller
     public function editProfile()
     {
         if (isset($_POST['editProfile'])) {
-            if ($this->validatePassword()) {
-            } else {
-                $userResult = $this->UserModel->editUser($_SESSION['user_id'], $_POST['emailInput'], md5($_POST['passwordInput1']));
-                if ($userResult) {
-                    $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
-                    if ($customerResult) {
-                        header('location:' . URLROOT . '/Home/index');
+            $userResult = $this->UserModel->changeEmail($_SESSION['user_id'], $_POST['emailInput']);
+            if ($userResult) {
+                $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                if ($customerResult) {
+                    header('location:' . URLROOT . '/User/profile');
+                }
+            }
+        }
+    }
+
+    public function editAccount()
+    {
+        if (isset($_POST['editAccount'])) {
+            $user = $this->UserModel->getUser($_SESSION['user_email'], md5($_POST['oldPasswordInput']));
+            if (!empty($user)) {
+                if ($this->validatePassword()) {
+                    echo "unmatch password";
+                } else {
+                    $userResult = $this->UserModel->changePassword($_SESSION['user_id'], md5($_POST['passwordInput1']));
+                    if ($userResult) {
+                        header('location:' . URLROOT . '/User/profile');
+                    } else {
+                        echo "change failed";
                     }
                 }
+            } else {
+                echo "empty user";
             }
         }
     }
