@@ -44,6 +44,16 @@ class UserModel
         $this->status = $status;
     }
 
+    public function getUserById($user_id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT user_id FROM tbl_user WHERE user_id = '$user_id' AND status = '1'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
     public function getUserList()
     {
         $link = null;

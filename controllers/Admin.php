@@ -23,7 +23,8 @@ class Admin extends Controller
         if ($_SESSION['user_type'] == 0) {
             if (isset($_POST['editEmployee'])) {
                 $emp = $this->EmployeeModel->getEmployeeByUserId($id);
-                $this->view('editpage', ['emp' => $emp]);
+                $user = $this->UserModel->getUserById($id);
+                $this->view('editpage', ['emp' => $emp, 'user' => $user]);
             }
         }
     }
