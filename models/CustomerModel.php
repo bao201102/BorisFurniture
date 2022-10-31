@@ -93,4 +93,18 @@ class CustomerModel
             return false;
         }
     }
+
+    public function deleteCustomer($user_id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_customer SET status = b'0' WHERE user_id = '$user_id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

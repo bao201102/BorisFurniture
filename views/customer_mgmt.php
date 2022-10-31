@@ -24,25 +24,6 @@ require_once APPROOT . '/views/includes/head.php';
                             </span> </a>
                         <span class="fw-semibold fs-3">Customer Management</span>
                     </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
-                        <!-- button add new
-                        <div class="dropdown">
-                            <button class="btn btn-info d-flex align-items-center fs-5" data-bs-toggle="dropdown" data-bs-auto-close="outside">
-                                <span class="material-symbols-outlined">
-                                    add
-                                </span>
-                                Add new
-                            </button>
-                            <form class="dropdown-menu dropdown-menu-end p-3" style="width:200px;" data-popper-placement="bottom-start" action="<?= URLROOT ?>/Admin/addCategory" method="POST">
-                                <div class="mb-3">
-                                    <label for="name_product" class="form-label">Category name</label>
-                                    <input type="text" class="form-control p-2" name="category" placeholder="Enter category ...">
-                                </div>
-                                <button type="submit" name="addCategory" class="w-100 btn btn-primary p-2">Add Category</button>
-                            </form>
-
-                        </div> -->
-                    </div>
                 </div>
             </section>
 
@@ -70,21 +51,25 @@ require_once APPROOT . '/views/includes/head.php';
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                            <?php if (!empty($data['cus_list'])) :
+                            <?php if (!empty($data['cus'])) :
                                 $i = 0;
-                                foreach ($data['cus_list'] as $cus_list) : extract($cus_list); ?>
+                                foreach ($data['cus'] as $cus) : extract($cus); ?>
                                     <tr>
                                         <th scope="row"><?= $cus_id ?></th>
                                         <td><?= $firstname ?></td>
                                         <td><?= $lastname ?></td>
                                         <td><?= $birthday ?></td>
                                         <td><?= $phone ?></td>
-                                        <form action="<?= URLROOT ?>/Admin/deleteCustomer/<?= $cus_id ?>" method="POST">
-                                            <td class="text-center utility">
-                                                <span class="material-symbols-outlined edit me-3">edit</span>
-                                                <button name="deleteCategory" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
-                                            </td>
-                                        </form>
+                                        <td class="text-center utility">
+                                            <div class="d-flex justify-content-center">
+                                                <form action="" method="POST">
+                                                    <button name="editCustomer" type="submit" class="material-symbols-outlined edit border border-0 bg-white">edit</button>
+                                                </form>
+                                                <form action="<?= URLROOT ?>/Admin/deleteCustomer/<?= $user_id ?>" method="POST">
+                                                    <button name="deleteCustomer" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                             <?php $i++;
                                 endforeach;

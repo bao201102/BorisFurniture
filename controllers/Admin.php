@@ -221,4 +221,22 @@ class Admin extends Controller
     }
 
     // Customer Management
+    public function customer()
+    {
+        if ($_SESSION['user_type'] == 0) {
+            $cus = $this->CustomerModel->getCustomerList();
+            $this->view("customer_mgmt", ['cus' => $cus]);
+        }
+    }
+
+    public function deleteCustomer($id)
+    {
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['deleteCustomer'])) {
+                $this->CustomerModel->deleteCustomer($id);
+                $this->UserModel->deleteUser($id);
+                header('location:' . URLROOT . '/Admin/customer');
+            }
+        }
+    }
 }

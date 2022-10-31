@@ -39,11 +39,11 @@ class EmployeeModel
         }
     }
 
-    public function deleteEmployee($emp_id)
+    public function deleteEmployee($user_id)
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_employee SET status = b'0' WHERE emp_id = '$emp_id'");
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_employee SET status = b'0' WHERE user_id = '$user_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {

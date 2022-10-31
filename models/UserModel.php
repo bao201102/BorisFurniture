@@ -93,7 +93,7 @@ class UserModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_user SET status = b'0' WHERE emp_id = '$user_id'");
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_user SET status = b'0' WHERE user_id = '$user_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {
