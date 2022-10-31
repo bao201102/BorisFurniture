@@ -18,6 +18,16 @@ class Admin extends Controller
         }
     }
 
+    public function showEdit($id)
+    {
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['editEmployee'])) {
+                $emp = $this->EmployeeModel->getEmployeeByUserId($id);
+                $this->view('editpage', ['emp' => $emp]);
+            }
+        }
+    }
+
     // Product Management
 
     public function product()
@@ -205,6 +215,29 @@ class Admin extends Controller
                         }
                     }
                 }
+            }
+        }
+    }
+
+    public function editProfile($id)
+    {
+        if (isset($_POST['editProfile'])) {
+            $userResult = $this->UserModel->changeEmail($id, $_POST['emailInput']);
+            if ($userResult) {
+                $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                if ($customerResult) {
+                    header('location:' . URLROOT . '/User/profile');
+                }
+            }
+        }
+    }
+
+    public function editAccount($id)
+    {
+        if (isset($_POST['editAccount'])) {
+            $userResult = $this->UserModel->changePassword($_SESSION['user_id'], md5($_POST['passwordInput1']));
+            if ($userResult) {
+                header('location:' . URLROOT . '/User/profile');
             }
         }
     }
