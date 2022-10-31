@@ -27,65 +27,66 @@ require_once APPROOT . '/views/includes/head.php';
                 </div>
             </section>
 
-            <?php if (!empty($data['emp'])) :
-                foreach ($data['emp'] as $emp) : extract($emp); ?>
+            <div class="container-fluid">
+                <?php if (!empty($data['emp'])) :
+                    foreach ($data['emp'] as $emp) : extract($emp); ?>
 
-                    <!-- Employee -->
-                    <div class="row">
-                        <form class="col-12 col-lg-6">
-                            <div class="px-3">
-                                <input type="hidden" name="update_id" id="update_id">
-                                <!-- Name -->
-                                <div class="row mb-4">
-                                    <div class="col">
-                                        <label class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="fname" name="firstNameInput" value="<?= $firstname ?>" placeholder="First Name" required>
+                        <!-- Employee -->
+                        <div class="pt-3 row">
+                            <form class="col-12 col-md-6">
+                                <div class="px-3 pb-5 pb-md-0">
+                                    <input type="hidden" name="update_id" id="update_id">
+                                    <!-- Name -->
+                                    <div class="row mb-4">
+                                        <div class="col">
+                                            <label class="form-label">First Name</label>
+                                            <input type="text" class="form-control" id="fname" name="firstNameInput" value="<?= $firstname ?>" placeholder="First Name" required>
+                                        </div>
+                                        <div class="col">
+                                            <label class="form-label">Last Name</label>
+                                            <input type="text" class="form-control" id="lname" name="lastNameInput" value="<?= $lastname ?>" placeholder="Last Name" required>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <label class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lname" name="lastNameInput" value="<?= $lastname ?>" placeholder="Last Name" required>
+                                    <!-- Birthday -->
+                                    <div class="mb-4">
+                                        <label class="form-label">Birthday</label>
+                                        <input type="date" class="form-control" id="birhday" value="<?= $birthday ?>" name="birthdayInput" required>
+                                    </div>
+                                    <!-- Phone -->
+                                    <div class="mb-4">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="number" class="form-control" id="phone" value="<?= $phone ?>" name="phoneInput" placeholder="Phone Number" required>
+                                    </div>
+                                    <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
+                                        <button type="submit" name="addEmployee" class="btn btn-primary">Update Employee</button>
+                                        <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
                                     </div>
                                 </div>
-                                <!-- Birthday -->
-                                <div class="mb-4">
-                                    <label class="form-label">Birthday</label>
-                                    <input type="date" class="form-control" id="birhday" value="<?= $birthday ?>" name="birthdayInput" required>
+                            </form>
+                            <form class="col-12 col-md-6">
+                                <div class="px-3 pb-3 pb-md-0">
+                                    <div class="mb-4">
+                                        <label class="form-label">Email address</label>
+                                        <input type="email" class="form-control" id="newEmail" name="emailInput" placeholder="name@example.com" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" id="newPassword1" name="passwordInput1" placeholder="Password" required>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="form-label">Confirm Password</label>
+                                        <input type="password" class="form-control" id="newPassword2" name="passwordInput2" placeholder="Password" required>
+                                    </div>
+                                    <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
+                                        <button type="submit" name="addEmployee" class="btn btn-primary">Update Employee</button>
+                                        <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
+                                    </div>
                                 </div>
-                                <!-- Phone -->
-                                <div class="mb-4">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="number" class="form-control" id="phone" value="<?= $phone ?>" name="phoneInput" placeholder="Phone Number" required>
-                                </div>
-                                <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
-                                    <button type="submit" name="addEmployee" class="btn btn-primary">Update Employee</button>
-                                    <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
-                                </div>
-                            </div>
-                        </form>
-                        <form class="col-12 col-lg-6">
-                            <div class="px-3">
-                                <div class="mb-4">
-                                    <label class="form-label">Email address</label>
-                                    <input type="email" class="form-control" id="newEmail" name="emailInput" placeholder="name@example.com" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label">Password</label>
-                                    <input type="password" class="form-control" id="newPassword1" name="passwordInput1" placeholder="Password" required>
-                                </div>
-                                <div class="mb-4">
-                                    <label class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" id="newPassword2" name="passwordInput2" placeholder="Password" required>
-                                </div>
-                            </div>
-                            <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
-                                <button type="submit" name="addEmployee" class="btn btn-primary">Update Employee</button>
-                                <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-
-            <?php endforeach;
-            endif; ?>
+                            </form>
+                        </div>
+                <?php endforeach;
+                endif; ?>
+            </div>
         </div>
     </div>
 </body>
