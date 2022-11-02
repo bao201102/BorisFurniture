@@ -60,6 +60,16 @@ tr:hover .delete {
   overflow-x: hidden;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 /* #sub_sidebar {
     display: none;
     position: fixed;
