@@ -44,6 +44,7 @@
     <?php else : ?>
 
         <div class="text-center">
+            <img src="<?= IMAGE ?>/cart.png" class="img-fluid pb-2" alt="">
             <p>You have no products in your cart</p>
         </div>
 

@@ -16,13 +16,15 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container">
                 <div class="row align-items-center justify-content-center">
                     <div class="col-12 col-xl-8 col-lg-6">
-                        <p class="text-center text-lg-start text-black fs-5">Shop</p>
+                        <p class="text-center text-lg-start text-black fs-5">
+                            <?= $data['prod'][0]['prod_name'] ?>
+                        </p>
                     </div>
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">AMALFI LOUNGE CHAIR</li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/search">Shop</a></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $data['prod'][0]['prod_name'] ?></li>
                         </ol>
                     </nav>
                 </div>
@@ -46,17 +48,17 @@ require_once APPROOT . '/views/includes/head.php';
                                         <div class="carousel-inner">
                                             <?php
                                             $i = 0;
-                                            for ($i = 0; $i < count($data['image']); $i++) :
+                                            for ($i = 0; $i < count($data['img']); $i++) :
                                                 if ($i == 0) : ?>
 
                                                     <div class="carousel-item active">
-                                                        <fieldset><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="..."></fieldset>
+                                                        <fieldset><img src="<?= IMAGE ?>/<?= $data['img'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="..."></fieldset>
                                                     </div>
 
                                                 <?php else : ?>
 
                                                     <div class="carousel-item">
-                                                        <img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="...">
+                                                        <img src="<?= IMAGE ?>/<?= $data['img'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="...">
                                                     </div>
 
                                             <?php endif;

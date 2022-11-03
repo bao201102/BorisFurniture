@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2022 at 04:55 PM
+-- Generation Time: Nov 03, 2022 at 08:19 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -84,6 +84,13 @@ CREATE TABLE `tbl_employee` (
   `phone` char(10) NOT NULL,
   `status` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_employee`
+--
+
+INSERT INTO `tbl_employee` (`emp_id`, `user_id`, `firstname`, `lastname`, `birthday`, `phone`, `status`) VALUES
+(1, 2, 'Bảo', 'Nguyễn Ngọc', '2002-11-20', '0946777827', b'1');
 
 -- --------------------------------------------------------
 
@@ -221,7 +228,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`user_id`, `email`, `user_password`, `created_date`, `user_type`, `status`) VALUES
-(1, 'bao201102@gmail.com', 'e69a2bce39e2e49014e75579e046e526', '2022-10-20', b'1', b'1');
+(1, 'bao201102@gmail.com', 'e69a2bce39e2e49014e75579e046e526', '2022-10-20', b'1', b'1'),
+(2, 'admin@gmail.com', '21232f297a57a5a743894a0e4a801fc3', '2022-11-03', b'0', b'1');
 
 -- --------------------------------------------------------
 
@@ -324,7 +332,7 @@ ALTER TABLE `tbl_customer`
 -- AUTO_INCREMENT for table `tbl_employee`
 --
 ALTER TABLE `tbl_employee`
-  MODIFY `emp_id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `emp_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `tbl_image`
@@ -354,7 +362,7 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `user_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

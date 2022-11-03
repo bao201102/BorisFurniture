@@ -59,13 +59,6 @@ class Admin extends Controller
                 $description = $_POST['description'];
                 $category_id = $_POST['category'];
 
-                // echo $prod_name ;
-                // echo $prod_price ;
-                // echo $prod_quantity;
-                // echo $description ;
-                // echo $category_id ;
-
-
                 $prodResult = $this->ProductModel->addProduct($prod_name, $prod_quantity, $prod_price, $category_id, $description);
                 if ($prodResult) {
                     $prod_id = $this->ProductModel->getProductId();

@@ -102,15 +102,6 @@ class Cart extends Controller
         }
     }
 
-    function checkoutCart($key)
-    {
-        $sum = 0;
-        $cart = $_SESSION['cart'];
-        foreach ($cart as $v)
-            $sum += $v[$key]['prod_quantity'] * $v[$key]['prod_price'];
-        return $sum;
-    }
-
     function emptyCart()
     {
         if (isset($_SESSION['cart'])) {

@@ -22,8 +22,8 @@ require_once APPROOT . '/views/includes/head.php';
                     </div>
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/search">Shop</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Shopping cart</li>
                         </ol>
                     </nav>
@@ -55,7 +55,7 @@ require_once APPROOT . '/views/includes/head.php';
                                                 <td scope="row"><img src="<?= IMAGE ?>/<?= $prod_img ?>" alt="" class="product-thumbnail">
                                                 </td>
                                                 <td style="padding: 24px 0"><a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>"><?= $prod_name ?></a></td>
-                                                <td>$<?= $prod_price ?>.00</td>
+                                                <td>$<?= number_format($prod_price, 2, '.', ',') ?></td>
                                                 <td class="product-quantity">
                                                     <input class="form-control border border-1" type="number" name="prod_quantity_up[]" value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
                                                 </td>
@@ -95,7 +95,7 @@ require_once APPROOT . '/views/includes/head.php';
                                             <td class="text-end text-xl-start pe-0">$<?= number_format($_SESSION['total'], 2, '.', ',') ?></td>
                                         </tr>
                                     <?php endif; ?>
-                                    <tr>
+                                    <!-- <tr>
                                         <td scope="row" class="text-black fw-semibold ps-0 ">Shipping</td>
                                         <td class="pe-0">
                                             <div class="float-end float-xl-start">
@@ -109,7 +109,7 @@ require_once APPROOT . '/views/includes/head.php';
                                                 </div>
                                             </div>
                                         </td>
-                                    </tr>
+                                    </tr> -->
 
                                     <?php if (isset($_SESSION['total'])) : ?>
                                         <tr>
@@ -136,7 +136,8 @@ require_once APPROOT . '/views/includes/head.php';
         <?php else : ?>
 
             <div class="text-center pt-5">
-                <p class="fs-3">You have no products in your cart</p>
+                <img src="<?= IMAGE ?>/cart2.png" class="img-fluid pb-2" style="max-height: 60vh;" alt="">
+                <p class="fs-2">You have no products in your cart</p>
             </div>
             <form action="<?= URLROOT ?>/Home/search" method="POST" class="mt-5 text-center">
                 <button class="fs-4 btn btn-primary">RETURN TO SHOP</button>

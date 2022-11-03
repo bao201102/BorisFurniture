@@ -45,7 +45,7 @@ class User extends Controller
                 if (!empty($user)) {
                     $_SESSION['user_id'] = $user[0]['user_id'];
                     $_SESSION['user_type'] = $user[0]['user_type'];
-                    $_SESSION['user_email'] = $user[0]['email'];  
+                    $_SESSION['user_email'] = $user[0]['email'];
 
                     if ($_SESSION['user_type'] == 0) {
                         $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
@@ -54,6 +54,8 @@ class User extends Controller
                     } else if ($_SESSION['user_type'] == 1) {
                         header('location:' . URLROOT . '/User/index');
                     }
+                } else {
+                    header('location:' . URLROOT . '/User/index/wrongpass');
                 }
             }
         }

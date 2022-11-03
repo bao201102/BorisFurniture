@@ -6,6 +6,7 @@ class Home extends Controller
         $this->ProductModel = $this->model('ProductModel');
         $this->CategoryModel = $this->model('CategoryModel');
         $this->ImageModel = $this->model('ImageModel');
+        $this->CustomerModel = $this->model('CustomerModel');
     }
 
     public function index()
@@ -28,7 +29,7 @@ class Home extends Controller
             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
             array_push($image, $img);
         }
-        
+
         $this->view('search', ['prod' => $prod, 'image' => $image]);
     }
 
@@ -39,7 +40,14 @@ class Home extends Controller
 
     public function checkout()
     {
-        $this->view('checkout', []);
+        if (!empty($_SESSION['user_id'])) {
+            if ($_SESSION['user_type'] == 1) {
+                $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
+                $this->view('checkout', ['cus' => $cus]);
+            }
+        } else {
+            $this->view('checkout', []);
+        }
     }
 
     public function details($prod_id)
