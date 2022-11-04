@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2022 at 09:41 AM
+-- Generation Time: Nov 04, 2022 at 10:27 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -161,6 +161,14 @@ CREATE TABLE `tbl_order` (
   `status` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`order_id`, `cus_id`, `firstname`, `lastname`, `address`, `city`, `phone`, `email`, `notes`, `status`) VALUES
+(1, NULL, 'Dậu', 'Lồ ', 'CC Huỳnh Văn Chính', 'HCM', '0123456789', 'dau@gmail.com', '', b'0'),
+(2, 1, 'Bảo', 'Nguyễn', 'Carillon 7', 'HCM', '0946777777', 'bao201102@gmail.com', '', b'0');
+
 -- --------------------------------------------------------
 
 --
@@ -175,6 +183,16 @@ CREATE TABLE `tbl_order_detail` (
   `prod_price` int(100) NOT NULL,
   `status` bit(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tbl_order_detail`
+--
+
+INSERT INTO `tbl_order_detail` (`order_detail_id`, `order_id`, `prod_id`, `quantity`, `prod_price`, `status`) VALUES
+(1, 1, 8, 4, 1200, b'0'),
+(2, 1, 2, 5, 510, b'0'),
+(3, 2, 3, 3, 50, b'0'),
+(4, 2, 5, 4, 123, b'0');
 
 -- --------------------------------------------------------
 
@@ -345,13 +363,13 @@ ALTER TABLE `tbl_image`
 -- AUTO_INCREMENT for table `tbl_order`
 --
 ALTER TABLE `tbl_order`
-  MODIFY `order_id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `tbl_order_detail`
 --
 ALTER TABLE `tbl_order_detail`
-  MODIFY `order_detail_id` int(2) NOT NULL AUTO_INCREMENT;
+  MODIFY `order_detail_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_product`

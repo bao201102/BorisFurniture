@@ -141,7 +141,7 @@ require_once APPROOT . '/views/includes/head.php';
                                         <tr>
                                             <input type="hidden" name="prod_id[]" value="<?= $prod_id ?>">
                                             <input type="hidden" name="quantity[]" value="<?= $prod_quantity_cart ?>">
-                                            <input type="hidden" name="prod_price[]" value="<?= number_format($prod_price, 2, '.', ',') ?>">
+                                            <input type="hidden" name="prod_price[]" value="<?= $prod_price ?>">
                                             <td class="ps-0" scope="row"><?= $prod_name ?></td>
                                             <td class="text-end text-xl-start pe-0"><?= $prod_quantity_cart ?> x $<?= number_format($prod_price, 2, '.', ',') ?></td>
                                             <td class="text-end text-xl-start pe-0">$<?= number_format($subtotal, 2, '.', ',') ?></td>
