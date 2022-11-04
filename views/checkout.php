@@ -44,32 +44,32 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="row">
                                     <div class="mb-3 first-name-box col-6">
                                         <label class="form-label">First Name</label>
-                                        <input type="text" class="form-control" name="firstNameInput" placeholder="First Name" value="<?= $firstname ?>" require>
+                                        <input type="text" class="form-control" name="firstNameInput" placeholder="First Name" value="<?= $firstname ?>" required>
                                     </div>
                                     <div class="mb-3 first-name-box col-6">
                                         <label class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" name="lastNameInput" placeholder="Last Name" value="<?= $lastname ?>" require>
+                                        <input type="text" class="form-control" name="lastNameInput" placeholder="Last Name" value="<?= $lastname ?>" required>
                                     </div>
                                 </div>
 
                                 <div class="mb-3 street-name-box">
                                     <label class="form-label">Street address</label>
-                                    <input type="text" class="form-control" name="streetInput" placeholder="Street addres" require>
+                                    <input type="text" class="form-control" name="streetInput" placeholder="Street addres" required>
                                 </div>
 
                                 <div class="mb-3 city-name-box">
                                     <label class="form-label">Town/City</label>
-                                    <input type="text" class="form-control" name="townInput" placeholder="Town/City" require>
+                                    <input type="text" class="form-control" name="townInput" placeholder="Town/City" required>
                                 </div>
 
                                 <div class="mb-3 phone-name-box">
                                     <label class="form-label">Phone</label>
-                                    <input type="text" class="form-control" name="phoneInput" placeholder="Phone" value="<?= $phone ?>" require>
+                                    <input type="text" class="form-control" name="phoneInput" placeholder="Phone" value="<?= $phone ?>" required>
                                 </div>
 
                                 <div class="mb-3 email-name-box">
                                     <label class="form-label">Email address</label>
-                                    <input type="email" class="form-control" name="emailInput" placeholder="example@gmail.com" value="<?= $email ?>" require>
+                                    <input type="email" class="form-control" name="emailInput" placeholder="example@gmail.com" value="<?= $email ?>" required>
                                 </div>
 
                                 <div class="mb-3 other-name-box">
@@ -82,36 +82,36 @@ require_once APPROOT . '/views/includes/head.php';
                     <?php else : ?>
 
                         <div class="col-12 col-lg-6 px-4" id="customer-details" style="font-size: 16px;">
-                            <input type="hidden" name="cus_id" value="NULL">
+                            <input type="hidden" name="cus_id" value="null">
                             <div class="row">
                                 <div class="mb-3 first-name-box col-6">
                                     <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" name="firstNameInput" placeholder="First Name" require>
+                                    <input type="text" class="form-control" name="firstNameInput" placeholder="First Name" required>
                                 </div>
                                 <div class="mb-3 first-name-box col-6">
                                     <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" name="lastNameInput" placeholder="Last Name" require>
+                                    <input type="text" class="form-control" name="lastNameInput" placeholder="Last Name" required>
                                 </div>
                             </div>
 
                             <div class="mb-3 street-name-box">
                                 <label class="form-label">Street address</label>
-                                <input type="text" class="form-control" name="streetInput" placeholder="Street addres" require>
+                                <input type="text" class="form-control" name="streetInput" placeholder="Street addres" required>
                             </div>
 
                             <div class="mb-3 city-name-box">
                                 <label class="form-label">Town/City</label>
-                                <input type="text" class="form-control" name="townInput" placeholder="Town/City" require>
+                                <input type="text" class="form-control" name="townInput" placeholder="Town/City" required>
                             </div>
 
                             <div class="mb-3 phone-name-box">
                                 <label class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="phoneInput" placeholder="Phone" require>
+                                <input type="text" class="form-control" name="phoneInput" placeholder="Phone" required>
                             </div>
 
                             <div class="mb-3 email-name-box">
                                 <label class="form-label">Email address</label>
-                                <input type="email" class="form-control" name="emailInput" placeholder="example@gmail.com" require>
+                                <input type="email" class="form-control" name="emailInput" placeholder="example@gmail.com" required>
                             </div>
 
                             <div class="mb-3 other-name-box">
@@ -139,6 +139,9 @@ require_once APPROOT . '/views/includes/head.php';
 
                                     <?php foreach ($_SESSION['cart'] as $prod) : extract($prod) ?>
                                         <tr>
+                                            <input type="hidden" name="prod_id[]" value="<?= $prod_id ?>">
+                                            <input type="hidden" name="quantity[]" value="<?= $prod_quantity_cart ?>">
+                                            <input type="hidden" name="prod_price[]" value="<?= number_format($prod_price, 2, '.', ',') ?>">
                                             <td class="ps-0" scope="row"><?= $prod_name ?></td>
                                             <td class="text-end text-xl-start pe-0"><?= $prod_quantity_cart ?> x $<?= number_format($prod_price, 2, '.', ',') ?></td>
                                             <td class="text-end text-xl-start pe-0">$<?= number_format($subtotal, 2, '.', ',') ?></td>

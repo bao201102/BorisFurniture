@@ -22,12 +22,27 @@ class Order extends Controller
             $email = $_POST['emailInput'];
             $notes = $_POST['notesInput'];
 
-            // echo $cus_id;
-            $order_result = $this->OrderModel->addOrder($cus_id, $firstname, $lastname, $street, $town, $phone, $email, $notes);
-            if ($order_result) {
-                echo "ss";
+            $prod_id = $_POST['prod_id'];
+            $quantity = $_POST['quantity'];
+            $prod_price = $_POST['prod_price'];
+
+            if ($cus_id == "null") {
+                $order_result = $this->OrderModel->addOrderNoCus($firstname, $lastname, $street, $town, $phone, $email, $notes);
             } else {
-                echo "f";
+                $order_result = $this->OrderModel->addOrderHaveCus($cus_id, $firstname, $lastname, $street, $town, $phone, $email, $notes);
+            }
+
+            if ($order_result) {
+                $order_id = $this->OrderModel->getOrderId();
+                for ($i = 0; $i < count($_SESSION['cart']); $i++) {
+                    $this->OrderDetailModel->addOrderDetail($order_id[0]['order_id'], $prod_id[$i], $quantity[$i], $prod_price[$i]);
+                }
+
+                if (isset($_SESSION['cart'])) {
+                    unset($_SESSION['cart']);
+                }
+
+                header('location:' . URLROOT . '/Home/index');
             }
         }
     }
