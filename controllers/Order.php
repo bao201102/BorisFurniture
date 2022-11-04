@@ -35,15 +35,14 @@ class Order extends Controller
             if ($order_result) {
                 $order_id = $this->OrderModel->getOrderId();
                 for ($i = 0; $i < count($_SESSION['cart']); $i++) {
-                    echo $prod_price[$i];
                     $this->OrderDetailModel->addOrderDetail($order_id[0]['order_id'], $prod_id[$i], $quantity[$i], $prod_price[$i]);
                 }
 
-                // if (isset($_SESSION['cart'])) {
-                //     unset($_SESSION['cart']);
-                // }
+                if (isset($_SESSION['cart'])) {
+                    unset($_SESSION['cart']);
+                }
 
-                // header('location:' . URLROOT . '/Home/index');
+                header('location:' . URLROOT . '/Home/index');
             }
         }
     }
