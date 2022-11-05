@@ -29,7 +29,7 @@ require_once APPROOT . '/views/includes/head.php';
 
             <div class="container-fluid">
                 <?php if (!empty($data['emp']) && !empty($data['user'])) :
-                    foreach ($data['emp'] as $emp) : extract($emp);?>
+                    foreach ($data['emp'] as $emp) : extract($emp); ?>
 
                         <!-- Employee -->
                         <div class="pt-5 row">
@@ -84,6 +84,13 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
                             </form>
                         </div>
+                <?php endforeach;
+                endif; ?>
+
+                <?php if (!empty($data['emp']) && !empty($data['user'])) :
+                    foreach ($data['emp'] as $emp) : extract($emp); ?>
+
+
                 <?php endforeach;
                 endif; ?>
             </div>

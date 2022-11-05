@@ -79,14 +79,16 @@ require_once APPROOT . '/views/includes/head.php';
                                             <td><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" alt="" class="product-thumbnail"></td>
                                             <td><?= $prod_name ?></td>
                                             <td><?= $data['category'][$i][0]['category_name'] ?></td>
-                                            <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
-                                                <td class="text-center utility">
-                                                    <div class="d-flex justify-content-center">
-                                                        <span onclick="editProduct()" class="material-symbols-outlined edit">edit</span>
+                                            <td class="text-center utility">
+                                                <div class="d-flex justify-content-center">
+                                                    <form action="<?= URLROOT ?>/Admin/showEdit/<?= $prod_id ?>" method="POST">
+                                                        <button name="editProduct" type="submit" class="material-symbols-outlined edit border border-0 bg-white">edit</button>
+                                                    </form>
+                                                    <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
                                                         <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
-                                                    </div>
-                                                </td>
-                                            </form>
+                                                    </form>
+                                                </div>
+                                            </td>
                                         </tr>
                                 <?php $i++;
                                     endforeach;
@@ -193,73 +195,6 @@ require_once APPROOT . '/views/includes/head.php';
                 </div>
             </div>
         </form>
-
-        <!-- Modal edit product -->
-        <div class="modal-layout edit_product">
-            <div id="edit_product" class="modal-inner">
-                <div class="d-flex align-items-end">
-                    <span class="me-auto ps-4 fw-semibold fs-3">Edit product</span>
-                    <span class="material-symbols-outlined modal-close">
-                        close
-                    </span>
-                </div>
-                <br style="clear: both;">
-                <div class="row pt-2 pt-md-4 px-3 px-md-4">
-                    <div class="col-6">
-                        <div class="px-3">
-                            <!-- name product -->
-                            <div class="mb-3">
-                                <label for="name_product" class="form-label">Product name</label>
-                                <input type="text" class="form-control" id="name_product" placeholder="Name of product">
-                            </div>
-                            <div class="row mb-3">
-                                <!-- Category -->
-                                <div class="col">
-                                    <label class="form-label">Category</label>
-                                    <select class="form-select" name aria-label="Default select example">
-                                        <option selected>Select</option>
-                                        <option value="chair">Chair</option>
-                                        <option value="table">Table</option>
-                                    </select>
-                                </div>
-                                <!-- Quantity -->
-                                <div class="col">
-                                    <label for="quantity_product" class="form-label">Quantity</label>
-                                    <input type="number" class="form-control" id="quantity_product" value="1" min="1">
-                                </div>
-                            </div>
-                            <!-- Description -->
-                            <div>
-                                <label for="description" class="form-label">Description</label>
-                                <textarea class="form-control" id="description" rows="3" style="resize: none;"></textarea>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="col-6 d-flex flex-column">
-                        <div class="px-3">
-                            <!--  product  images-->
-                            <div class="mb-3">
-                                <label for="file-upload" class="form-label">Product images</label>
-                                <input type="file" id="file-upload" class="form-control" multiple>
-                            </div>
-
-                            <!-- Price product -->
-                            <label class="form-label">Price</label>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">$</span>
-                                <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
-                            </div>
-                        </div>
-                        <div class="mt-auto d-inline-flex btn-group gap-3 align-self-center ">
-                            <button type="button" class="btn btn-primary">Add product</button>
-                            <button type="button" class="btn btn-outline-primary btn_close">Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 

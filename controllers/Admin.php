@@ -25,6 +25,9 @@ class Admin extends Controller
                 $emp = $this->EmployeeModel->getEmployeeByUserId($id);
                 $user = $this->UserModel->getUserById($id);
                 $this->view('editpage', ['emp' => $emp, 'user' => $user]);
+            } else if (isset($_POST['editProduct'])) {
+                $prod = $this->ProductModel->getProduct($id);
+                $this->view('editpage', ['prod' => $prod]);
             }
         }
     }
@@ -70,6 +73,19 @@ class Admin extends Controller
                     $this->ProductModel->addImageIdProduct($prod_id, $prod_img_id);
                     $this->uploadPicture($prod_img_id);
                     header('location:' . URLROOT . '/Admin/product');
+                }
+            }
+        }
+    }
+
+    public function editProduct($id)
+    {
+        if (isset($_POST['editProfile'])) {
+            $userResult = $this->UserModel->changeEmail($id, $_POST['emailInput']);
+            if ($userResult) {
+                $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                if ($customerResult) {
+                    header('location:' . URLROOT . '/User/profile');
                 }
             }
         }
