@@ -77,7 +77,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST" class="col-12 col-md-5 info-product">
+                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/actionBuy/<?= $prod_id ?>" method="POST" class="col-12 col-md-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3>
                                         <fieldset name="prod_name"><?= $prod_name ?></fieldset>
@@ -128,8 +128,8 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
 
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button type="submit" name="buyNow" class="btn btn-primary">Buy now</button>
-                                    <button type="submit" name="addToCart" class="btn btn-outline-primary">Add to cart</button>
+                                    <button type="submit" name="action" value="buyNow" class="btn btn-primary">Buy now</button>
+                                    <button type="submit" name="action" value="addToCart" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
                                 <?php
                                 if (!empty($data['cate'])) :

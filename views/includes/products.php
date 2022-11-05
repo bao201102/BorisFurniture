@@ -17,7 +17,7 @@ if (!empty($data['prod'])) :
                     </div>
 
                     <!-- quick view  -->
-                    <button type="submit" name="addToCart" id="btn-add-to-cart" class="add-to-cart">
+                    <button type="submit" name="action" id="btn-add-to-cart" class="add-to-cart">
                         <p>ADD TO CART</p>
                     </button>
                 </div>

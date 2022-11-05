@@ -16,7 +16,7 @@ class Cart extends Controller
         $prod = $this->ProductModel->getProduct($prod_id);
         $image = $this->ImageModel->getImage($this->ProductModel->getImageId($prod_id));
 
-        if (isset($_POST['addToCart'])) {
+        if (isset($_POST['action'])) {
             $subtotal = $_POST['prod_quantity'] * $prod[0]['prod_price'];
 
             $product = array(
@@ -48,6 +48,26 @@ class Cart extends Controller
             }
             $this->createSubtotal();
             header('location:' . URLROOT . '/Home/cart');
+        }
+    }
+
+    public function actionBuy($id)
+    {
+        if (isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case 'addToCart':
+                    $this->addProductToCart($id);
+                    header('location:' . URLROOT . '/Home/cart');
+                    break;
+
+                case 'buyNow':
+                    $this->addProductToCart($id);
+                    header('location:' . URLROOT . '/Home/checkout');
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 
