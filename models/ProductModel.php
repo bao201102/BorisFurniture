@@ -188,6 +188,16 @@ class ProductModel
         return $data;
     }
 
+    public function searchForProduct($price1,$price2,$category,$name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id = '$category' AND prod_price BETWEEN '$price1' AND '$price2'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
     public function countPage()
     {
         $link = null;

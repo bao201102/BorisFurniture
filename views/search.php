@@ -33,65 +33,62 @@ require_once APPROOT . '/views/includes/head.php';
         <section>
             <div class="container">
                 <div class="row g-0" style="margin-top: 130px;">
-                    <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByName" name="enter" method="POST" id="search-form">
-                        <div class="offcanvas-body">
-                            <input class="form-control" type="text" placeholder="Search our product here" name="name">
-                        </div>
-                    </form>
                     <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByPrice" method="POST" id="search-form">
+                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/search_result" method="POST" id="search-form">
+                            <div class="offcanvas-body">
+                                <input class="form-control" type="text" placeholder="Search our product here" name="name">
+                            </div>
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all">
                                 <label class="form-check-label" for="optionRadio4">
                                     All
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="0-500" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio1" value="0-500">
                                 <label class="form-check-label" for="optionRadio1">
                                     0 - $500
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="501-1000" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio2" value="501-1000">
                                 <label class="form-check-label" for="optionRadio2">
                                     $500 - $1000
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-2000" onclick="submit()">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-2000">
                                 <label class="form-check-label" for="optionRadio3">
                                     $1000 - $2000
                                 </label>
                             </div>
-                        </form>
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/searchByCategory" method="POST" id="search-form">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by category</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Lamp" id="flexCheck1" name="category" onclick="submit()">
+                                <input class="form-check-input" type="checkbox" value="Lamp" id="flexCheck1" name="category">
                                 <label class="form-check-label" for="flexCheck1">
                                     Lamp
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Chair" id="flexCheck2" name="category" onclick="submit()">
+                                <input class="form-check-input" type="checkbox" value="Chair" id="flexCheck2" name="category">
                                 <label class="form-check-label" for="flexCheck2">
                                     Chair
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Accessories" id="flexCheck3" name="category" onclick="submit()">
+                                <input class="form-check-input" type="checkbox" value="Accessories" id="flexCheck3" name="category">
                                 <label class="form-check-label" for="flexCheck3">
                                     Accessories
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck4" name="category" onclick="submit()">
+                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck4" name="category">
                                 <label class="form-check-label" for="flexCheck4">
                                     Table
                                 </label>
                             </div>
+                            <button class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left: 50%">Search</button>
                         </form>
                     </div>
                     <div class="col-12 col-lg-8 row text-center">
@@ -145,14 +142,6 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 
 <script>
-    document.onkeydown=function(evt){
-        var keyCode = evt ? (evt.which ? evt.which : evt.keyCode) : event.keyCode;
-        if(keyCode == 13)
-        {
-            //your function call here
-            document.enter.submit();
-        }
-    }
 </script>
 
 </html>
