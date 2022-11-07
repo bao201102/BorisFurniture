@@ -105,22 +105,27 @@ class ProductModel
         return $data;
     }
 
-    // public function countProduct()
-    // {
-    //     $link = null;
-    //     taoKetNoi($link);
-    //     $result = chayTruyVanTraVeDL($link, "SELECT COUNT(prod_id) FROM tbl_product");
-    //     $data = $result;
-    //     giaiPhongBoNho($link, $result);
-    //     return $data;
-    // }
-
     public function addProduct($name, $quantity, $price, $cate_id, $description)
     {
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_product (prod_name, prod_quantity, prod_price, category_id, prod_description, STATUS) 
                                                     VALUES ('$name', '$quantity', '$price', '$cate_id', '$description', '1')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function editProduct($id, $prod_name, $prod_quantity, $category_id, $prod_price, $prod_description)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET prod_name = '$prod_name', prod_quantity = '$prod_quantity', category_id = '$category_id',
+                                                                        prod_price = '$prod_price'  , prod_description = '$prod_description' WHERE prod_id = '$id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {
@@ -188,7 +193,7 @@ class ProductModel
         return $data;
     }
 
-    public function searchForProduct($price1,$price2,$category,$name)
+    public function searchForProduct($price1, $price2, $category, $name)
     {
         $link = null;
         taoKetNoi($link);

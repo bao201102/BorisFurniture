@@ -62,7 +62,7 @@ require_once APPROOT . '/views/includes/head.php';
                                         <td><?= $phone ?></td>
                                         <td class="text-center utility">
                                             <div class="d-flex justify-content-center">
-                                                <form action="" method="POST">
+                                                <form action="<?= URLROOT ?>/Admin/showEdit/<?= $user_id ?>" method="POST">
                                                     <button name="editCustomer" type="submit" class="material-symbols-outlined edit border border-0 bg-white">edit</button>
                                                 </form>
                                                 <form action="<?= URLROOT ?>/Admin/deleteCustomer/<?= $user_id ?>" method="POST">

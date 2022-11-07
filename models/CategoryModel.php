@@ -41,7 +41,7 @@ class CategoryModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT category_name FROM tbl_category WHERE category_id = '$id' AND status = '1'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE category_id = '$id' AND status = '1'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -52,6 +52,20 @@ class CategoryModel
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_category (category_name, status) VALUES ('$name','1')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function editCategory($id, $category_name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_category SET category_name = '$category_name' WHERE category_id = '$id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {

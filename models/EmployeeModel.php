@@ -19,7 +19,7 @@ class EmployeeModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_employee WHERE user_id = '$user_id' AND status = '1'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_employee JOIN tbl_user ON tbl_employee.user_id = tbl_user.user_id WHERE tbl_employee.user_id = '$user_id' AND tbl_employee.status = 1");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -30,6 +30,20 @@ class EmployeeModel
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanKhongTraVeDL($link, "INSERT INTO tbl_employee (user_id, firstname, lastname, birthday, phone, status) VALUES ('$user_id','$firstname','$lastname', '$birthday', '$phone', '1')");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function editEmployee($user_id, $firstname, $lastname, $birthday, $phone)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_employee SET firstname = '$firstname', lastname = '$lastname', birthday = '$birthday', phone = '$phone' WHERE user_id = '$user_id'");
         $data = $result;
         giaiPhongBoNho($link, $result);
         if ($data) {

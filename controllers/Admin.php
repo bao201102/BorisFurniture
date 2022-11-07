@@ -23,11 +23,17 @@ class Admin extends Controller
         if ($_SESSION['user_type'] == 0) {
             if (isset($_POST['editEmployee'])) {
                 $emp = $this->EmployeeModel->getEmployeeByUserId($id);
-                $user = $this->UserModel->getUserById($id);
-                $this->view('editpage', ['emp' => $emp, 'user' => $user]);
+                $this->view('editpage', ['emp' => $emp]);
             } else if (isset($_POST['editProduct'])) {
                 $prod = $this->ProductModel->getProduct($id);
-                $this->view('editpage', ['prod' => $prod]);
+                $category_list = $this->CategoryModel->getCategoryList();
+                $this->view('editpage', ['prod' => $prod, 'category_list' => $category_list]);
+            } else if (isset($_POST['editCategory'])) {
+                $cate = $this->CategoryModel->getCategory($id);
+                $this->view('editpage', ['cate' => $cate]);
+            } else if (isset($_POST['editCustomer'])) {
+                $cus = $this->CustomerModel->getCustomerByUserId($id);
+                $this->view('editpage', ['cus' => $cus]);
             }
         }
     }
@@ -78,14 +84,22 @@ class Admin extends Controller
         }
     }
 
-    public function editProduct($id)
+    public function editProduct()
     {
-        if (isset($_POST['editProfile'])) {
-            $userResult = $this->UserModel->changeEmail($id, $_POST['emailInput']);
-            if ($userResult) {
-                $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
-                if ($customerResult) {
-                    header('location:' . URLROOT . '/User/profile');
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['editProduct'])) {
+                switch ($_POST['editProduct']) {
+                    case 'edit':
+                        $this->ProductModel->editProduct($_POST['prod_id'], $_POST['prod_name'], $_POST['prod_quantity'], $_POST['category'], $_POST['prod_price'], $_POST['description']);
+                        header('location:' . URLROOT . '/Admin/product');
+                        break;
+
+                    case 'cancel':
+                        header('location:' . URLROOT . '/Admin/product');
+                        break;
+
+                    default:
+                        break;
                 }
             }
         }
@@ -142,6 +156,27 @@ class Admin extends Controller
 
                 $this->CategoryModel->addCategory($name);
                 header('location:' . URLROOT . '/Admin/category');
+            }
+        }
+    }
+
+    public function editCategory()
+    {
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['editCategory'])) {
+                switch ($_POST['editCategory']) {
+                    case 'edit':
+                        $this->CategoryModel->editCategory($_POST['cate_id'], $_POST['category_name']);
+                        header('location:' . URLROOT . '/Admin/category');
+                        break;
+
+                    case 'cancel':
+                        header('location:' . URLROOT . '/Admin/category');
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -229,25 +264,49 @@ class Admin extends Controller
         }
     }
 
-    public function editProfile($id)
+    public function editProfile()
     {
-        if (isset($_POST['editProfile'])) {
-            $userResult = $this->UserModel->changeEmail($id, $_POST['emailInput']);
-            if ($userResult) {
-                $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
-                if ($customerResult) {
-                    header('location:' . URLROOT . '/User/profile');
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['editProfile'])) {
+                switch ($_POST['editProfile']) {
+                    case 'edit':
+                        $this->UserModel->changeEmail($_POST['user_id'], $_POST['emailInput']);
+                        $this->EmployeeModel->editEmployee($_POST['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                        header('location:' . URLROOT . '/Admin/employee');
+                        break;
+
+                    case 'cancel':
+                        header('location:' . URLROOT . '/Admin/employee');
+                        break;
+
+                    default:
+                        break;
                 }
             }
         }
     }
 
-    public function editAccount($id)
+    public function editAccount()
     {
-        if (isset($_POST['editAccount'])) {
-            $userResult = $this->UserModel->changePassword($_SESSION['user_id'], md5($_POST['passwordInput1']));
-            if ($userResult) {
-                header('location:' . URLROOT . '/User/profile');
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['editAccount'])) {
+                switch ($_POST['editAccount']) {
+                    case 'edit':
+                        if ($this->validatePassword()) {
+                            echo "unmatch password";
+                        } else {
+                            $this->UserModel->changePassword($_POST['user_id'], md5($_POST['passwordInput1']));
+                            header('location:' . URLROOT . '/Admin/employee');
+                        }
+                        break;
+
+                    case 'cancel':
+                        header('location:' . URLROOT . '/Admin/employee');
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -269,6 +328,28 @@ class Admin extends Controller
         if ($_SESSION['user_type'] == 0) {
             $cus = $this->CustomerModel->getCustomerList();
             $this->view("customer_mgmt", ['cus' => $cus]);
+        }
+    }
+
+    public function editCustomer()
+    {
+        if ($_SESSION['user_type'] == 0) {
+            if (isset($_POST['editCustomer'])) {
+                switch ($_POST['editCustomer']) {
+                    case 'edit':
+                        $this->CustomerModel->editCustomer($_POST['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                        $this->UserModel->changeEmail($_POST['user_id'], $_POST['emailInput']);
+                        header('location:' . URLROOT . '/Admin/customer');
+                        break;
+
+                    case 'cancel':
+                        header('location:' . URLROOT . '/Admin/customer');
+                        break;
+
+                    default:
+                        break;
+                }
+            }
         }
     }
 
