@@ -20,9 +20,8 @@ require_once APPROOT . '/views/includes/head.php';
                     </div>
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Search</li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
+                            <li class=" breadcrumb-item active" aria-current="page">Search</li>
                         </ol>
                     </nav>
                 </div>
@@ -35,7 +34,7 @@ require_once APPROOT . '/views/includes/head.php';
                 <div class="row g-0" style="margin-top: 50px;">
 
                     <form class="col-12 col-lg-4 flex-lg-column row" action="<?= URLROOT ?>/Search/search_result" method="POST" id="search-form">
-                        <div class="offcanvas-body">
+                        <div class="">
                             <input class="form-control" type="text" placeholder="Search our product here" name="name">
                         </div>
                         <div class="col-6 col-lg-12">
