@@ -42,20 +42,23 @@ function editProduct() {
 
   closeModal(modals, close, btnClose, "edit_product");
 
-  $tr = $(this).closest('tr');
+  $tr = $(this).closest("tr");
 
-  var data = $tr.children("td").map(function () {
-    return $(this).text();
-  }).get();
+  var data = $tr
+    .children("td")
+    .map(function () {
+      return $(this).text();
+    })
+    .get();
 
   console.log(data);
 
-  $('#update_id').val(data[0]);
-  $('#fname').val(data[1]);
-  $('#lname').val(data[2]);
-  $('#birhday').val(data[3]);
-  $('#phone').val(data[4]);
-  $('#email').val(data[5]);
+  $("#update_id").val(data[0]);
+  $("#fname").val(data[1]);
+  $("#lname").val(data[2]);
+  $("#birhday").val(data[3]);
+  $("#phone").val(data[4]);
+  $("#email").val(data[5]);
 }
 
 // function closeSubSidebar() {
