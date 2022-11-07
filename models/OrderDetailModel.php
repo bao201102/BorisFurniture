@@ -1,47 +1,8 @@
 <?php
 class OrderDetailModel
 {
-    var $order_detail_id;
-    var $order_id;
-    var $prod_id;
-    var $quantity;
-    var $prod_price;
-    var $status;
-
-    public function getOderDetailId()
+    function __construct()
     {
-        return $this->order_detail_id;
-    }
-    public function getOderId()
-    {
-        return $this->order_id;
-    }
-    public function getProdId()
-    {
-        return $this->prod_id;
-    }
-    public function getQuantity()
-    {
-        return $this->quantity;
-    }
-    public function getProdPrice()
-    {
-        return $this->prod_price;
-    }
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-
-    function OrderDetailModel($_order_detail_id, $_order_id, $_prod_id, $_quantity, $_prod_price, $_status)
-    {
-        $this->order_detail_id = $_order_detail_id;
-        $this->order_id = $_order_id;
-        $this->prod_id = $_prod_id;
-        $this->quantity = $_quantity;
-        $this->prod_price = $_prod_price;
-        $this->status = $_status;
     }
 
     public function addOrderDetail($order_id, $prod_id, $quantity, $prod_price)

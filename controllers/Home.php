@@ -25,12 +25,13 @@ class Home extends Controller
     {
         $prod = $this->ProductModel->getProductList();
         $image = array();
+        $category = $this->CategoryModel->getCategoryList();
         foreach ($prod as $value) {
             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
             array_push($image, $img);
         }
 
-        $this->view('search', ['prod' => $prod, 'image' => $image]);
+        $this->view('search', ['prod' => $prod, 'image' => $image, 'cate' => $category]);
     }
 
     public function cart()

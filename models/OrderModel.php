@@ -1,71 +1,8 @@
 <?php
 class OrderModel
 {
-    var $order_id;
-    var $cus_id;
-    var $firstname;
-    var $lastname;
-    var $address;
-    var $city;
-    var $phone;
-    var $email;
-    var $notes;
-    var $status;
-
-    public function getOderId()
+    function __construct()
     {
-        return $this->order_id;
-    }
-    public function getCustomerId()
-    {
-        return $this->cus_id;
-    }
-    public function getFirstname()
-    {
-        return $this->firstname;
-    }
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
-    public function getAddress()
-    {
-        return $this->address;
-    }
-    public function getCity()
-    {
-        return $this->city;
-    }
-    public function getPhone()
-    {
-        return $this->phone;
-    }
-    public function getEmail()
-    {
-        return $this->email;
-    }
-    public function getNotes()
-    {
-        return $this->notes;
-    }
-    public function getStatus()
-    {
-        return $this->status;
-    }
-
-
-    function OrderModel($_order_id, $_cus_id, $_firstname, $_lastname, $_address, $_city, $_phone, $_email, $_notes, $_status)
-    {
-        $this->order_id = $_order_id;
-        $this->cus_id = $_cus_id;
-        $this->firstname = $_firstname;
-        $this->lastname = $_lastname;
-        $this->address = $_address;
-        $this->city = $_city;
-        $this->phone = $_phone;
-        $this->email = $_email;
-        $this->notes = $_notes;
-        $this->status = $_status;
     }
 
     public function addOrderHaveCus($cus_id, $firstname, $lastname, $address, $city, $phone, $email, $notes)

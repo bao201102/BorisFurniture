@@ -32,12 +32,13 @@ require_once APPROOT . '/views/includes/head.php';
         <!--Products panel-->
         <section>
             <div class="container">
-                <div class="row g-0" style="margin-top: 130px;">
-                    <div class="col-12 col-lg-4 row flex-lg-column" style="margin-bottom: 100px;">
-                        <form class="col-6 col-lg-12" action="<?= URLROOT ?>/Search/search_result" method="POST" id="search-form">
-                            <div class="offcanvas-body">
-                                <input class="form-control" type="text" placeholder="Search our product here" name="name">
-                            </div>
+                <div class="row g-0" style="margin-top: 50px;">
+
+                    <form class="col-12 col-lg-4 flex-lg-column row" action="<?= URLROOT ?>/Search/search_result" method="POST" id="search-form">
+                        <div class="offcanvas-body">
+                            <input class="form-control" type="text" placeholder="Search our product here" name="name">
+                        </div>
+                        <div class="col-6 col-lg-12">
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all">
@@ -63,34 +64,27 @@ require_once APPROOT . '/views/includes/head.php';
                                     $1000 - $2000
                                 </label>
                             </div>
+                        </div>
+                        <div class="col-6 col-lg-12">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by category</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Lamp" id="flexCheck1" name="category">
-                                <label class="form-check-label" for="flexCheck1">
-                                    Lamp
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Chair" id="flexCheck2" name="category">
-                                <label class="form-check-label" for="flexCheck2">
-                                    Chair
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Accessories" id="flexCheck3" name="category">
-                                <label class="form-check-label" for="flexCheck3">
-                                    Accessories
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Table" id="flexCheck4" name="category">
-                                <label class="form-check-label" for="flexCheck4">
-                                    Table
-                                </label>
-                            </div>
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit" style="margin-left: 50%">Search</button>
-                        </form>
-                    </div>
+                            <?php if (!empty($data['cate'])) :
+                                $i = 0;
+                                foreach ($data['cate'] as $cate) : extract($cate); ?>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="<?= $category_id ?>" id="flexCheck<?= $i ?>" name="category">
+                                        <label class="form-check-label" for="flexCheck<?= $i ?>">
+                                            <?= $category_name ?>
+                                        </label>
+                                    </div>
+                            <?php $i++;
+                                endforeach;
+                            endif; ?>
+                        </div>
+                        <div class="d-flex justify-content-center py-3">
+                            <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                    </form>
+
                     <div class="col-12 col-lg-8 row text-center">
                         <!-- product box -->
                         <?php require_once APPROOT . '/views/includes/products.php'; ?>
