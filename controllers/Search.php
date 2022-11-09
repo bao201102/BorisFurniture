@@ -8,6 +8,19 @@ class Search extends Controller
         $this->CategoryModel = $this->model('CategoryModel');
     }
 
+    public function index()
+    {
+        $prod = $this->ProductModel->getProductList();
+        $image = array();
+        $category = $this->CategoryModel->getCategoryList();
+        foreach ($prod as $value) {
+            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+            array_push($image, $img);
+        }
+
+        $this->view('search', ['prod' => $prod, 'image' => $image, 'cate' => $category]);
+    }
+
     private function priceIsSet()
     {
         if ($_POST['price'] == "all") {
@@ -65,15 +78,23 @@ class Search extends Controller
     public function search($price1, $price2, $name)
     {
         if (isset($_POST['category'])) {
-            $prod = $this->ProductModel->searchForProduct($price1, $price2, $_POST['category'], $name);
-            $image = array();
-            $category = $this->CategoryModel->getCategoryList();
-            foreach ($prod as $value) {
-                $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                array_push($image, $img);
+            $prodList = array();
+            foreach ($_POST['category'] as $value) {
+                $prod = $this->ProductModel->searchForProduct($price1, $price2, $value, $name);
+                if (isset($prod)) {
+                    array_push($prodList, $prod);
+                }
             }
 
-            $this->view('search', ['prod' => $prod, 'image' => $image, 'cate' => $category]);
+            $image = array();
+            $category = $this->CategoryModel->getCategoryList();
+            foreach ($prodList as $prodListValue) {
+                foreach ($prodListValue as $value) {
+                    $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
+                    array_push($image, $img);
+                }
+            }
+            $this->view('products', ['prodList' => $prodList, 'image' => $image, 'cate' => $category]);
         }
     }
     public function search_result()
@@ -99,5 +120,8 @@ class Search extends Controller
         } else if (isset($_POST['name'])) {
             $this->nameIsSet();
         }
+        // echo var_dump($_POST['price']);
+        // echo var_dump($_POST['category']);
+        // echo var_dump($_POST['name']);
     }
 }

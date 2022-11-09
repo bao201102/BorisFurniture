@@ -12,7 +12,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?= URLROOT ?>/Home/search">Shop all</a>
+                    <a class="nav-link" href="<?= URLROOT ?>/Search">Shop all</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>

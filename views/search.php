@@ -33,14 +33,14 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container">
                 <div class="row g-0" style="margin-top: 50px;">
 
-                    <form class="col-12 col-lg-4 flex-lg-column row" action="<?= URLROOT ?>/Search/search_result" method="POST" id="search-form">
+                    <form class="col-12 col-lg-4 flex-lg-column row" id="search-form">
                         <div class="">
-                            <input class="form-control" type="text" placeholder="Search our product here" name="name">
+                            <input class="form-control" type="text" placeholder="Search our product here" name="name" id="name">
                         </div>
                         <div class="col-6 col-lg-12">
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all" checked>
                                 <label class="form-check-label" for="optionRadio4">
                                     All
                                 </label>
@@ -86,7 +86,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                     <div class="col-12 col-lg-8 row text-center">
                         <!-- product box -->
-                        <?php require_once APPROOT . '/views/includes/products.php'; ?>
+                        <div class="row" id="output"></div>
 
                         <!-- pagination -->
                         <ul class="pagination pagination-lg justify-content-center">
@@ -134,7 +134,35 @@ require_once APPROOT . '/views/includes/head.php';
 </script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 
-<script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#name").keyup(function() {
+            var category = [];
+
+            var name = $("#name").val();
+            var price = $("input[name='price']:checked").val();
+            $("input[name='category']:checked").each(function() {
+                category.push(this.value);
+            });
+            if ($("#name").val() != '') {
+                $.ajax({
+                    url: "Search/search_result",
+                    method: "POST",
+                    data: {
+                        name: name,
+                        price: price,
+                        category: category
+                    },
+                    success: function(data) {
+                        $("#output").html(data);
+                    }
+                });
+
+            } else {
+                $("#output").html("");
+            }
+        });
+    });
 </script>
 
 </html>
