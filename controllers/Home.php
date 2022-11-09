@@ -42,7 +42,13 @@ class Home extends Controller
     {
         $prod = $this->ProductModel->getProduct($prod_id);
         $category = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($prod_id)); // prod[0]['category_id']
+        $prodByCate = $this->ProductModel->getProductByCategory($prod[0]['category_id']);
         $image = $this->ImageModel->getImage($this->ProductModel->getImageId($prod_id));
-        $this->view('details', ['prod' => $prod, 'cate' => $category, 'img' => $image]);
+        $imageByCate = array();
+        foreach ($prodByCate as $value) {
+            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+            array_push($imageByCate, $img);
+        }
+        $this->view('details', ['prod' => $prod, 'cate' => $category, 'prodByCate' => $prodByCate, 'imageByCate' => $imageByCate, 'img' => $image]);
     }
 }

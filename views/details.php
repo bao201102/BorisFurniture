@@ -186,18 +186,38 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container-fluid my-3">
                 <div class="row text-center align-self-center">
                     <!-- product box -->
-                    <div class="col box">
-                        <div class=""></div>
-                        <div class="card border-0 shadow-sm mb-5 mx-auto" style="width: 21rem;">
-                            <img src="<?= IMAGE ?>/Classic-Lamp.jpg" class="card-img-top img-fluid" alt="...">
-                            <div class="card-body" style="z-index: 2; background-color: white;">
-                                <div class="mt-3 fw-bold fs-5">Classic Lamp</div>
-                                <div class="mt-1 fs-5">$470.00</div>
+                    <?php
+                    if (!empty($data['prodByCate'])) :
+                        $i = 0;
+                        foreach ($data['prodByCate'] as $prodByCate) : extract($prodByCate);
+                            if ($i == 4) {
+                                break;
+                            } ?>
+                            <div class="col-6 col-md-3 box">
+                                <form action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST">
+                                    <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 30vh;">
+                                        <input type="hidden" name="prod_quantity" value="1">
+                                        <a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>">
+                                            <img src="<?= IMAGE ?>/<?= $data['imageByCate'][$i]['img_link'] ?>" class="card-img-top img-fluid" alt="...">
+                                        </a>
+
+                                        <div class="card-body" style="z-index: 2; background-color: white;">
+                                            <div class="mt-3 fw-bold fs-5"> <?= $prod_name ?> </div>
+                                            <div class="mt-1 fs-5"> $<?= number_format($prod_price, 2, '.', ',') ?></div>
+                                        </div>
+
+                                        <!-- quick view  -->
+                                        <button type="submit" name="addToCart" id="btn-add-to-cart" class="add-to-cart">
+                                            <p>ADD TO CART</p>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
-                        </div>
-                    </div>
+                    <?php $i++;
+                        endforeach;
+                    endif; ?>
                     <div class="col-12 text-center mt-5">
-                        <button type="button" class="btn btn-outline-primary">More Collections</button>
+                        <a type="button" class="btn btn-outline-primary" href="<?= URLROOT ?>/Home/search"">More Collections</a>
                     </div>
                 </div>
             </div>
@@ -216,8 +236,8 @@ require_once APPROOT . '/views/includes/head.php';
     }
 </style>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
-<script src="<?= JSFILE ?>/general-effect.js"></script>
-<script src="<?= JSFILE ?>/details.js"></script>
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+                            <script src="<?= JSFILE ?>/general-effect.js"></script>
+                            <script src="<?= JSFILE ?>/details.js"></script>
 
 </html>

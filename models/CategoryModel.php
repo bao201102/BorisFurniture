@@ -75,6 +75,30 @@ class CategoryModel
         }
     }
 
+    public function duplicateCategory($category_name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT category_name FROM tbl_category WHERE category_name like '$category_name'");
+        $data = $result[0]['category_name'];
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function editStatusCategory($category_name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_category SET status = b'1' WHERE category_name like '$category_name'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function deleteCategory($category_id)
     {
         $link = null;

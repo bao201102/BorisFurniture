@@ -59,7 +59,7 @@ class ProductModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product join tbl_category WHERE tbl_product.category_id = tbl_category.category_id and tbl_product.status = 1 AND tbl_category.status = 1");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
