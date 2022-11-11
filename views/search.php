@@ -32,10 +32,9 @@ require_once APPROOT . '/views/includes/head.php';
         <section>
             <div class="container">
                 <div class="row g-0" style="margin-top: 50px;">
-
                     <form class="col-12 col-lg-4 flex-lg-column row" id="search-form">
                         <div class="">
-                            <input class="form-control" type="text" placeholder="Search our product here" name="search-box" id="search-box">
+                            <input class="form-control" type="text" placeholder="Search our product here" name="keyword" id="keyword">
                         </div>
                         <div class="col-6 col-lg-12" id="price-radio">
                             <p class="fw-bold text-black">Search by price</p>
@@ -133,13 +132,15 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#search-box").keyup(handleAjax);
+        handleAjax();
+        $("#keyword").keyup(handleAjax);
         $("input[type=radio][name=price]").change(handleAjax);
+        $("input[type=checkbox][name=category]").change(handleAjax);
     });
 
     function handleAjax() {
         var category = [];
-        var name = $("#name").val();
+        var keyword = $("#keyword").val();
         var price = $("input[name='price']:checked").val();
         $("input[name='category']:checked").each(function() {
             category.push(this.value);
@@ -149,7 +150,7 @@ require_once APPROOT . '/views/includes/head.php';
                 url: "Search/search",
                 method: "POST",
                 data: {
-                    name: name,
+                    keyword: keyword,
                     price: price,
                     category: category
                 },

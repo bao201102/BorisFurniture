@@ -10,26 +10,24 @@ class Search extends Controller
 
     public function index()
     {
-        $prod = $this->ProductModel->getProductList();
-        $image = array();
         $category = $this->CategoryModel->getCategoryList();
-        foreach ($prod as $value) {
-            $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-            array_push($image, $img);
-        }
 
-        $this->view('search', ['prod' => $prod, 'image' => $image, 'cate' => $category]);
+        $this->view('search', ['cate' => $category]);
     }
 
     public function search()
     {
+        //Cắt chuỗi cho $price
         $price = explode("-", $_POST['price']);
-        $cateList = array();
+
+        //Từ khóa mặc định là trống nếu không được nhập vào
         $keyword = '';
-        if (isset($_POST['search-box'])) {
-            $keyword = $_POST['search-box'];
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
         }
 
+        //Category mặc định là tất cả nếu người dùng không chọn cái nào
+        $cateList = array();
         if (isset($_POST['category'])) {
             $cateList = $_POST['category'];
         } else {
@@ -39,6 +37,7 @@ class Search extends Controller
             }
         }
 
+        //Thực hiện truy vấn search dựa theo số lượng Category đã lựa chọn
         $prodList = array();
         foreach ($cateList as $value) {
             $prod = $this->ProductModel->searchProduct($price[0], $price[1], $value, $keyword);
@@ -54,6 +53,7 @@ class Search extends Controller
                 array_push($image, $img);
             }
         }
+
         $this->view('products', ['prodList' => $prodList, 'image' => $image]);
     }
 }
