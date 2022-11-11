@@ -1,7 +1,7 @@
 <?php
 if (!empty($data['prodList'])) :
+    $i = 0;
     foreach ($data['prodList'] as $prodList) : extract($prodList);
-        $i = 0;
         foreach ($prodList as $prod) : extract($prod); ?>
             <!-- product box -->
             <div class="col box">

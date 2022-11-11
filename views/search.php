@@ -35,12 +35,12 @@ require_once APPROOT . '/views/includes/head.php';
 
                     <form class="col-12 col-lg-4 flex-lg-column row" id="search-form">
                         <div class="">
-                            <input class="form-control" type="text" placeholder="Search our product here" name="name" id="name">
+                            <input class="form-control" type="text" placeholder="Search our product here" name="search-box" id="search-box">
                         </div>
-                        <div class="col-6 col-lg-12">
+                        <div class="col-6 col-lg-12" id="price-radio">
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="all" checked>
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0-2000" checked>
                                 <label class="form-check-label" for="optionRadio4">
                                     All
                                 </label>
@@ -64,7 +64,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 </label>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-12">
+                        <div class="col-6 col-lg-12" id="cate-checkbox">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by category</p>
                             <?php if (!empty($data['cate'])) :
                                 $i = 0;
@@ -78,9 +78,6 @@ require_once APPROOT . '/views/includes/head.php';
                             <?php $i++;
                                 endforeach;
                             endif; ?>
-                        </div>
-                        <div class="d-flex justify-content-center py-3">
-                            <button class="btn btn-primary" type="submit">Search</button>
                         </div>
                     </form>
 
@@ -136,33 +133,35 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $("#name").keyup(function() {
-            var category = [];
-
-            var name = $("#name").val();
-            var price = $("input[name='price']:checked").val();
-            $("input[name='category']:checked").each(function() {
-                category.push(this.value);
-            });
-            if ($("#name").val() != '') {
-                $.ajax({
-                    url: "Search/search_result",
-                    method: "POST",
-                    data: {
-                        name: name,
-                        price: price,
-                        category: category
-                    },
-                    success: function(data) {
-                        $("#output").html(data);
-                    }
-                });
-
-            } else {
-                $("#output").html("");
-            }
-        });
+        $("#search-box").keyup(handleAjax);
+        $("input[type=radio][name=price]").change(handleAjax);
     });
+
+    function handleAjax() {
+        var category = [];
+        var name = $("#name").val();
+        var price = $("input[name='price']:checked").val();
+        $("input[name='category']:checked").each(function() {
+            category.push(this.value);
+        });
+        if ($("#name").val() != '') {
+            $.ajax({
+                url: "Search/search",
+                method: "POST",
+                data: {
+                    name: name,
+                    price: price,
+                    category: category
+                },
+                success: function(data) {
+                    $("#output").html(data);
+                }
+            });
+
+        } else {
+            $("#output").html("");
+        }
+    }
 </script>
 
 </html>
