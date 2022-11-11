@@ -39,7 +39,7 @@ require_once APPROOT . '/views/includes/head.php';
                         <div class="col-6 col-lg-12" id="price-radio">
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0-2000" checked>
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0-10000" checked>
                                 <label class="form-check-label" for="optionRadio4">
                                     All
                                 </label>
@@ -57,9 +57,9 @@ require_once APPROOT . '/views/includes/head.php';
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-2000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-10000">
                                 <label class="form-check-label" for="optionRadio3">
-                                    $1000 - $2000
+                                    $1000 - $10000
                                 </label>
                             </div>
                         </div>

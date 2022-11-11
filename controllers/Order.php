@@ -35,6 +35,9 @@ class Order extends Controller
             if ($order_result) {
                 $order_id = $this->OrderModel->getOrderId();
                 for ($i = 0; $i < count($_SESSION['cart']); $i++) {
+                    $prod_quantity = $this->ProductModel->getQuantity($prod_id[$i]);
+                    $prod_quantity_new = $prod_quantity - $quantity[$i];
+                    $this->ProductModel->reduceQuantity($prod_id[$i], $prod_quantity_new);
                     $this->OrderDetailModel->addOrderDetail($order_id[0]['order_id'], $prod_id[$i], $quantity[$i], $prod_price[$i]);
                 }
 

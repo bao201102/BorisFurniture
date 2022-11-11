@@ -186,4 +186,28 @@ class ProductModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
+    public function getQuantity($id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT prod_quantity FROM tbl_product WHERE prod_id = '$id'");
+        $data = $result[0]['prod_quantity'];
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function reduceQuantity($id, $prod_quantity)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET prod_quantity = '$prod_quantity' WHERE prod_id = '$id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
