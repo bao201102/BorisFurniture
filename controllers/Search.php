@@ -11,11 +11,11 @@ class Search extends Controller
     public function index()
     {
         $category = $this->CategoryModel->getCategoryList();
-
-        $this->view('search', ['cate' => $category]);
+        $number = 1;
+        $this->view('search', ['cate' => $category, 'number' => $number]);
     }
 
-    public function search()
+    public function search($number)
     {
         //Cắt chuỗi cho $price
         $price = explode("-", $_POST['price']);
@@ -37,23 +37,21 @@ class Search extends Controller
             }
         }
 
-        //Thực hiện truy vấn search dựa theo số lượng Category đã lựa chọn
-        $prodList = array();
-        foreach ($cateList as $value) {
-            $prod = $this->ProductModel->searchProduct($price[0], $price[1], $value, $keyword);
-            if (isset($prod)) {
-                array_push($prodList, $prod);
-            }
-        }
+        $from = ($number - 1) * 6;
+        $page = $this->ProductModel->countPage($price[0], $price[1], $cateList, $keyword);
+        $prod = $this->ProductModel->searchProduct($price[0], $price[1], $cateList, $keyword, $from);
 
+        //Thực hiện truy vấn hình ảnh tương ứng với sản phẩm
         $image = array();
-        foreach ($prodList as $prodListValue) {
-            foreach ($prodListValue as $value) {
-                $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
-                array_push($image, $img);
-            }
+        foreach ($prod as $value) {
+            $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
+            array_push($image, $img);
         }
 
-        $this->view('products', ['prodList' => $prodList, 'image' => $image]);
+        $this->view('products', ['prod' => $prod, 'image' => $image, 'page' => $page]);
+    }
+
+    public function test(){
+        echo "test";
     }
 }
