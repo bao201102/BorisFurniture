@@ -181,4 +181,46 @@ class ProductModel
         giaiPhongBoNho($link, $result);
         return $total;
     }
+<<<<<<< HEAD
+=======
+
+    public function pagination($page)
+    {
+        $link = null;
+        taoKetNoi($link);
+        // $page = isset($_POST['page']) ? $_POST['page'] : 1;
+        $page = is_numeric($page) ? $page : 1;
+        $num_on_page = 10;
+        $FROM = ($page - 1) * $num_on_page;
+
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product LIMIT " . $FROM . ", " . $num_on_page);
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function getQuantity($id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT prod_quantity FROM tbl_product WHERE prod_id = '$id'");
+        $data = $result[0]['prod_quantity'];
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function reduceQuantity($id, $prod_quantity)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanKhongTraVeDL($link, "UPDATE tbl_product SET prod_quantity = '$prod_quantity' WHERE prod_id = '$id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        if ($data) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+>>>>>>> 3c57b2aa2ec93c2653e87804ca98c87d6e1f166e
 }
