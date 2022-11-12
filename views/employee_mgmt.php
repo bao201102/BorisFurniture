@@ -43,7 +43,7 @@ require_once APPROOT . '/views/includes/head.php';
                 <div class="container">
                     <div class="input-group">
                         <span class="input-group-text material-symbols-outlined">search</span>
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" name="keyword" id="keyword">
                     </div>
                 </div>
             </section>
@@ -61,29 +61,8 @@ require_once APPROOT . '/views/includes/head.php';
                                     <th scope="col">Phone</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-group-divider">
-                                <?php if (!empty($data['emp'])) :
-                                    $i = 0;
-                                    foreach ($data['emp'] as $emp) : extract($emp); ?>
-                                        <tr>
-                                            <th scope="row"><?= $emp_id ?></th>
-                                            <td><?= $lastname ?> <?= $firstname ?></td>
-                                            <td><?= $birthday ?></td>
-                                            <td><?= $phone ?></td>
-                                            <td class="text-center utility">
-                                                <div class="d-flex justify-content-center">
-                                                    <form action="<?= URLROOT ?>/Admin/showEdit/<?= $user_id ?>" method="POST">
-                                                        <button name="editEmployee" type="submit" class="material-symbols-outlined edit border border-0 bg-white">edit</button>
-                                                    </form>
-                                                    <form action="<?= URLROOT ?>/Admin/deleteEmployee/<?= $user_id ?>" method="POST">
-                                                        <button name="deleteEmployee" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                <?php $i++;
-                                    endforeach;
-                                endif; ?>
+                            <tbody class="table-group-divider" id="output">
+
                             </tbody>
                         </table>
                     </div>
@@ -186,5 +165,28 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/sidebar-effect.js"></script>
 <script src="<?= JSFILE ?>/product_mgmt.js"></script>
 <script src="<?= JSFILE ?>/employee_mgmt.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        handleAjax();
+        $("#keyword").keyup(handleAjax);
+    });
+
+    var url = window.location.pathname.split('/');
+
+    function handleAjax() {
+        var keyword = $("#keyword").val();
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Admin/searchEmployee",
+            method: "POST",
+            data: {
+                keyword: keyword
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
+    }
+</script>
 
 </html>

@@ -107,4 +107,14 @@ class CustomerModel
             return false;
         }
     }
+
+    public function searchCustomerAdmin($name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_customer WHERE STATUS = 1 AND firstname LIKE '%$name%' or lastname like '%$name%'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
 }

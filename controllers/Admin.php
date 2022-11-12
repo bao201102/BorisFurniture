@@ -174,15 +174,8 @@ class Admin extends Controller
     public function category()
     {
         if ($_SESSION['user_type'] == 0) {
-            $category_list = $this->CategoryModel->getCategoryList();
-            $count_prod = array();
-            foreach ($category_list as $value) {
-                $id = $value['category_id'];
-                $count = $this->CategoryModel->countProdPerCate($id);
-                array_push($count_prod, $count);
-            }
-            // echo var_dump($count_prod[0][0]['COUNT(category_id)']);
-            $this->view('category_mgmt', ['category_list' => $category_list, 'count_prod' => $count_prod]);
+
+            $this->view('category_mgmt', []);
         }
     }
 
@@ -201,6 +194,23 @@ class Admin extends Controller
                 }
             }
         }
+    }
+    public function searchCategory()
+    {
+        $keyword = '';
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
+        }
+
+        $category_list = $this->CategoryModel->searcCategoryAdmin($keyword);
+        $count_prod = array();
+        foreach ($category_list as $value) {
+            $id = $value['category_id'];
+            $count = $this->CategoryModel->countProdPerCate($id);
+            array_push($count_prod, $count);
+        }
+
+        $this->view('category_mgmt_sub', ['count_prod' => $count_prod, 'category_list' => $category_list]);
     }
 
     public function editCategory()
@@ -239,9 +249,20 @@ class Admin extends Controller
     public function employee()
     {
         if ($_SESSION['user_type'] == 0) {
-            $emp = $this->EmployeeModel->getEmpList();
-            $this->view("employee_mgmt", ['emp' => $emp]);
+            $this->view("employee_mgmt", []);
         }
+    }
+
+    public function searchEmployee()
+    {
+        $keyword = '';
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
+        }
+
+        $emp = $this->EmployeeModel->searchEmployeeAdmin($keyword);
+
+        $this->view('employee_mgmt_sub', ['emp' => $emp]);
     }
 
     public function validateEmail()
@@ -345,8 +366,7 @@ class Admin extends Controller
     public function customer()
     {
         if ($_SESSION['user_type'] == 0) {
-            $cus = $this->CustomerModel->getCustomerList();
-            $this->view("customer_mgmt", ['cus' => $cus]);
+            $this->view("customer_mgmt", []);
         }
     }
 
@@ -381,5 +401,17 @@ class Admin extends Controller
                 header('location:' . URLROOT . '/Admin/customer');
             }
         }
+    }
+
+    public function searchCustomer()
+    {
+        $keyword = '';
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
+        }
+
+        $cus = $this->CustomerModel->searchCustomerAdmin($keyword);
+
+        $this->view('customer_mgmt_sub', ['cus' => $cus]);
     }
 }
