@@ -15,6 +15,16 @@ class CategoryModel
         return $data;
     }
 
+    public function getCategoryIdList()
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT category_id FROM tbl_category WHERE status = '1'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
     public function getCategory($id)
     {
         $link = null;
@@ -24,6 +34,7 @@ class CategoryModel
         giaiPhongBoNho($link, $result);
         return $data;
     }
+
 
     public function addCategory($name)
     {

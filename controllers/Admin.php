@@ -14,7 +14,8 @@ class Admin extends Controller
     public function index()
     {
         if ($_SESSION['user_type'] == 0) {
-            header('location:' . URLROOT . '/Admin/product');
+            // $category_list = $this->CategoryModel->getCategoryList();
+            // $this->view('product_mgmt', ['category_list' => $category_list]);
         }
     }
 
@@ -43,18 +44,22 @@ class Admin extends Controller
     public function product()
     {
         if ($_SESSION['user_type'] == 0) {
-            $prod = $this->ProductModel->getProductList();
-            $category_name = array();
-            $image = array();
             $category_list = $this->CategoryModel->getCategoryList();
-            foreach ($prod as $value) {
-                $cate = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($value['prod_id']));
-                $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                array_push($image, $img);
-                array_push($category_name, $cate);
-            }
 
-            $this->view('product_mgmt', ['prod' => $prod, 'category' => $category_name, 'image' => $image, 'category_list' => $category_list]);
+            $this->view('product_mgmt', ['category_list' => $category_list]);
+
+            // $prod = $this->ProductModel->getProductList();
+            // $category_name = array();
+            // $image = array();
+            // $category_list = $this->CategoryModel->getCategoryList();
+            // foreach ($prod as $value) {
+            //     $cate = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($value['prod_id']));
+            //     $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
+            //     array_push($image, $img);
+            //     array_push($category_name, $cate);
+            // }
+
+            // $this->view('product_mgmt', ['prod' => $prod, 'category' => $category_name, 'image' => $image, 'category_list' => $category_list]);
         }
     }
 
@@ -84,30 +89,37 @@ class Admin extends Controller
         }
     }
 
-
-    public function searchByCategory()
+    public function search()
     {
-        if ($_SESSION['user_type'] == 0) {
-            if (isset($_POST['category'])) {
-                if ($_POST['category'] == "all") {
-                    echo "ss";
-                    // $this->product();
-                } else {
-                    $prod = $this->ProductModel->getProductByCategory($_POST['category']);
-                    $category_name = array();
-                    $image = array();
-                    $category_list = $this->CategoryModel->getCategoryList();
-                    foreach ($prod as $value) {
-                        $cate = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($value['prod_id']));
-                        $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-                        array_push($image, $img);
-                        array_push($category_name, $cate);
-                    }
-
-                    $this->view('product_mgmt', ['prod' => $prod, 'category' => $category_name, 'image' => $image, 'category_list' => $category_list]);
-                }
-            }
+        $keyword = '';
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
         }
+
+        $cateArray = array();
+
+        $cateList = array();
+        if ($_POST['category'] == 'all') {
+            $cateList = $this->CategoryModel->getCategoryIdList();
+        } else {
+            $cateArray['category_id'] = $_POST['category'];
+            array_push($cateList, $cateArray);
+        }
+
+        $category_name = array();
+        $prodList = $this->ProductModel->searchProductAdmin($keyword, $cateList);
+        foreach ($prodList as $value) {
+            $cate = $this->CategoryModel->getCategory($value['category_id']);
+            array_push($category_name, $cate);
+        }
+
+        $image = array();
+        foreach ($prodList as $value) {
+            $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
+            array_push($image, $img);
+        }
+
+        $this->view('product_mgmt_sub', ['prodList' => $prodList, 'image' => $image, 'category' => $category_name]);
     }
 
     public function editProduct()
