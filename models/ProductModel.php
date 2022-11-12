@@ -124,16 +124,6 @@ class ProductModel
         return $data;
     }
 
-    public function getProductByCategory($category)
-    {
-        $link = null;
-        taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND category_id = '$category'");
-        $data = $result;
-        giaiPhongBoNho($link, $result);
-        return $data;
-    }
-
     public function getProductByName($name)
     {
         $link = null;
@@ -158,6 +148,34 @@ class ProductModel
         $link = null;
         taoKetNoi($link);
         $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category AND prod_price BETWEEN '$price1' AND '$price2' LIMIT $from, 6");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function searchProductAdmin($name, $cateList)
+    {
+        $category = '(';
+        foreach ($cateList as $key => $value) {
+            if ($key == count($cateList) - 1) {
+                $category .= $value['category_id'] . ')';
+            } else {
+                $category .= $value['category_id'] . ",";
+            }
+        }
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
+    public function getProductByCategory($category)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND category_id like $category");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;

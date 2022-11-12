@@ -91,28 +91,33 @@ class Admin extends Controller
 
     public function search()
     {
-        $category_name = array();
-        if ($_POST['category'] == "all") {
-            $prodList = $this->ProductModel->getProductList();
-            foreach ($prodList as $value) {
-                $cate = $this->CategoryModel->getCategory($value['category_id']);
-                array_push($category_name, $cate);
-            }
-        } else {
-            $prodList = $this->ProductModel->getProductByCategory($_POST['category']);
-            foreach ($prodList as $value) {
-                $cate = $this->CategoryModel->getCategory($value['category_id']);
-                array_push($category_name, $cate);
-            }
+        $keyword = '';
+        if (isset($_POST['keyword'])) {
+            $keyword = $_POST['keyword'];
         }
 
+        $cateArray = array();
+
+        $cateList = array();
+        if ($_POST['category'] == 'all') {
+            $cateList = $this->CategoryModel->getCategoryIdList();
+        } else {
+            $cateArray['category_id'] = $_POST['category'];
+            array_push($cateList, $cateArray);
+        }
+
+        $category_name = array();
+        $prodList = $this->ProductModel->searchProductAdmin($keyword, $cateList);
+        foreach ($prodList as $value) {
+            $cate = $this->CategoryModel->getCategory($value['category_id']);
+            array_push($category_name, $cate);
+        }
 
         $image = array();
         foreach ($prodList as $value) {
             $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
             array_push($image, $img);
         }
-
 
         $this->view('product_mgmt_sub', ['prodList' => $prodList, 'image' => $image, 'category' => $category_name]);
     }

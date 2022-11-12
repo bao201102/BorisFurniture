@@ -189,6 +189,7 @@ require_once APPROOT . '/views/includes/head.php';
 <script type="text/javascript">
     $(document).ready(function() {
         handleAjax();
+        $("#keyword").keyup(handleAjax);
         $("#category").change(handleAjax);
     });
 
@@ -196,11 +197,13 @@ require_once APPROOT . '/views/includes/head.php';
 
     function handleAjax() {
         var category = $("#category").val();
+        var keyword = $("#keyword").val();
         $.ajax({
             url: window.location.protocol + "//" +
                 window.location.hostname + "/" + url[1] + "/Admin/search",
             method: "POST",
             data: {
+                keyword: keyword,
                 category: category
             },
             success: function(data) {
