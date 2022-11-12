@@ -26,8 +26,8 @@ require_once APPROOT . '/views/includes/head.php';
                     </div>
                     <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
                         <!-- select category -->
-                        <form action=" <?= URLROOT ?>/Admin/searchByCategory" method="POST" class="me-2 me-xl-3" id="formcate">
-                            <select class="form-select" name="category" aria-label="Default select example" onchange="submit()">
+                        <form class="me-2 me-xl-3" id="formcate">
+                            <select class="form-select" name="category" aria-label="Default select example" id="category">
                                 <option selected value="all">All</option>
                                 <?php foreach ($data['category_list'] as $cate) : extract($cate); ?>
                                     <option value="<?= $category_id ?>"><?= $category_name ?></option>
@@ -53,7 +53,7 @@ require_once APPROOT . '/views/includes/head.php';
                 <div class="container">
                     <div class="input-group">
                         <span class="input-group-text material-symbols-outlined">search</span>
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" name="keyword" id="keyword">
                     </div>
                 </div>
             </section>
@@ -70,29 +70,8 @@ require_once APPROOT . '/views/includes/head.php';
                                     <th scope="col" colspan="2">category</th>
                                 </tr>
                             </thead>
-                            <tbody class="table-group-divider">
-                                <?php if (!empty($data['prod'])) :
-                                    $i = 0;
-                                    foreach ($data['prod'] as $prod) : extract($prod); ?>
-                                        <tr>
-                                            <th scope="row"><?= $prod_id ?></th>
-                                            <td><img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" alt="" class="product-thumbnail"></td>
-                                            <td><?= $prod_name ?></td>
-                                            <td><?= $data['category'][$i][0]['category_name'] ?></td>
-                                            <td class="text-center utility">
-                                                <div class="d-flex justify-content-center">
-                                                    <form action="<?= URLROOT ?>/Admin/showEdit/<?= $prod_id ?>" method="POST">
-                                                        <button name="editProduct" type="submit" class="material-symbols-outlined edit border border-0 bg-white">edit</button>
-                                                    </form>
-                                                    <form action="<?= URLROOT ?>/Admin/deleteProduct/<?= $prod_id ?>" method="POST">
-                                                        <button name="deleteProduct" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
-                                                    </form>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                <?php $i++;
-                                    endforeach;
-                                endif; ?>
+                            <tbody class="table-group-divider" id="output">
+
                             </tbody>
                         </table>
                     </div>
@@ -201,10 +180,33 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/sidebar-effect.js"></script>
 <script src="<?= JSFILE ?>/product_mgmt.js"></script>
-<script>
+<!-- <script>
     function submit() {
         let form = document.getElementById("formcate");
         form.submit();
+    }
+</script> -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        handleAjax();
+        $("#category").change(handleAjax);
+    });
+
+    var url = window.location.pathname.split('/');
+
+    function handleAjax() {
+        var category = $("#category").val();
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Admin/search",
+            method: "POST",
+            data: {
+                category: category
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
     }
 </script>
 
