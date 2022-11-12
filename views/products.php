@@ -29,33 +29,107 @@
     endif; ?>
 </div>
 <div>
-    <!-- pagination -->
-    <ul class="pagination pagination-lg justify-content-center">
-        <li class="page-item disabled">
-            <a class="page-link" href="#">«</a>
-        </li>
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+        <!-- Previous button -->
+        <?php if ($data['number'] == 1) :  ?>
 
+            <li class="page-item disabled">
+                <a class="page-link">«</a>
+            </li>
+
+        <?php else : ?>
+
+            <li class="page-item">
+                <a class="page-link" onclick="loadProduct(1)">«</a>
+            </li>
+
+        <?php endif ?>
+
+        <!-- Page number -->
         <?php
-        if (!empty($data['page'])) :
-            for ($i = 1; $i <= $data['page']; $i++) :
-                if ($i == $data['number']) : ?>
+        if (!empty($data['page'])) : ?>
 
-                    <li class="page-item active">
-                        <a class="page-link" onclick="loadProduct(<?= $i ?>)"><?= $i ?></a>
-                    </li>
+            <?php $number = $data['number'];
+            if ($number == 1) : ?>
 
-                <?php else : ?>
+                <li class="page-item active">
+                    <a class="page-link" onclick="loadProduct(<?= $number ?>)"><?= $number ?></a>
+                </li>
+
+                <?php $number = $number + 1; ?>
+
+                <li class="page-item">
+                    <a class="page-link" onclick="loadProduct(<?= $number ?>)"><?= $number ?></a>
+                </li>
+
+            <?php else : ?>
+
+                <?php $number = $number - 1; ?>
+
+                <li class="page-item">
+                    <a class="page-link" onclick="loadProduct(<?= $number ?>)"><?= $number ?></a>
+                </li>
+
+                <?php $number = $number + 1; ?>
+
+                <li class="page-item active">
+                    <a class="page-link" onclick="loadProduct(<?= $number ?>)"><?= $number ?></a>
+                </li>
+
+            <?php endif; ?>
+
+            <!-- Nếu số nút trang hiện nhiều hơn 5 -->
+            <?php if ($data['page'] - $number > 3) : ?>
+
+                <?php for ($i = $number + 1; $i <= $number + 1; $i++) : ?>
 
                     <li class="page-item">
                         <a class="page-link" onclick="loadProduct(<?= $i ?>)"><?= $i ?></a>
                     </li>
 
+                <?php endfor; ?>
+
+                <li class="page-item disabled">
+                    <a class="page-link">...</a>
+                </li>
+
+                <?php for ($i = $data['page'] - 1; $i <= $data['page']; $i++) : ?>
+
+                    <li class="page-item">
+                        <a class="page-link" onclick="loadProduct(<?= $i ?>)"><?= $i ?></a>
+                    </li>
+
+                <?php endfor; ?>
+
+                <!-- Nếu số nút trang hiện ít hơn 5 -->
+            <?php else : ?>
+
+                <?php for ($i = $number + 1; $i <= $data['page']; $i++) : ?>
+
+                    <li class="page-item">
+                        <a class="page-link" onclick="loadProduct(<?= $i ?>)"><?= $i ?></a>
+                    </li>
+
+                <?php endfor; ?>
+
         <?php endif;
-            endfor;
         endif; ?>
 
-        <li class=" page-item">
-            <a class="page-link" href="#">»</a>
-        </li>
+
+        <!-- Next button -->
+        <?php if ($data['number'] == $data['page']) :  ?>
+
+            <li class="page-item disabled">
+                <a class="page-link">»</a>
+            </li>
+
+        <?php else : ?>
+
+            <li class="page-item">
+                <a class="page-link" onclick="loadProduct(<?= $data['page'] ?>)">»</a>
+            </li>
+
+        <?php endif ?>
     </ul>
 </div>

@@ -139,6 +139,8 @@ require_once APPROOT . '/views/includes/head.php';
                 $("#output").html(data);
             }
         });
+
+        window.scrollTo(0, 0);
     }
 </script>
 
