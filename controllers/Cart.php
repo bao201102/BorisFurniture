@@ -48,6 +48,7 @@ class Cart extends Controller
             }
             $this->createSubtotal();
         }
+        header('location:' . URLROOT . '/Home/index');
     }
 
     public function actionBuy($id)
@@ -56,7 +57,7 @@ class Cart extends Controller
             switch ($_POST['action']) {
                 case 'addToCart':
                     $this->addProductToCart($id);
-                    header('location:' . URLROOT . '/Home/details/' . $id);
+                    // header('location:' . URLROOT . '/Home/details/' . $id);
                     break;
 
                 case 'buyNow':

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 04, 2022 at 10:27 AM
+-- Generation Time: Nov 12, 2022 at 02:30 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -140,7 +140,80 @@ INSERT INTO `tbl_image` (`img_id`, `prod_image_id`, `img_link`) VALUES
 (29, 'img10', 'img10-1.jpg'),
 (30, 'img10', 'img10-2.jpg'),
 (31, 'img10', 'img10-3.jpg'),
-(32, 'img10', 'img10-4.jpg');
+(32, 'img10', 'img10-4.jpg'),
+(33, 'img11', 'img11-1.jpg'),
+(34, 'img11', 'img11-2.jpg'),
+(35, 'img11', 'img11-3.jpg'),
+(36, 'img11', 'img11-4.jpg'),
+(37, 'img12', 'img12-1.jpg'),
+(38, 'img12', 'img12-2.jpg'),
+(39, 'img12', 'img12-3.jpg'),
+(40, 'img13', 'img13-1.jpg'),
+(41, 'img13', 'img13-2.jpg'),
+(42, 'img13', 'img13-3.jpg'),
+(43, 'img14', 'img14-1.jpg'),
+(44, 'img14', 'img14-2.jpg'),
+(45, 'img15', 'img15-1.jpg'),
+(46, 'img15', 'img15-2.jpg'),
+(47, 'img15', 'img15-3.jpg'),
+(48, 'img15', 'img15-4.jpg'),
+(49, 'img16', 'img16-1.jpg'),
+(50, 'img16', 'img16-2.jpg'),
+(51, 'img17', 'img17-1.jpg'),
+(52, 'img17', 'img17-2.jpg'),
+(53, 'img18', 'img18-1.jpg'),
+(54, 'img18', 'img18-2.jpg'),
+(55, 'img18', 'img18-3.jpg'),
+(56, 'img18', 'img18-4.jpg'),
+(57, 'img19', 'img19-1.jpg'),
+(58, 'img19', 'img19-2.jpg'),
+(59, 'img20', 'img20-1.jpg'),
+(60, 'img20', 'img20-2.jpg'),
+(61, 'img20', 'img20-3.jpg'),
+(62, 'img20', 'img20-4.jpg'),
+(63, 'img21', 'img21-1.jpg'),
+(64, 'img21', 'img21-2.jpg'),
+(65, 'img22', 'img22-1.jpg'),
+(66, 'img22', 'img22-2.jpg'),
+(67, 'img24', 'img24-1.jpg'),
+(68, 'img24', 'img24-2.jpg'),
+(69, 'img25', 'img25-1.jpg'),
+(70, 'img25', 'img25-2.jpg'),
+(71, 'img26', 'img26-1.jpg'),
+(72, 'img26', 'img26-2.jpg'),
+(73, 'img26', 'img26-3.jpg'),
+(74, 'img26', 'img26-4.jpg'),
+(75, 'img27', 'img27-1.jpg'),
+(76, 'img27', 'img27-2.jpg'),
+(77, 'img27', 'img27-3.jpg'),
+(78, 'img28', 'img28-1.jpg'),
+(79, 'img28', 'img28-2.jpg'),
+(80, 'img28', 'img28-3.jpg'),
+(81, 'img28', 'img28-4.jpg'),
+(82, 'img29', 'img29-1.jpg'),
+(83, 'img29', 'img29-2.jpg'),
+(84, 'img29', 'img29-3.jpg'),
+(85, 'img30', 'img30-1.jpg'),
+(86, 'img30', 'img30-2.jpg'),
+(87, 'img32', 'img32-1.jpg'),
+(88, 'img32', 'img32-2.jpg'),
+(89, 'img34', 'img34-1.jpg'),
+(90, 'img34', 'img34-2.jpg'),
+(91, 'img35', 'img35-1.jpg'),
+(92, 'img35', 'img35-2.jpg'),
+(93, 'img36', 'img36-1.jpg'),
+(94, 'img36', 'img36-2.jpg'),
+(95, 'img38', 'img38-1.jpg'),
+(96, 'img38', 'img38-2.jpg'),
+(97, 'img38', 'img38-3.jpg'),
+(98, 'img39', 'img39-1.jpg'),
+(99, 'img39', 'img39-2.jpg'),
+(100, 'img39', 'img39-3.jpg'),
+(101, 'img40', 'img40-1.jpg'),
+(102, 'img40', 'img40-2.jpg'),
+(103, 'img40', 'img40-3.jpg'),
+(104, 'img41', 'img41-1.jpg'),
+(105, 'img41', 'img41-2.jpg');
 
 -- --------------------------------------------------------
 
@@ -225,7 +298,34 @@ INSERT INTO `tbl_product` (`prod_id`, `prod_name`, `prod_quantity`, `prod_price`
 (7, 'Wooden Dining Chair', 17, 355, 2, 'Convenient', 'img07', b'1'),
 (8, 'Round Coffee Table', 22, 1200, 4, 'So beautiful', 'img08', b'1'),
 (9, 'Brown Long Table', 18, 230, 4, 'Suitable for family', 'img09', b'1'),
-(10, 'Wooden Bowl', 13, 125, 3, 'Hard to break', 'img10', b'1');
+(10, 'Wooden Bowl', 13, 125, 3, 'Hard to break', 'img10', b'1'),
+(11, 'Coffee Table', 24, 1849, 4, 'Beatiful', 'img11', b'1'),
+(12, 'Aether Vasee 2', 59, 2637, 3, 'Beautiful', 'img12', b'1'),
+(13, 'Classic Chairs 2', 53, 627, 2, 'Beautiful', 'img13', b'1'),
+(14, 'Hanging Light 2', 148, 1746, 1, 'Beautiful', 'img14', b'1'),
+(15, 'Wooden Dining Chair 2', 124, 2847, 2, 'Beautiful', 'img15', b'1'),
+(16, 'Wooden Stool 2', 125, 135, 2, 'Beautiful', 'img16', b'1'),
+(17, 'Study Lamp 2', 133, 1235, 1, 'Beautiful', 'img17', b'1'),
+(18, 'Wooden Bowl 2', 112, 738, 3, 'Beautiful', 'img18', b'1'),
+(19, 'Hanging Lightt 3', 134, 523, 1, 'Beautiful', 'img19', b'1'),
+(20, 'Round Coffee Table 3', 113, 4143, 4, 'Beautiful', 'img20', b'1'),
+(21, 'Study Lamp 3', 121, 1234, 1, 'Beautiful', 'img21', b'1'),
+(22, 'Aether Vasee 3', 112, 1253, 3, 'Beautiful', 'img22', b'1'),
+(24, 'Classic Lamp 3', 113, 1234, 1, 'Beautiful', 'img24', b'1'),
+(25, 'Wooden Stool 3', 131, 3424, 4, 'Beautiful', 'img25', b'1'),
+(26, 'Wooden Dining Chair 3', 123, 2133, 2, 'Beautiful', 'img26', b'1'),
+(27, 'Classic Chairs 3', 112, 2132, 2, 'Beautiful', 'img27', b'1'),
+(28, 'Round Coffee Table 4', 123, 2313, 4, 'Beautiful', 'img28', b'1'),
+(29, 'Wooden Bowl 3', 1231, 243, 3, 'Beautiful', 'img29', b'1'),
+(30, 'Hanging Light 4', 132, 674, 1, 'Beautiful', 'img30', b'1'),
+(32, 'Study Lamp 4', 132, 233, 1, 'Beautiful', 'img32', b'1'),
+(34, 'Classic Lamp 4', 133, 1233, 1, 'Beautiful', 'img34', b'1'),
+(35, 'Wooden Stool 4', 13, 3212, 2, 'Beautiful', 'img35', b'1'),
+(36, 'Aether Vasee 4', 133, 7345, 3, 'Beautiful', 'img36', b'1'),
+(38, 'Classic Chairs 4', 187, 2323, 2, 'Beautiful', 'img38', b'1'),
+(39, 'Wooden Dining Chair 4', 12, 734, 2, 'Beautiful', 'img39', b'1'),
+(40, 'Wooden Bowl  4', 123, 6752, 3, 'Beautiful', 'img40', b'1'),
+(41, 'Round Table', 133, 4232, 4, 'Beautiful', 'img41', b'1');
 
 -- --------------------------------------------------------
 
@@ -357,7 +457,7 @@ ALTER TABLE `tbl_employee`
 -- AUTO_INCREMENT for table `tbl_image`
 --
 ALTER TABLE `tbl_image`
-  MODIFY `img_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `img_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=106;
 
 --
 -- AUTO_INCREMENT for table `tbl_order`
@@ -375,7 +475,7 @@ ALTER TABLE `tbl_order_detail`
 -- AUTO_INCREMENT for table `tbl_product`
 --
 ALTER TABLE `tbl_product`
-  MODIFY `prod_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `prod_id` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

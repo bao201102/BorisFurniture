@@ -77,7 +77,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <form id="inf-pro" action="<?= URLROOT ?>/Cart/actionBuy/<?= $prod_id ?>" method="POST" class="col-12 col-md-5 info-product">
+                            <form id="inf-pro" class="col-12 col-md-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3>
                                         <fieldset name="prod_name"><?= $prod_name ?></fieldset>
@@ -126,10 +126,10 @@ require_once APPROOT . '/views/includes/head.php';
                                         <input class="form-control" name="prod_quantity" type="number" value="1" min="0" max=<?= $prod_quantity ?>>
                                     </div>
                                 </div>
-
+                                <input type="hidden" value="<?= $prod_id ?>" name="prod_id">
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button type="submit" name="action" value="buyNow" class="btn btn-primary">Buy now</button>
-                                    <button type="submit" name="action" value="addToCart" class="btn btn-outline-primary">Add to cart</button>
+                                    <button name="buyNow" value="buyNow" id="buyNow" class="btn btn-primary">Buy now</button>
+                                    <button name="addToCart" value="addToCart" id="addToCart" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
                                 <?php
                                 if (!empty($data['cate'])) :
@@ -239,5 +239,29 @@ require_once APPROOT . '/views/includes/head.php';
 <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
                             <script src="<?= JSFILE ?>/general-effect.js"></script>
                             <script src="<?= JSFILE ?>/details.js"></script>
+                            <script type="text/javascript">
+                                $(document).ready(function() {
+                                    handleAjax();
+                                    $("#addToCart").click(handleAjax);
+                                    $("#buyNow").click(handleAjax);
+                                });
+
+                                var url = window.location.pathname.split('/');
+
+                                function handleAjax() {
+                                    var prod_id = $("input[name='prod_id']").val();
+                                    var addToCart = $("#addToCart").val();
+                                    var buyNow = $("#buyNow").val();
+                                    $.ajax({
+                                        url: window.location.protocol + "//" +
+                                            window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" + prod_id,
+                                        method: "POST",
+                                        data: {
+                                            addToCart: addToCart,
+                                            buyNow: buyNow
+                                        }
+                                    });
+                                }
+                            </script>
 
 </html>
