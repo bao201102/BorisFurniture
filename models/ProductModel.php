@@ -144,46 +144,41 @@ class ProductModel
         return $data;
     }
 
-    public function searchProduct($price1, $price2, $category = [], $name = [])
+    public function searchProduct($price1, $price2, $cateList, $name, $from)
     {
-        $link = null;
-        taoKetNoi($link);
-        if (isset($category) && isset($name)) {
-            $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id = '$category' AND prod_price BETWEEN '$price1' AND '$price2'");
-        } else if (isset($name)) {
-            $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND prod_price BETWEEN '$price1' AND '$price2'");
-        } else if (isset($category)) {
-            $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND category_id = '$category' AND prod_price BETWEEN '$price1' AND '$price2'");
-        } else {
-            $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_price BETWEEN '$price1' AND '$price2'");
+        $category = '(';
+        foreach ($cateList as $key => $value) {
+            if ($key == count($cateList) - 1) {
+                $category .= $value . ')';
+            } else {
+                $category .= $value . ",";
+            }
         }
+
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category AND prod_price BETWEEN '$price1' AND '$price2' LIMIT $from, 6");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
     }
 
-    public function countPage()
+    public function countPage($price1, $price2, $cateList, $name)
     {
+        $category = '(';
+        foreach ($cateList as $key => $value) {
+            if ($key == count($cateList) - 1) {
+                $category .= $value . ')';
+            } else {
+                $category .= $value . ",";
+            }
+        }
+
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_product");
-        $num_on_page = 10;
-        $total = ceil($result[0] / $num_on_page);
+        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category AND prod_price BETWEEN '$price1' AND '$price2'");
+        $total = ceil($result[0]['count(*)'] / 6);
+        giaiPhongBoNho($link, $result);
         return $total;
-    }
-
-    public function pagination($page)
-    {
-        $link = null;
-        taoKetNoi($link);
-        // $page = isset($_POST['page']) ? $_POST['page'] : 1;
-        $page = is_numeric($page) ? $page : 1;
-        $num_on_page = 10;
-        $FROM = ($page - 1) * $num_on_page;
-
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product LIMIT " . $FROM . ", " . $num_on_page);
-        $data = $result;
-        giaiPhongBoNho($link, $result);
-        return $data;
     }
 }

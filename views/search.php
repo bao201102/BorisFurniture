@@ -80,34 +80,9 @@ require_once APPROOT . '/views/includes/head.php';
                         </div>
                     </form>
 
-                    <div class="col-12 col-lg-8 row text-center">
-                        <!-- product box -->
-                        <div class="row" id="output"></div>
+                    <!-- Search result -->
+                    <div class="col-12 col-lg-8 row text-center" id="output">
 
-                        <!-- pagination -->
-                        <ul class="pagination pagination-lg justify-content-center">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#">«</a>
-                            </li>
-                            <li class="page-item active">
-                                <a class="page-link" href="#">1</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">3</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">4</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">5</a>
-                            </li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">»</a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -132,19 +107,20 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        handleAjax();
-        $("#keyword").keyup(handleAjax);
-        $("input[type=radio][name=price]").change(handleAjax);
-        $("input[type=checkbox][name=category]").change(handleAjax);
+        loadProduct();
+        $("#keyword").keyup(loadProduct);
+        $("input[type=radio][name=price]").change(loadProduct);
+        $("input[type=checkbox][name=category]").change(loadProduct);
     });
 
-    function handleAjax() {
+    function loadProduct() {
         var category = [];
         var keyword = $("#keyword").val();
         var price = $("input[name='price']:checked").val();
         $("input[name='category']:checked").each(function() {
             category.push(this.value);
         });
+
         if ($("#name").val() != '') {
             $.ajax({
                 url: "Search/search",

@@ -1,8 +1,8 @@
-<?php
-if (!empty($data['prodList'])) :
-    $i = 0;
-    foreach ($data['prodList'] as $prodList) : extract($prodList);
-        foreach ($prodList as $prod) : extract($prod); ?>
+<div class="row">
+    <?php
+    if (!empty($data['prod'])) :
+        $i = 0;
+        foreach ($data['prod'] as $prod) : extract($prod); ?>
             <!-- product box -->
             <div class="col box">
                 <form action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST">
@@ -24,7 +24,30 @@ if (!empty($data['prodList'])) :
                     </div>
                 </form>
             </div>
-<?php $i++;
+    <?php $i++;
         endforeach;
-    endforeach;
-endif; ?>
+    endif; ?>
+</div>
+<div>
+    <!-- pagination -->
+    <ul class="pagination pagination-lg justify-content-center">
+        <li class="page-item disabled">
+            <a class="page-link" href="#">«</a>
+        </li>
+
+        <?php
+        if (!empty($data['page'])) :
+            for ($i = 1; $i <= $data['page']; $i++) : ?>
+
+                <li class="page-item">
+                    <a class="page-link" href="#"><?= $i ?></a>
+                </li>
+
+        <?php endfor;
+        endif; ?>
+
+        <li class="page-item">
+            <a class="page-link" href="#">»</a>
+        </li>
+    </ul>
+</div>
