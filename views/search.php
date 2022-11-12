@@ -107,13 +107,19 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        loadProduct();
-        $("#keyword").keyup(loadProduct);
-        $("input[type=radio][name=price]").change(loadProduct);
-        $("input[type=checkbox][name=category]").change(loadProduct);
+        loadProduct(<?= $data['number'] ?>);
+        $("#keyword").keyup(function() {
+            loadProduct(<?= $data['number'] ?>);
+        });
+        $("input[type=radio][name=price]").change(function() {
+            loadProduct(<?= $data['number'] ?>);
+        });
+        $("input[type=checkbox][name=category]").change(function() {
+            loadProduct(<?= $data['number'] ?>);
+        });
     });
 
-    function loadProduct() {
+    function loadProduct(number) {
         var category = [];
         var keyword = $("#keyword").val();
         var price = $("input[name='price']:checked").val();
@@ -121,23 +127,18 @@ require_once APPROOT . '/views/includes/head.php';
             category.push(this.value);
         });
 
-        if ($("#name").val() != '') {
-            $.ajax({
-                url: "Search/search",
-                method: "POST",
-                data: {
-                    keyword: keyword,
-                    price: price,
-                    category: category
-                },
-                success: function(data) {
-                    $("#output").html(data);
-                }
-            });
-
-        } else {
-            $("#output").html("");
-        }
+        $.ajax({
+            url: "Search/search/" + number,
+            method: "POST",
+            data: {
+                keyword: keyword,
+                price: price,
+                category: category
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
     }
 </script>
 

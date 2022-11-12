@@ -37,16 +37,24 @@
 
         <?php
         if (!empty($data['page'])) :
-            for ($i = 1; $i <= $data['page']; $i++) : ?>
+            for ($i = 1; $i <= $data['page']; $i++) :
+                if ($i == $data['number']) : ?>
 
-                <li class="page-item">
-                    <a class="page-link" href="#"><?= $i ?></a>
-                </li>
+                    <li class="page-item active">
+                        <a class="page-link" onclick="loadProduct(<?= $i ?>)"><?= $i ?></a>
+                    </li>
 
-        <?php endfor;
+                <?php else : ?>
+
+                    <li class="page-item">
+                        <a class="page-link" onclick="loadProduct(<?= $i ?>)"><?= $i ?></a>
+                    </li>
+
+        <?php endif;
+            endfor;
         endif; ?>
 
-        <li class="page-item">
+        <li class=" page-item">
             <a class="page-link" href="#">»</a>
         </li>
     </ul>

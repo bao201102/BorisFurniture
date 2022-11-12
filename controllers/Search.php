@@ -48,10 +48,6 @@ class Search extends Controller
             array_push($image, $img);
         }
 
-        $this->view('products', ['prod' => $prod, 'image' => $image, 'page' => $page]);
-    }
-
-    public function test(){
-        echo "test";
+        $this->view('products', ['prod' => $prod, 'image' => $image, 'page' => $page, 'number' => $number]);
     }
 }
