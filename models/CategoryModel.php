@@ -50,6 +50,16 @@ class CategoryModel
         }
     }
 
+    public function searcCategoryAdmin($name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE STATUS = 1 AND category_name LIKE '%$name%'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
+
     public function editCategory($id, $category_name)
     {
         $link = null;

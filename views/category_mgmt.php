@@ -51,7 +51,7 @@ require_once APPROOT . '/views/includes/head.php';
                 <div class="container">
                     <div class="input-group">
                         <span class="input-group-text material-symbols-outlined">search</span>
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search">
+                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" name="keyword" id="keyword">
                     </div>
                 </div>
             </section>
@@ -67,28 +67,8 @@ require_once APPROOT . '/views/includes/head.php';
                                 <th scope="col">Quantity</th>
                             </tr>
                         </thead>
-                        <tbody class="table-group-divider">
-                            <?php if (!empty($data['category_list'])) :
-                                $i = 0;
-                                foreach ($data['category_list'] as $category_list) : extract($category_list); ?>
-                                    <tr>
-                                        <th scope="row"><?= $category_id ?></th>
-                                        <td><?= $category_name ?></td>
-                                        <td><?= $data['count_prod'][$i][0]['count'] ?></td>
-                                        <td class="text-center utility">
-                                            <div class="d-flex justify-content-center">
-                                                <form action="<?= URLROOT ?>/Admin/showEdit/<?= $category_id ?>" method="POST">
-                                                    <button name="editCategory" type="submit" class="material-symbols-outlined edit border border-0 bg-white">edit</button>
-                                                </form>
-                                                <form action="<?= URLROOT ?>/Admin/deleteCategory/<?= $category_id ?>" method="POST">
-                                                    <button name="deleteCategory" type="submit" class="material-symbols-outlined delete border border-0 bg-white">delete</button>
-                                                </form>
-                                            </div>
-                                        </td>
-                                    </tr>
-                            <?php $i++;
-                                endforeach;
-                            endif; ?>
+                        <tbody class="table-group-divider" id="output">
+
                         </tbody>
                     </table>
                 </div>
@@ -128,5 +108,28 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/sidebar-effect.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        handleAjax();
+        $("#keyword").keyup(handleAjax);
+    });
+
+    var url = window.location.pathname.split('/');
+
+    function handleAjax() {
+        var keyword = $("#keyword").val();
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Admin/searchCategory",
+            method: "POST",
+            data: {
+                keyword: keyword
+            },
+            success: function(data) {
+                $("#output").html(data);
+            }
+        });
+    }
+</script>
 
 </html>
