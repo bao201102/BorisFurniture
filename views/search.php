@@ -113,19 +113,19 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        loadProduct(<?= $data['number'] ?>);
+        handleAjax(<?= $data['number'] ?>);
         $("#keyword").keyup(function() {
-            loadProduct(<?= $data['number'] ?>);
+            handleAjax(<?= $data['number'] ?>);
         });
         $("input[type=radio][name=price]").change(function() {
-            loadProduct(<?= $data['number'] ?>);
+            handleAjax(<?= $data['number'] ?>);
         });
         $("input[type=checkbox][name=category]").change(function() {
-            loadProduct(<?= $data['number'] ?>);
+            handleAjax(<?= $data['number'] ?>);
         });
     });
 
-    function loadProduct(number) {
+    function handleAjax(number) {
         var category = [];
         var keyword = $("#keyword").val();
         var price = $("input[name='price']:checked").val();

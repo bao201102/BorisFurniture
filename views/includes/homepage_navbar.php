@@ -28,10 +28,10 @@
                         </a>
                     </li>
                     <li class="cart-icon">
-                        <a id="btn-shop-cart" class="nav-link" href="<?= URLROOT ?>/Home/cart">
-                            <span class="material-symbols-outlined">
+                        <a id="btn-shop-cart">
+                            <a class="material-symbols-outlined nav-link" href="<?= URLROOT ?>/Home/cart">
                                 shopping_cart
-                            </span>
+                            </a>
 
                             <span id="ses-cart">
                                 <?php include_once APPROOT . '/views/header_cart.php' ?>
