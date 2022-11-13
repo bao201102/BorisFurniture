@@ -132,7 +132,6 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
                                     <button name="buyNow" value="buyNow" id="buyNow" class="btn btn-primary">Buy now</button>
                                     <button name="addToCart" value="addToCart" id="addToCart" class="btn btn-outline-primary">Add to cart</button>
-                                    <button id="test">test</button>
                                 </div>
 
                                 <?php
@@ -250,7 +249,6 @@ require_once APPROOT . '/views/includes/head.php';
                             <script type="text/javascript">
                                 $(document).ready(function() {
                                     $("#addToCart").click(function() {
-
                                         handleAjax($("#addToCart").val());
                                     });
                                     $("#buyNow").click(function() {
@@ -274,7 +272,8 @@ require_once APPROOT . '/views/includes/head.php';
                                             prod_quantity: prod_quantity
                                         },
                                         success: function(data) {
-                                            $("#shop_cart").html(data);
+                                            $("#ses-cart").empty();
+                                            // $("#ses-cart").html(data);
                                         }
                                     });
                                 }
