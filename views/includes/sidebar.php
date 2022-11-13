@@ -31,7 +31,7 @@
                         grid_view
                     </span>
                     <span class="align-middle sidebar-text">
-                        Product Mangagement
+                        Product Management
                     </span>
                 </a>
                 <a class="d-block text-white" href="<?= URLROOT ?>/Admin/category" style="padding: 18px">
@@ -39,7 +39,7 @@
                         category
                     </span>
                     <span class="align-middle sidebar-text">
-                        Category Mangagement
+                        Category Management
                     </span>
                 </a>
                 <a class="d-block text-white" href="<?= URLROOT ?>/Admin/employee" style="padding: 18px">
@@ -47,7 +47,7 @@
                         person
                     </span>
                     <span class="align-middle sidebar-text">
-                        Employee Mangagement
+                        Employee Management
                     </span>
                 </a>
                 <a class="d-block text-white" href="<?= URLROOT ?>/Admin/customer" style="padding: 18px">
