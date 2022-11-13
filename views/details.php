@@ -23,7 +23,7 @@ require_once APPROOT . '/views/includes/head.php';
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
                             <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
-                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/search">Shop</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Search">Shop</a></li>
                             <li class="breadcrumb-item active" aria-current="page"><?= $data['prod'][0]['prod_name'] ?>
                             </li>
                         </ol>
@@ -224,7 +224,7 @@ require_once APPROOT . '/views/includes/head.php';
                         endforeach;
                     endif; ?>
                     <div class="col-12 text-center mt-5">
-                        <a type="button" class="btn btn-outline-primary" href="<?= URLROOT ?>/Home/search"">More Collections</a>
+                        <a type="button" class="btn btn-outline-primary" href="<?= URLROOT ?>/Search">More Collections</a>
                     </div>
                 </div>
             </div>
@@ -244,40 +244,40 @@ require_once APPROOT . '/views/includes/head.php';
 </style>
 
 <script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
-                            </script>
-                            <script src="<?= JSFILE ?>/general-effect.js"></script>
-                            <script src="<?= JSFILE ?>/details.js"></script>
-                            <script type="text/javascript">
-                                $(document).ready(function() {
-                                    $("#addToCart").click(function() {
+</script>
+<script src="<?= JSFILE ?>/general-effect.js"></script>
+<script src="<?= JSFILE ?>/details.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#addToCart").click(function() {
 
-                                        handleAjax($("#addToCart").val());
-                                    });
-                                    $("#buyNow").click(function() {
-                                        handleAjax($("#buyNow").val());
-                                    });
-                                });
+            handleAjax($("#addToCart").val());
+        });
+        $("#buyNow").click(function() {
+            handleAjax($("#buyNow").val());
+        });
+    });
 
-                                var url = window.location.pathname.split('/');
+    var url = window.location.pathname.split('/');
 
-                                function handleAjax(btnValue) {
-                                    var prod_id = $("input[name='prod_id']").val();
-                                    var prod_quantity = $("input[name='prod_quantity']").val();
-                                    var action = btnValue;
-                                    $.ajax({
-                                        url: window.location.protocol + "//" +
-                                            window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" +
-                                            prod_id,
-                                        method: "POST",
-                                        data: {
-                                            action: action,
-                                            prod_quantity: prod_quantity
-                                        },
-                                        success: function(data) {
-                                            $("#shop_cart").html(data);
-                                        }
-                                    });
-                                }
-                            </script>
+    function handleAjax(btnValue) {
+        var prod_id = $("input[name='prod_id']").val();
+        var prod_quantity = $("input[name='prod_quantity']").val();
+        var action = btnValue;
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" +
+                prod_id,
+            method: "POST",
+            data: {
+                action: action,
+                prod_quantity: prod_quantity
+            },
+            success: function(data) {
+                $("#shop_cart").html(data);
+            }
+        });
+    }
+</script>
 
 </html>

@@ -12,7 +12,11 @@ class Search extends Controller
     {
         $category = $this->CategoryModel->getCategoryList();
         $number = 1;
-        $this->view('search', ['cate' => $category, 'number' => $number]);
+        $searchKeyword = '';
+        if (isset($_POST['keyword'])) {
+            $searchKeyword = $_POST['keyword'];
+        }
+        $this->view('search', ['cate' => $category, 'number' => $number, 'searchKeyword' => $searchKeyword]);
     }
 
     public function search($number)
@@ -43,11 +47,14 @@ class Search extends Controller
 
         //Thực hiện truy vấn hình ảnh tương ứng với sản phẩm
         $image = array();
-        foreach ($prod as $value) {
-            $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
-            array_push($image, $img);
+        if (isset($prod)) {
+            foreach ($prod as $value) {
+                $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
+                array_push($image, $img);
+            }
+            $this->view('products', ['prod' => $prod, 'image' => $image, 'page' => $page, 'number' => $number]);
+        } else {
+            echo "Product is not exists";
         }
-
-        $this->view('products', ['prod' => $prod, 'image' => $image, 'page' => $page, 'number' => $number]);
     }
 }

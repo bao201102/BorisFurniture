@@ -153,7 +153,7 @@ class ProductModel
         return $data;
     }
 
-    public function searchProductAdmin($name, $cateList)
+    public function searchProductAdmin($name, $cateList, $from)
     {
         $category = '(';
         foreach ($cateList as $key => $value) {
@@ -165,10 +165,28 @@ class ProductModel
         }
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category LIMIT $from, 6");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
+    }
+
+    public function countPageProductAdmin($name, $cateList)
+    {
+        $category = '(';
+        foreach ($cateList as $key => $value) {
+            if ($key == count($cateList) - 1) {
+                $category .= $value['category_id'] . ')';
+            } else {
+                $category .= $value['category_id'] . ",";
+            }
+        }
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_product WHERE STATUS = 1 AND prod_name LIKE '%$name%' AND category_id in $category");
+        $total = ceil($result[0]['count(*)'] / 6);
+        giaiPhongBoNho($link, $result);
+        return $total;
     }
 
     public function getProductByCategory($category)

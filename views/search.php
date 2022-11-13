@@ -31,15 +31,15 @@ require_once APPROOT . '/views/includes/head.php';
         <!--Products panel-->
         <section>
             <div class="container">
-                <div class="row g-0" style="margin-top: 50px;">
+                <div class="row g-0 justify-content-center" style="margin-top: 50px;">
                     <form class="col-12 col-lg-4 flex-lg-column row" id="search-form">
-                        <div class="">
-                            <input class="form-control" type="text" placeholder="Search our product here" name="keyword" id="keyword">
+                        <div class="mb-3">
+                            <input class="form-control" type="text" placeholder="Search our product here" value="<?= $data['searchKeyword'] ?>" name="keyword" id="keyword">
                         </div>
-                        <div class="col-6 col-lg-12" id="price-radio">
+                        <div class="col-6 col-lg-12 fs-5" id="price-radio">
                             <p class="fw-bold text-black">Search by price</p>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0-10000" checked>
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="0-100000" checked>
                                 <label class="form-check-label" for="optionRadio4">
                                     All
                                 </label>
@@ -57,13 +57,19 @@ require_once APPROOT . '/views/includes/head.php';
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-10000">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio3" value="1001-5000">
                                 <label class="form-check-label" for="optionRadio3">
-                                    $1000 - $10000
+                                    $1000 - $5000
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="price" id="optionRadio4" value="5001-100000">
+                                <label class="form-check-label" for="optionRadio4">
+                                    Over $5000
                                 </label>
                             </div>
                         </div>
-                        <div class="col-6 col-lg-12" id="cate-checkbox">
+                        <div class="col-6 col-lg-12 fs-5" id="cate-checkbox">
                             <p class="pt-0 pt-lg-5 fw-bold text-black">Search by category</p>
                             <?php if (!empty($data['cate'])) :
                                 $i = 0;
@@ -81,7 +87,7 @@ require_once APPROOT . '/views/includes/head.php';
                     </form>
 
                     <!-- Search result -->
-                    <div class="col-12 col-lg-8 row text-center" id="output">
+                    <div class="col-12 col-lg-8 row text-center justify-content-center" id="output">
 
                     </div>
                 </div>
@@ -107,19 +113,19 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        loadProduct(<?= $data['number'] ?>);
+        handleAjax(<?= $data['number'] ?>);
         $("#keyword").keyup(function() {
-            loadProduct(<?= $data['number'] ?>);
+            handleAjax(<?= $data['number'] ?>);
         });
         $("input[type=radio][name=price]").change(function() {
-            loadProduct(<?= $data['number'] ?>);
+            handleAjax(<?= $data['number'] ?>);
         });
         $("input[type=checkbox][name=category]").change(function() {
-            loadProduct(<?= $data['number'] ?>);
+            handleAjax(<?= $data['number'] ?>);
         });
     });
 
-    function loadProduct(number) {
+    function handleAjax(number) {
         var category = [];
         var keyword = $("#keyword").val();
         var price = $("input[name='price']:checked").val();

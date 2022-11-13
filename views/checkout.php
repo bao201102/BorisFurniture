@@ -21,7 +21,7 @@ require_once APPROOT . '/views/includes/head.php';
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
                             <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
-                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/search">Shop</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Search">Shop</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Checkout</li>
                         </ol>
                     </nav>
