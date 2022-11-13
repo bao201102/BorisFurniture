@@ -48,7 +48,6 @@ class Cart extends Controller
             }
             $this->createSubtotal();
         }
-        header('location:' . URLROOT . '/Home/index');
     }
 
     public function actionBuy($id)

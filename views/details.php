@@ -24,7 +24,8 @@ require_once APPROOT . '/views/includes/head.php';
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
                             <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
                             <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/search">Shop</a></li>
-                            <li class="breadcrumb-item active" aria-current="page"><?= $data['prod'][0]['prod_name'] ?></li>
+                            <li class="breadcrumb-item active" aria-current="page"><?= $data['prod'][0]['prod_name'] ?>
+                            </li>
                         </ol>
                     </nav>
                 </div>
@@ -52,7 +53,8 @@ require_once APPROOT . '/views/includes/head.php';
                                                 if ($i == 0) : ?>
 
                                                     <div class="carousel-item active">
-                                                        <fieldset><img src="<?= IMAGE ?>/<?= $data['img'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="..."></fieldset>
+                                                        <fieldset><img src="<?= IMAGE ?>/<?= $data['img'][$i]['img_link'] ?>" class="d-block mx-auto img_carousel" style="max-height:600px" alt="...">
+                                                        </fieldset>
                                                     </div>
 
                                                 <?php else : ?>
@@ -77,7 +79,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <form id="inf-pro" class="col-12 col-md-5 info-product">
+                            <div id="inf-pro" class="col-12 col-md-5 info-product">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3>
                                         <fieldset name="prod_name"><?= $prod_name ?></fieldset>
@@ -92,7 +94,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="mt-2 mt-lg-3 mt-xl-4">
                                     <div class="info-product-des">
                                         <span class="me-2">SKU:</span>
-                                        <fieldset class="fw-semibold" name="prod_id"><?= $prod_id ?></fieldset>
+                                        <fieldset class="fw-semibold" id="prod_id" name="prod_id"><?= $prod_id ?></fieldset>
                                     </div>
                                     <div class="info-product-des">
                                         <span class="me-2">Availability:</span>
@@ -123,14 +125,16 @@ require_once APPROOT . '/views/includes/head.php';
                                 <div class="info-product-quantity gap-5 d-flex flex-row align-middle">
                                     <p class="align-self-center">Quantity:</p>
                                     <div class="d-inline-block product-quantity border border-dark border-2">
-                                        <input class="form-control" name="prod_quantity" type="number" value="1" min="0" max=<?= $prod_quantity ?>>
+                                        <input class="form-control" id="prod_quantity" name="prod_quantity" type="number" value="1" min="0" max=<?= $prod_quantity ?>>
                                     </div>
                                 </div>
                                 <input type="hidden" value="<?= $prod_id ?>" name="prod_id">
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
                                     <button name="buyNow" value="buyNow" id="buyNow" class="btn btn-primary">Buy now</button>
                                     <button name="addToCart" value="addToCart" id="addToCart" class="btn btn-outline-primary">Add to cart</button>
+                                    <button id="test">test</button>
                                 </div>
+
                                 <?php
                                 if (!empty($data['cate'])) :
                                     foreach ($data['cate'] as $cate) : extract($cate); ?>
@@ -142,7 +146,8 @@ require_once APPROOT . '/views/includes/head.php';
 
                                 <?php endforeach;
                                 endif; ?>
-                            </form>
+
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -167,8 +172,10 @@ require_once APPROOT . '/views/includes/head.php';
                         <div class="tab-pane fade" id="transport" role="tabpanel">
                             <h3>DELIVERY</h3>
                             <p>Provide door-to-door delivery, assembly and placement services according to your wishes:</p>
-                            <p>- FREE delivery within the inner districts of Ho Chi Minh City, applicable for orders worth over 10 million.</p>
-                            <p>- For the area of neighboring provinces: Charge a reasonable fee based on the transportation distance.</p>
+                            <p>- FREE delivery within the inner districts of Ho Chi Minh City, applicable for orders worth over
+                                10 million.</p>
+                            <p>- For the area of neighboring provinces: Charge a reasonable fee based on the transportation
+                                distance.</p>
                         </div>
                     </div>
                 </section>
@@ -236,29 +243,38 @@ require_once APPROOT . '/views/includes/head.php';
     }
 </style>
 
-<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script src=" https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous">
+                            </script>
                             <script src="<?= JSFILE ?>/general-effect.js"></script>
                             <script src="<?= JSFILE ?>/details.js"></script>
                             <script type="text/javascript">
                                 $(document).ready(function() {
-                                    handleAjax();
-                                    $("#addToCart").click(handleAjax);
-                                    $("#buyNow").click(handleAjax);
+                                    $("#addToCart").click(function() {
+
+                                        handleAjax($("#addToCart").val());
+                                    });
+                                    $("#buyNow").click(function() {
+                                        handleAjax($("#buyNow").val());
+                                    });
                                 });
 
                                 var url = window.location.pathname.split('/');
 
-                                function handleAjax() {
+                                function handleAjax(btnValue) {
                                     var prod_id = $("input[name='prod_id']").val();
-                                    var addToCart = $("#addToCart").val();
-                                    var buyNow = $("#buyNow").val();
+                                    var prod_quantity = $("input[name='prod_quantity']").val();
+                                    var action = btnValue;
                                     $.ajax({
                                         url: window.location.protocol + "//" +
-                                            window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" + prod_id,
+                                            window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" +
+                                            prod_id,
                                         method: "POST",
                                         data: {
-                                            addToCart: addToCart,
-                                            buyNow: buyNow
+                                            action: action,
+                                            prod_quantity: prod_quantity
+                                        },
+                                        success: function(data) {
+                                            $("#shop_cart").html(data);
                                         }
                                     });
                                 }
