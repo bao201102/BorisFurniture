@@ -1,105 +1,107 @@
-<div>
-    <!-- Pagination -->
-    <ul class="pagination justify-content-center">
-        <!-- Previous button -->
-        <?php if ($data['number'] == 1) :  ?>
-
-            <li class="page-item disabled">
-                <a class="page-link">«</a>
-            </li>
-
-        <?php else : ?>
-
-            <li class="page-item">
-                <a class="page-link" onclick="handleAjax(1)">«</a>
-            </li>
-
-        <?php endif ?>
-
-        <!-- Page number -->
-        <?php
-        if (!empty($data['page'])) : ?>
-
-            <?php $number = $data['number'];
-            if ($number == 1) : ?>
-
-                <li class="page-item active">
-                    <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
-                </li>
-
-                <?php $number = $number + 1; ?>
-
-                <li class="page-item">
-                    <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
-                </li>
-
-            <?php else : ?>
-
-                <?php $number = $number - 1; ?>
-
-                <li class="page-item">
-                    <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
-                </li>
-
-                <?php $number = $number + 1; ?>
-
-                <li class="page-item active">
-                    <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
-                </li>
-
-            <?php endif; ?>
-
-            <!-- Nếu số nút trang hiện nhiều hơn 5 -->
-            <?php if ($data['page'] - $number > 3) : ?>
-
-                <?php for ($i = $number + 1; $i <= $number + 1; $i++) : ?>
-
-                    <li class="page-item">
-                        <a class="page-link" onclick="handleAjax(<?= $i ?>)"><?= $i ?></a>
-                    </li>
-
-                <?php endfor; ?>
+<?php if (!empty($data['number'])) : ?>
+    <div>
+        <!-- Pagination -->
+        <ul class="pagination justify-content-center">
+            <!-- Previous button -->
+            <?php if ($data['number'] == 1) :  ?>
 
                 <li class="page-item disabled">
-                    <a class="page-link">...</a>
+                    <a class="page-link">«</a>
                 </li>
 
-                <?php for ($i = $data['page'] - 1; $i <= $data['page']; $i++) : ?>
-
-                    <li class="page-item">
-                        <a class="page-link" onclick="handleAjax(<?= $i ?>)"><?= $i ?></a>
-                    </li>
-
-                <?php endfor; ?>
-
-                <!-- Nếu số nút trang hiện ít hơn 5 -->
             <?php else : ?>
 
-                <?php for ($i = $number + 1; $i <= $data['page']; $i++) : ?>
+                <li class="page-item">
+                    <a class="page-link" onclick="handleAjax(1)">«</a>
+                </li>
 
-                    <li class="page-item">
-                        <a class="page-link" onclick="handleAjax(<?= $i ?>)"><?= $i ?></a>
+            <?php endif ?>
+
+            <!-- Page number -->
+            <?php
+            if (!empty($data['page'])) : ?>
+
+                <?php $number = $data['number'];
+                if ($number == 1) : ?>
+
+                    <li class="page-item active">
+                        <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
                     </li>
 
-                <?php endfor; ?>
+                    <?php $number = $number + 1; ?>
 
-        <?php endif;
-        endif; ?>
+                    <li class="page-item">
+                        <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
+                    </li>
+
+                <?php else : ?>
+
+                    <?php $number = $number - 1; ?>
+
+                    <li class="page-item">
+                        <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
+                    </li>
+
+                    <?php $number = $number + 1; ?>
+
+                    <li class="page-item active">
+                        <a class="page-link" onclick="handleAjax(<?= $number ?>)"><?= $number ?></a>
+                    </li>
+
+                <?php endif; ?>
+
+                <!-- Nếu số nút trang hiện nhiều hơn 5 -->
+                <?php if ($data['page'] - $number > 3) : ?>
+
+                    <?php for ($i = $number + 1; $i <= $number + 1; $i++) : ?>
+
+                        <li class="page-item">
+                            <a class="page-link" onclick="handleAjax(<?= $i ?>)"><?= $i ?></a>
+                        </li>
+
+                    <?php endfor; ?>
+
+                    <li class="page-item disabled">
+                        <a class="page-link">...</a>
+                    </li>
+
+                    <?php for ($i = $data['page'] - 1; $i <= $data['page']; $i++) : ?>
+
+                        <li class="page-item">
+                            <a class="page-link" onclick="handleAjax(<?= $i ?>)"><?= $i ?></a>
+                        </li>
+
+                    <?php endfor; ?>
+
+                    <!-- Nếu số nút trang hiện ít hơn 5 -->
+                <?php else : ?>
+
+                    <?php for ($i = $number + 1; $i <= $data['page']; $i++) : ?>
+
+                        <li class="page-item">
+                            <a class="page-link" onclick="handleAjax(<?= $i ?>)"><?= $i ?></a>
+                        </li>
+
+                    <?php endfor; ?>
+
+            <?php endif;
+            endif; ?>
 
 
-        <!-- Next button -->
-        <?php if ($data['number'] == $data['page']) :  ?>
+            <!-- Next button -->
+            <?php if ($data['number'] == $data['page']) :  ?>
 
-            <li class="page-item disabled">
-                <a class="page-link">»</a>
-            </li>
+                <li class="page-item disabled">
+                    <a class="page-link">»</a>
+                </li>
 
-        <?php else : ?>
+            <?php else : ?>
 
-            <li class="page-item">
-                <a class="page-link" onclick="handleAjax(<?= $data['page'] ?>)">»</a>
-            </li>
+                <li class="page-item">
+                    <a class="page-link" onclick="handleAjax(<?= $data['page'] ?>)">»</a>
+                </li>
 
-        <?php endif ?>
-    </ul>
-</div>
+            <?php endif ?>
+        </ul>
+    </div>
+<?php endif; ?>

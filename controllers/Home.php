@@ -11,7 +11,7 @@ class Home extends Controller
 
     public function index()
     {
-        $prod = $this->ProductModel->getProductList();
+        $prod = $this->ProductModel->getProductListLatest();
         $image = array();
         foreach ($prod as $value) {
             $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];

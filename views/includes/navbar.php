@@ -34,11 +34,7 @@
                             </span>
 
                             <span id="ses-cart">
-                                <?php if (isset($_SESSION['cart'])) : ?>
-                                    <span class="badge rounded-pill bg-dark"><?= sizeof($_SESSION['cart']) ?></span>
-
-                                    <?php include_once APPROOT . '/views/includes/header_cart.php' ?>
-                                <?php endif; ?>
+                                <?php include_once APPROOT . '/views/header_cart.php' ?>
                             </span>
                         </a>
                     </li>

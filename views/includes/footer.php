@@ -33,16 +33,16 @@
                 </p>
                 <br>
                 <div class="row gap-3 collapse show" id="col-toggler1">
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         About company
                     </a>
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Company services
                     </a>
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Job opportunities
                     </a>
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Contact us
                     </a>
                 </div>
@@ -55,16 +55,16 @@
                 </p>
                 <br>
                 <div class="row gap-3 collapse show" id="col-toggler2">
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Client support
                     </a>
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Pricing packages
                     </a>
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Company history
                     </a>
-                    <a href="" class="d-block text-muted">
+                    <a class="d-block text-muted">
                         Our process
                     </a>
                 </div>

@@ -113,19 +113,19 @@ require_once APPROOT . '/views/includes/head.php';
 
 <script type="text/javascript">
     $(document).ready(function() {
-        handleAjax(<?= $data['number'] ?>);
+        loadProduct(<?= $data['number'] ?>);
         $("#keyword").keyup(function() {
-            handleAjax(<?= $data['number'] ?>);
+            loadProduct(<?= $data['number'] ?>);
         });
         $("input[type=radio][name=price]").change(function() {
-            handleAjax(<?= $data['number'] ?>);
+            loadProduct(<?= $data['number'] ?>);
         });
         $("input[type=checkbox][name=category]").change(function() {
-            handleAjax(<?= $data['number'] ?>);
+            loadProduct(<?= $data['number'] ?>);
         });
     });
 
-    function handleAjax(number) {
+    function loadProduct(number) {
         var category = [];
         var keyword = $("#keyword").val();
         var price = $("input[name='price']:checked").val();
@@ -147,6 +147,26 @@ require_once APPROOT . '/views/includes/head.php';
         });
 
         window.scrollTo(0, 0);
+    }
+
+    function addToCart_search(prod_id, prod_quantity, action) {
+        var url = window.location.pathname.split('/');
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" +
+                prod_id,
+            method: "POST",
+            data: {
+                action: action,
+                prod_quantity: prod_quantity
+            },
+            success: function(data) {
+                $("#ses-cart").empty();
+                $(".header-cart-list").remove();
+                $("#ses-cart").html(data);
+                alert("You have added new product in to cart successfully");
+            }
+        });
     }
 </script>
 

@@ -47,26 +47,11 @@ class Cart extends Controller
                 $this->createSubtotal();
             }
             $this->createSubtotal();
-            $ajCart = 1;
-            $this->view('header_cart', ['ajCart' => $ajCart]);
-        }
-    }
-
-    public function actionBuy($id)
-    {
-        if (isset($_POST['action'])) {
-            switch ($_POST['action']) {
-                case 'addToCart':
-                    $this->addProductToCart($id);
-                    break;
-
-                case 'buyNow':
-                    $this->addProductToCart($id);
-                    header('location:' . URLROOT . '/Home/checkout');
-                    break;
-
-                default:
-                    break;
+            if ($_POST['action'] == "addToCart") {
+                $this->view('header_cart');
+            }
+            else if ($_POST['action'] == "buyNow") {
+                header('location:' . URLROOT . '/Home/checkout');
             }
         }
     }

@@ -54,36 +54,7 @@ require_once APPROOT . '/views/includes/head.php';
             <div class="container-fluid">
                 <div class="row text-center align-self-center">
                     <!-- product box -->
-                    <?php
-                    if (!empty($data['prod'])) :
-                        $i = 0;
-                        foreach ($data['prod'] as $prod) : extract($prod);
-                            if ($i == 4) {
-                                break;
-                            } ?>
-                            <div class="col-6 col-md-3 box">
-                                <form action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>" method="POST">
-                                    <div class="card border-0 shadow-sm mb-5 mx-auto" style="min-width: 21vh; max-width: 30vh;">
-                                        <input type="hidden" name="prod_quantity" value="1">
-                                        <a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>">
-                                            <img src="<?= IMAGE ?>/<?= $data['image'][$i]['img_link'] ?>" class="card-img-top img-fluid" alt="...">
-                                        </a>
-
-                                        <div class="card-body" style="z-index: 2; background-color: white;">
-                                            <div class="mt-3 fw-bold fs-5"> <?= $prod_name ?> </div>
-                                            <div class="mt-1 fs-5"> $<?= number_format($prod_price, 2, '.', ',') ?></div>
-                                        </div>
-
-                                        <!-- quick view  -->
-                                        <button type="submit" name="addToCart" id="btn-add-to-cart" class="add-to-cart">
-                                            <p>ADD TO CART</p>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
-                    <?php $i++;
-                        endforeach;
-                    endif; ?>
+                    <?php require_once APPROOT . '/views/includes/products.php' ?>
 
                     <div class="text-center mt-5">
                         <a href="<?= URLROOT ?>/Search">
@@ -114,7 +85,7 @@ require_once APPROOT . '/views/includes/head.php';
                                     <h1 class="mt-3" style="font-size: calc(1em + 1vw);"><span class="fw-light"> Wooden
                                         </span><br>
                                         armchair</h1>
-                                    <a href="<?= URLROOT ?>/Home/search">
+                                    <a href="<?= URLROOT ?>/Search">
                                         <button type="button" class="btn btn-secondary shadow-lg mt-4">DISCOVER NOW</button>
                                     </a>
                                 </div>
@@ -136,7 +107,7 @@ require_once APPROOT . '/views/includes/head.php';
                                     <h1 class="mt-3" style="font-size: calc(1em + 1vw);"><span class="fw-light"> Modern
                                         </span><br>
                                         sofa</h1>
-                                    <a href="<?= URLROOT ?>/Home/search">
+                                    <a href="<?= URLROOT ?>/Search">
                                         <button type="button" class="btn btn-secondary shadow-lg mt-4">DISCOVER NOW</button>
                                     </a>
                                 </div>
@@ -168,5 +139,26 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/header-effect.js"></script>
+<script type="text/javascript">
+    function addToCart_home(prod_id, prod_quantity, action) {
+        var url = window.location.pathname.split('/');
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" +
+                prod_id,
+            method: "POST",
+            data: {
+                action: action,
+                prod_quantity: prod_quantity
+            },
+            success: function(data) {
+                $("#ses-cart").empty();
+                $(".header-cart-list").remove();
+                $("#ses-cart").html(data);
+                alert("You have added new product in to cart successfully");
+            }
+        });
+    }
+</script>
 
 </html>

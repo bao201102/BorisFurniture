@@ -79,7 +79,7 @@ require_once APPROOT . '/views/includes/head.php';
                             </div>
 
                             <!-- Thong tin spham -->
-                            <div id="inf-pro" class="col-12 col-md-5 info-product">
+                            <form id="inf-pro" class="col-12 col-md-5 info-product" method="POST" action="<?= URLROOT ?>/Cart/addProductToCart/<?= $prod_id ?>">
                                 <div class="mt-3 mt-lg-0 mt-xl-3">
                                     <h3>
                                         <fieldset name="prod_name"><?= $prod_name ?></fieldset>
@@ -130,8 +130,8 @@ require_once APPROOT . '/views/includes/head.php';
                                 </div>
                                 <input type="hidden" value="<?= $prod_id ?>" name="prod_id">
                                 <div class=" d-inline-flex btn-group gap-3 info-product-buynow" role="group">
-                                    <button name="buyNow" value="buyNow" id="buyNow" class="btn btn-primary">Buy now</button>
-                                    <button name="addToCart" value="addToCart" id="addToCart" class="btn btn-outline-primary">Add to cart</button>
+                                    <button type="submit" name="action" value="buyNow" id="buyNow" class="btn btn-primary">Buy now</button>
+                                    <button type="button" value="addToCart" id="addToCart" class="btn btn-outline-primary">Add to cart</button>
                                 </div>
 
                                 <?php
@@ -146,7 +146,7 @@ require_once APPROOT . '/views/includes/head.php';
                                 <?php endforeach;
                                 endif; ?>
 
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </section>
@@ -249,17 +249,15 @@ require_once APPROOT . '/views/includes/head.php';
 <script type="text/javascript">
     $(document).ready(function() {
         $("#addToCart").click(function() {
-            handleAjax($("#addToCart").val());
-        });
-        $("#buyNow").click(function() {
-            handleAjax($("#buyNow").val());
+            addToCart_details($("#addToCart").val());
         });
     });
 
-    function handleAjax(btnValue) {
+    function addToCart_details(btnValue) {
         var prod_id = $("input[name='prod_id']").val();
         var prod_quantity = $("input[name='prod_quantity']").val();
         var action = btnValue;
+        var url = window.location.pathname.split('/');
         $.ajax({
             url: window.location.protocol + "//" +
                 window.location.hostname + "/" + url[1] + "/Cart/addProductToCart/" +
@@ -271,7 +269,9 @@ require_once APPROOT . '/views/includes/head.php';
             },
             success: function(data) {
                 $("#ses-cart").empty();
-                // $("#ses-cart").html(data);
+                $(".header-cart-list").remove();
+                $("#ses-cart").html(data);
+                alert("You have added new product in to cart successfully");
             }
         });
     }
