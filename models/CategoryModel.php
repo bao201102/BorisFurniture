@@ -50,11 +50,11 @@ class CategoryModel
         }
     }
 
-    public function searcCategoryAdmin($name)
+    public function searchCategoryAdmin($name, $from)
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE STATUS = 1 AND category_name LIKE '%$name%'");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_category WHERE STATUS = 1 AND category_name LIKE '%$name%' limit $from, 6");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -130,5 +130,15 @@ class CategoryModel
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
+    }
+
+    public function countPageCategoryAdmin($name)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_category WHERE STATUS = 1 AND category_name LIKE '%$name%'");
+        $total = ceil($result[0]['count(*)'] / 6);
+        giaiPhongBoNho($link, $result);
+        return $total;
     }
 }

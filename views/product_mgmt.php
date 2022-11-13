@@ -60,8 +60,8 @@ require_once APPROOT . '/views/includes/head.php';
 
             <!-- product -->
             <section class="py-4">
-                <div class="container ">
-                    <div class="table-responsive">
+                <div class="container" id="output">
+                    <!-- <div class="table-responsive">
                         <table class=" table table-hover align-middle">
                             <thead>
                                 <tr>
@@ -74,36 +74,7 @@ require_once APPROOT . '/views/includes/head.php';
 
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </section>
-
-            <!-- page number -->
-            <section class="py-4">
-                <div class="container d-flex justify-content-center">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">&laquo;</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">&raquo;</a>
-                        </li>
-                    </ul>
+                    </div> -->
                 </div>
             </section>
         </div>
@@ -188,19 +159,23 @@ require_once APPROOT . '/views/includes/head.php';
 </script> -->
 <script type="text/javascript">
     $(document).ready(function() {
-        handleAjax();
-        $("#keyword").keyup(handleAjax);
-        $("#category").change(handleAjax);
+        handleAjax(<?= $data['number'] ?>);
+        $("#keyword").keyup(function() {
+            handleAjax(<?= $data['number'] ?>);
+        });
+        $("#category").change(function() {
+            handleAjax(<?= $data['number'] ?>);
+        });
     });
 
     var url = window.location.pathname.split('/');
 
-    function handleAjax() {
+    function handleAjax(number) {
         var category = $("#category").val();
         var keyword = $("#keyword").val();
         $.ajax({
             url: window.location.protocol + "//" +
-                window.location.hostname + "/" + url[1] + "/Admin/search",
+                window.location.hostname + "/" + url[1] + "/Admin/search/" + number,
             method: "POST",
             data: {
                 keyword: keyword,

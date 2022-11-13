@@ -45,21 +45,9 @@ class Admin extends Controller
     {
         if ($_SESSION['user_type'] == 0) {
             $category_list = $this->CategoryModel->getCategoryList();
+            $number = 1;
 
-            $this->view('product_mgmt', ['category_list' => $category_list]);
-
-            // $prod = $this->ProductModel->getProductList();
-            // $category_name = array();
-            // $image = array();
-            // $category_list = $this->CategoryModel->getCategoryList();
-            // foreach ($prod as $value) {
-            //     $cate = $this->CategoryModel->getCategory($this->ProductModel->getCategoryId($value['prod_id']));
-            //     $img = $this->ImageModel->getImage($this->ProductModel->getImageId($value['prod_id']))[0];
-            //     array_push($image, $img);
-            //     array_push($category_name, $cate);
-            // }
-
-            // $this->view('product_mgmt', ['prod' => $prod, 'category' => $category_name, 'image' => $image, 'category_list' => $category_list]);
+            $this->view('product_mgmt', ['category_list' => $category_list, 'number' => $number]);
         }
     }
 
@@ -89,7 +77,7 @@ class Admin extends Controller
         }
     }
 
-    public function search()
+    public function search($number)
     {
         $keyword = '';
         if (isset($_POST['keyword'])) {
@@ -106,20 +94,23 @@ class Admin extends Controller
             array_push($cateList, $cateArray);
         }
 
+        $from = ($number - 1) * 6;
+        $page = $this->ProductModel->countPageProductAdmin($keyword, $cateList);
+
         $category_name = array();
-        $prodList = $this->ProductModel->searchProductAdmin($keyword, $cateList);
-        foreach ($prodList as $value) {
-            $cate = $this->CategoryModel->getCategory($value['category_id']);
-            array_push($category_name, $cate);
-        }
-
+        $prodList = $this->ProductModel->searchProductAdmin($keyword, $cateList, $from);
         $image = array();
-        foreach ($prodList as $value) {
-            $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
-            array_push($image, $img);
+        if (isset($prodList)) {
+            foreach ($prodList as $value) {
+                $cate = $this->CategoryModel->getCategory($value['category_id']);
+                array_push($category_name, $cate);
+            }
+            foreach ($prodList as $value) {
+                $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
+                array_push($image, $img);
+            }
+            $this->view('product_mgmt_sub', ['prodList' => $prodList, 'page' => $page, 'image' => $image, 'category' => $category_name, 'number' => $number]);
         }
-
-        $this->view('product_mgmt_sub', ['prodList' => $prodList, 'image' => $image, 'category' => $category_name]);
     }
 
     public function editProduct()
@@ -174,8 +165,8 @@ class Admin extends Controller
     public function category()
     {
         if ($_SESSION['user_type'] == 0) {
-
-            $this->view('category_mgmt', []);
+            $number = 1;
+            $this->view('category_mgmt', ['number' => $number]);
         }
     }
 
@@ -195,22 +186,27 @@ class Admin extends Controller
             }
         }
     }
-    public function searchCategory()
+    public function searchCategory($number)
     {
         $keyword = '';
         if (isset($_POST['keyword'])) {
             $keyword = $_POST['keyword'];
         }
 
-        $category_list = $this->CategoryModel->searcCategoryAdmin($keyword);
-        $count_prod = array();
-        foreach ($category_list as $value) {
-            $id = $value['category_id'];
-            $count = $this->CategoryModel->countProdPerCate($id);
-            array_push($count_prod, $count);
-        }
+        $from = ($number - 1) * 6;
+        $page = $this->CategoryModel->countPageCategoryAdmin($keyword);
 
-        $this->view('category_mgmt_sub', ['count_prod' => $count_prod, 'category_list' => $category_list]);
+        $category_list = $this->CategoryModel->searchCategoryAdmin($keyword, $from);
+        $count_prod = array();
+        if (isset($category_list)) {
+            foreach ($category_list as $value) {
+                $id = $value['category_id'];
+                $count = $this->CategoryModel->countProdPerCate($id);
+                array_push($count_prod, $count);
+            }
+
+            $this->view('category_mgmt_sub', ['count_prod' => $count_prod, 'category_list' => $category_list, 'number' => $number, 'page' => $page]);
+        }
     }
 
     public function editCategory()
@@ -249,20 +245,25 @@ class Admin extends Controller
     public function employee()
     {
         if ($_SESSION['user_type'] == 0) {
-            $this->view("employee_mgmt", []);
+            $number = 1;
+            $this->view("employee_mgmt", ['number' => $number]);
         }
     }
 
-    public function searchEmployee()
+    public function searchEmployee($number)
     {
         $keyword = '';
         if (isset($_POST['keyword'])) {
             $keyword = $_POST['keyword'];
         }
 
-        $emp = $this->EmployeeModel->searchEmployeeAdmin($keyword);
+        $from = ($number - 1) * 6;
+        $page = $this->EmployeeModel->countPageEmployeeAdmin($keyword);
 
-        $this->view('employee_mgmt_sub', ['emp' => $emp]);
+        $emp = $this->EmployeeModel->searchEmployeeAdmin($keyword, $from);
+        if (isset($emp)) {
+            $this->view('employee_mgmt_sub', ['emp' => $emp, 'number' => $number, 'page' => $page]);
+        }
     }
 
     public function validateEmail()
@@ -366,7 +367,8 @@ class Admin extends Controller
     public function customer()
     {
         if ($_SESSION['user_type'] == 0) {
-            $this->view("customer_mgmt", []);
+            $number = 1;
+            $this->view("customer_mgmt", ['number' => $number]);
         }
     }
 
@@ -403,15 +405,19 @@ class Admin extends Controller
         }
     }
 
-    public function searchCustomer()
+    public function searchCustomer($number)
     {
         $keyword = '';
         if (isset($_POST['keyword'])) {
             $keyword = $_POST['keyword'];
         }
 
-        $cus = $this->CustomerModel->searchCustomerAdmin($keyword);
+        $from = ($number - 1) * 6;
+        $page = $this->CustomerModel->countPageCustomerAdmin($keyword);
 
-        $this->view('customer_mgmt_sub', ['cus' => $cus]);
+        $cus = $this->CustomerModel->searchCustomerAdmin($keyword, $from);
+        if (isset($cus)) {
+            $this->view('customer_mgmt_sub', ['cus' => $cus, 'number' => $number, 'page' => $page]);
+        }
     }
 }

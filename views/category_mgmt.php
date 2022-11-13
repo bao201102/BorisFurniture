@@ -58,48 +58,8 @@ require_once APPROOT . '/views/includes/head.php';
 
             <!-- product -->
             <section class="py-4">
-                <div class="container">
-                    <table class="table table-hover align-middle">
-                        <thead>
-                            <tr>
-                                <th scope="col">id</th>
-                                <th scope="col">Category</th>
-                                <th scope="col">Quantity</th>
-                            </tr>
-                        </thead>
-                        <tbody class="table-group-divider" id="output">
+                <div class="container" id="output">
 
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-
-            <!-- page number -->
-            <section class="py-4">
-                <div class="container d-flex justify-content-center">
-                    <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#">&laquo;</a>
-                        </li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">&raquo;</a>
-                        </li>
-                    </ul>
                 </div>
             </section>
         </div>
@@ -110,17 +70,19 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/sidebar-effect.js"></script>
 <script type="text/javascript">
     $(document).ready(function() {
-        handleAjax();
-        $("#keyword").keyup(handleAjax);
+        handleAjax(<?= $data['number'] ?>);
+        $("#keyword").keyup(function() {
+            handleAjax(<?= $data['number'] ?>)
+        });
     });
 
     var url = window.location.pathname.split('/');
 
-    function handleAjax() {
+    function handleAjax(number) {
         var keyword = $("#keyword").val();
         $.ajax({
             url: window.location.protocol + "//" +
-                window.location.hostname + "/" + url[1] + "/Admin/searchCategory",
+                window.location.hostname + "/" + url[1] + "/Admin/searchCategory/" + number,
             method: "POST",
             data: {
                 keyword: keyword

@@ -86,7 +86,7 @@ require_once APPROOT . '/views/includes/head.php';
                     endif; ?>
 
                     <div class="text-center mt-5">
-                        <a href="<?= URLROOT ?>/Home/search">
+                        <a href="<?= URLROOT ?>/Search">
                             <button type="button" class="btn btn-outline-primary">
                                 More Collections
                             </button>
