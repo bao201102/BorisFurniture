@@ -1,5 +1,5 @@
 <?php
-class Order extends Controller
+class Checkout extends Controller
 {
     public function __construct()
     {
@@ -8,6 +8,23 @@ class Order extends Controller
         $this->CustomerModel = $this->model('CustomerModel');
         $this->OrderModel = $this->model('OrderModel');
         $this->OrderDetailModel = $this->model('OrderDetailModel');
+    }
+
+    public function index()
+    {
+        if (!empty($_SESSION['user_id'])) {
+            if ($_SESSION['user_type'] == 1) {
+                $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
+                $this->view('checkout', ['cus' => $cus]);
+            }
+        } else {
+            $this->view('checkout', []);
+        }
+    }
+
+    public function refreshOrderDetails()
+    {
+        $this->view('order_details');
     }
 
     public function addOrder()
@@ -45,7 +62,7 @@ class Order extends Controller
                     unset($_SESSION['cart']);
                 }
 
-                header('location:' . URLROOT . '/Home/index');
+                header('location:' . URLROOT . '/Home');
             }
         }
     }

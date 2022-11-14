@@ -22,8 +22,8 @@ require_once APPROOT . '/views/includes/head.php';
                     </div>
                     <nav class="col-12 col-xl-4 col-lg-6 mt-2 mt-lg-0  shopcart-title-nav" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 justify-content-center justify-content-lg-end fw-lighter" style="font-size: 14px;">
-                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/index">Home</a></li>
-                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Home/search">Shop</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Homm">Home</a></li>
+                            <li class="breadcrumb-item"><a href="<?= URLROOT ?>/Search">Shop</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Shopping cart</li>
                         </ol>
                     </nav>
@@ -49,51 +49,47 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/shopping_cart.js"></script>
 <script type="text/javascript">
-    var url = window.location.pathname.split('/');
-
     $(document).ready(function() {
-        $("#products-cart").load(window.location.protocol + "//" +
-            window.location.hostname + "/" + url[1] + "/Cart/refreshProductsCart/",
-            function(responseTxt, statusTxt, xhr) {});
+        refreshCart();
     });
 
     function deleteProductCart(prod_id) {
+        var url = window.location.pathname.split('/');
         $.ajax({
             url: window.location.protocol + "//" +
                 window.location.hostname + "/" + url[1] + "/Cart/deleteProduct/" +
                 prod_id,
             method: "POST",
             success: function(data) {
-                $("#ses-cart").empty();
-                $(".header-cart-list").remove();
-                $("#ses-cart").load(window.location.protocol + "//" +
-                    window.location.hostname + "/" + url[1] + "/Cart/refreshHeaderCart/",
-                    function(responseTxt, statusTxt, xhr) {});
-
-                $("#products-cart").empty();
-                $("#products-cart").load(window.location.protocol + "//" +
-                    window.location.hostname + "/" + url[1] + "/Cart/refreshProductsCart/",
-                    function(responseTxt, statusTxt, xhr) {});
+                refreshHeaderCart();
             }
         });
     }
 
     function emptyCart() {
+        var url = window.location.pathname.split('/');
         $.ajax({
             url: window.location.protocol + "//" +
                 window.location.hostname + "/" + url[1] + "/Cart/emptyCart/",
             method: "POST",
             success: function(data) {
-                $("#ses-cart").empty();
-                $(".header-cart-list").remove();
-                $("#ses-cart").load(window.location.protocol + "//" +
-                    window.location.hostname + "/" + url[1] + "/Cart/refreshHeaderCart/",
-                    function(responseTxt, statusTxt, xhr) {});
+                refreshHeaderCart();
+            }
+        });
+    }
 
-                $("#products-cart").empty();
-                $("#products-cart").load(window.location.protocol + "//" +
-                    window.location.hostname + "/" + url[1] + "/Cart/refreshProductsCart/",
-                    function(responseTxt, statusTxt, xhr) {});
+    function updateProductCart(prod_id, quantity) {
+        var url = window.location.pathname.split('/');
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Cart/updateProduct/" +
+                prod_id,
+            method: "POST",
+            data:{
+                quantity: quantity
+            },
+            success: function(data) {
+                refreshHeaderCart();
             }
         });
     }

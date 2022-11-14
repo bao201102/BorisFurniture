@@ -14,24 +14,6 @@ function resizeFooter() {
   }
 }
 
-//modal quick view
-// function quickView() {
-//     var modals = document.getElementsByClassName("modal-layout")[0];
-//     modals.classList.add("d-flex");
-//     var close = document.querySelector(".modal-close");
-//     close.onclick = function () {
-//         modals.classList.remove("d-flex");
-//     }
-//     modals.onclick = function () {
-//         modals.classList.remove("d-flex");
-//     }
-
-//     var inner = document.getElementsByClassName("modal-inner")[0];
-//     inner.onclick = function (e) {
-//         e.stopPropagation();
-//     }
-// }
-
 //header cart in nav responsive
 window.addEventListener("resize", resizeHeaderCart);
 resizeHeaderCart();
@@ -59,37 +41,49 @@ function resizeAddToCart() {
   }
 }
 
-function handleAjax(e, sufUrl, className, name) {
-  e.preventDefault();
-  document
-    .getElementsByClassName("modal-layout-menu")[0]
-    .classList.remove("menu");
-  document
-    .getElementsByClassName("modal-layout-filter")[0]
-    .classList.remove("filter");
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function () {
-    if (this.readyState == 4 && this.status == 200) {
-      document.getElementsByClassName(
-        "sPage__content-product-main"
-      )[0].innerHTML = this.responseText;
-    }
-  };
+//Ajax functions for header cart
 
-  if (name) {
-    xmlhttp.open(
-      "GET",
-      "productView.php" +
-        "?" +
-        name +
-        "=" +
-        document.getElementsByClassName(className)[0].value,
-      true
-    );
-    document.getElementsByClassName(className)[0].value = "";
-    xmlhttp.send();
-  } else {
-    xmlhttp.open("GET", "productView.php" + sufUrl, true);
-    xmlhttp.send();
+//delete product in header cart
+function deleteProductHeaderCart(prod_id) {
+  var url = window.location.pathname.split('/');
+  $.ajax({
+    url: window.location.protocol + "//" +
+      window.location.hostname + "/" + url[1] + "/Cart/deleteProduct/" +
+      prod_id,
+    method: "POST",
+    success: function (data) {
+      refreshHeaderCart();
+    }
+  });
+}
+
+function refreshHeaderCart() {
+  var url = window.location.pathname.split('/');
+  $("#ses-cart").empty();
+  $(".header-cart-list").remove();
+  $("#ses-cart").load(window.location.protocol + "//" +
+    window.location.hostname + "/" + url[1] + "/Cart/refreshHeaderCart/",
+    function (responseTxt, statusTxt, xhr) { });
+  if (typeof ($("#products-cart")) != "undefined" && $("#products-cart") !== null) {
+    refreshCart();
   }
+  if (typeof ($("#products-cart")) != "undefined" && $("#products-cart") !== null) {
+    refreshOrderDetails();
+  }
+}
+
+function refreshCart() {
+  var url = window.location.pathname.split('/');
+  $("#products-cart").empty();
+  $("#products-cart").load(window.location.protocol + "//" +
+    window.location.hostname + "/" + url[1] + "/Cart/refreshProductsCart/",
+    function (responseTxt, statusTxt, xhr) { });
+}
+
+function refreshOrderDetails() {
+  var url = window.location.pathname.split('/');
+  $("#order-details").empty();
+  $("#order-details").load(window.location.protocol + "//" +
+    window.location.hostname + "/" + url[1] + "/Checkout/refreshOrderDetails/",
+    function (responseTxt, statusTxt, xhr) { });
 }

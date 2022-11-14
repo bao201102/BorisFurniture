@@ -52,7 +52,7 @@ class Search extends Controller
                 $img = $this->ImageModel->getImage($value['prod_image_id'])[0];
                 array_push($image, $img);
             }
-            $this->view('products', ['prod' => $prod, 'image' => $image, 'page' => $page, 'number' => $number]);
+            $this->view('products_search', ['prod' => $prod, 'image' => $image, 'page' => $page, 'number' => $number]);
         } else {
             echo "Product is not exists";
         }

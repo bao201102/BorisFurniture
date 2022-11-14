@@ -24,7 +24,7 @@
                                 <td style="padding: 24px 0"><a href="<?= URLROOT ?>/Home/details/<?= $prod_id ?>"><?= $prod_name ?></a></td>
                                 <td>$<?= number_format($prod_price, 2, '.', ',') ?></td>
                                 <td class="product-quantity">
-                                    <input class="form-control border border-1" type="number" name="prod_quantity_up[]" value="<?= $prod_quantity_cart ?>" min="0" max=<?= $prod_quantity_max ?>>
+                                    <input class="form-control border border-1" type="number" onchange="updateProductCart(<?= $prod_id ?>, this.value)" value="<?= $prod_quantity_cart ?>" min="1" max=<?= $prod_quantity_max ?>>
                                 </td>
                                 <td>$<?= number_format($subtotal, 2, '.', ',') ?></td>
                                 <td>
@@ -43,7 +43,6 @@
             <div class="mt-4 mb-4 mb-xl-0 d-flex justify-content-center">
                 <div class="btn-group gap-3" role="group">
                     <button type="button" name="action" class="btn btn-outline-primary" onclick="emptyCart()">Empty cart</button>
-                    <button type="button" name="action" class="btn btn-outline-primary">Update cart</button>
                 </div>
             </div>
         </div>
@@ -74,7 +73,7 @@
                 </table>
 
                 <div class="d-flex flex-column justify-content-center mt-2 mt-xl-5">
-                    <a href="<?= URLROOT ?>/Home/checkout" class="btn btn-primary">
+                    <a href="<?= URLROOT ?>/Checkout" class="btn btn-primary">
                         Proceed to checkout
                     </a>
                 </div>
@@ -89,7 +88,7 @@
         <img src="<?= IMAGE ?>/cart2.png" class="img-fluid pb-2" style="max-height: 45vh;" alt="">
         <p class="fs-2">You have no products in your cart</p>
     </div>
-    <form action="<?= URLROOT ?>/Home/search" method="POST" class="mt-5 text-center">
+    <form action="<?= URLROOT ?>/Search" method="POST" class="mt-5 text-center">
         <button class="fs-4 btn btn-primary">RETURN TO SHOP</button>
     </form>
 

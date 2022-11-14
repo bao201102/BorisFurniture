@@ -18,15 +18,13 @@
                                 <span>$<?= $prod_price ?>.00</span>
                             </div>
                         </div>
-                        <!-- <div>
-                        <form action="<?= URLROOT ?>/Cart/deleteProduct/<?= $prod_id ?>" method="POST">
-                            <button style="border: none; background: white;">
+                        <div>
+                            <button type="button" onclick="deleteProductHeaderCart(<?= $prod_id ?>)" style="border: none; background: white;">
                                 <span class="material-symbols-outlined cart-delete">
                                     close
                                 </span>
                             </button>
-                        </form>
-                    </div> -->
+                        </div>
                     </li>
 
                 <?php endforeach; ?>
@@ -39,8 +37,8 @@
                 </div>
             <?php endif; ?>
             <div class="cart-button d-flex flex-column justify-content-center mt-3">
-                <a class="btn btn-primary" href="<?= URLROOT ?>/Home/cart" type="submit">View Cart</a>
-                <a class="btn btn-outline-primary mt-2" href="<?= URLROOT ?>/Home/checkout" type="submit">Checkout</a>
+                <a class="btn btn-primary" href="<?= URLROOT ?>/Cart" type="submit">View Cart</a>
+                <a class="btn btn-outline-primary mt-2" href="<?= URLROOT ?>/Checkout" type="submit">Checkout</a>
             </div>
 
         <?php else : ?>
@@ -52,4 +50,6 @@
 
         <?php endif; ?>
     </div>
+<?php else : ?>
+    <span class="badge rounded-pill bg-dark">0</span>
 <?php endif; ?>

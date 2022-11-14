@@ -21,23 +21,6 @@ class Home extends Controller
         $this->view('index', ['prod' => $prod, 'image' => $image]);
     }
 
-    public function cart()
-    {
-        $this->view('cart', []);
-    }
-
-    public function checkout()
-    {
-        if (!empty($_SESSION['user_id'])) {
-            if ($_SESSION['user_type'] == 1) {
-                $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
-                $this->view('checkout', ['cus' => $cus]);
-            }
-        } else {
-            $this->view('checkout', []);
-        }
-    }
-
     public function details($prod_id)
     {
         $prod = $this->ProductModel->getProduct($prod_id);
