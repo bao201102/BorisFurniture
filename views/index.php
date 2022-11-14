@@ -154,7 +154,9 @@ require_once APPROOT . '/views/includes/head.php';
             success: function(data) {
                 $("#ses-cart").empty();
                 $(".header-cart-list").remove();
-                $("#ses-cart").html(data);
+                $("#ses-cart").load(window.location.protocol + "//" +
+                    window.location.hostname + "/" + url[1] + "/Cart/refreshHeaderCart/",
+                    function(responseTxt, statusTxt, xhr) {});
                 alert("You have added new product in to cart successfully");
             }
         });

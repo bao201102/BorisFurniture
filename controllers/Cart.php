@@ -11,6 +11,16 @@ class Cart extends Controller
         $this->CustomerModel = $this->model('CustomerModel');
     }
 
+    function refreshHeaderCart()
+    {
+        $this->view('header_cart');
+    }
+
+    function refreshProductsCart()
+    {
+        $this->view('products_cart');
+    }
+
     function addProductToCart($prod_id)
     {
         $prod = $this->ProductModel->getProduct($prod_id);
@@ -47,10 +57,7 @@ class Cart extends Controller
                 $this->createSubtotal();
             }
             $this->createSubtotal();
-            if ($_POST['action'] == "addToCart") {
-                $this->view('header_cart');
-            }
-            else if ($_POST['action'] == "buyNow") {
+            if ($_POST['action'] == "buyNow") {
                 header('location:' . URLROOT . '/Home/checkout');
             }
         }
@@ -85,12 +92,10 @@ class Cart extends Controller
     {
         if (isset($_SESSION['cart'])) {
             $cart = $_SESSION['cart'];
-            for ($i = 0; $i < count($cart); $i++) {
-                unset($cart[$key[$i]]);
-            }
+            unset($cart[$key]);
             $_SESSION['cart'] = $cart;
             $this->createSubtotal();
-            // header('location:' . URLROOT . '/Home/cart');
+            $this->view('header_cart');
         }
     }
 
