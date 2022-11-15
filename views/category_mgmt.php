@@ -69,9 +69,11 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/sidebar-effect.js"></script>
 <script type="text/javascript">
-    handleAjax(<?= $data['number'] ?>);
-    $("#keyword").keyup(function() {
-        handleAjax(<?= $data['number'] ?>)
+    $(document).ready(function() {
+        handleAjax(<?= $data['number'] ?>);
+        $("#keyword").keyup(function() {
+            handleAjax(<?= $data['number'] ?>)
+        });
     });
 
     var url = window.location.pathname.split('/');

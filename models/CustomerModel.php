@@ -112,7 +112,7 @@ class CustomerModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_customer WHERE STATUS = 1 AND firstname LIKE '%$name%' or lastname like '%$name%' limit $from, 6");
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_customer WHERE STATUS = 1 AND firstname LIKE '%$name%' limit $from, 6");
         $data = $result;
         giaiPhongBoNho($link, $result);
         return $data;
@@ -122,7 +122,7 @@ class CustomerModel
     {
         $link = null;
         taoKetNoi($link);
-        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_customer WHERE STATUS = 1 AND firstname LIKE '%$name%' or lastname like '%$name%'");
+        $result = chayTruyVanTraVeDL($link, "SELECT count(*) FROM tbl_customer WHERE STATUS = 1 AND firstname LIKE '%$name%'");
         $total = ceil($result[0]['count(*)'] / 6);
         giaiPhongBoNho($link, $result);
         return $total;
