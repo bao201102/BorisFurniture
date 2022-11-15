@@ -24,27 +24,6 @@ require_once APPROOT . '/views/includes/head.php';
                             </span> </a>
                         <span class="fw-semibold fs-3">Order Details Management</span>
                     </div>
-                    <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center justify-content-lg-end">
-                        <!-- button add new -->
-                        <div>
-                            <button onclick="addProduct()" type="button" class="btn btn-info d-flex align-items-center fs-5">
-                                <span class="material-symbols-outlined">
-                                    add
-                                </span>
-                                Add new
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Search -->
-            <section class="my-4">
-                <div class="container">
-                    <div class="input-group">
-                        <span class="input-group-text material-symbols-outlined">search</span>
-                        <input type="text" class="form-control" placeholder="Search..." aria-label="Search" name="keyword" id="keyword">
-                    </div>
                 </div>
             </section>
 
