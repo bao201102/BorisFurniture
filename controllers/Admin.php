@@ -434,32 +434,38 @@ class Admin extends Controller
 
     public function viewOrderDetails($order_id)
     {
-        $order = $this->OrderModel->getOrderById($order_id);
-        $order_details = $this->OrderDetailModel->getOrderDetailsList($order_id);
-        $this->view('order_mgmt_details', ['order' => $order, 'order_details' => $order_details]);
+        if ($_SESSION['user_type'] == 0) {
+            $order = $this->OrderModel->getOrderById($order_id);
+            $order_details = $this->OrderDetailModel->getOrderDetailsList($order_id);
+            $this->view('order_mgmt_details', ['order' => $order, 'order_details' => $order_details]);
+        }
     }
 
     public function approveOrder($order_id)
     {
-        $order = $this->OrderModel->approveOrder($order_id);
-        if ($order) {
-            header('location:' . URLROOT . '/Admin/order');
+        if ($_SESSION['user_type'] == 0) {
+            $order = $this->OrderModel->approveOrder($order_id);
+            if ($order) {
+                header('location:' . URLROOT . '/Admin/order');
+            }
         }
     }
 
     public function searchOrder($number)
     {
-        $keyword = '';
-        if (isset($_POST['keyword'])) {
-            $keyword = $_POST['keyword'];
-        }
+        if ($_SESSION['user_type'] == 0) {
+            $keyword = '';
+            if (isset($_POST['keyword'])) {
+                $keyword = $_POST['keyword'];
+            }
 
-        $from = ($number - 1) * 6;
-        $page = $this->OrderModel->countPageOrderAdmin($keyword);
+            $from = ($number - 1) * 6;
+            $page = $this->OrderModel->countPageOrderAdmin($keyword);
 
-        $order = $this->OrderModel->searchOrderAdmin($keyword, $from);
-        if (isset($order)) {
-            $this->view('order_mgmt_sub', ['order' => $order, 'number' => $number, 'page' => $page]);
+            $order = $this->OrderModel->searchOrderAdmin($keyword, $from);
+            if (isset($order)) {
+                $this->view('order_mgmt_sub', ['order' => $order, 'number' => $number, 'page' => $page]);
+            }
         }
     }
 }
