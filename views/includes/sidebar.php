@@ -26,6 +26,14 @@
         </div>
         <div>
             <ul class="p-0 m-0">
+                <a class="d-block text-white" href="<?= URLROOT ?>/Admin/order" style="padding: 18px">
+                    <span class="material-symbols-outlined align-middle ms-2 me-2">
+                        grid_view
+                    </span>
+                    <span class="align-middle sidebar-text">
+                        Order Management
+                    </span>
+                </a>
                 <a class="d-block text-white" href="<?= URLROOT ?>/Admin/product" style="padding: 18px">
                     <span class="material-symbols-outlined align-middle ms-2 me-2">
                         grid_view

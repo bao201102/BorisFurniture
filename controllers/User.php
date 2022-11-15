@@ -49,7 +49,7 @@ class User extends Controller
                 if ($_SESSION['user_type'] == 0) {
                     $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
                     $_SESSION['user_name'] = $employee[0]['lastname'] . " " . $employee[0]['firstname'];
-                    echo URLROOT . '/Admin/product';
+                    echo URLROOT . '/Admin/order';
                 } else if ($_SESSION['user_type'] == 1) {
                     echo URLROOT . '/User';
                 }

@@ -19,4 +19,14 @@ class OrderDetailModel
             return false;
         }
     }
+
+    public function getOrderDetailsList($order_id)
+    {
+        $link = null;
+        taoKetNoi($link);
+        $result = chayTruyVanTraVeDL($link, "SELECT * FROM tbl_order_detail JOIN tbl_product ON tbl_order_detail.prod_id = tbl_product.prod_id WHERE tbl_order_detail.order_id = '$order_id'");
+        $data = $result;
+        giaiPhongBoNho($link, $result);
+        return $data;
+    }
 }
