@@ -4,11 +4,19 @@ var loginBtn = document.getElementById("login-btn");
 var signupBtn = document.getElementById("signup-btn");
 
 signupBtn.addEventListener("click", function () {
-    loginBox.classList.add("d-none");
-    signupBox.classList.remove("d-none");
+    hideLoginBox();
 })
 
 loginBtn.addEventListener("click", function () {
+    hideSignupBox();
+})
+
+function hideLoginBox() {
+    loginBox.classList.add("d-none");
+    signupBox.classList.remove("d-none");
+}
+
+function hideSignupBox() {
     signupBox.classList.add("d-none");
     loginBox.classList.remove("d-none");
-})
+}

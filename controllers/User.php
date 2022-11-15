@@ -8,12 +8,12 @@ class User extends Controller
         $this->EmployeeModel = $this->model('EmployeeModel');
     }
 
-    public function index($msg = [])
+    public function index()
     {
         if (!empty($_SESSION['user_id'])) {
             header('location:' . URLROOT . '/User/profile');
         } else {
-            $this->view('login_register', ['msg' => $msg]);
+            $this->view('login_register');
         }
     }
 
@@ -32,31 +32,29 @@ class User extends Controller
     public function logout()
     {
         session_destroy();
-        header('location:' . URLROOT . '/Home/index');
+        header('location:' . URLROOT . '/Home');
     }
 
     public function login()
     {
         if (!empty($_SESSION['signin'])) {
-            header('location:' . URLROOT . '/Home/index');
+            header('location:' . URLROOT . '/Home');
         } else {
-            if (isset($_POST['signin'])) {
-                $user = $this->UserModel->getUser($_POST['emailInput'], md5($_POST['passwordInput']));
-                if (!empty($user)) {
-                    $_SESSION['user_id'] = $user[0]['user_id'];
-                    $_SESSION['user_type'] = $user[0]['user_type'];
-                    $_SESSION['user_email'] = $user[0]['email'];
+            $user = $this->UserModel->getUser($_POST['emailInputLogin'], md5($_POST['passwordInput']));
+            if (!empty($user)) {
+                $_SESSION['user_id'] = $user[0]['user_id'];
+                $_SESSION['user_type'] = $user[0]['user_type'];
+                $_SESSION['user_email'] = $user[0]['email'];
 
-                    if ($_SESSION['user_type'] == 0) {
-                        $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
-                        $_SESSION['user_name'] = $employee[0]['lastname'] . " " . $employee[0]['firstname'];
-                        header('location:' . URLROOT . '/Admin/product');
-                    } else if ($_SESSION['user_type'] == 1) {
-                        header('location:' . URLROOT . '/User/index');
-                    }
-                } else {
-                    header('location:' . URLROOT . '/User/index/wrongpass');
+                if ($_SESSION['user_type'] == 0) {
+                    $employee = $this->EmployeeModel->getEmployeeByUserId($_SESSION['user_id']);
+                    $_SESSION['user_name'] = $employee[0]['lastname'] . " " . $employee[0]['firstname'];
+                    echo URLROOT . '/Admin/product';
+                } else if ($_SESSION['user_type'] == 1) {
+                    echo URLROOT . '/User';
                 }
+            } else {
+                echo "wrongpass";
             }
         }
     }
@@ -82,20 +80,17 @@ class User extends Controller
 
     public function register()
     {
-        if (isset($_POST['signup'])) {
-
-            if ($this->validateEmail()) {
-                header('location:' . URLROOT . '/User/index/emailexist');
-            } else if ($this->validatePassword()) {
-                header('location:' . URLROOT . '/User/index/wrongpass');
-            } else {
-                $userResult = $this->UserModel->addUser($_POST['emailInput'], md5($_POST['passwordInput1']), 1);
-                if ($userResult) {
-                    $user_id = $this->UserModel->getUserId($_POST['emailInput'])[0]['user_id'];
-                    $customerResult = $this->CustomerModel->addCustomer($user_id, $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
-                    if ($customerResult) {
-                        header('location:' . URLROOT . '/User/index/success');
-                    }
+        if ($this->validateEmail()) {
+            echo "emailexist";
+        } else if ($this->validatePassword()) {
+            echo "unmatchedpass";
+        } else {
+            $userResult = $this->UserModel->addUser($_POST['emailInput'], md5($_POST['passwordInput1']), 1);
+            if ($userResult) {
+                $user_id = $this->UserModel->getUserId($_POST['emailInput'])[0]['user_id'];
+                $customerResult = $this->CustomerModel->addCustomer($user_id, $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
+                if ($customerResult) {
+                    echo "success";
                 }
             }
         }
@@ -133,5 +128,10 @@ class User extends Controller
                 echo "empty user";
             }
         }
+    }
+
+    public function loadMessLogin($msg)
+    {
+        $this->view('mess_login', ['msg' => $msg]);
     }
 }

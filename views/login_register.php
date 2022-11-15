@@ -16,61 +16,27 @@ require_once APPROOT . '/views/includes/head.php';
         <div>
             <fieldset class="border mx-auto bg-white" style="padding: 45px; margin-top: 100px; min-width: 300px;  max-width: 550px;">
                 <!-- Message section -->
-                <?php if (isset($data['msg'])) : ?>
+                <div id="mess">
 
-                    <?php switch ($data['msg']):
-                        case 'success': ?>
-
-                            <div class="alert alert-dismissible alert-success mb-5" style="font-size: 14px;">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                Bạn đã tạo tài khoản thành công!
-                            </div>
-
-                            <?php break; ?>
-
-                        <?php
-
-                        case 'emailexist': ?>
-
-                            <div class="alert alert-dismissible alert-danger mb-5" style="font-size: 14px;">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                Email đã tồn tại vui lòng đăng ký email khác!
-                            </div>
-
-                            <?php break; ?>
-
-                        <?php
-
-                        case 'wrongpass': ?>
-
-                            <div class="alert alert-dismissible alert-danger mb-5" style="font-size: 14px;">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                                Password không trùng khớp vui lòng đăng ký lại!
-                            </div>
-
-                            <?php break; ?>
-
-                    <?php endswitch; ?>
-                <?php endif; ?>
-
-                <form class="" id="login-box" action="<?= URLROOT ?>/User/login" method="POST">
+                </div>
+                <form id="login-box">
                     <legend class="mb-5 fw-bold">Login</legend>
                     <div class="form-group" style="font-size: 16px;">
                         <div class="mb-5">
                             <label class="form-label">Email address</label>
                             <span class="float-end align-middle" style="font-size: 15px;">Need an account? <a class="fw-bold" id="signup-btn">Sign up</a></span>
-                            <input type="email" class="form-control" name="emailInput" placeholder="name@example.com" required>
+                            <input type="email" class="form-control" name="emailInputLogin" placeholder="name@example.com" required>
                         </div>
                         <div class="mb-5">
                             <label class="form-label">Password</label>
                             <input type="password" class="form-control" name="passwordInput" placeholder="Password" required>
                         </div>
                     </div>
-                    <button name="signin" type="submit" class="btn btn-primary w-100 mb-4">Login</button>
+                    <button type="submit" class="btn btn-primary w-100 mb-4">Login</button>
                     <a class="fs-5 fw-bold">Forgot your password?</a>
                 </form>
 
-                <form class="d-none" id="signup-box" action="<?= URLROOT ?>/User/register" method="POST">
+                <form class="d-none" id="signup-box">
                     <legend class="mb-5 fw-bold">Sign up</legend>
                     <div class="form-group" style="font-size: 16px;">
                         <div class="mb-5">
@@ -106,7 +72,7 @@ require_once APPROOT . '/views/includes/head.php';
                             <input type="number" class="form-control" name="phoneInput" placeholder="Phone Number" required>
                         </div>
                     </div>
-                    <button name="signup" type="hidden" class="btn btn-primary w-100 mb-4">Sign up</button>
+                    <button type="submit" class="btn btn-primary w-100 mb-4">Sign up</button>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="privacyCheck" required>
                         <label class="form-check-label fs-6">
@@ -115,6 +81,7 @@ require_once APPROOT . '/views/includes/head.php';
                         </label>
                     </div>
                 </form>
+
             </fieldset>
         </div>
 
@@ -128,5 +95,88 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/login-effect.js"></script>
+<script>
+    $(document).ready(function() {
+        $(document).on('submit', '#login-box', function() {
+            login();
+            return false;
+        });
+
+        $(document).on('submit', '#signup-box', function() {
+            register();
+            return false;
+        });
+    });
+
+    function refreshMess(msg) {
+        var url = window.location.pathname.split('/');
+        $("#mess").empty();
+        $("#mess").load(window.location.protocol + "//" +
+            window.location.hostname + "/" + url[1] + "/User/loadMessLogin/" + msg,
+            function(responseTxt, statusTxt, xhr) {});
+        window.scrollTo(0, 0);
+    }
+
+    function login() {
+        var emailInputLogin = $("input[name='emailInputLogin']").val();
+        var passwordInput = $("input[name='passwordInput']").val();
+
+        var url = window.location.pathname.split('/');
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/User/login/",
+            method: "POST",
+            data: {
+                emailInputLogin: emailInputLogin,
+                passwordInput: passwordInput
+            },
+            success: function(data) {
+                if (data == "wrongpass") {
+                    refreshMess(data);
+                } else {
+                    window.location.replace(data);
+                }
+
+            }
+        });
+    }
+
+    function register() {
+        var emailInput = $("input[name='emailInput']").val();
+        var passwordInput1 = $("input[name='passwordInput1']").val();
+        var passwordInput2 = $("input[name='passwordInput2']").val();
+        var firstNameInput = $("input[name='firstNameInput']").val();
+        var lastNameInput = $("input[name='lastNameInput']").val();
+        var birthdayInput = $("input[name='birthdayInput']").val();
+        var phoneInput = $("input[name='phoneInput']").val();
+
+        var url = window.location.pathname.split('/');
+        $.ajax({
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/User/register/",
+            method: "POST",
+            data: {
+                emailInput: emailInput,
+                passwordInput1: passwordInput1,
+                passwordInput2: passwordInput2,
+                firstNameInput: firstNameInput,
+                lastNameInput: lastNameInput,
+                birthdayInput: birthdayInput,
+                phoneInput: phoneInput
+            },
+            success: function(data) {
+                if (data == "success") {
+                    $("#signup-box").find(':input').each(function() {
+                        $(this).val('');
+                    });
+                    hideSignupBox();
+                    refreshMess(data);
+                } else if (data == "unmatchedpass" || data == "emailexist") {
+                    refreshMess(data);
+                }
+            }
+        });
+    }
+</script>
 
 </html>
