@@ -123,11 +123,9 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/product_mgmt.js"></script>
 <script src="<?= JSFILE ?>/employee_mgmt.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    handleAjax(<?= $data['number'] ?>);
+    $("#keyword").keyup(function() {
         handleAjax(<?= $data['number'] ?>);
-        $("#keyword").keyup(function() {
-            handleAjax(<?= $data['number'] ?>);
-        });
     });
 
     var url = window.location.pathname.split('/');

@@ -49,9 +49,7 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/shopping_cart.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        refreshCart();
-    });
+    refreshCart();
 
     function deleteProductCart(prod_id) {
         var url = window.location.pathname.split('/');
@@ -85,7 +83,7 @@ require_once APPROOT . '/views/includes/head.php';
                 window.location.hostname + "/" + url[1] + "/Cart/updateProduct/" +
                 prod_id,
             method: "POST",
-            data:{
+            data: {
                 quantity: quantity
             },
             success: function(data) {

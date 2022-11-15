@@ -37,7 +37,7 @@ class User extends Controller
 
     public function login()
     {
-        if (!empty($_SESSION['signin'])) {
+        if (!empty($_SESSION['user_id'])) {
             header('location:' . URLROOT . '/Home');
         } else {
             $user = $this->UserModel->getUser($_POST['emailInputLogin'], md5($_POST['passwordInput']));
@@ -98,12 +98,12 @@ class User extends Controller
 
     public function editProfile()
     {
-        if (isset($_POST['editProfile'])) {
+        if (!empty($_SESSION['user_id'])) {
             $userResult = $this->UserModel->changeEmail($_SESSION['user_id'], $_POST['emailInput']);
             if ($userResult) {
                 $customerResult = $this->CustomerModel->editCustomer($_SESSION['user_id'], $_POST['firstNameInput'], $_POST['lastNameInput'], $_POST['birthdayInput'], $_POST['phoneInput']);
                 if ($customerResult) {
-                    header('location:' . URLROOT . '/User/profile');
+                    echo "changProSuc";
                 }
             }
         }
@@ -111,21 +111,20 @@ class User extends Controller
 
     public function editAccount()
     {
-        if (isset($_POST['editAccount'])) {
-            $user = $this->UserModel->getUser($_SESSION['user_email'], md5($_POST['oldPasswordInput']));
-            if (!empty($user)) {
+        if (!empty($_SESSION['user_id'])) { {
                 if ($this->validatePassword()) {
-                    echo "unmatch password";
+                    echo "unmatchedpass";
                 } else {
-                    $userResult = $this->UserModel->changePassword($_SESSION['user_id'], md5($_POST['passwordInput1']));
-                    if ($userResult) {
-                        header('location:' . URLROOT . '/User/profile');
+                    $user = $this->UserModel->getUser($_SESSION['user_email'], md5($_POST['oldPasswordInput']));
+                    if (!empty($user)) {
+                        $userResult = $this->UserModel->changePassword($_SESSION['user_id'], md5($_POST['passwordInput1']));
+                        if ($userResult) {
+                            echo "changeAccSuc";
+                        }
                     } else {
-                        echo "change failed";
+                        echo "passnotexist";
                     }
                 }
-            } else {
-                echo "empty user";
             }
         }
     }

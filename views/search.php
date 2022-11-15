@@ -112,17 +112,15 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function() {
+    handleAjax(<?= $data['number'] ?>);
+    $("#keyword").keyup(function() {
         handleAjax(<?= $data['number'] ?>);
-        $("#keyword").keyup(function() {
-            handleAjax(<?= $data['number'] ?>);
-        });
-        $("input[type=radio][name=price]").change(function() {
-            handleAjax(<?= $data['number'] ?>);
-        });
-        $("input[type=checkbox][name=category]").change(function() {
-            handleAjax(<?= $data['number'] ?>);
-        });
+    });
+    $("input[type=radio][name=price]").change(function() {
+        handleAjax(<?= $data['number'] ?>);
+    });
+    $("input[type=checkbox][name=category]").change(function() {
+        handleAjax(<?= $data['number'] ?>);
     });
 
     function handleAjax(number) {
@@ -132,9 +130,12 @@ require_once APPROOT . '/views/includes/head.php';
         $("input[name='category']:checked").each(function() {
             category.push(this.value);
         });
+        var url = window.location.pathname.split('/');
 
         $.ajax({
-            url: "Search/search/" + number,
+            url: window.location.protocol + "//" +
+                window.location.hostname + "/" + url[1] + "/Search/search/" +
+                number,
             method: "POST",
             data: {
                 keyword: keyword,

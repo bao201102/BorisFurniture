@@ -12,11 +12,44 @@
 
         <?php
 
+        case 'changProSuc': ?>
+
+            <div class="alert alert-dismissible alert-success mb-5" style="font-size: 14px;">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                You have changed information successfully!
+            </div>
+
+            <?php break; ?>
+
+        <?php
+
+        case 'changeAccSuc': ?>
+
+            <div class="alert alert-dismissible alert-success mb-5" style="font-size: 14px;">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                You have changed password successfully!
+            </div>
+
+            <?php break; ?>
+
+        <?php
+
         case 'emailexist': ?>
 
             <div class="alert alert-dismissible alert-danger mb-5" style="font-size: 14px;">
                 <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                 Email is already existed!
+            </div>
+
+            <?php break; ?>
+
+        <?php
+
+        case 'passnotexist': ?>
+
+            <div class="alert alert-dismissible alert-danger mb-5" style="font-size: 14px;">
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                Password is not correct!
             </div>
 
             <?php break; ?>

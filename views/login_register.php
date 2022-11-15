@@ -96,16 +96,14 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/login-effect.js"></script>
 <script>
-    $(document).ready(function() {
-        $(document).on('submit', '#login-box', function() {
-            login();
-            return false;
-        });
+    $(document).on('submit', '#login-box', function() {
+        login();
+        return false;
+    });
 
-        $(document).on('submit', '#signup-box', function() {
-            register();
-            return false;
-        });
+    $(document).on('submit', '#signup-box', function() {
+        register();
+        return false;
     });
 
     function refreshMess(msg) {

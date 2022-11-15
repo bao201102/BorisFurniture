@@ -247,10 +247,8 @@ require_once APPROOT . '/views/includes/head.php';
 <script src="<?= JSFILE ?>/general-effect.js"></script>
 <script src="<?= JSFILE ?>/details.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
-        $("#addToCart").click(function() {
-            addToCart_details($("#addToCart").val());
-        });
+    $("#addToCart").click(function() {
+        addToCart_details($("#addToCart").val());
     });
 
     function addToCart_details(btnValue) {
