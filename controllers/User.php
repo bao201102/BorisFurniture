@@ -21,7 +21,7 @@ class User extends Controller
     {
         if (!empty($_SESSION['user_id'])) {
             if ($_SESSION['user_type'] == 0) {
-                header('location:' . URLROOT . '/Admin/product');
+                header('location:' . URLROOT . '/Admin/order');
             } else if ($_SESSION['user_type'] == 1) {
                 $cus = $this->CustomerModel->getCustomerByUserId($_SESSION['user_id']);
                 $this->view('profile', ['cus' => $cus]);
